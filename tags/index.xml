@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Brimborium</title>
+    <link>https://tobiasraabe.github.io/tags/</link>
+    <description>Recent content in Tags on Brimborium</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2017 Tobias Raabe</copyright>
+    <lastBuildDate>Fri, 07 Oct 2016 17:09:28 +0200</lastBuildDate>
+    
+	<atom:link href="https://tobiasraabe.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Analysis</title>
+      <link>https://tobiasraabe.github.io/tags/data-analysis/</link>
+      <pubDate>Fri, 07 Oct 2016 17:09:28 +0200</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/tags/data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://tobiasraabe.github.io/tags/machine-learning/</link>
+      <pubDate>Fri, 07 Oct 2016 17:09:28 +0200</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>https://tobiasraabe.github.io/tags/tags/</link>
+      <pubDate>Fri, 26 May 2017 16:58:19 +0200</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/tags/tags/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

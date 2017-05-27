@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Brimborium</title>
+    <link>https://tobiasraabe.github.io/blog/</link>
+    <description>Recent content in Blog on Brimborium</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2017 Tobias Raabe</copyright>
+    <lastBuildDate>Fri, 07 Oct 2016 17:09:28 +0200</lastBuildDate>
+    
+	<atom:link href="https://tobiasraabe.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exploring Survival on Titanic</title>
+      <link>https://tobiasraabe.github.io/blog/exploring-survival-on-titanic/</link>
+      <pubDate>Fri, 07 Oct 2016 17:09:28 +0200</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/blog/exploring-survival-on-titanic/</guid>
+      <description>Log
+   Date Change     07.10.2016 Initial version   08.01.2017 Rewritten section 5    Outline This Jupyter notebook uses the Titanic dataset from Kaggle for the prediction of survival rates among passengers on the Titanic.
+ RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in the early morning of 15 April 1912, after colliding with an iceberg during her maiden voyage from Southampton to New York City.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Brimborium</title>
+    <link>https://tobiasraabe.github.io/tags/tags/</link>
+    <description>Recent content in Tags on Brimborium</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2017 Tobias Raabe</copyright>
+    <lastBuildDate>Fri, 26 May 2017 16:58:19 +0200</lastBuildDate>
+    
+	<atom:link href="https://tobiasraabe.github.io/tags/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Projects</title>
+      <link>https://tobiasraabe.github.io/projects/</link>
+      <pubDate>Fri, 26 May 2017 16:58:19 +0200</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/projects/</guid>
+      <description> Cryptocurrency Market Prediction
+ The project is about market prediction in cryptocurrency markets like Potcoin. It was part of programming course.   oTree Virtual Machine Manager (ovmm)
+ This tool is designed to handle many administrative tasks on a server with multiple running oTree instances. In addition to that, multiple virtual machine images are provided based on the hosts performance and administrator&#39;s needs.    </description>
+    </item>
+    
+  </channel>
+</rss>
