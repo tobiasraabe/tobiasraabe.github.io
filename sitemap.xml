@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/curriculum_vitae/</loc>
+    <lastmod>2017-05-26T17:01:53+02:00</lastmod>
+  </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/projects/</loc>
@@ -15,12 +19,6 @@
   <url>
     <loc>https://tobiasraabe.github.io/blog/</loc>
     <lastmod>2016-10-07T17:09:28+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tobiasraabe.github.io/</loc>
-    <lastmod>2017-05-26T16:58:19+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -49,7 +47,13 @@
   
   <url>
     <loc>https://tobiasraabe.github.io/tags/tags/</loc>
-    <lastmod>2017-05-26T16:58:19+02:00</lastmod>
+    <lastmod>2017-05-26T17:01:53+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/</loc>
+    <lastmod>2017-05-26T17:01:53+02:00</lastmod>
     <priority>0</priority>
   </url>
   

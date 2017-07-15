@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Brimborium</title>
+    <title>Tags on Tobias Raabe</title>
     <link>https://tobiasraabe.github.io/tags/</link>
-    <description>Recent content in Tags on Brimborium</description>
+    <description>Recent content in Tags on Tobias Raabe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2017 Tobias Raabe</copyright>
@@ -33,7 +33,7 @@
     <item>
       <title>Tags</title>
       <link>https://tobiasraabe.github.io/tags/tags/</link>
-      <pubDate>Fri, 26 May 2017 16:58:19 +0200</pubDate>
+      <pubDate>Fri, 26 May 2017 17:01:53 +0200</pubDate>
       
       <guid>https://tobiasraabe.github.io/tags/tags/</guid>
       <description></description>
