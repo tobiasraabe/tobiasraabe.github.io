@@ -11,16 +11,21 @@
 <meta name="description" content="Economics, Data Analysis, etc.">
 
 
+<meta property="og:site_name" content="Tobias Raabe" />
+<meta property="og:locale" content="nn_NO" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tobiasraabe.github.io/blog/exploring-survival-on-titanic/" />
+<meta property="og:title" content="Exploring Survival on Titanic" />
 <meta property="twitter:title" content="Exploring Survival on Titanic">
 
     <meta property="twitter:card" content="summary">
 
+<meta property="og:description" content="Desc">
 <meta property="twitter:description" content="Desc">
-
 <title>
 
 
-     Brimborium - Exploring Survival on Titanic 
+     Tobias Raabe - Exploring Survival on Titanic 
 
 </title>
 <link rel="canonical" href="https://tobiasraabe.github.io/blog/exploring-survival-on-titanic/">
@@ -29,7 +34,7 @@
 <style media="screen">
   @font-face {
   font-family: 'Nexa Bold';
-  src: url('/fonts/Nexa Bold.otf');
+  src: url('https://tobiasraabe.github.iofonts/Nexa Bold.otf');
 }
 
 html, body, div, span, applet, object, iframe,
@@ -524,12 +529,6 @@ section.main .content .markdown pre {
   word-break: break-all;
   word-wrap: break-word;
 }
-@media (min-width: 769px) {
-  section.main .content .markdown pre {
-    width: 110%;
-    margin-left: -4%;
-  }
-}
 section.main .content .markdown pre code {
   /* enclosed by 4 backticks (````) */
   padding: 0;
@@ -654,6 +653,7 @@ section.main .content .navigation {
   -moz-align-items: center;
   -ms-align-items: center;
   align-items: center;
+  padding: 2em;
 }
 section.main .content .navigation div {
   display: -webkit-flex;
@@ -677,10 +677,33 @@ section.main .content .navigation .icon {
 }
 section.main .content .navigation a {
   width: 250px;
-  margin-left: 1em;
+  margin: 0 1em;
   text-align: center;
   font-style: italic;
   color: #313537;
+}
+section.main .content .share, section.main .content .share div {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+section.main .content .share {
+  background-color: rgba(152, 152, 152, 0.07);
+  padding: 1em 0;
+}
+section.main .content .share a {
+  margin: 0 6px;
 }
 
 /* Fonts */
@@ -864,6 +887,10 @@ max-width: 110%;
 width: 110%;
 margin-left: -4%;
 }
+section.main .content .markdown pre {
+width: 110%;
+margin-left: -4%;
+}
 </style>
 
 <noscript>
@@ -881,6 +908,18 @@ margin-left: -4%;
 
   <style type="text/css" media="screen">
     .progressive{overflow:hidden;position:relative;background:#efefef}.progressive__img{width:100%;height:100%;position:absolute;-webkit-transform:translateZ(0);transform:translateZ(0)}.progressive--not-loaded{filter:blur(30px);-webkit-filter:blur(30px)}.progressive--is-loaded{filter:blur(20px);-webkit-filter:blur(20px);-webkit-animation:sharpen .5s both;animation:sharpen .5s both}@-webkit-keyframes sharpen{from{filter:blur(20px);-webkit-filter:blur(20px)}to{filter:blur(0);-webkit-filter:blur(0)}}@keyframes sharpen{from{filter:blur(20px);-webkit-filter:blur(20px)}to{filter:blur(0);-webkit-filter:blur(0)}}
+  </style>
+
+
+
+  <style type="text/css" media="screen">
+    /*!
+ * Social Share Kit v1.0.7 (http://socialsharekit.com)
+ * Copyright 2015 Social Share Kit / Kaspars Sprogis.
+ * Licensed under Creative Commons Attribution-NonCommercial 3.0 license:
+ * https://github.com/darklow/social-share-kit/blob/master/LICENSE
+ * ---
+ */@font-face{font-family:'social-share-kit';src:url('https://tobiasraabe.github.iofonts/social-share-kit.eot');src:url('https://tobiasraabe.github.iofonts/social-share-kit.eot?#iefix') format('embedded-opentype'),url('https://tobiasraabe.github.iofonts/social-share-kit.woff') format('woff'),url('https://tobiasraabe.github.iofonts/social-share-kit.ttf') format('truetype'),url('https://tobiasraabe.github.iofonts/social-share-kit.svg#social-share-kit') format('svg');font-weight:normal;font-style:normal}.ssk:before{display:inline-block;font-family:"social-share-kit" !important;font-style:normal !important;font-weight:normal !important;font-variant:normal !important;text-transform:none !important;speak:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.ssk-facebook:before{content:"a";text-indent:4px;margin-right:-4px}.ssk-twitter:before{content:"b"}.ssk-google-plus:before{content:"v"}.ssk-google-plus-old:before{content:"c"}.ssk-email:before{content:"d";top:-1px;position:relative}.ssk-pinterest:before{content:"e"}.ssk-tumblr:before{content:"f"}.ssk-linkedin:before{content:"g"}.ssk-github:before{content:"h"}.ssk-vk:before{content:"i"}.ssk-instagram:before{content:"j"}.ssk-amazon:before{content:"k"}.ssk-skype:before{content:"s"}.ssk-youtube:before{content:"x"}.ssk-vimeo:before{content:"u"}.ssk-ebay:before{content:"p"}.ssk-apple:before{content:"l"}.ssk-behance:before{content:"q"}.ssk-dribble:before{content:"n"}.ssk-android:before{content:"o"}.ssk-whatsapp:before{content:"m"}.ssk-reddit:before{content:"r"}.ssk-reddit2:before{content:"t"}.ssk-link:before{content:"w"}.ssk{background-color:#757575;color:white;display:inline-block;font-size:22px;line-height:1px;margin-right:2px;margin-bottom:2px;padding:7px;text-align:center;text-decoration:none;transition:background-color .1s;-webkit-transition:background-color .1s;-moz-transition:background-color .1s;-ms-transition:background-color .1s;-o-transition:background-color .1s}.ssk:before,.ssk .glyphicon,.ssk .fa{position:relative;font-size:22px;top:0;vertical-align:middle}.ssk.ssk-xs,.ssk-xs>.ssk{padding:4px}.ssk.ssk-xs:before,.ssk-xs>.ssk:before,.ssk.ssk-xs .glyphicon,.ssk-xs>.ssk .glyphicon,.ssk.ssk-xs .fa,.ssk-xs>.ssk .fa{font-size:15px}.ssk.ssk-sm,.ssk-sm>.ssk{padding:5px}.ssk.ssk-sm:before,.ssk-sm>.ssk:before,.ssk.ssk-sm .glyphicon,.ssk-sm>.ssk .glyphicon,.ssk.ssk-sm .fa,.ssk-sm>.ssk .fa{font-size:20px}.ssk.ssk-lg,.ssk-lg>.ssk{padding:9px}.ssk.ssk-lg:before,.ssk-lg>.ssk:before,.ssk.ssk-lg .glyphicon,.ssk-lg>.ssk .glyphicon,.ssk.ssk-lg .fa,.ssk-lg>.ssk .fa{font-size:28px}.ssk:last-child{margin-right:0}.ssk:hover{background-color:#424242}.ssk:hover,.ssk:focus{color:#fff;text-decoration:none}.ssk.ssk-round,.ssk-round .ssk{border-radius:50%}.ssk.ssk-round:before,.ssk-round .ssk:before{text-indent:0;margin-right:0}.ssk.ssk-rounded,.ssk-rounded .ssk{border-radius:15%}.ssk.ssk-icon{color:#757575;padding:2px;font-size:24px}.ssk.ssk-icon,.ssk.ssk-icon:hover{background-color:transparent}.ssk.ssk-icon:hover{color:#424242}.ssk.ssk-icon.ssk-xs,.ssk-xs>.ssk.ssk-icon{font-size:16px}.ssk.ssk-icon.ssk-sm,.ssk-sm>.ssk.ssk-icon{font-size:20px}.ssk.ssk-icon.ssk-lg,.ssk-lg>.ssk.ssk-icon{font-size:28px}.ssk.ssk-text{overflow:hidden;font-size:17px;line-height:normal;padding-right:10px}.ssk.ssk-text:before,.ssk.ssk-text .glyphicon,.ssk.ssk-text .fa{margin:-7px 10px -7px -7px;padding:7px;background-color:rgba(0,0,0,0.15);vertical-align:bottom;text-indent:0}.ssk-block .ssk.ssk-text{display:block;margin-right:0;text-align:left}.ssk.ssk-text.ssk-xs,.ssk-xs>.ssk.ssk-text{font-size:12px;padding-right:6px}.ssk.ssk-text.ssk-xs:before,.ssk-xs>.ssk.ssk-text:before,.ssk.ssk-text.ssk-xs .glyphicon,.ssk-xs>.ssk.ssk-text .glyphicon,.ssk.ssk-text.ssk-xs .fa,.ssk-xs>.ssk.ssk-text .fa{margin:-4px 6px -4px -4px;padding:4px}.ssk.ssk-text.ssk-sm,.ssk-sm>.ssk.ssk-text{font-size:16px;padding-right:7px}.ssk.ssk-text.ssk-sm:before,.ssk-sm>.ssk.ssk-text:before,.ssk.ssk-text.ssk-sm .glyphicon,.ssk-sm>.ssk.ssk-text .glyphicon,.ssk.ssk-text.ssk-sm .fa,.ssk-sm>.ssk.ssk-text .fa{margin:-5px 7px -5px -5px;padding:5px}.ssk.ssk-text.ssk-lg,.ssk-lg>.ssk.ssk-text{font-size:22px;padding-right:13px}.ssk.ssk-text.ssk-lg:before,.ssk-lg>.ssk.ssk-text:before,.ssk.ssk-text.ssk-lg .glyphicon,.ssk-lg>.ssk.ssk-text .glyphicon,.ssk.ssk-text.ssk-lg .fa,.ssk-lg>.ssk.ssk-text .fa{margin:-9px 13px -9px -9px;padding:9px}.ssk-group,.ssk-sticky{font-size:0}.ssk-sticky{top:0;position:fixed;z-index:2000}.ssk-sticky .ssk{transition:padding .1s ease-out;-webkit-transition:padding .1s ease-out;-moz-transition:padding .1s ease-out;-ms-transition:padding .1s ease-out;-o-transition:padding .1s ease-out;margin:0}@media (min-width:768px){.ssk-sticky.ssk-left .ssk,.ssk-sticky.ssk-right .ssk{display:block;clear:both}.ssk-sticky.ssk-left.ssk-center,.ssk-sticky.ssk-right.ssk-center{top:50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);-o-transform:translateY(-50%)}.ssk-sticky.ssk-left{left:0}.ssk-sticky.ssk-left .ssk{float:left}.ssk-sticky.ssk-left .ssk:hover{padding-left:15px}.ssk-sticky.ssk-right{right:0}.ssk-sticky.ssk-right .ssk{float:right}.ssk-sticky.ssk-right .ssk:hover{padding-right:15px}}.ssk-sticky.ssk-bottom{font-size:0;top:auto;bottom:0}.ssk-sticky.ssk-bottom.ssk-center{left:50%;right:auto;transform:translateX(-50%);-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%)}.ssk-sticky.ssk-bottom .ssk{vertical-align:bottom}.ssk-sticky.ssk-bottom .ssk:hover{padding-bottom:15px}.ssk-sticky.ssk-round.ssk-xs .ssk:hover{padding:8px}.ssk-sticky.ssk-round.ssk-sm .ssk:hover{padding:9px}.ssk-sticky.ssk-round .ssk:hover{padding:11px}.ssk-sticky.ssk-round.ssk-lg .ssk:hover{padding:13px}@media (max-width:767px){.ssk-sticky{left:0;right:0;bottom:0;top:auto;width:100%;display:flex !important;flex-direction:row;flex-wrap:nowrap}.ssk-sticky.ssk-sticky-hide-xs{display:none !important}.ssk-sticky .ssk{flex:1;width:auto}.ssk-sticky .ssk .ssk-num{display:none}}.ssk-count{padding-top:20px}.ssk-count .ssk{position:relative}.ssk-count .ssk-num{border-radius:4px;color:#8f8f8f;background-color:rgba(50,50,50,0.03);display:block;font-size:12px;left:0;line-height:20px;position:absolute;right:0;text-align:center;top:-20px}@media (min-width:768px){.ssk-count.ssk-sticky{padding-top:0}.ssk-count.ssk-sticky.ssk-left .ssk-num,.ssk-count.ssk-sticky.ssk-right .ssk-num{top:20%;background-color:transparent}.ssk-count.ssk-sticky.ssk-left .ssk-num{left:100%;margin-left:5px}.ssk-count.ssk-sticky.ssk-right .ssk-num{right:115%;margin-left:-100%;text-align:right}}.ssk-facebook{background-color:#3B5998}.ssk-grayscale>.ssk-facebook{background-color:#757575}.ssk-facebook:hover{background-color:#2d4373}.ssk-facebook:hover{background-color:#2d4373}.ssk-grayscale>.ssk-facebook:hover{background-color:#3B5998}.ssk-facebook.ssk-icon{color:#3B5998}.ssk-facebook.ssk-icon:hover{color:#2d4373}.ssk-facebook.ssk-icon:before{text-indent:0;margin-right:0}.ssk-twitter{background-color:#1DA1F2}.ssk-grayscale>.ssk-twitter{background-color:#757575}.ssk-twitter:hover{background-color:#0c85d0}.ssk-twitter:hover{background-color:#0c85d0}.ssk-grayscale>.ssk-twitter:hover{background-color:#1DA1F2}.ssk-twitter.ssk-icon{color:#1DA1F2}.ssk-twitter.ssk-icon:hover{color:#0c85d0}.ssk-google-plus{background-color:#EA4335}.ssk-grayscale>.ssk-google-plus{background-color:#757575}.ssk-google-plus:hover{background-color:#d62516}.ssk-google-plus:hover{background-color:#d62516}.ssk-grayscale>.ssk-google-plus:hover{background-color:#EA4335}.ssk-google-plus.ssk-icon{color:#EA4335}.ssk-google-plus.ssk-icon:hover{color:#d62516}.ssk-pinterest{background-color:#BD081C}.ssk-grayscale>.ssk-pinterest{background-color:#757575}.ssk-pinterest:hover{background-color:#8c0615}.ssk-pinterest:hover{background-color:#8c0615}.ssk-grayscale>.ssk-pinterest:hover{background-color:#BD081C}.ssk-pinterest.ssk-icon{color:#BD081C}.ssk-pinterest.ssk-icon:hover{color:#8c0615}.ssk-tumblr{background-color:#395773}.ssk-grayscale>.ssk-tumblr{background-color:#757575}.ssk-tumblr:hover{background-color:#283d51}.ssk-tumblr:hover{background-color:#283d51}.ssk-grayscale>.ssk-tumblr:hover{background-color:#395773}.ssk-tumblr.ssk-icon{color:#395773}.ssk-tumblr.ssk-icon:hover{color:#283d51}.ssk-email{background-color:#757575}.ssk-grayscale>.ssk-email{background-color:#757575}.ssk-email:hover{background-color:#5b5b5b}.ssk-email:hover{background-color:#5b5b5b}.ssk-grayscale>.ssk-email:hover{background-color:#757575}.ssk-grayscale>.ssk-email:hover{background-color:#5b5b5b}.ssk-email.ssk-icon{color:#757575}.ssk-email.ssk-icon:hover{color:#5b5b5b}.ssk-vk{background-color:#54769a}.ssk-grayscale>.ssk-vk{background-color:#757575}.ssk-vk:hover{background-color:#425d79}.ssk-vk:hover{background-color:#425d79}.ssk-grayscale>.ssk-vk:hover{background-color:#54769a}.ssk-vk.ssk-icon{color:#54769a}.ssk-vk.ssk-icon:hover{color:#425d79}.ssk-linkedin{background-color:#1c87bd}.ssk-grayscale>.ssk-linkedin{background-color:#757575}.ssk-linkedin:hover{background-color:#156791}.ssk-linkedin:hover{background-color:#156791}.ssk-grayscale>.ssk-linkedin:hover{background-color:#1c87bd}.ssk-linkedin.ssk-icon{color:#1c87bd}.ssk-linkedin.ssk-icon:hover{color:#156791}.ssk-whatsapp{background-color:#34AF23}.ssk-grayscale>.ssk-whatsapp{background-color:#757575}.ssk-whatsapp:hover{background-color:#27851a}.ssk-whatsapp:hover{background-color:#27851a}.ssk-grayscale>.ssk-whatsapp:hover{background-color:#34AF23}.ssk-whatsapp.ssk-icon{color:#34AF23}.ssk-whatsapp.ssk-icon:hover{color:#27851a}.ssk-reddit{background-color:#5f99cf}.ssk-grayscale>.ssk-reddit{background-color:#757575}.ssk-reddit:hover{background-color:#3a80c1}.ssk-reddit:hover{background-color:#3a80c1}.ssk-grayscale>.ssk-reddit:hover{background-color:#5f99cf}.ssk-reddit.ssk-icon{color:#5f99cf}.ssk-reddit.ssk-icon:hover{color:#3a80c1}.ssk-reddit2{background-color:#5f99cf}.ssk-grayscale>.ssk-reddit2{background-color:#757575}.ssk-reddit2:hover{background-color:#3a80c1}.ssk-reddit2:hover{background-color:#3a80c1}.ssk-grayscale>.ssk-reddit2:hover{background-color:#5f99cf}.ssk-reddit2.ssk-icon{color:#5f99cf}.ssk-reddit2.ssk-icon:hover{color:#3a80c1}.ssk-turquoise{background-color:#1abc9c}.ssk-turquoise:hover{background-color:#148f77}.ssk-emerald{background-color:#2ecc71}.ssk-emerald:hover{background-color:#25a25a}.ssk-peter-river{background-color:#3498db}.ssk-peter-river:hover{background-color:#217dbb}.ssk-belize-hole{background-color:#2980b9}.ssk-belize-hole:hover{background-color:#20638f}.ssk-amethyst{background-color:#9b59b6}.ssk-amethyst:hover{background-color:#804399}.ssk-wisteria{background-color:#8e44ad}.ssk-wisteria:hover{background-color:#703688}.ssk-wet-asphalt{background-color:#34495e}.ssk-wet-asphalt:hover{background-color:#222f3d}.ssk-midnight-blue{background-color:#2c3e50}.ssk-midnight-blue:hover{background-color:#1a242f}.ssk-green-sea{background-color:#16a085}.ssk-green-sea:hover{background-color:#107360}.ssk-nephritis{background-color:#27ae60}.ssk-nephritis:hover{background-color:#1e8449}.ssk-sunflower{background-color:#f1c40f}.ssk-sunflower:hover{background-color:#c29d0b}.ssk-orange{background-color:#f39c12}.ssk-orange:hover{background-color:#c87f0a}.ssk-carrot{background-color:#e67e22}.ssk-carrot:hover{background-color:#bf6516}.ssk-pumpkin{background-color:#d35400}.ssk-pumpkin:hover{background-color:#a04000}.ssk-alizarin{background-color:#e74c3c}.ssk-alizarin:hover{background-color:#d62c1a}.ssk-pomegranate{background-color:#c0392b}.ssk-pomegranate:hover{background-color:#962d22}.ssk-clouds{background-color:#cfd9db}.ssk-clouds:hover{background-color:#b1c2c6}.ssk-concrete{background-color:#95a5a6}.ssk-concrete:hover{background-color:#798d8f}.ssk-silver{background-color:#bdc3c7}.ssk-silver:hover{background-color:#a1aab0}.ssk-asbestos{background-color:#7f8c8d}.ssk-asbestos:hover{background-color:#667273}.ssk-dark-gray{background-color:#555}.ssk-dark-gray:hover{background-color:#3b3b3b}.ssk-black{background-color:#333}.ssk-black:hover{background-color:#1a1a1a}
   </style>
 
 
@@ -947,11 +986,17 @@ section.main .content .markdown pre, section.main .content .markdown pre code {
 .hljs-built_in, .hljs-bullet, .hljs-code, .hljs-addition {
     color: #97d28b;
 }
+
+.ssk {
+    background-color: #6a7a8b;
+}
   </style>
 
 
 
   <link rel="stylesheet" href="https://tobiasraabe.github.io/css/style.css">
+
+
 
 
 
@@ -973,21 +1018,23 @@ section.main .content .markdown pre, section.main .content .markdown pre code {
 <section class="header">
 
     <div class="container">
-        <a href="https://tobiasraabe.github.io/"><img class="logo" src="https://tobiasraabe.github.io/images/favicon.png" alt="logo" /></a>
+        <a href="https://tobiasraabe.github.io"><img class="logo" src="https://tobiasraabe.github.io/images/favicon.png" alt="logo" /></a>
         <div class="content">
-            <a href="https://tobiasraabe.github.io/"><div class="name"><h1>Brimborium</h1></div></a>
+            <a href="https://tobiasraabe.github.io"><div class="name"><h1>Tobias Raabe</h1></div></a>
             <nav>
                 <ul>
                     
-                        <a href="https://tobiasraabe.github.io/blog/"><li>Blog</li></a>
+                        <a href="https://tobiasraabe.github.ioblog/"><li>Blog</li></a>
                     
-                    
-                        
                     
                         
                             
                         
                     
+                    
+                        
+                            <a href="https://tobiasraabe.github.io/curriculum_vitae/"><li>Curriculum Vitae</li></a>
+                        
                     
                         
                             <a href="https://tobiasraabe.github.io/projects/"><li>Projects</li></a>
@@ -1026,6 +1073,12 @@ section.main .content .markdown pre, section.main .content .markdown pre code {
                           
                             <div class="middot"></div>
                             <li><a href="https://tobiasraabe.github.io/tags/data-analysis">data analysis</a> </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
                           
                         </ul>
                     </div>
@@ -1223,7 +1276,7 @@ sns.barplot(x='Pclass', y='Survived', data=train, ax=axis2, ci=None)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_11_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_11_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_11_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_11_0.png" alt="png" /></p></figure>
 
 <h2 id="sex">Sex</h2>
 
@@ -1233,7 +1286,7 @@ sns.barplot(x='Sex', y='Survived', data=train, ax=axis2, ci=None)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_13_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_13_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_13_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_13_0.png" alt="png" /></p></figure>
 
 <h2 id="age">Age</h2>
 
@@ -1276,14 +1329,14 @@ train.Age = train.Age.astype(int)
 test.Age = test.Age.astype(int)
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_15_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_15_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_15_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_15_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python">fig, (axis1) = plt.subplots(1, 1, figsize=(18, 6))
 sns.barplot('Age', 'Survived', data=train, ax=axis1, ci=False)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_16_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_16_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_16_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_16_0.png" alt="png" /></p></figure>
 
 <h2 id="fare">Fare</h2>
 
@@ -1300,7 +1353,7 @@ plt.show()
   y = X[:m/2+1] + np.r_[0,X[m/2+1:],0]*1j
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_18_1.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_18_1.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_18_1.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_18_1.png" alt="png" /></p></figure>
 
 <h1 id="missing-computation-and-feature-engineering">Missing Computation and Feature Engineering</h1>
 
@@ -1329,14 +1382,14 @@ sns.barplot(x='Deck', y='Survived', data=train, ax=axis2, order=['A', 'B', 'C', 
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_26_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_26_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_26_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_26_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python">fig, (axis1) = plt.subplots(1, 1, figsize=(18, 6))
 sns.boxplot(x='Deck', y='Fare', hue='Pclass', data=train, ax=axis1, order=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'T', 'Missing'])
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_27_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_27_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_27_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_27_0.png" alt="png" /></p></figure>
 
 <h2 id="embarked">Embarked</h2>
 
@@ -1351,7 +1404,7 @@ axis2.axhline(80, c='black', linestyle='--')
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_30_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_30_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_30_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_30_0.png" alt="png" /></p></figure>
 
 <p>The boxplot does not show very clear whether the two passengers embarked in Southampton or Cherbourg. A fare of 80 seems to be on the edge of the box and therefore on the upper quartile. What you can also see is a concentration of passengers embarked in Southampton between a fare of 70 and 90.</p>
 
@@ -1382,7 +1435,7 @@ plt.show()
   y = X[:m/2+1] + np.r_[0,X[m/2+1:],0]*1j
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_32_1.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_32_1.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_32_1.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_32_1.png" alt="png" /></p></figure>
 
 <p>As you can see in graphic one, the density of for Cherbourg is slightly higher than for Southampton. But this is only in relation to all passengers from this port. Since passengers are not equally distributed among ports, we have to look at the absolute distribution. The histograms in graphic two and three show that the thresholds for similar observations is the critical assumption. Consider that passengers with fares from 75 to 85 are the correct comparison, you will favor Cherbourg over Southampton. But, you would have the opposite view if you choose fare values between 70 and 90.</p>
 
@@ -1445,7 +1498,7 @@ axis1.set_xlabel('')
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_42_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_42_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_42_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_42_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python"># # For test purposes
 # clf = RandomForestRegressor(n_estimators=1000, n_jobs=-1, max_features=0.5)
@@ -1472,7 +1525,7 @@ axis1.set_ylabel('Mean Squared Error')
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_45_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_45_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_45_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_45_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python"># Predict the missing age values
 clf = RandomForestRegressor(n_estimators=1000, n_jobs=-1, max_features=0.5)
@@ -1499,7 +1552,7 @@ plt.show()
   y = X[:m/2+1] + np.r_[0,X[m/2+1:],0]*1j
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_48_1.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_48_1.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_48_1.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_48_1.png" alt="png" /></p></figure>
 
 <p>In the second comparison we can see the computed distribution tends to be more centered around 30. Of course, we cannot say whether this is false, since the groups could potentially differ. But more observations around the mean of the distribution will not make the data corrupt and the behaviour towards the tails is similar.</p>
 
@@ -1515,7 +1568,7 @@ plt.show()
   y = X[:m/2+1] + np.r_[0,X[m/2+1:],0]*1j
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_50_1.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_50_1.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_50_1.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_50_1.png" alt="png" /></p></figure>
 
 <h1 id="women-and-children-first">Women and Children First!</h1>
 
@@ -1537,7 +1590,7 @@ sns.barplot(x='Minor', y='Survived', data=train, ax=axis2, ci=False)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_54_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_54_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_54_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_54_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python">fig, (axis1, axis2) = plt.subplots(1, 2, figsize=(18, 6))
 sns.countplot('Sex', data=train, ax=axis1, order=['Female', 'Male'])
@@ -1545,7 +1598,7 @@ sns.barplot(x='Sex', y='Survived', data=train, ax=axis2, ci=False)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_55_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_55_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_55_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_55_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python">fig, (axis1, axis2) = plt.subplots(1, 2, figsize=(18, 6))
 sns.countplot('Minor', hue='Sex', data=train, ax=axis1, hue_order=['Female', 'Male'])
@@ -1553,7 +1606,7 @@ sns.barplot(x='Minor', y='Survived', hue='Sex', data=train, ax=axis2, hue_order=
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_56_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_56_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_56_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_56_0.png" alt="png" /></p></figure>
 
 <h1 id="a-shared-destiny-families-on-board-of-the-titanic">A shared destiny? Families on board of the Titanic</h1>
 
@@ -1571,7 +1624,7 @@ sns.barplot(x='Company', y='Survived', data=train, ax=axis2, ci=False)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_60_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_60_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_60_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_60_0.png" alt="png" /></p></figure>
 
 <pre><code class="language-python">fig, (axis1, axis2) = plt.subplots(1, 2, figsize=(18,6))
 sns.countplot('Familysize', data=train, ax=axis1)
@@ -1579,7 +1632,7 @@ sns.barplot(x='Familysize', y='Survived', data=train, ax=axis2, ci=False)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_61_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_61_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_61_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_61_0.png" alt="png" /></p></figure>
 
 <p>Up to this point, we have seen that survival rates are favorable for passenger in company. This effect could be due to two reasons: first, families helped each other during the tragedy or, second, kids drive up survival rates for families.</p>
 
@@ -1692,7 +1745,7 @@ axis2.set_title('Survival Rates of Families')
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_65_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_65_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_65_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_65_0.png" alt="png" /></p></figure>
 
 <p>The graphic above shows that the size of the constructed families and the frequency of average survival rates for families. Since only complete families have been selected and bigger families have a higher probability of being split among test and train dataset, the distribution of complete families is probably right-skewed (positive skew). To correct for this bias, we will only consider families with two members.</p>
 
@@ -1706,7 +1759,7 @@ sns.barplot(x='Company', y='Survived', data=train, ax=axis2, ci=False)
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_68_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_68_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_68_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_68_0.png" alt="png" /></p></figure>
 
 <h2 id="second-placebo-test-for-couples">Second: placebo test for couples</h2>
 
@@ -1771,7 +1824,7 @@ axis3.set_title('Bootstrapped Binomial distribution (n=1, p=0.571, size=(42000, 
 plt.show()
 </code></pre>
 
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.io/images/blog/titanic/titanic_74_0.png" src="https://tobiasraabe.github.io/images/blog/titanic/low/titanic_74_0.png" alt="png" /></p></figure>
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="https://tobiasraabe.github.ioimages/blog/titanic/titanic_74_0.png" src="https://tobiasraabe.github.ioimages/blog/titanic/low/titanic_74_0.png" alt="png" /></p></figure>
 
 <p>I&rsquo;m not very sure what to make out these graphs. Certainly, the last two graphs look almost identical which would strengthen my belief, that there is some kind of structure in survival rates for families. But still, I have a lot of doubts concerning the methodology and the credibility of the results.</p>
 
@@ -1779,24 +1832,40 @@ plt.show()
                 <br>
             </div>
             
+            <div class="share">
+                <a href="" class="ssk ssk-facebook"></a>
+                <a href="" class="ssk ssk-twitter"></a>
+                <a href="" class="ssk ssk-google-plus"></a>
+                <a href="" class="ssk ssk-linkedin"></a>
+            </div>
+            
+            
             <br>
             <div class="disqus">
                 
             </div>
+            
         </div>
     </div>
 </section>
 
 <section class="footer">
     <div class="container">
+
+        
+
         <div class="copyright">
 
         
-            <a href="https://tobiasraabe.github.io/license">Copyright © 2017 Tobias Raabe</a>
+            
+                <a href="https://tobiasraabe.github.iolicense">Copyright © 2017 Tobias Raabe</a>
+            
         
 
         </div>
         <div class="icons">
+
+        
 
         
             <a href="https://github.com/tobiasraabe" target="_blank">
@@ -1834,12 +1903,19 @@ plt.show()
 </script>
 
 
-  <script src="https://tobiasraabe.github.io/js/highlight.min.js" defer></script>
+  <script src="https://tobiasraabe.github.iojs/highlight.min.js" defer></script>
   
 
 
 
-  <script src="https://tobiasraabe.github.io/js/progressively.min.js" defer></script>
+  <script src="https://tobiasraabe.github.iojs/progressively.min.js" defer></script>
+
+
+
+
+
+
+  <script src="https://tobiasraabe.github.iojs/social-share-kit.min.js" defer></script>
 
 
 
@@ -1851,6 +1927,14 @@ plt.show()
     
     
       progressively.init({delay: 30, throttle: 50});
+    
+    
+      SocialShareKit.init({
+        twitter: {
+            text: '',
+            
+        }
+      });
     
   };
 </script>
