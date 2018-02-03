@@ -1,5 +1,5 @@
 baseurl = "https://tobiasraabe.github.io/"
-theme = "cocoa-eh-hugo-theme"
+theme = "cocoa-eh"
 enableRobotsTXT = true
 builddrafts = false
 canonifyurls = true

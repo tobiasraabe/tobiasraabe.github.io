@@ -104,29 +104,31 @@ def publish():
             abort('The working directory is dirty. Please commit any pending'
                   'changes.')
 
-    # deleting old publication
-    local('rm -rf public')
-    local('mkdir public')
+    # deleting old publish
+    if Path('publish').exists():
+        shutil.rmtree('publish')
+    local('mkdir publish')
     local('git worktree prune')
-    local('rm -rf .git/worktrees/public/')
+    if Path('.git/worktrees/publish').exists():
+        shutil.rmtree('.git/worktrees/publish')
 
-    # checkout out gh-pages branch into public
-    local('git worktree add -B master public upstream/master')
+    # checkout out gh-pages branch into publish
+    local('git worktree add -B master publish origin/master')
 
     # removing any existing files
-    local('rm -rf public/*')
+    shutil.rmtree('publish')
 
     # generating site
     render_notebooks()
     local('hugo')
 
     # commit
-    with lcd('public'), settings(warn_only=True):
+    with lcd('publish'), settings(warn_only=True):
         local('git add .')
         local('git commit -m "Committing to master (Fabfile)"')
 
     # push to master
-    local('git push upstream master')
+    local('git push -f origin master')
     print('push succeeded')
 
 
