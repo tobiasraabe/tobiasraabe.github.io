@@ -1,0 +1,19 @@
+li.github {
+    margin: 0;
+    padding: 0 0 0 20px;
+    list-style: none;
+    background-image: url('/img/github.svg');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    background-size: 15px;
+}
+
+ol.toc {
+  list-style: square;
+}
+
+li.toc {
+    margin: 0;
+    padding: 0 0 0 20px;
+    list-style: decimal;
+}
