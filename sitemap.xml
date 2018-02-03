@@ -3,23 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/</loc>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://tobiasraabe.github.io/curriculum_vitae/</loc>
-    <lastmod>2017-05-26T17:01:53+02:00</lastmod>
+    <lastmod>2017-05-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/projects/</loc>
-    <lastmod>2017-05-26T16:58:19+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tobiasraabe.github.io/blog/exploring-survival-on-titanic/</loc>
-    <lastmod>2016-10-07T17:09:28+02:00</lastmod>
+    <lastmod>2017-05-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/blog/</loc>
-    <lastmod>2016-10-07T17:09:28+02:00</lastmod>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -29,32 +29,23 @@
   </url>
   
   <url>
-    <loc>https://tobiasraabe.github.io/tags/data-analysis/</loc>
-    <lastmod>2016-10-07T17:09:28+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tobiasraabe.github.io/tags/machine-learning/</loc>
-    <lastmod>2016-10-07T17:09:28+02:00</lastmod>
+    <loc>https://tobiasraabe.github.io/series/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/tags/</loc>
-    <lastmod>2016-10-07T17:09:28+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tobiasraabe.github.io/tags/tags/</loc>
-    <lastmod>2017-05-26T17:01:53+02:00</lastmod>
+    <loc>https://tobiasraabe.github.io/taxonomies/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/</loc>
-    <lastmod>2017-05-26T17:01:53+02:00</lastmod>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

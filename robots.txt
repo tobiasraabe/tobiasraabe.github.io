@@ -1,0 +1,21 @@
+User-agent: *
+
+
+Disallow: /blog/the-tragedy-of-titanic/
+
+Disallow: /curriculum_vitae/
+
+Disallow: /projects/
+
+Disallow: /blog/
+
+Disallow: /categories/
+
+Disallow: /series/
+
+Disallow: /tags/
+
+Disallow: /taxonomies/
+
+Disallow: /
+
