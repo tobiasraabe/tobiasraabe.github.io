@@ -128,7 +128,7 @@ def publish():
         local('git commit -m "Committing to master (Fabfile)"')
 
     # push to master
-    local('git push -f origin master')
+    local('git push origin master')
     print('push succeeded')
 
 
@@ -245,12 +245,13 @@ def write_hugo_formatted_nb_to_md(
              notebook_name=rendered_md_path.stem)
     # Write resources to static if exist
     if rendered_md_resources['outputs']:
+        rendered_md_resources.pop('output_extension')
         c.FilesWriter.build_directory = str(rendered_md_resources_path)
         fw = FilesWriter(config=c)
         fw.write(output='', resources=rendered_md_resources,
                  notebook_name=rendered_md_path.stem)
         # Remove empty markdown created by writing resources
-        Path(rendered_md_resources_path, rendered_md_path.name).unlink()
+        Path(rendered_md_resources_path, rendered_md_path.stem).unlink()
 
     # Print status message
     print(notebook_path.name, '->', rendered_md_path.name)

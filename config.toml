@@ -9,13 +9,8 @@ layoutdir = "layouts"
 publishdir = "publish"
 author = "Tobias Raabe"
 title = "Tobias Raabe"
+# disqusshortname = ""
 pluralizelisttitles = false
-
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-  series = "series"
-  taxonomies = "taxonomies"
 
 [permalinks]
     blog = "blog/:slug/"
@@ -35,8 +30,13 @@ pluralizelisttitles = false
     github = "tobiasraabe"
     email = "tobiasraabe@uni-bonn.de"
     linkedin = "tobias-raabe"
+    # twitter = ""
+    # facebook = ""
+    # social_banner = ""
     usesmallsummarycard = false
     posts_navigation = true
+    # issoHost = "comments.domain.tld:1234"
+    githubRepo = "tobiasraabe/tobiasraabe.github.io"
     small_banner_logo = false
     extracssfiles = ["css/style.css"]
 
