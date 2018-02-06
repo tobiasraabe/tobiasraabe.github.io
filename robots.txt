@@ -1,21 +1,43 @@
 User-agent: *
 
 
+Disallow: /projects/locus_of_control/
+
 Disallow: /blog/the-tragedy-of-titanic/
 
 Disallow: /curriculum_vitae/
 
-Disallow: /projects/
+Disallow: /projects/crypto/
+
+Disallow: /projects/ovmm/
 
 Disallow: /blog/
 
 Disallow: /categories/
 
-Disallow: /series/
+Disallow: /tags/cryptocurrency/
+
+Disallow: /tags/locus-of-control/
+
+Disallow: /tags/otree/
+
+Disallow: /tags/ovmm/
+
+Disallow: /tags/project/
+
+Disallow: /projects/
+
+Disallow: /projects/projects/
+
+Disallow: /tags/research/
+
+Disallow: /tags/social-media/
+
+Disallow: /tags/soep/
+
+Disallow: /tags/software/
 
 Disallow: /tags/
-
-Disallow: /taxonomies/
 
 Disallow: /
 

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://tobiasraabe.github.io/projects/locus_of_control/</loc>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
   </url>
@@ -13,8 +18,13 @@
   </url>
   
   <url>
-    <loc>https://tobiasraabe.github.io/projects/</loc>
-    <lastmod>2017-05-26T00:00:00+00:00</lastmod>
+    <loc>https://tobiasraabe.github.io/projects/crypto/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/projects/ovmm/</loc>
+    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -29,23 +39,78 @@
   </url>
   
   <url>
-    <loc>https://tobiasraabe.github.io/series/</loc>
+    <loc>https://tobiasraabe.github.io/tags/cryptocurrency/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/locus-of-control/</loc>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/otree/</loc>
+    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/ovmm/</loc>
+    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/project/</loc>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/projects/</loc>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/projects/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/research/</loc>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/social-media/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/soep/</loc>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/software/</loc>
+    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tobiasraabe.github.io/taxonomies/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tobiasraabe.github.io/</loc>
-    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cryptocurrency on Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tags/cryptocurrency/</link>
+    <description>Recent content in Cryptocurrency on Tobias Raabe</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2017 Tobias Raabe</copyright>
+    <lastBuildDate>Fri, 31 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://tobiasraabe.github.io/tags/cryptocurrency/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cryptocurrency Market Prediction</title>
+      <link>https://tobiasraabe.github.io/projects/crypto/</link>
+      <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/projects/crypto/</guid>
+      <description>Project type: research   Source files: Github   The project is about market prediction in cryptocurrency markets like Potcoin and was developed during a programing class for economists which focused on the embedding of the research project in a Waf framework. Waf is an automation tool for software design.</description>
+    </item>
+    
+  </channel>
+</rss>

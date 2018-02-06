@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tobias Raabe</title>
-    <link>https://tobiasraabe.github.io/</link>
-    <description>Recent content on Tobias Raabe</description>
+    <title>Projects on Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/projects/</link>
+    <description>Recent content in Projects on Tobias Raabe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2017 Tobias Raabe</copyright>
     <lastBuildDate>Tue, 23 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://tobiasraabe.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tobiasraabe.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,26 +19,6 @@
       
       <guid>https://tobiasraabe.github.io/projects/locus_of_control/</guid>
       <description>Project type: research   Source files: Github   This research project investigates whether Locus of Control, a psychological measure for a person&amp;rsquo;s belief of having control over the outcomes in their own lives, is malleable. We use the GSOEP (German Socio-Economic Panel) from 2005-2015 and estimate in a difference-and-difference design the changes in Locus of Control due to potentially exogenous and negative events like death of a close relative.</description>
-    </item>
-    
-    <item>
-      <title>The Tragedy of Titanic</title>
-      <link>https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/</link>
-      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Curriculum Vitae</title>
-      <link>https://tobiasraabe.github.io/curriculum_vitae/</link>
-      <pubDate>Fri, 26 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://tobiasraabe.github.io/curriculum_vitae/</guid>
-      <description>Education B.Sc. in Economics University of Bonn - 2012&amp;mdash;2015
-Thesis: Identification Strategies for Software Patents 
-Linking patents to industries is crucial to determine the flow of knowledge, to analyse where patents are used and why. But patents are not easy to classify in topics which researcher are interested in like related to software or certain types of drugs. The patent classification system is structured by function and sorts a water dispenser, pistol, and a manure spreader in the same group.</description>
     </item>
     
     <item>
