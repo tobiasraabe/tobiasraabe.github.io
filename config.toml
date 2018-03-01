@@ -36,7 +36,7 @@ pluralizelisttitles = false
     usesmallsummarycard = false
     posts_navigation = true
     # issoHost = "comments.domain.tld:1234"
-    githubRepo = "tobiasraabe/tobiasraabe.github.io"
+    githubRepo = "tobiasraabe/tobiasraabe.github.io/tree/sources"
     small_banner_logo = false
     extracssfiles = ["css/style.css"]
 
