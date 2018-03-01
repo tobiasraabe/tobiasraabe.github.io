@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import *
 import time
-
+from pathlib import Path
 import crayons
 import nbformat
 from fabric.api import *
@@ -116,7 +116,14 @@ def publish():
     local('git worktree add -B master publish origin/master')
 
     # removing any existing files
-    shutil.rmtree('publish')
+    files = Path('publish').glob('*')
+    for file in files:
+        if '.git' in str(file):
+            pass
+        elif file.is_dir():
+            shutil.rmtree(file)
+        elif file.is_file():
+            file.unlink()
 
     # generating site
     render_notebooks()
