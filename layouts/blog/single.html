@@ -17,6 +17,13 @@
                     <div class="reading-time middot">{{ .ReadingTime }} minute read</div>
                     <div class="tags">
                         <ul>
+                          {{ range .Params.categories }}
+                            <li class="middot"><a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+                          {{ end }}
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
                           {{ range .Params.tags }}
                             <li class="middot"><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
                           {{ end }}

@@ -52,3 +52,7 @@ pluralizelisttitles = false
     special = "#ffcb8d"
     value = "#96c2d7"
     statement = "#ff8e91"
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"

@@ -1,8 +1,15 @@
 ---
 {
+  "categories": [
+    "data analysis",
+    "machine learning"
+  ],
   "date": "2017-10-22",
   "slug": "the-tragedy-of-titanic",
   "subtitle": "A machine learning exploration",
+  "tags": [
+    "titanic"
+  ],
   "title": "The Tragedy of Titanic",
   "toc": "true"
 }
