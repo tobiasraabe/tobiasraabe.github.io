@@ -45,8 +45,20 @@
   </url>
   
   <url>
+    <loc>https://tobiasraabe.github.io/categories/data-analysis/</loc>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tobiasraabe.github.io/tags/locus-of-control/</loc>
     <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/categories/machine-learning/</loc>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -105,6 +117,12 @@
   <url>
     <loc>https://tobiasraabe.github.io/tags/</loc>
     <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tobiasraabe.github.io/tags/titanic/</loc>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

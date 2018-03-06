@@ -17,7 +17,11 @@ Disallow: /categories/
 
 Disallow: /tags/cryptocurrency/
 
+Disallow: /categories/data-analysis/
+
 Disallow: /tags/locus-of-control/
+
+Disallow: /categories/machine-learning/
 
 Disallow: /tags/otree/
 
@@ -38,6 +42,8 @@ Disallow: /tags/soep/
 Disallow: /tags/software/
 
 Disallow: /tags/
+
+Disallow: /tags/titanic/
 
 Disallow: /
 

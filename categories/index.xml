@@ -10,5 +10,23 @@
 	<atom:link href="https://tobiasraabe.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Data Analysis</title>
+      <link>https://tobiasraabe.github.io/categories/data-analysis/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/categories/data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://tobiasraabe.github.io/categories/machine-learning/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
