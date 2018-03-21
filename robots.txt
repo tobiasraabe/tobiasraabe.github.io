@@ -1,6 +1,8 @@
 User-agent: *
 
 
+Disallow: /blog/distribute_r_conda/
+
 Disallow: /projects/locus_of_control/
 
 Disallow: /blog/the-tragedy-of-titanic/
@@ -11,9 +13,15 @@ Disallow: /projects/crypto/
 
 Disallow: /projects/ovmm/
 
+Disallow: /tags/anaconda/
+
 Disallow: /blog/
 
 Disallow: /categories/
+
+Disallow: /tags/conda/
+
+Disallow: /tags/conda-build/
 
 Disallow: /tags/cryptocurrency/
 
@@ -22,6 +30,8 @@ Disallow: /categories/data-analysis/
 Disallow: /tags/locus-of-control/
 
 Disallow: /categories/machine-learning/
+
+Disallow: /tags/mro/
 
 Disallow: /tags/otree/
 
@@ -32,6 +42,8 @@ Disallow: /tags/project/
 Disallow: /projects/
 
 Disallow: /projects/projects/
+
+Disallow: /tags/r/
 
 Disallow: /tags/research/
 

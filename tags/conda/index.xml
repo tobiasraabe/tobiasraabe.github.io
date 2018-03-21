@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Tobias Raabe</title>
-    <link>https://tobiasraabe.github.io/blog/</link>
-    <description>Recent content in Blog on Tobias Raabe</description>
+    <title>Conda on Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tags/conda/</link>
+    <description>Recent content in Conda on Tobias Raabe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 21 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://tobiasraabe.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tobiasraabe.github.io/tags/conda/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <description>Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects I also needed to install R and I was lucky to find out that R is also available with conda.
 First, you create your normal Python environment for your new project
 $ conda create --name project python=3.</description>
-    </item>
-    
-    <item>
-      <title>The Tragedy of Titanic</title>
-      <link>https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/</link>
-      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
