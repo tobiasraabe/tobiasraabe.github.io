@@ -47,7 +47,7 @@ Installing a basic R interpreter from MRO is as simle as typing
 
     $ conda install --channel r mro-base
 
-If you want to install R from R-Project, type ``conda install -c r r-base.
+If you want to install R from R-Project, type ``conda install -c r r-base``.
 
 It is important to note that it is impossible to have both R interpreters in
 one environment and that packages for either one of them do not work with the
