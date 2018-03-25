@@ -18,21 +18,26 @@ out that R is also available with ``conda``.
 
 First, you create your normal Python environment for your new project
 
+```bash
     $ conda create --name project python=3.6 anaconda
+```
 
 This installs a complete Anaconda distribution with Python 3.6 under the name
 ``project``. If you only want the bare Python interpreter, call
 
+```bash
     $ conda create -n project python=3.6
+```
 
 Activate the environment with
 
+```bash
     $ activate project
+```
 
-> Sidenote: Normally, I am using Windows with Powershell and activating and
-deactivating your environment does usually fail. The solution is to install
-[pscondaenvs][2] which installs corrected
-Powershell scripts.
+> Hint: Since my os is running on Windows, I prefer to use Powershell.
+  Unfortunately, activating and deactivating your environment usually fails.
+  Try out [pscondaenvs][2] which installs corrected Powershell scripts.
 
 If we also need an R distribution for our project, we have to make the decision
 between to [R](https://www.r-project.org/) from R-Project and
@@ -45,7 +50,9 @@ benchmark reports and information on how to set the number of threads used).
 
 Installing a basic R interpreter from MRO is as simle as typing
 
+```bash
     $ conda install --channel r mro-base
+```
 
 If you want to install R from R-Project, type ``conda install -c r r-base``.
 
@@ -58,12 +65,16 @@ There is also the option to install a whole R distribution which is called
 which enables you to use R in Jupyter notebooks. Again, there are two commands
 depending on which R interpreter you are using.
 
+```bash
     $ conda install -c r r-essentials
     $ conda install -c r r-essentials r-base
+```
 
 To update all of your R packages run
 
+```bash
     $ conda update r-essentials
+```
 
 If your desired package is not available in ``r-essentials``, you can use the
 search on anaconda.org to find a channel which offers your package. But what if
@@ -76,7 +87,9 @@ framework for multiple imputation by chained equations.
 
 To build the package for your conda distribution, invoke the following command
 
+```bash
     $ conda skeleton cran r-mice
+```
 
 This will create a folder called ``r-mice`` which contains three files,
 ``bld.bat``, ``build.sh`` and ``meta.yml``. ``meta.yml`` is the important file
@@ -85,44 +98,48 @@ called ``requirements``. inside ``host`` and ``run`` the R interpreter is
 defined. By default it is ``r-base``. If you are using MRO, you have to change
 this to ``mro-base``.
 
-````
-requirements:
-  build:
-    - {{ compiler('c') }}          # [not win]
-    - {{ compiler('cxx') }}        # [not win]
-    - {{native}}toolchain          # [win]
-    - {{posix}}filesystem          # [win]
-    - {{posix}}make
+```yaml
+    requirements:
+      build:
+        - {{ compiler('c') }}          # [not win]
+        - {{ compiler('cxx') }}        # [not win]
+        - {{native}}toolchain          # [win]
+        - {{posix}}filesystem          # [win]
+        - {{posix}}make
 
-  host:
-    - r-base
-    - r-mass
-    - r-rcpp
-    - r-lattice
-    - r-nnet
-    - r-rpart
-    - r-survival
+      host:
+        - r-base
+        - r-mass
+        - r-rcpp
+        - r-lattice
+        - r-nnet
+        - r-rpart
+        - r-survival
 
-  run:
-    - r-base
-    - {{native}}gcc-libs           # [win]
-    - r-mass
-    - r-rcpp
-    - r-lattice
-    - r-nnet
-    - r-rpart
-    - r-survival
-````
+      run:
+        - r-base
+        - {{native}}gcc-libs           # [win]
+        - r-mass
+        - r-rcpp
+        - r-lattice
+        - r-nnet
+        - r-rpart
+        - r-survival
+```
 
 In the next step, we want to compile the package. If you are on Windows, make
 sure to install [RTools][9] in advance and add binaries to your system's path
 during the installation. To compile the package, type
 
+```bash
     $ conda build r-mice
+```
 
 After the compilation ended successfully, you can install the package with
 
+```bash
     $ conda install --use-local r-mice
+```
 
 You can also [upload the package to Anaconda.org][10] to your private
 repository and make it accessible to all people.
@@ -131,15 +148,18 @@ That's what I did. I have created a [repository][11] which builds the package
 for Linux and macOS with [Travis-CI][12] and Windows with [Appveyor][13]. The
 compiled packages are uploaded to my account and can be install via
 
+```bash
     $ conda install -c brimborium r-mice
-
+```
 
 # Compile your own package
 
 If you want to use my solution for yourself, fork my repository. Then, replace
 the recipe in conda-recipe with your recipe create with
 
+```bash
     $ conda skeleton cran <package name>
+```
 
 Push the repository to your Github account and create accounts on [Travis-
 CI][12], [Appveyor][13] and [Anaconda.org](https://anaconda.org/).
