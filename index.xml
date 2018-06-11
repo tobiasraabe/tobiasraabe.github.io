@@ -6,10 +6,19 @@
     <description>Recent content on Tobias Raabe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 21 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tobiasraabe.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to download files with Python</title>
+      <link>https://tobiasraabe.github.io/blog/how-to-download-files-with-python/</link>
+      <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/blog/how-to-download-files-with-python/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How to compile and distribute an R package with conda</title>
@@ -41,17 +50,6 @@ $ conda create --name project python=3.</description>
     </item>
     
     <item>
-      <title>Curriculum Vitae</title>
-      <link>https://tobiasraabe.github.io/curriculum_vitae/</link>
-      <pubDate>Fri, 26 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://tobiasraabe.github.io/curriculum_vitae/</guid>
-      <description>Education B.Sc. in Economics University of Bonn - 2012&amp;mdash;2015
-Thesis: Identification Strategies for Software Patents 
-Linking patents to industries is crucial to determine the flow of knowledge, to analyse where patents are used and why. But patents are not easy to classify in topics which researcher are interested in like related to software or certain types of drugs. The patent classification system is structured by function and sorts a water dispenser, pistol, and a manure spreader in the same group.</description>
-    </item>
-    
-    <item>
       <title>Cryptocurrency Market Prediction</title>
       <link>https://tobiasraabe.github.io/projects/crypto/</link>
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
@@ -67,6 +65,15 @@ Linking patents to industries is crucial to determine the flow of knowledge, to 
       
       <guid>https://tobiasraabe.github.io/projects/ovmm/</guid>
       <description>Project type: software   Source files: Github   Documentation   This tool is designed to handle many administrative tasks on a server with multiple running oTree instances. In addition to that, multiple virtual machine images are provided based on the hosts performance and administrator&amp;rsquo;s needs.</description>
+    </item>
+    
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>https://tobiasraabe.github.io/curriculum_vitae/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/curriculum_vitae/</guid>
+      <description></description>
     </item>
     
     <item>

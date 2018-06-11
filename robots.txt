@@ -1,13 +1,13 @@
 User-agent: *
 
 
+Disallow: /blog/how-to-download-files-with-python/
+
 Disallow: /blog/distribute_r_conda/
 
 Disallow: /projects/locus_of_control/
 
 Disallow: /blog/the-tragedy-of-titanic/
-
-Disallow: /curriculum_vitae/
 
 Disallow: /projects/crypto/
 
@@ -24,6 +24,8 @@ Disallow: /tags/conda/
 Disallow: /tags/conda-build/
 
 Disallow: /tags/cryptocurrency/
+
+Disallow: /curriculum_vitae/
 
 Disallow: /categories/data-analysis/
 

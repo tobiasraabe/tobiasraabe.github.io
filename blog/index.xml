@@ -6,10 +6,19 @@
     <description>Recent content in Blog on Tobias Raabe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 21 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tobiasraabe.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to download files with Python</title>
+      <link>https://tobiasraabe.github.io/blog/how-to-download-files-with-python/</link>
+      <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://tobiasraabe.github.io/blog/how-to-download-files-with-python/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How to compile and distribute an R package with conda</title>

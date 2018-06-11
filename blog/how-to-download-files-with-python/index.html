@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-	<meta name="generator" content="Hugo 0.41" />
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,22 +13,22 @@
 <meta property="og:site_name" content="Tobias Raabe" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://tobiasraabe.github.io/" />
-<meta property="og:title" content="Tobias Raabe" />
-<meta property="twitter:title" content="Tobias Raabe">
+<meta property="og:url" content="https://tobiasraabe.github.io/blog/how-to-download-files-with-python/" />
+<meta property="og:title" content="How to download files with Python" />
+<meta property="twitter:title" content="How to download files with Python">
 
     <meta property="twitter:card" content="summary">
 
-<meta property="og:description" content="Economics, Data Analysis, etc.">
-<meta property="twitter:description" content="Economics, Data Analysis, etc.">
+<meta property="og:description" content="">
+<meta property="twitter:description" content="">
 
 <title>
 
 
-    Tobias Raabe
+     Tobias Raabe - How to download files with Python 
 
 </title>
-<link rel="canonical" href="https://tobiasraabe.github.io/">
+<link rel="canonical" href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python/">
 
 
 <style media="screen">
@@ -1045,8 +1044,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="https://tobiasraabe.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Tobias Raabe" />
-
 
 </head>
 
@@ -1054,7 +1051,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1089,59 +1086,367 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    How to download files with Python
+
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Mon Jun 11 2018 00:00:00 UTC">Jun 11, 2018</div>
+                    
+                        
+                    
+                    <div class="reading-time middot">4 minute read</div>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="table-of-content">
+                
+
+
+
+
+
+
+
+
+<nav id="toc" data-toggle="toc">
+  
+  <h4 class="text-muted">Table of Contents</h4>
+  <ul class="nav">
+    
+      
+      
+
+      
+
+      
+      <li class="toc">
+        <a href="#downloading-files">Downloading files</a>
+      
+    
+      
+      
+
+      
+
+      
+        
+        
+
+          
+
+          
+
+          
+            </li>
+          
+
+          <li class="toc">
+            <a href="#resuming-downloads">Resuming downloads</a>
+
+          
+      
+    
+      
+      
+
+      
+
+      
+        
+        
+
+          
+
+          
+
+          
+            </li>
+          
+
+          <li class="toc">
+            <a href="#validating-downloads">Validating downloads</a>
+
+          
+      
+    
+      
+      
+
+      
+
+      
+        
+        
+
+          
+
+          
+
+          
+            </li>
+          
+
+          <li class="toc">
+            <a href="#visualizing-download-progress">Visualizing download progress</a>
+
+          
+      
+    
+      
+      
+
+      
+
+      
+        
+        
+
+          
+
+          
+
+          
+            </li>
+          
+
+          <li class="toc">
+            <a href="#complete-script">Complete script</a>
+
+          
             
+          
+      
+    
 
+    
+    
+    
+
+  </ul>
+</nav>
+
+                <br>
+            </div>
+            <div class="markdown">
+                
+    
+    <p></p>
+
+<p>TL;DR: Python program able to download, resume downloads and validate
+downloaded files with hashes. You can find it at the end of the article.</p>
+
+<p>In one of my recent projects on natural language processing and patents,
+I tried to program a little script which downloads files needed for the
+analysis.</p>
+
+<p>The program should be able to do the following things:</p>
+
+<ol>
+<li>Download a given file</li>
+<li>Resume the download if the file is incomplete</li>
+<li>Validate the file at the end of the download using hashes</li>
+<li>Wrap everything with beautiful progress bars</li>
+</ol>
+
+<p>Note that, to run the script you have to have at least a python 3.6 environment as I am using <a href="https://www.python.org/dev/peps/pep-0498/"><code>f-strings</code></a>.</p>
+
+<h1 id="downloading-files">Downloading files</h1>
+
+<p>At first, we need to know how to download a file. We will use
+<a href="http://docs.python-requests.org/en/latest/"><code>requests</code></a> to handle
+connections to web content.</p>
+
+<pre><code class="language-python">import requests
+</code></pre>
+
+<p>In the next step, we will download a file and store it on the disk. The file size is 19kb, so you are save to download it. If you have doubts about the file, insert any other link which can be a picture or something else.</p>
+
+<pre><code class="language-python">url = 'http://www.patentsview.org/data/20171226/cpc_group.tsv.zip'
+
+r = requests.get(url)
+
+with open('cpc_group.tsv.zip', 'wb') as f:
+    f.write(r.content)
+</code></pre>
+
+<p>Note that <code>requests.get</code> will download the file immediately and store it in memory. For larger files, this does not work as they might not fit in memory. Therefore, we use the <code>stream</code> keyword to receive the file in chunks and store them on disk. The next file is about 3MB big. Use a different URL if you feel more comfortable with that.</p>
+
+<pre><code class="language-python">url = 'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'
+
+r = requests.get(url, stream=True)
+
+with open('government_interest.tsv.zip', 'wb') as f:
+    for chunk in r.iter_content(32 * 1024):
+        f.write(chunk)
+</code></pre>
+
+<h1 id="resuming-downloads">Resuming downloads</h1>
+
+<p>If you download large files, chances are that your download is interrupted. For that, we need a way to resume the download at the last byte position. We can do that by sending an Range-request to the server and specifying the range of bytes, we want to receive.</p>
+
+<pre><code class="language-python">resume_header = ({'Range': f'bytes=0-2000000'})
+
+r = requests.get(url, stream=True, headers=resume_header)
+
+with open('government_interest_part.tsv.zip', 'wb') as f:
+    for chunk in r.iter_content(32 * 1024):
+        f.write(chunk)
+</code></pre>
+
+<p>We look at the file size whether we have been able to download the file partially.</p>
+
+<pre><code class="language-python">from pathlib import Path
+
+path = Path('government_interest_part.tsv.zip')
+
+print(f'Size of file: {path.stat().st_size} Bytes')
+</code></pre>
+
+<pre><code>Size of file: 2000001 Bytes
+</code></pre>
+
+<p>Now, we resume the download at the position of the last byte. We also have to change the mode from <code>open()</code> to <code>'ab'</code> as we are appending new content and do not want to overwrite existing content.</p>
+
+<pre><code class="language-python">resume_header = ({'Range': f'bytes={path.stat().st_size}-'})
+
+r = requests.get(url, stream=True, headers=resume_header)
+
+with open('government_interest_part.tsv.zip', 'ab') as f:
+    for chunk in r.iter_content(32 * 1024):
+        f.write(chunk)
+</code></pre>
+
+<p>The crucial aspect of this code is that we correctly define the following range of bytes for the following downloads. It is important to know that the boundaries of the Range header are inclusive so that bytes in positions 0 and 2000000 are downloaded. Therefore, the file size is 2000001 and we can plug in the value to correctly resume the download.</p>
+
+<h1 id="validating-downloads">Validating downloads</h1>
+
+<p>At last, we want to make sure that the download of the file worked as expected. To assert whether two files are identical, one of the easiest solutions is to compare hashes. A hash function projects any kind of data onto data with fixed-length. The resulting object is called hash and should be different for two different objects but identical for the same. In this example, we use SHA256 to validate the two files.</p>
+
+<pre><code class="language-python">import hashlib
+
+with open('government_interest.tsv.zip', 'rb') as f:
+    content = f.read()
+    
+sha = hashlib.sha256()
+
+sha.update(content)
+
+print(sha.hexdigest())
+</code></pre>
+
+<pre><code>42e53da0f2adc03e035eb2f967998da5cb8e2b1235cd2630efc59e31df866372
+</code></pre>
+
+<pre><code class="language-python">with open('government_interest_part.tsv.zip', 'rb') as f:
+    content = f.read()
+    
+sha = hashlib.sha256()
+
+sha.update(content)
+
+print(sha.hexdigest())
+</code></pre>
+
+<pre><code>42e53da0f2adc03e035eb2f967998da5cb8e2b1235cd2630efc59e31df866372
+</code></pre>
+
+<p>Both hashes match and we have correctly resumed the download :).</p>
+
+<h1 id="visualizing-download-progress">Visualizing download progress</h1>
+
+<p>There are multiple options to print pretty progress bars in python to the command line interface (<a href="https://github.com/WoLpH/python-progressbar"><code>progressbar2</code></a> e.g.), but I used <code>tqdm</code> for unknown reason.</p>
+
+<p>To display the progress of the download, we have to know the total file size which we can easily request without downloading the whole file. Use <code>requests.head()</code> instead of <code>requests.get()</code>.</p>
+
+<pre><code class="language-python">url = 'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'
+
+r = requests.head(url)
+
+file_size = int(r.headers.get('content-length', 0))
+
+print(f'Size of file: {file_size}')
+</code></pre>
+
+<pre><code>3895459
+</code></pre>
+
+<p>Note that content length returns a string and not a number.</p>
+
+<pre><code class="language-python">from tqdm import tqdm
+
+
+r = requests.get(url, stream=True)
+
+initial_pos = 0
+
+with open('government_interest.tsv.zip', 'wb') as f:
+    with tqdm(total=file_size, unit='B',
+              unit_scale=True, unit_divisor=1024,
+              desc='government_interest.tsv.zip', initial=initial_pos,
+              ascii=True, miniters=1) as pbar:
+        for chunk in r.iter_content(32 * 1024):
+            f.write(chunk)
+            pbar.update(len(chunk))
+</code></pre>
+
+<pre><code>government_interest.tsv.zip: 100%|#################################################| 3.71M/3.71M [00:26&lt;00:00, 254kB/s]
+</code></pre>
+
+<h1 id="complete-script">Complete script</h1>
+
+<p>At last, here is the complete script.</p>
+
+<script src="https://gist.github.com/tobiasraabe/58adee67de619ce621464c1a6511d7d9.js"></script>
+
+                <br>
+            </div>
             
-                <div class="posts">
-                
-                
-                    <div class="page-heading">Latest posts</div>
-                    <ul>
+            
+                <div class="navigation">
                     
-                        <li class="groupby">Jun, 2018</li>
-                        
-                            <li class="post-item">
-    <span class="meta">Jun 11, 2018</span>
-    <a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python/"><span>How to download files with Python</span></a>
-</li>
-
-                        
+                    <div>
+                        <img class="icon" src="https://tobiasraabe.github.io/img/back.svg" alt="back" />
+                        <a href="https://tobiasraabe.github.io/blog/distribute_r_conda/">How to compile and distribute an R package with conda</a>
+                    </div>
                     
-                        <li class="groupby">Mar, 2018</li>
-                        
-                            <li class="post-item">
-    <span class="meta">Mar 21, 2018</span>
-    <a href="https://tobiasraabe.github.io/blog/distribute_r_conda/"><span>How to compile and distribute an R package with conda</span></a>
-</li>
-
-                        
+                    <div style="width: 100%;"></div>
                     
-                        <li class="groupby">Oct, 2017</li>
-                        
-                            <li class="post-item">
-    <span class="meta">Oct 22, 2017</span>
-    <a href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic/"><span>The Tragedy of Titanic</span></a>
-</li>
-
-                        
-                    
-                    </ul>
-
-                    
-                
                 </div>
             
-
-            <div class="best-posts">
-            
-            
+            <br>
+            <div class="disqus">
+                
             </div>
+            
         </div>
     </div>
 </div>
+
 <div class="footer column">
     <div class="container">
 
@@ -1149,7 +1454,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="copyright">
             
             
-                <a href="https://github.com/tobiasraabe/tobiasraabe.github.io/tree/sources/content/" target="_blank">View this post on GitHub</a>
+                <a href="https://github.com/tobiasraabe/tobiasraabe.github.io/tree/sources/content/blog/how-to-download-files-with-python.md" target="_blank">View this post on GitHub</a>
             
             </div>
         
