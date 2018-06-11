@@ -323,7 +323,7 @@ def update_notebook_metadata(notebook_path: Path,
     # make the notebook trusted again, now that we've changed it
     sp.run(['jupyter', 'trust', str(notebook_path)])
 
-    print(f'Info - Changed notebook metadata for {notebook}')
+    print(f'Info - Changed notebook metadata for {notebook_path}')
 
 
 def update_notebook_name(notebook_path: Union[Path, str], slug):
