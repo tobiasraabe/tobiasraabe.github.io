@@ -1,13 +1,9 @@
-
----
-
-date: '2017-10-22'
-slug: ovmm_user
-title: Beginners Guide to ovmm Part IV - User
-tags: [ovmm, online experiments]
-series: ovmm
-draft: true
-
----
+Date: '2017-10-22'
+Slug: ovmm_user
+Title: Beginners Guide to ovmm Part IV - User
+Tags: ovmm, oTree
+series: Introduction to oTree Virtual Machine Manager
+series_index: 4
+status: draft
 
 asdsad aksdlkajdslkj
