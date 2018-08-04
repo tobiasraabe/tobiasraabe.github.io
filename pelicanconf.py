@@ -22,7 +22,7 @@ ARCHIVES_SAVE_AS = 'archives.html'
 
 MENUITEMS = (('Curriculum Vitae', 'static/cv.pdf'),)
 
-DIRECT_TEMPLATES = ['index', 'categories', 'tags, 'archives', 'search']
+DIRECT_TEMPLATES = ['index', 'categories', 'tags', 'archives', 'search']
 
 TIMEZONE = 'Europe/Paris'
 DEFAULT_LANG = 'en'

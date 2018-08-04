@@ -1,4 +1,3 @@
 .*
-static/resources
-publish/
-__pycache__/
+__pycache__
+output
