@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>How to compile and distribute an R package with conda - Tobias Raabe</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="../blog/how-to-compile-and-distribute-an-r-package-with-conda.html">
+
+        <meta name="author" content="Tobias Raabe" />
+        <meta name="keywords" content="Conda,Anaconda,R,conda-build,MRO" />
+        <meta name="description" content="TL;DR: This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects." />
+
+        <meta property="og:site_name" content="Tobias Raabe" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="How to compile and distribute an R package with conda"/>
+        <meta property="og:url" content="../blog/how-to-compile-and-distribute-an-r-package-with-conda.html"/>
+        <meta property="og:description" content="TL;DR: This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects."/>
+        <meta property="article:published_time" content="2018-03-21" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="Conda" />
+            <meta property="article:tag" content="Anaconda" />
+            <meta property="article:tag" content="R" />
+            <meta property="article:tag" content="conda-build" />
+            <meta property="article:tag" content="MRO" />
+            <meta property="article:author" content="Tobias Raabe" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="../theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../theme/css/pygments/default.css" rel="stylesheet">
+    <link href="../theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
+        <link href="../static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../" class="navbar-brand">
+Tobias Raabe            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="static/cv.pdf">Curriculum Vitae</a></li>
+                         <li><a href="../projects.html">
+                             Projects
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href=".." title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="../category/blog.html" title="blog">blog</a></li>
+                <li class="active">How to compile and distribute an R package with conda</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="../blog/how-to-compile-and-distribute-an-r-package-with-conda.html"
+                       rel="bookmark"
+                       title="Permalink to How to compile and distribute an R package with conda">
+                        How to compile and distribute an R package with conda
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-03-21T00:00:00+01:00"> Wed 21 March 2018</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="../category/blog.html">blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="../tag/conda.html">Conda</a>
+        /
+	<a href="../tag/anaconda.html">Anaconda</a>
+        /
+	<a href="../tag/r.html">R</a>
+        /
+	<a href="../tag/conda-build.html">conda-build</a>
+        /
+	<a href="../tag/mro.html">MRO</a>
+    
+        <span class="label label-default">Read in</span>
+        5 minutes
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Table of Contents</div>
+                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#introduction-to-anaconda-and-r" title="Introduction to Anaconda and R">Introduction to Anaconda and R</a></li><li><a class="toc-href" href="#building-and-distributing-an-r-package" title="Building and Distributing an R package">Building and Distributing an R package</a></li><li><a class="toc-href" href="#compile-your-own-package" title="Compile your own package">Compile your own package</a></li></ul></div></div>
+                    </div>
+                <p>TL;DR: This article shows how to compile and distribute R packages on
+anaconda.org to be used in your data science projects.</p>
+<h3 id="introduction-to-anaconda-and-r">Introduction to Anaconda and R</h3>
+<p>I like to manage my research projects with <a href="https://conda.io/docs/">conda</a> which is the package
+manager for <a href="https://www.anaconda.com/distribution/">Anaconda</a>, a popular Python distribution for data science. For
+one of my recent projects I also needed to install R and I was lucky to find
+out that R is also available with <code>conda</code>.</p>
+<p>First, you create your normal Python environment for your new project</p>
+<div class="highlight"><pre><span></span>    $ conda create --name project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 anaconda
+</pre></div>
+<p>This installs a complete Anaconda distribution with Python 3.6 under the name
+<code>project</code>. If you only want the bare Python interpreter, call</p>
+<div class="highlight"><pre><span></span>    $ conda create -n project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+</pre></div>
+<p>Activate the environment with</p>
+<div class="highlight"><pre><span></span>    $ activate project
+</pre></div>
+<blockquote>
+<p>Hint: Since my os is running on Windows, I prefer to use Powershell.
+  Unfortunately, activating and deactivating your environment usually fails.
+  Try out <a href="https://github.com/BCSharp/PSCondaEnvs">pscondaenvs</a> which installs corrected Powershell scripts.</p>
+</blockquote>
+<p>If we also need an R distribution for our project, we have to make the decision
+between to <a href="https://www.r-project.org/">R</a> from R-Project and
+<a href="https://mran.microsoft.com/open">MRO</a> from Microsoft. The latter is the
+default with Anaconda, but the former is still provided if you are running a
+32-bit operating system or an older macOS version. The advantage of MRO is that
+it is using the Intel Math Kernel Library (MKL) and enables multithreading by
+default (<a href="https://mran.microsoft.com/documents/rro/multithread">here</a> are some
+benchmark reports and information on how to set the number of threads used).</p>
+<p>Installing a basic R interpreter from MRO is as simle as typing</p>
+<div class="highlight"><pre><span></span>    $ conda install --channel r mro-base
+</pre></div>
+<p>If you want to install R from R-Project, type <code>conda install -c r r-base</code>.</p>
+<p>It is important to note that it is impossible to have both R interpreters in
+one environment and that packages for either one of them do not work with the
+other. You can find more information <a href="https://github.com/conda-forge/r-base-feedstock/issues/34">here</a>.</p>
+<p>There is also the option to install a whole R distribution which is called
+<code>r-essentials</code>. It bundles many useful packages along with <a href="https://github.com/IRkernel/IRkernel"><code>IRkernel</code></a>
+which enables you to use R in Jupyter notebooks. Again, there are two commands
+depending on which R interpreter you are using.</p>
+<div class="highlight"><pre><span></span>    $ conda install -c r r-essentials
+    $ conda install -c r r-essentials r-base
+</pre></div>
+<p>To update all of your R packages run</p>
+<div class="highlight"><pre><span></span>    $ conda update r-essentials
+</pre></div>
+<p>If your desired package is not available in <code>r-essentials</code>, you can use the
+search on anaconda.org to find a channel which offers your package. But what if
+your package is not available?</p>
+<h3 id="building-and-distributing-an-r-package">Building and Distributing an R package</h3>
+<p>I had the same issue when I wanted to use <a href="https://github.com/stefvanbuuren/mice"><code>mice</code></a> which is a known
+framework for multiple imputation by chained equations.</p>
+<p>To build the package for your conda distribution, invoke the following command</p>
+<div class="highlight"><pre><span></span>    $ conda skeleton cran r-mice
+</pre></div>
+<p>This will create a folder called <code>r-mice</code> which contains three files,
+<code>bld.bat</code>, <code>build.sh</code> and <code>meta.yml</code>. <code>meta.yml</code> is the important file
+which controls the compilation. An example can be found <a href="https://github.com/tobiasraabe/r-mice/blob/master/conda-recipe/meta.yaml">here</a>. Note the key
+called <code>requirements</code>. inside <code>host</code> and <code>run</code> the R interpreter is
+defined. By default it is <code>r-base</code>. If you are using MRO, you have to change
+this to <code>mro-base</code>.</p>
+<div class="highlight"><pre><span></span>    <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">build</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span> <span class="nv">compiler('c')</span> <span class="p p-Indicator">}}</span>          <span class="c1"># [not win]</span>
+        <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span> <span class="nv">compiler('cxx')</span> <span class="p p-Indicator">}}</span>        <span class="c1"># [not win]</span>
+        <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">native</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">toolchain</span>          <span class="c1"># [win]</span>
+        <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">posix</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>          <span class="c1"># [win]</span>
+        <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">posix</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">make</span>
+
+      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-base</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-mass</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rcpp</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-lattice</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-nnet</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rpart</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-survival</span>
+
+      <span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-base</span>
+        <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">native</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">gcc-libs</span>           <span class="c1"># [win]</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-mass</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rcpp</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-lattice</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-nnet</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rpart</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-survival</span>
+</pre></div>
+<p>In the next step, we want to compile the package. If you are on Windows, make
+sure to install <a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a> in advance and add binaries to your system's path
+during the installation. To compile the package, type</p>
+<div class="highlight"><pre><span></span>    $ conda build r-mice
+</pre></div>
+<p>After the compilation ended successfully, you can install the package with</p>
+<div class="highlight"><pre><span></span>    $ conda install --use-local r-mice
+</pre></div>
+<p>You can also <a href="https://www.anaconda.com/blog/developer-blog/conda-data-science/">upload the package to Anaconda.org</a> to your private
+repository and make it accessible to all people.</p>
+<p>That's what I did. I have created a <a href="https://github.com/tobiasraabe/r-mice">repository</a> which builds the package
+for Linux and macOS with <a href="https://www.travis-ci.org/">Travis-CI</a> and Windows with <a href="https://www.appveyor.com/">Appveyor</a>. The
+compiled packages are uploaded to my account and can be install via</p>
+<div class="highlight"><pre><span></span>    $ conda install -c brimborium r-mice
+</pre></div>
+<h3 id="compile-your-own-package">Compile your own package</h3>
+<p>If you want to use my solution for yourself, fork my repository. Then, replace
+the recipe in conda-recipe with your recipe create with</p>
+<div class="highlight"><pre><span></span>    $ conda skeleton cran &lt;package name&gt;
+</pre></div>
+<p>Push the repository to your Github account and create accounts on <a href="https://www.travis-ci.org/">Travis-
+CI</a>, <a href="https://www.appveyor.com/">Appveyor</a> and <a href="https://anaconda.org/">Anaconda.org</a>.</p>
+<p>Next, go to Anaconda.org, settings, access and create a token. Make sure to
+check allow read and write API access. The rest is optional.</p>
+<p>Set the resulting token as a secret environment variable to your projects on
+Travis-CI and Appveyor. Make sure to name it <code>CONDA_UPLOAD_TOKEN</code> as the
+scripts look for a variable called like this.</p>
+<p>I know this was a fair amount of information and if you are not familiar with
+automation tools like Travis-CI and Appveyor, this looks even more deterrent.
+But that is why I created my repository which is reduced to the minimal amount
+of code to do the task.</p>
+<p>I will also extend this post and the repository description in the future.
+Since I do only have rudimentary knowledge of the background of what I did,
+there is a lot of room to grow :).</p>
+<p>Resources:</p>
+<ul>
+<li><a href="https://www.anaconda.com/distribution/">Anaconda: Download and more</a></li>
+<li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language">Using R language with Anaconda</a></li>
+<li><a href="https://github.com/BCSharp/PSCondaEnvs">PSCondaEnvs: Fix activate/deactivate on Windows with Powershell</a></li>
+<li><a href="https://github.com/stefvanbuuren/mice">mice by Stef van Buuren</a></li>
+<li><a href="https://conda.io/docs/">conda: documentation</a></li>
+<li><a href="https://github.com/IRkernel/IRkernel">IRkernel: Use R with Jupyter notebooks</a></li>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/">RTools: Download</a></li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group " id="tags">
+    <li class="list-group-item tag-3">
+      <a href="../tag/anaconda.html">Anaconda</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/conda.html">Conda</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/data-analysis.html">Data Analysis</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/downloader.html">Downloader</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/mro.html">MRO</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/machine-learning.html">Machine Learning</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/python.html">Python</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/r.html">R</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/conda-build.html">conda-build</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Tobias Raabe
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="../theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../theme/js/respond.min.js"></script>
+
+    <script src="../static/js/custom.js"></script>
+
+
+
+</body>
+</html>

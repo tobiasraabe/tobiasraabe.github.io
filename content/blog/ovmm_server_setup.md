@@ -1,12 +1,9 @@
----
-
-date: '2017-10-22'
-slug: ovmm_server_setup
-title: Beginners Guide to ovmm Part II - Server Setup
-tags: [ovmm, online experiments]
-series: ovmm
-draft: true
-
----
+Date: '2017-10-22'
+Slug: ovmm_server_setup
+Title: Beginners Guide to ovmm Part II - Server Setup
+Tags: ovmm, oTree
+series: Introduction to oTree Virtual Machine Manager
+series_index: 2
+status: draft
 
 dasda

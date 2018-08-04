@@ -1,0 +1,94 @@
+/* Change main colors
+
+You can choose lighter colors on http://www.0to255.com.
+
+The current colors for labels and buttons are 8 levels lighter than the main
+colors.
+
+*/
+.navbar-collapse, .navbar-default .navbar-form {
+    border-color: #bf3e11;
+}
+.label-default {
+    background-color: #f18a66;
+}
+.btn-default {
+    background-color: #f18a66;
+    border-color: inherit;
+    font-weight: bold;
+    font-size: 75%;
+}
+
+/* Index page */
+li.groupby {
+    margin-top: 1em;
+    list-style: none;
+    padding-left: 0.5em;
+}
+li.article-item {
+    display: flex;
+    list-style: none;
+    padding-left: 1.5em;
+}
+li.article-summary {
+    display: flex;
+    list-style: none;
+    padding-left: 2.5em;
+}
+span.article {
+    display: block;
+    min-width: 100px;
+    color: grey;
+}
+
+/* Make tables look more beautiful. */
+/*.table {
+    width: inherit;
+    max-width: 100%;
+    margin-bottom: 21px;
+    padding: 6px 13px;
+}*/
+
+/* Removes In[ ] and Out[ ] from rendered Jupyter notebooks. */
+div.prompt {
+    display: none;
+}
+
+/* CSS for tag_cloud plugin */
+ul.tagcloud {
+    list-style: none;
+    padding: 0;
+}
+
+ul.tagcloud li {
+    display: inline-block;
+}
+
+li.tag-1 {
+    font-size: 120%;
+    display: inline;
+    padding: 10px 5px 0px 5px;
+}
+
+li.tag-2 {
+    font-size: 100%;
+    display: inline;
+    padding: 10px 5px 0px 5px;
+}
+
+li.tag-3 {
+    font-size: 80%;
+    display: inline;
+    padding: 10px 5px 0px 5px;
+}
+
+ul.tagcloud .list-group-item span.badge {
+    background-color: grey;
+    color: white;
+}
+
+/* Add round boxes and space around box to search form. */
+#tipue_search_input {
+    border-radius: 4px;
+    margin: 4px;
+}

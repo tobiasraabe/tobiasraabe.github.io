@@ -1,15 +1,11 @@
+Date: 2018-03-21
+Title: How to compile and distribute an R package with conda
+Tags: Conda, Anaconda, R, conda-build, MRO
 
----
+TL;DR: This article shows how to compile and distribute R packages on
+anaconda.org to be used in your data science projects.
 
-date: '2018-03-21'
-slug: distribute_r_conda
-title: How to compile and distribute an R package with conda
-tags: [conda, anaconda, r, conda-build, mro]
-toc: "true"
-
----
-
-# Introduction to Anaconda and R
+### Introduction to Anaconda and R
 
 I like to manage my research projects with [conda][6] which is the package
 manager for [Anaconda][7], a popular Python distribution for data science. For
@@ -80,7 +76,7 @@ If your desired package is not available in ``r-essentials``, you can use the
 search on anaconda.org to find a channel which offers your package. But what if
 your package is not available?
 
-# Building and Distributing an R package
+### Building and Distributing an R package
 
 I had the same issue when I wanted to use [``mice``][3] which is a known
 framework for multiple imputation by chained equations.
@@ -152,7 +148,7 @@ compiled packages are uploaded to my account and can be install via
     $ conda install -c brimborium r-mice
 ```
 
-# Compile your own package
+### Compile your own package
 
 If you want to use my solution for yourself, fork my repository. Then, replace
 the recipe in conda-recipe with your recipe create with
