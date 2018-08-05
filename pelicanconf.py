@@ -97,7 +97,7 @@ SUMMARY_USE_FIRST_PARAGRAPH = True
 CLEAN_SUMMARY_MAXIMUM = 1
 
 # pelican-ipynb
-IGNORE_FILES = ['.ipynb_checkpoints']
+IGNORE_FILES = ['.ipynb_checkpoints', '*.bib.bak', '*.bib.sav']
 IPYNB_SKIP_CSS = True
 MARKUP = ('md',)
 
@@ -119,3 +119,6 @@ TOC = {
 TAG_CLOUD_BADGE = True
 TAG_CLOUD_SORTING = 'alphabetically'
 TAG_CLOUD_STEPS = 3
+
+# cite
+PUBLICATIONS_SRC = 'content/references.bib'
