@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if articles %}
+    <h2>Latest Posts:</h2>
+        <ul>
+        {% for year, list in articles | groupby('date.year') | reverse %}
+            {% for month, list_ in list | groupby('date.month') | reverse %}
+                <li class="groupby">{{ list_[0].date | strftime('%b') }}, {{ year }}</li>
+                {% for article in list_ %}
+                    <li class="article-item">
+                        <span class="article">{{ article.date | strftime('%b %d, %Y') }}</span><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                    </li>
+                    <!-- <li class="article-summary"> -->
+                        <!-- <span class="article">Summary</span> -->
+                        <!-- {{ article.summary }}<a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }} ...</a> -->
+                    <!-- </li> -->
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% include 'includes/pagination.html' %}
+{% endblock content %}

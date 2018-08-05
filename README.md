@@ -1,22 +1,27 @@
-
 # Develope the website
 
-If you want to write content with Jupyter notebooks, run
+You need to powershell terminals. The first terminal runs
 
-    start fab serve
+    $ python -m pelican.server
 
-to start a Jupyter server and the Hugo server in the background.
+and you can view the published website on http://localhost:8000. Make sure to
+use your browser in private mode.
+
+The second terminal runs
+
+    $ pelican -r
+
+or
+
+    $ make DEBUG=1 html
+
+if you want to see the full traceback of your error.
 
 
 # Publish the website
 
-If you made changes to the website, commit everything. Then, run
+To publish the site, run
 
-    fab render_notebooks
+    $ make github
 
-so the Markdown representation of the notebooks is refreshed. Then, commit
-all changes to the repo. After that, run
-
-    fab publish
-
-to make the latest changes available online.
+and the content of the output folder will be moved to the master branch.
