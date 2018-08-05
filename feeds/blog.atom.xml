@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Tobias Raabe - blog</title><link href="https://tobiasraabe.github.io/" rel="alternate"></link><link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tobiasraabe.github.io/</id><updated>2018-06-11T00:00:00+02:00</updated><entry><title>How to download files with Python</title><link href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html" rel="alternate"></link><published>2018-06-11T00:00:00+02:00</published><updated>2018-06-11T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-06-11:/blog/how-to-download-files-with-python.html</id><summary type="html">&lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
-validate downloads with hash values. You can find it at the end of the article.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tobias Raabe - blog</title><link href="https://tobiasraabe.github.io/" rel="alternate"></link><link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tobiasraabe.github.io/</id><updated>2018-06-11T00:00:00+02:00</updated><entry><title>How to download files with Python</title><link href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html" rel="alternate"></link><published>2018-06-11T00:00:00+02:00</published><updated>2018-06-11T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-06-11:/blog/how-to-download-files-with-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
+validate downloads with hash values. You can find it at the end of the article.
+An interactive version of the notebook is available by clicking on the binder
+badge above.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
@@ -74,16 +78,12 @@ div.cell {
   /* Modern browsers */
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  border-radius: 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  width …&lt;/style&gt;</summary><content type="html">&lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
-validate downloads with hash values. You can find it at the end of the article.&lt;/p&gt;
+  align-items: stretch …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
+validate downloads with hash values. You can find it at the end of the article.
+An interactive version of the notebook is available by clicking on the binder
+badge above.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
@@ -1573,9 +1573,12 @@ there is a lot of room to grow :).&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://conda.io/docs/"&gt;conda: documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/IRkernel/IRkernel"&gt;IRkernel: Use R with Jupyter notebooks&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://cran.r-project.org/bin/windows/Rtools/"&gt;RTools: Download&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Conda"></category><category term="Anaconda"></category><category term="R"></category><category term="conda-build"></category><category term="MRO"></category></entry><entry><title>The Tragedy of Titanic</title><link href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html" rel="alternate"></link><published>2017-10-22T00:00:00+02:00</published><updated>2017-10-22T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2017-10-22:/blog/the-tragedy-of-titanic.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;
-TL;DR: Analysis of survival rates on the Titanic with an interesting placebo
-test for whether traveling in couples increased the likelihood of survival.&lt;/p&gt;
+&lt;/ul&gt;</content><category term="Conda"></category><category term="Anaconda"></category><category term="R"></category><category term="conda-build"></category><category term="MRO"></category></entry><entry><title>The Tragedy of Titanic</title><link href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html" rel="alternate"></link><published>2017-10-22T00:00:00+02:00</published><updated>2017-10-22T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2017-10-22:/blog/the-tragedy-of-titanic.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TL;DR: Analysis of survival rates on the Titanic with a cool placebo test for
+whether traveling in couples increased the likelihood of survival. An
+interactive version of the notebook is available by clicking on the binder
+badge above.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
@@ -1652,16 +1655,12 @@ div.cell {
   align-items: stretch;
   border-radius: 2px;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  width: 100%;
-  padding: 5px;
-  /* This acts …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;
-TL;DR: Analysis of survival rates on the Titanic with an interesting placebo
-test for whether traveling in couples increased the likelihood of survival.&lt;/p&gt;
+  -moz-box-sizing …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TL;DR: Analysis of survival rates on the Titanic with a cool placebo test for
+whether traveling in couples increased the likelihood of survival. An
+interactive version of the notebook is available by clicking on the binder
+badge above.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
