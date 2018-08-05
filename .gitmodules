@@ -1,9 +1,0 @@
-[submodule ".\\plugins\\cite"]
-	path = .\\plugins\\cite
-	url = https://github.com/cmacmackin/pelican-cite
-[submodule ".\\plugins\\toc"]
-	path = .\\plugins\\toc
-	url = https://github.com/tobiasraabe/pelican-toc
-[submodule ".\\plugins\\ipynb"]
-	path = .\\plugins\\ipynb
-	url = https://github.com/tobiasraabe/pelican-ipynb
