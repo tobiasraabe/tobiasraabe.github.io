@@ -2,19 +2,23 @@
 
 You can choose lighter colors on http://www.0to255.com.
 
-The current colors for labels and buttons are 8 levels lighter than the main
+The current colors for labels and buttons are 5 levels lighter than the main
 colors.
+
+The border color is two levels darker.
 
 */
 .navbar-collapse, .navbar-default .navbar-form {
+    background-color: #dd4814;
     border-color: #bf3e11;
 }
 .label-default {
-    background-color: #f18a66;
+    background-color: #f07e56;
+    border-color: #ed6637;
 }
 .btn-default {
-    background-color: #f18a66;
-    border-color: inherit;
+    background-color: #f07e56;
+    border-color: #ed6637;
     font-weight: bold;
     font-size: 75%;
 }
