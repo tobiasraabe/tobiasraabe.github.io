@@ -1,21 +1,27 @@
 # Develope the website
 
-You need to powershell terminals. The first terminal runs
+There are two possibilities to run a development server.
 
-    $ python -m pelican.server
+1. The easiest way is to open a bash terminal and hit
 
-and you can view the published website on http://localhost:8000. Make sure to
-use your browser in private mode.
+        $ make devserver
 
-The second terminal runs
+2. Another way to debug your script is to run
 
-    $ pelican -r
+        $ python -m pelican.server
 
-or
+   to view the published website on http://localhost:8000. Make sure to use
+   your browser in private mode.
 
-    $ make DEBUG=1 html
+   The second terminal runs
 
-if you want to see the full traceback of your error.
+        $ pelican -r
+
+   or
+
+        $ make DEBUG=1 html
+
+   if you want to see the full traceback of your error.
 
 
 # Publish the website
