@@ -22,7 +22,7 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 """
-Defines an author-year inline citation style for Pybtex. This is 
+Defines an author-year inline citation style for Pybtex. This is
 modified from the alpha style built into Pybtex, written by
 Andrey Golovizin.
 """
@@ -35,15 +35,22 @@ import unicodedata
 from pybtex.style.labels import BaseLabelStyle
 
 import sys
-if (sys.version_info[0]>2):
+
+if sys.version_info[0] > 2:
     unicode = str
 
 _nonalnum_pattern = re.compile('[^\w]+', re.UNICODE)
 
+
 def _strip_accents(s):
-   return u''.join(
-       (c for c in unicodedata.normalize('NFD', s)
-        if not unicodedata.combining(c)))
+    return u''.join(
+        (
+            c
+            for c in unicodedata.normalize('NFD', s)
+            if not unicodedata.combining(c)
+        )
+    )
+
 
 def _strip_nonalnum(parts):
     """Strip all non-alphanumerical characters from a list of strings.
@@ -53,6 +60,7 @@ def _strip_nonalnum(parts):
     """
     s = u''.join(parts)
     return _nonalnum_pattern.sub(u'', s)
+
 
 class LabelStyle(BaseLabelStyle):
     name = 'alpha'
@@ -87,7 +95,7 @@ class LabelStyle(BaseLabelStyle):
         else:
             label = self.author_key_label(entry)
         if "year" in entry.fields:
-            return label.strip() + ', ' +  entry.fields["year"]
+            return label.strip() + ', ' + entry.fields["year"]
         else:
             return label.strip()
         # bst additionally sets sort.label
@@ -96,7 +104,7 @@ class LabelStyle(BaseLabelStyle):
         # see alpha.bst author.key.label
         if not "author" in entry.persons:
             if not "key" in entry.fields:
-                return entry.key[:] # entry.key is bst cite$
+                return entry.key[:]  # entry.key is bst cite$
             else:
                 # for entry.key, bst actually uses text.prefix$
                 return entry.fields["key"][:]
@@ -108,7 +116,7 @@ class LabelStyle(BaseLabelStyle):
         if not "author" in entry.persons:
             if not "editor" in entry.persons:
                 if not "key" in entry.fields:
-                    return entry.key[:] # entry.key is bst cite$
+                    return entry.key[:]  # entry.key is bst cite$
                 else:
                     # for entry.key, bst actually uses text.prefix$
                     return entry.fields["key"][:]
@@ -121,7 +129,7 @@ class LabelStyle(BaseLabelStyle):
         if not "author" in entry.persons:
             if not "key" in entry.fields:
                 if not "organization" in entry.fields:
-                    return entry.key[:] # entry.key is bst cite$
+                    return entry.key[:]  # entry.key is bst cite$
                 else:
                     result = entry.fields["organization"]
                     if result.startswith("The "):
@@ -136,7 +144,7 @@ class LabelStyle(BaseLabelStyle):
         if not "editor" in entry.persons:
             if not "key" in entry.fields:
                 if not "organization" in entry.fields:
-                    return entry.key[:] # entry.key is bst cite$
+                    return entry.key[:]  # entry.key is bst cite$
                 else:
                     result = entry.fields["organization"]
                     if result.startswith("The "):
@@ -165,10 +173,12 @@ class LabelStyle(BaseLabelStyle):
                         result += "et al. "
                     else:
                         result += _strip_nonalnum(
-                            person.prelast(abbr=True) + [' '] + person.last())
+                            person.prelast(abbr=True) + [' '] + person.last()
+                        )
                 else:
                     result += _strip_nonalnum(
-                        person.prelast(abbr=True) + [' '] + person.last())
+                        person.prelast(abbr=True) + [' '] + person.last()
+                    )
                 if numnames == 2 and nameptr == 1:
                     result += ' and '
                 else:
@@ -180,5 +190,6 @@ class LabelStyle(BaseLabelStyle):
         else:
             person = persons[0]
             result = _strip_nonalnum(
-                person.prelast(abbr=True) + [' '] + person.last())
+                person.prelast(abbr=True) + [' '] + person.last()
+            )
         return result
