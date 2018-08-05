@@ -36,16 +36,16 @@ def notebook(preprocessor, tag, markup):
     preprocessors = preprocessor.configs.getConfig('IPYNB_PREPROCESSORS', [])
     template = preprocessor.configs.getConfig('IPYNB_EXPORT_TEMPLATE', None)
     content, info = get_html_from_filepath(nb_path, start=start, end=end, preprocessors=preprocessors, template=template)
-    
+
     # Fix CSS
     fix_css = preprocessor.configs.getConfig('IPYNB_FIX_CSS', True)
     ignore_css = preprocessor.configs.getConfig('IPYNB_SKIP_CSS', False)
     content = parse_css(content, info, fix_css=fix_css, ignore_css=ignore_css)
-    
+
     content = preprocessor.configs.htmlStash.store(content, safe=True)
     return content
 
 
 # ---------------------------------------------------
 # This import allows notebook tag to be a Pelican plugin
-from liquid_tags import register  # noqa
+from liquid_tags.liquid_tags import register  # noqa
