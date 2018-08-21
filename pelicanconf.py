@@ -20,7 +20,7 @@ ARTICLE_URL = 'blog/{slug}.html'
 ARTICLE_SAVE_AS = 'blog/{slug}.html'
 ARCHIVES_SAVE_AS = 'archives.html'
 
-MENUITEMS = (('Curriculum Vitae', 'static/cv.pdf'),)
+MENUITEMS = (('Curriculum Vitae', '../static/cv.pdf'),)
 
 DIRECT_TEMPLATES = ['index', 'categories', 'tags', 'archives', 'search']
 

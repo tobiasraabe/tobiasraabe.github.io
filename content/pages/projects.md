@@ -8,7 +8,7 @@ toc: true
 
 This project deals with the identification of software patents and combines
 multiple approaches from simple algorithms (see [@Bessen2007]) to novel machine
-learning models to achieve this goal.
+learning models to achieve its goal.
 
 The origin of this project was a Bachelor's thesis, but now the main purpose is
 to be a playground for machine learning techniques and deep learning with
