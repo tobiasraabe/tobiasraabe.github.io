@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Tobias Raabe - blog</title><link href="https://tobiasraabe.github.io/" rel="alternate"></link><link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tobiasraabe.github.io/</id><updated>2018-06-11T00:00:00+02:00</updated><entry><title>How to download files with Python</title><link href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html" rel="alternate"></link><published>2018-06-11T00:00:00+02:00</published><updated>2018-06-11T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-06-11:/blog/how-to-download-files-with-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tobias Raabe - blog</title><link href="https://tobiasraabe.github.io/" rel="alternate"></link><link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tobiasraabe.github.io/</id><updated>2018-08-21T00:00:00+02:00</updated><entry><title>Identifying Software Patents</title><link href="https://tobiasraabe.github.io/blog/identifying-software-patents.html" rel="alternate"></link><published>2018-08-21T00:00:00+02:00</published><updated>2018-08-21T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-08-21:/blog/identifying-software-patents.html</id><summary type="html">&lt;p&gt;While finishing my bachelor in 2015, I wrote my thesis about identifying
+software patents. This is useful and necessary in two ways. First, there is no
+system by which patents are grouped into topics like software, automation,
+etc.. But this is what researchers are ultimately interested in. The main
+system used by the USPTO focuses on technological and functional form which
+means that a subclass dealing with dispensing solids contains manure spreaders
+and toothpaste tubes. Second, I could use the thesis for learning Python and
+doing my first steps into the world of machine learning.&lt;/p&gt;
+&lt;p&gt;You can find the whole project on &lt;a href="https://github.com/tobiasraabe/software_patents"&gt;Github&lt;/a&gt; as well as the &lt;a href="https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf"&gt;paper&lt;/a&gt;. There
+is also a script to download different kinds of data sets. The raw data uses
+approximately 90GB of disk space whereas the data for replicating the previous
+results based on a simple algorithm is currently less than 1GB.&lt;/p&gt;
+&lt;p&gt;Now, let us …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While finishing my bachelor in 2015, I wrote my thesis about identifying
+software patents. This is useful and necessary in two ways. First, there is no
+system by which patents are grouped into topics like software, automation,
+etc.. But this is what researchers are ultimately interested in. The main
+system used by the USPTO focuses on technological and functional form which
+means that a subclass dealing with dispensing solids contains manure spreaders
+and toothpaste tubes. Second, I could use the thesis for learning Python and
+doing my first steps into the world of machine learning.&lt;/p&gt;
+&lt;p&gt;You can find the whole project on &lt;a href="https://github.com/tobiasraabe/software_patents"&gt;Github&lt;/a&gt; as well as the &lt;a href="https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf"&gt;paper&lt;/a&gt;. There
+is also a script to download different kinds of data sets. The raw data uses
+approximately 90GB of disk space whereas the data for replicating the previous
+results based on a simple algorithm is currently less than 1GB.&lt;/p&gt;
+&lt;p&gt;Now, let us see what has been done so far.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;This project deals with the identification of software patents and combines
+multiple approaches from simple algorithms to novel machine learning models to
+achieve this goal.&lt;/p&gt;
+&lt;h3 id="background"&gt;Background&lt;/h3&gt;
+&lt;p&gt;The origin of this project was a Bachelor's thesis built on the algorithmic
+approach of &lt;a href='#Bessen2007' id='ref-Bessen2007-1'&gt;Bessen and Hunt (2007)&lt;/a&gt;. The authors wanted to estimate the number of
+software patents and find out where software patents are used and what economic
+indicators are correlated with having more software patents.&lt;/p&gt;
+&lt;p&gt;To classify patents into categories of software and non-software, the authors
+developed a simple algorithm based on the evaluation of a random sample of
+patents. The algorithm is as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(("software" in specification) OR ("computer" AND "program" in
+specification))
+
+AND (utility patent excluding reissues)
+
+ANDNOT ("chip" OR "semiconductor" OR "bus" OR "circuit" OR "circuitry" in
+title)
+
+ANDNOT ("antigen" OR "antigenic" OR "chromatography" in specification)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Whereas title is simply identified, specification is defined as the abstract
+and the description of the patent (&lt;a href="https://www.patentsview.org/web/"&gt;PatentsView&lt;/a&gt; separates the description in
+&lt;a href='#Bessen2007' id='ref-Bessen2007-2'&gt;Bessen and Hunt (2007)&lt;/a&gt; definition into description and summary).&lt;/p&gt;
+&lt;p&gt;To replicate the algorithm, the project relies on two strategies. The first
+data source is &lt;a href="https://patents.google.com"&gt;Google Patents&lt;/a&gt; where the texts
+can be crawled. As this procedure is not feasible for the whole corpus of
+patents, the second data source is &lt;a href="https://www.patentsview.org/web/"&gt;PatentsView&lt;/a&gt; which provides large data
+files for all patents from 1976 on.&lt;/p&gt;
+&lt;p&gt;The replication of the original algorithm succeeds in 398 of 400 cases as one
+patent was retracted and in one case an indicator was overlooked which lead to
+a error in the classification.&lt;/p&gt;
+&lt;p&gt;Compared to the manual classification of the authors, the algorithm performed
+in the following way:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align="right"&gt;Relevant&lt;/th&gt;
+&lt;th align="right"&gt;Not Relevant&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Retrieved&lt;/strong&gt;&lt;/td&gt;
+&lt;td align="right"&gt;42&lt;/td&gt;
+&lt;td align="right"&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Not Retrieved&lt;/strong&gt;&lt;/td&gt;
+&lt;td align="right"&gt;12&lt;/td&gt;
+&lt;td align="right"&gt;337&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Relevant refers to software patents according to the  manual classification
+whereas retrieved indicates software patents detected by the algorithm. The
+upper left corner can also be called true-positives whereas the lower right
+corner shows the number of true-negatives.&lt;/p&gt;
+&lt;p&gt;Applying the algorithm on the whole patent corpus, we get the following
+distributions of patents and software versus non-software patents.&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;b&gt;Absolute Number of Utility Patents&lt;/b&gt;&lt;br/&gt;
+&lt;img height="400" src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution.png" width="600"/&gt;
+&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;b&gt;Absolute Number of Software vs. Non-Software Patents&lt;/b&gt;&lt;br/&gt;
+&lt;img height="400" src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution-vs.png" width="600"/&gt;
+&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;b&gt;Relative Number of Software vs. Non-Software Patents&lt;/b&gt;&lt;br/&gt;
+&lt;img height="400" src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution-vs-shares.png" width="600"/&gt;
+&lt;/p&gt;&lt;hr&gt;
+&lt;h3&gt;Bibliography&lt;/h3&gt;
+&lt;p id='Bessen2007'&gt;James Bessen and Robert&amp;nbsp;M Hunt.
+An empirical look at software patents.
+&lt;em&gt;Journal of Economics &amp;amp; Management Strategy&lt;/em&gt;, 16(1):157–189, 2007.
+&lt;a href="https://doi.org/10.1111/j.1530-9134.2007.00136.x"&gt;doi:10.1111/j.1530-9134.2007.00136.x&lt;/a&gt;. &lt;a class="cite-backref" href="#ref-Bessen2007-1" title="Jump back to reference 1"&gt;↩&lt;/a&gt;&lt;a class="cite-backref" href="#ref-Bessen2007-1" title="Jump back to reference 1"&gt; &lt;sup&gt;1&lt;/sup&gt; &lt;/a&gt;&lt;a class="cite-backref" href="#ref-Bessen2007-2" title="Jump back to reference 2"&gt;&lt;sup&gt;2&lt;/sup&gt; &lt;/a&gt;&lt;/p&gt;
+</content><category term="Machine Learning"></category><category term="Deep Learning"></category><category term="Text Data"></category></entry><entry><title>How to download files with Python</title><link href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html" rel="alternate"></link><published>2018-06-11T00:00:00+02:00</published><updated>2018-06-11T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-06-11:/blog/how-to-download-files-with-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
 validate downloads with hash values. You can find it at the end of the article.
 An interactive version of the notebook is available by clicking on the binder
