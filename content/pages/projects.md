@@ -2,9 +2,20 @@ title: Projects
 slug: projects
 toc: true
 
-### Research
+### cookiecutter-research-template (2018)
 
-#### Identification Strategies for Software Patents (2015 - 2018)
+[Cookiecutter](https://github.com/audreyr/cookiecutter) is a tool to quickly
+generate project templates of any kind. It is based on Gaudecker's template for
+reproducible economic research enhanced with some useful tools from software
+engineering to help newcomers to write better Python.
+
+- [Gaudecker's econ-project-templates](https://github.com/hmgaudecker/econ-project-templates)
+- [Project on Github](https://github.com/tobiasraabe/cookiecutter-research-template)
+- [Documentation](https://cookiecutter-research-template.readthedocs.io/en/latest/index.html)
+
+<br>
+
+### Identification Strategies for Software Patents (2015 - 2018)
 
 This project deals with the identification of software patents and combines
 multiple approaches from simple algorithms (see [@Bessen2007]) to novel machine
@@ -20,7 +31,19 @@ textual data.
 
 <br>
 
-#### Malleability of Locus of Control (2017)
+### oTree Virtual Machine Manager (2017 - 2018)
+
+This tool is designed to handle many administrative tasks on a server with
+multiple running oTree instances. In addition to that, a collection of virtual
+machine images are provided based on the host's performance and administrator's
+needs.
+
+- [Project on Github](https://github.com/tobiasraabe/otree_virtual_machine_manager)
+- [Documentation](https://otree-virtual-machine-manager.readthedocs.io)
+
+<br>
+
+### Malleability of Locus of Control (2017)
 
 This research project is concerned with a person's Locus of Control which is
 the degree to which people believe that they have control over the outcome of
@@ -38,7 +61,7 @@ individual whereas internal means the opposite.
 
 <br>
 
-#### Cryptocurrency Market Prediction (2017)
+### Cryptocurrency Market Prediction (2017)
 
 The project is about market prediction in cryptocurrency markets like Potcoin
 and was developed during a programing class for economists which focused on the
@@ -46,17 +69,3 @@ embedding of the research project in a Waf framework. Waf is an automation tool
 for software design.
 
 - [Project on Github](https://github.com/tobiasraabe/crypto)
-
-<br>
-
-### Software Engineering
-
-#### oTree Virtual Machine Manager (2017 - 2018)
-
-This tool is designed to handle many administrative tasks on a server with
-multiple running oTree instances. In addition to that, a collection of virtual
-machine images are provided based on the host's performance and administrator's
-needs.
-
-- [Project on Github](https://github.com/tobiasraabe/otree_virtual_machine_manager)
-- [Documentation](https://otree-virtual-machine-manager.readthedocs.io)
