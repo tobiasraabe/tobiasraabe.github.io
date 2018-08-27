@@ -2,6 +2,7 @@ Title: How to download files with Python
 Date: 2018-06-11
 Tags: Python, Downloader
 Author: Tobias Raabe
+Notebook: true
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb)
 
