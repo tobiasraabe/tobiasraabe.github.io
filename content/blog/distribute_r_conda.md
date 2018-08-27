@@ -1,5 +1,5 @@
-Date: 2018-03-21
 Title: How to compile and distribute an R package with conda
+Date: 2018-03-21
 Tags: conda, Anaconda, R, conda-build, MRO
 
 This article shows how to compile and distribute R packages on anaconda.org to
