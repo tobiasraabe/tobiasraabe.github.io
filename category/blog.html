@@ -57,7 +57,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../static/cv.pdf">Curriculum Vitae</a></li>
+                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -91,19 +91,209 @@ Tobias Raabe            </a>
         <ul>
                 <li class="groupby">Aug, 2018</li>
                     <li class="article-item">
-                        <span class="article">Aug 21, 2018</span><a href="https://tobiasraabe.github.io/blog/identifying-software-patents.html">Identifying Software Patents</a>
+                        <span class="article">Aug 21, 2018</span><a href="https://tobiasraabe.github.io/blog/identifying-software-patents.html"><b>Identifying Software Patents</b></a>
+                    </li>
+                    <li class="article-summary">
+                        <div class="article-summary">
+                            <p align="center"><img src="images/fig-patents-distribution-vs.png" style="width: auto; max-height: 264px;"></p>
+                        <span class="article-summary"><p>While finishing my bachelor in 2015, I wrote my thesis about identifying
+software patents. This is useful and necessary in two ways. First, there is no
+system by which patents are grouped into topics like software, automation,
+etc.. But this is what researchers are ultimately interested in. The main
+system used by the USPTO focuses on technological and functional form which
+means that a subclass dealing with dispensing solids contains manure spreaders
+and toothpaste tubes. Second, I could use the thesis for learning Python and
+doing my first steps into the world of machine learning.</p>
+<p>You can find the whole project on <a href="https://github.com/tobiasraabe/software_patents">Github</a> as well as the <a href="https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf">paper</a>. There
+is also a script to download different kinds of data sets. The raw data uses
+approximately 90GB of disk space whereas the data for replicating the previous
+results based on a simple algorithm is currently less than 1GB.</p>
+<p>Now, let us …</p></span>
+                        </div>
                     </li>
                 <li class="groupby">Jun, 2018</li>
                     <li class="article-item">
-                        <span class="article">Jun 11, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html">How to download files with Python</a>
+                        <span class="article">Jun 11, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"><b>How to download files with Python</b></a>
+                    </li>
+                    <li class="article-summary">
+                        <div class="article-summary">
+                        <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+<p>This is a short script in python to download files, resume downloads and to
+validate downloads with hash values. For me it was necessary to write a program
+like this so I can easily pass my projects to others without writing
+instructions in detail which files they should download and where to place
+them. You can find it at the end of the article. An interactive version of the
+notebook is available by clicking on the binder badge above.</p>
+<!-- PELICAN_END_SUMMARY -->
+<style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan …</style></span>
+                        </div>
                     </li>
                 <li class="groupby">Mar, 2018</li>
                     <li class="article-item">
-                        <span class="article">Mar 21, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html">How to compile and distribute an R package with conda</a>
+                        <span class="article">Mar 21, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html"><b>How to compile and distribute an R package with conda</b></a>
+                    </li>
+                    <li class="article-summary">
+                        <div class="article-summary">
+                        <span class="article-summary"><p>This article shows how to compile and distribute R packages on anaconda.org to
+be used in your data science projects. This is useful as R has not really a
+neat dependency pinning tool like Python with <code>requirements.txt</code> or
+<code>environment.yml</code> with <code>conda</code> and R is shipped with <code>conda</code> anyway. But,
+if you want to use the MKL accelerated Microsoft R Open instead of plain R,
+there are some packages which are currently not provided in <code>conda</code>'s default
+channels or <code>conda-forge</code>. Here is how to lift this obstacle.</p>
+<!-- PELICAN_END_SUMMARY -->
+<h3 id="introduction-to-anaconda-and-r">Introduction to Anaconda and R</h3>
+<p>I like to manage my research projects with <a href="https://conda.io/docs/">conda</a> which is the package
+manager for <a href="https://www.anaconda.com/distribution/">Anaconda</a>, a popular Python distribution for data science. For
+one of my recent projects I also needed to install R and I was lucky to find
+out that R is also available with <code>conda</code>.</p>
+<p>First, you create your normal Python …</p></span>
+                        </div>
                     </li>
                 <li class="groupby">Oct, 2017</li>
                     <li class="article-item">
-                        <span class="article">Oct 22, 2017</span><a href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html">The Tragedy of Titanic</a>
+                        <span class="article">Oct 22, 2017</span><a href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html"><b>The Tragedy of Titanic</b></a>
+                    </li>
+                    <li class="article-summary">
+                        <div class="article-summary">
+                            <p align="center"><img src="images/the-tragedy-of-titanic-placebo-test.png" style="width: auto; max-height: 264px;"></p>
+                        <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+<p>Analysis of survival rates on the Titanic with a placebo test for whether
+traveling in couples increased the likelihood of survival. An interactive
+version of the notebook is available by clicking on the binder badge above.</p>
+<!-- PELICAN_END_SUMMARY -->
+<style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box …</style></span>
+                        </div>
                     </li>
         </ul>
 
@@ -136,9 +326,6 @@ Tobias Raabe            </a>
       <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
     </li>
     <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda.html">Conda</a>
-    </li>
-    <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
     </li>
     <li class="list-group-item tag-3">
@@ -158,6 +345,9 @@ Tobias Raabe            </a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>

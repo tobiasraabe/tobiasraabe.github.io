@@ -13,17 +13,17 @@
 <link rel="canonical" href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html">
 
         <meta name="author" content="Tobias Raabe" />
-        <meta name="keywords" content="Conda,Anaconda,R,conda-build,MRO" />
-        <meta name="description" content="TL;DR: This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects I also needed to install R and I was lucky to find out that R is also available with conda. First, you create your normal Python environment for your new project $ conda create --name project python=3.6 anaconda This installs a complete Anaconda distribution with Python 3.6 under the name project. If you only want the bare Python interpreter, call $ conda create -n project python=3.6 Activate the environment with $ activate project Hint: Since my os is running on Windows, I prefer to use Powershell. Unfortunately, activating and deactivating your …" />
+        <meta name="keywords" content="conda,Anaconda,R,conda-build,MRO" />
+        <meta name="description" content="This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. This is useful as R has not really a neat dependency pinning tool like Python with requirements.txt or environment.yml with conda and R is shipped with conda anyway. But, if you want to use the MKL accelerated Microsoft R Open instead of plain R, there are some packages which are currently not provided in conda&#39;s default channels or conda-forge. Here is how to lift this obstacle. Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects I also needed to install R and I was lucky to find out that R is also available with conda. First, you create your normal Python …" />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="How to compile and distribute an R package with conda"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html"/>
-        <meta property="og:description" content="TL;DR: This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects I also needed to install R and I was lucky to find out that R is also available with conda. First, you create your normal Python environment for your new project $ conda create --name project python=3.6 anaconda This installs a complete Anaconda distribution with Python 3.6 under the name project. If you only want the bare Python interpreter, call $ conda create -n project python=3.6 Activate the environment with $ activate project Hint: Since my os is running on Windows, I prefer to use Powershell. Unfortunately, activating and deactivating your …"/>
+        <meta property="og:description" content="This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. This is useful as R has not really a neat dependency pinning tool like Python with requirements.txt or environment.yml with conda and R is shipped with conda anyway. But, if you want to use the MKL accelerated Microsoft R Open instead of plain R, there are some packages which are currently not provided in conda&#39;s default channels or conda-forge. Here is how to lift this obstacle. Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects I also needed to install R and I was lucky to find out that R is also available with conda. First, you create your normal Python …"/>
         <meta property="article:published_time" content="2018-03-21" />
             <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="Conda" />
+            <meta property="article:tag" content="conda" />
             <meta property="article:tag" content="Anaconda" />
             <meta property="article:tag" content="R" />
             <meta property="article:tag" content="conda-build" />
@@ -66,7 +66,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../static/cv.pdf">Curriculum Vitae</a></li>
+                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -123,7 +123,7 @@ Tobias Raabe            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://tobiasraabe.github.io/tag/conda.html">Conda</a>
+	<a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
         /
 	<a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
         /
@@ -141,8 +141,14 @@ Tobias Raabe            </a>
                         <div class="panel-heading">Table of Contents</div>
                         <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#introduction-to-anaconda-and-r" title="Introduction to Anaconda and R">Introduction to Anaconda and R</a></li><li><a class="toc-href" href="#building-and-distributing-an-r-package" title="Building and Distributing an R package">Building and Distributing an R package</a></li><li><a class="toc-href" href="#compile-your-own-package" title="Compile your own package">Compile your own package</a></li></ul></div></div>
                     </div>
-                <p>TL;DR: This article shows how to compile and distribute R packages on
-anaconda.org to be used in your data science projects.</p>
+                <p>This article shows how to compile and distribute R packages on anaconda.org to
+be used in your data science projects. This is useful as R has not really a
+neat dependency pinning tool like Python with <code>requirements.txt</code> or
+<code>environment.yml</code> with <code>conda</code> and R is shipped with <code>conda</code> anyway. But,
+if you want to use the MKL accelerated Microsoft R Open instead of plain R,
+there are some packages which are currently not provided in <code>conda</code>'s default
+channels or <code>conda-forge</code>. Here is how to lift this obstacle.</p>
+<!-- PELICAN_END_SUMMARY -->
 <h3 id="introduction-to-anaconda-and-r">Introduction to Anaconda and R</h3>
 <p>I like to manage my research projects with <a href="https://conda.io/docs/">conda</a> which is the package
 manager for <a href="https://www.anaconda.com/distribution/">Anaconda</a>, a popular Python distribution for data science. For
@@ -159,9 +165,9 @@ out that R is also available with <code>conda</code>.</p>
 <div class="highlight"><pre><span></span>$ activate project
 </pre></div>
 <blockquote>
-<p>Hint: Since my os is running on Windows, I prefer to use Powershell.
-  Unfortunately, activating and deactivating your environment usually fails.
-  Try out <a href="https://github.com/BCSharp/PSCondaEnvs">pscondaenvs</a> which installs corrected Powershell scripts.</p>
+<p>Hint: Since my os is Windows, I prefer to use Powershell. Unfortunately,
+activating and deactivating your environment usually fails. Try out
+<a href="https://github.com/BCSharp/PSCondaEnvs">pscondaenvs</a> which installs corrected Powershell scripts.</p>
 </blockquote>
 <p>If we also need an R distribution for our project, we have to make the decision
 between to <a href="https://www.r-project.org/">R</a> from R-Project and
@@ -189,8 +195,8 @@ $ conda install -c r r-essentials r-base
 <div class="highlight"><pre><span></span>$ conda update r-essentials
 </pre></div>
 <p>If your desired package is not available in <code>r-essentials</code>, you can use the
-search on anaconda.org to find a channel which offers your package. But what if
-your package is not available?</p>
+search on https://anaconda.org to find a channel which offers your package. But
+what if your package is not available?</p>
 <h3 id="building-and-distributing-an-r-package">Building and Distributing an R package</h3>
 <p>I had the same issue when I wanted to use <a href="https://github.com/stefvanbuuren/mice"><code>mice</code></a> which is a known
 framework for multiple imputation by chained equations.</p>
@@ -308,9 +314,6 @@ there is a lot of room to grow :).</p>
       <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
     </li>
     <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda.html">Conda</a>
-    </li>
-    <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
     </li>
     <li class="list-group-item tag-3">
@@ -330,6 +333,9 @@ there is a lot of room to grow :).</p>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>

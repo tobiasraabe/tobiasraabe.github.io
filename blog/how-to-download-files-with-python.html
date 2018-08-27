@@ -14,13 +14,13 @@
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="Python,Downloader" />
-        <meta name="description" content="TL;DR: A short script in python to download files, resume downloads and to validate downloads with hash values. You can find it at the end of the article. An interactive version of the notebook is available by clicking on the binder badge above. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI colors. */ .ansibold { font-weight: bold; } /* use dark versions for foreground, to improve visibility */ .ansiblack { color: black; } .ansired { color: darkred; } .ansigreen { color: darkgreen; } .ansiyellow { color: #c4a000; } .ansiblue { color: darkblue; } .ansipurple { color: darkviolet; } .ansicyan { color: steelblue; } .ansigray { color: gray; } /* and light for background, for the same reason */ .ansibgblack { background-color: black; } .ansibgred { background-color: red; } .ansibggreen { background-color: green; } .ansibgyellow { background-color: yellow; } .ansibgblue { background-color: blue; } .ansibgpurple { background-color: magenta; } .ansibgcyan { background-color: cyan; } .ansibggray { background-color: gray; } div.cell { /* Old browsers */ display: -webkit-box; -webkit-box-orient: vertical; -webkit-box-align: stretch; display: -moz-box; -moz-box-orient: vertical; -moz-box-align: stretch; display: box; box-orient: vertical; box-align: stretch; /* Modern browsers */ display: flex; flex-direction: column; align-items: stretch …" />
+        <meta name="description" content="This is a short script in python to download files, resume downloads and to validate downloads with hash values. For me it was necessary to write a program like this so I can easily pass my projects to others without writing instructions in detail which files they should download and where to place them. You can find it at the end of the article. An interactive version of the notebook is available by clicking on the binder badge above. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI colors. */ .ansibold { font-weight: bold; } /* use dark versions for foreground, to improve visibility */ .ansiblack { color: black; } .ansired { color: darkred; } .ansigreen { color: darkgreen; } .ansiyellow { color: #c4a000; } .ansiblue { color: darkblue; } .ansipurple { color: darkviolet; } .ansicyan { color: steelblue; } .ansigray { color: gray; } /* and light for background, for the same reason */ .ansibgblack { background-color: black; } .ansibgred { background-color: red; } .ansibggreen { background-color: green; } .ansibgyellow { background-color: yellow; } .ansibgblue { background-color: blue; } .ansibgpurple { background-color: magenta; } .ansibgcyan …" />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="How to download files with Python"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"/>
-        <meta property="og:description" content="TL;DR: A short script in python to download files, resume downloads and to validate downloads with hash values. You can find it at the end of the article. An interactive version of the notebook is available by clicking on the binder badge above. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI colors. */ .ansibold { font-weight: bold; } /* use dark versions for foreground, to improve visibility */ .ansiblack { color: black; } .ansired { color: darkred; } .ansigreen { color: darkgreen; } .ansiyellow { color: #c4a000; } .ansiblue { color: darkblue; } .ansipurple { color: darkviolet; } .ansicyan { color: steelblue; } .ansigray { color: gray; } /* and light for background, for the same reason */ .ansibgblack { background-color: black; } .ansibgred { background-color: red; } .ansibggreen { background-color: green; } .ansibgyellow { background-color: yellow; } .ansibgblue { background-color: blue; } .ansibgpurple { background-color: magenta; } .ansibgcyan { background-color: cyan; } .ansibggray { background-color: gray; } div.cell { /* Old browsers */ display: -webkit-box; -webkit-box-orient: vertical; -webkit-box-align: stretch; display: -moz-box; -moz-box-orient: vertical; -moz-box-align: stretch; display: box; box-orient: vertical; box-align: stretch; /* Modern browsers */ display: flex; flex-direction: column; align-items: stretch …"/>
+        <meta property="og:description" content="This is a short script in python to download files, resume downloads and to validate downloads with hash values. For me it was necessary to write a program like this so I can easily pass my projects to others without writing instructions in detail which files they should download and where to place them. You can find it at the end of the article. An interactive version of the notebook is available by clicking on the binder badge above. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI colors. */ .ansibold { font-weight: bold; } /* use dark versions for foreground, to improve visibility */ .ansiblack { color: black; } .ansired { color: darkred; } .ansigreen { color: darkgreen; } .ansiyellow { color: #c4a000; } .ansiblue { color: darkblue; } .ansipurple { color: darkviolet; } .ansicyan { color: steelblue; } .ansigray { color: gray; } /* and light for background, for the same reason */ .ansibgblack { background-color: black; } .ansibgred { background-color: red; } .ansibggreen { background-color: green; } .ansibgyellow { background-color: yellow; } .ansibgblue { background-color: blue; } .ansibgpurple { background-color: magenta; } .ansibgcyan …"/>
         <meta property="article:published_time" content="2018-06-11" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="Python" />
@@ -63,7 +63,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../static/cv.pdf">Curriculum Vitae</a></li>
+                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -133,10 +133,12 @@ Tobias Raabe            </a>
                         <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Downloading-files" title="Downloading files;">Downloading files;</a></li><li><a class="toc-href" href="#Resuming-downloads" title="Resuming downloads;">Resuming downloads;</a></li><li><a class="toc-href" href="#Validating-downloads" title="Validating downloads;">Validating downloads;</a></li><li><a class="toc-href" href="#Visualizing-download-progress" title="Visualizing download progress;">Visualizing download progress;</a></li><li><a class="toc-href" href="#Complete-script" title="Complete script;">Complete script;</a></li></ul></div></div>
                     </div>
                 <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>TL;DR: A short script in python to download files, resume downloads and to
-validate downloads with hash values. You can find it at the end of the article.
-An interactive version of the notebook is available by clicking on the binder
-badge above.</p>
+<p>This is a short script in python to download files, resume downloads and to
+validate downloads with hash values. For me it was necessary to write a program
+like this so I can easily pass my projects to others without writing
+instructions in detail which files they should download and where to place
+them. You can find it at the end of the article. An interactive version of the
+notebook is available by clicking on the binder badge above.</p>
 <!-- PELICAN_END_SUMMARY -->
 <style type="text/css">/*!
 *
@@ -1110,6 +1112,22 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
+<style type="text/css">
+
+/* Remove prompts like [1] from output. */
+div.prompt {
+    display: none;
+}
+
+/* Remove indentation of notebook. */
+div.cell {
+    padding-left: 0px;
+}
+div.text_cell_render {
+    padding: 0px;
+}
+
+</style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -1511,9 +1529,6 @@ connections to web content.</p>
       <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
     </li>
     <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda.html">Conda</a>
-    </li>
-    <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
     </li>
     <li class="list-group-item tag-3">
@@ -1533,6 +1548,9 @@ connections to web content.</p>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>

@@ -24,6 +24,7 @@ is also a script to download different kinds of data sets. The raw data uses
 approximately 90GB of disk space whereas the data for replicating the previous
 results based on a simple algorithm is currently less than 1GB.&lt;/p&gt;
 &lt;p&gt;Now, let us see what has been done so far.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;hr/&gt;
 &lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This project deals with the identification of software patents and combines
@@ -89,15 +90,15 @@ corner shows the number of true-negatives.&lt;/p&gt;
 distributions of patents and software versus non-software patents.&lt;/p&gt;
 &lt;p align="center"&gt;
 &lt;b&gt;Absolute Number of Utility Patents&lt;/b&gt;&lt;br/&gt;
-&lt;img height="400" src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution.png" width="600"/&gt;
+&lt;img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution.png" width="600"/&gt;
 &lt;/p&gt;
 &lt;p align="center"&gt;
 &lt;b&gt;Absolute Number of Software vs. Non-Software Patents&lt;/b&gt;&lt;br/&gt;
-&lt;img height="400" src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution-vs.png" width="600"/&gt;
+&lt;img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs.png" width="600"/&gt;
 &lt;/p&gt;
 &lt;p align="center"&gt;
 &lt;b&gt;Relative Number of Software vs. Non-Software Patents&lt;/b&gt;&lt;br/&gt;
-&lt;img height="400" src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution-vs-shares.png" width="600"/&gt;
+&lt;img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs-shares.png" width="600"/&gt;
 &lt;/p&gt;&lt;hr&gt;
 &lt;h3&gt;Bibliography&lt;/h3&gt;
 &lt;p id='Bessen2007'&gt;James Bessen and Robert&amp;nbsp;M Hunt.
@@ -105,10 +106,12 @@ An empirical look at software patents.
 &lt;em&gt;Journal of Economics &amp;amp; Management Strategy&lt;/em&gt;, 16(1):157–189, 2007.
 &lt;a href="https://doi.org/10.1111/j.1530-9134.2007.00136.x"&gt;doi:10.1111/j.1530-9134.2007.00136.x&lt;/a&gt;. &lt;a class="cite-backref" href="#ref-Bessen2007-1" title="Jump back to reference 1"&gt;↩&lt;/a&gt;&lt;a class="cite-backref" href="#ref-Bessen2007-1" title="Jump back to reference 1"&gt; &lt;sup&gt;1&lt;/sup&gt; &lt;/a&gt;&lt;a class="cite-backref" href="#ref-Bessen2007-2" title="Jump back to reference 2"&gt;&lt;sup&gt;2&lt;/sup&gt; &lt;/a&gt;&lt;/p&gt;
 </content><category term="Machine Learning"></category><category term="Deep Learning"></category><category term="Text Data"></category></entry><entry><title>How to download files with Python</title><link href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html" rel="alternate"></link><published>2018-06-11T00:00:00+02:00</published><updated>2018-06-11T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-06-11:/blog/how-to-download-files-with-python.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
-validate downloads with hash values. You can find it at the end of the article.
-An interactive version of the notebook is available by clicking on the binder
-badge above.&lt;/p&gt;
+&lt;p&gt;This is a short script in python to download files, resume downloads and to
+validate downloads with hash values. For me it was necessary to write a program
+like this so I can easily pass my projects to others without writing
+instructions in detail which files they should download and where to place
+them. You can find it at the end of the article. An interactive version of the
+notebook is available by clicking on the binder badge above.&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
@@ -163,31 +166,13 @@ badge above.&lt;/p&gt;
 .ansibgpurple {
   background-color: magenta;
 }
-.ansibgcyan {
-  background-color: cyan;
-}
-.ansibggray {
-  background-color: gray;
-}
-div.cell {
-  /* Old browsers */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-align: stretch;
-  display: -moz-box;
-  -moz-box-orient: vertical;
-  -moz-box-align: stretch;
-  display: box;
-  box-orient: vertical;
-  box-align: stretch;
-  /* Modern browsers */
-  display: flex;
-  flex-direction: column;
-  align-items: stretch …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;TL;DR: A short script in python to download files, resume downloads and to
-validate downloads with hash values. You can find it at the end of the article.
-An interactive version of the notebook is available by clicking on the binder
-badge above.&lt;/p&gt;
+.ansibgcyan …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This is a short script in python to download files, resume downloads and to
+validate downloads with hash values. For me it was necessary to write a program
+like this so I can easily pass my projects to others without writing
+instructions in detail which files they should download and where to place
+them. You can find it at the end of the article. An interactive version of the
+notebook is available by clicking on the binder badge above.&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
@@ -1160,6 +1145,22 @@ h6:hover .anchor-link {
 .ansi-white-intense-bg { background-color: #A1A6B2; }
 
 .ansi-bold { font-weight: bold; }
+&lt;/style&gt;
+&lt;style type="text/css"&gt;
+
+/* Remove prompts like [1] from output. */
+div.prompt {
+    display: none;
+}
+
+/* Remove indentation of notebook. */
+div.cell {
+    padding-left: 0px;
+}
+div.text_cell_render {
+    padding: 0px;
+}
+
 &lt;/style&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -1527,8 +1528,27 @@ connections to web content.&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Python"></category><category term="Downloader"></category></entry><entry><title>How to compile and distribute an R package with conda</title><link href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html" rel="alternate"></link><published>2018-03-21T00:00:00+01:00</published><updated>2018-03-21T00:00:00+01:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-03-21:/blog/how-to-compile-and-distribute-an-r-package-with-conda.html</id><summary type="html">&lt;p&gt;TL;DR: This article shows how to compile and distribute R packages on
-anaconda.org to be used in your data science projects.&lt;/p&gt;
+&lt;/script&gt;</content><category term="Python"></category><category term="Downloader"></category></entry><entry><title>How to compile and distribute an R package with conda</title><link href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html" rel="alternate"></link><published>2018-03-21T00:00:00+01:00</published><updated>2018-03-21T00:00:00+01:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-03-21:/blog/how-to-compile-and-distribute-an-r-package-with-conda.html</id><summary type="html">&lt;p&gt;This article shows how to compile and distribute R packages on anaconda.org to
+be used in your data science projects. This is useful as R has not really a
+neat dependency pinning tool like Python with &lt;code&gt;requirements.txt&lt;/code&gt; or
+&lt;code&gt;environment.yml&lt;/code&gt; with &lt;code&gt;conda&lt;/code&gt; and R is shipped with &lt;code&gt;conda&lt;/code&gt; anyway. But,
+if you want to use the MKL accelerated Microsoft R Open instead of plain R,
+there are some packages which are currently not provided in &lt;code&gt;conda&lt;/code&gt;'s default
+channels or &lt;code&gt;conda-forge&lt;/code&gt;. Here is how to lift this obstacle.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+&lt;h3 id="introduction-to-anaconda-and-r"&gt;Introduction to Anaconda and R&lt;/h3&gt;
+&lt;p&gt;I like to manage my research projects with &lt;a href="https://conda.io/docs/"&gt;conda&lt;/a&gt; which is the package
+manager for &lt;a href="https://www.anaconda.com/distribution/"&gt;Anaconda&lt;/a&gt;, a popular Python distribution for data science. For
+one of my recent projects I also needed to install R and I was lucky to find
+out that R is also available with &lt;code&gt;conda&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;First, you create your normal Python …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article shows how to compile and distribute R packages on anaconda.org to
+be used in your data science projects. This is useful as R has not really a
+neat dependency pinning tool like Python with &lt;code&gt;requirements.txt&lt;/code&gt; or
+&lt;code&gt;environment.yml&lt;/code&gt; with &lt;code&gt;conda&lt;/code&gt; and R is shipped with &lt;code&gt;conda&lt;/code&gt; anyway. But,
+if you want to use the MKL accelerated Microsoft R Open instead of plain R,
+there are some packages which are currently not provided in &lt;code&gt;conda&lt;/code&gt;'s default
+channels or &lt;code&gt;conda-forge&lt;/code&gt;. Here is how to lift this obstacle.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;h3 id="introduction-to-anaconda-and-r"&gt;Introduction to Anaconda and R&lt;/h3&gt;
 &lt;p&gt;I like to manage my research projects with &lt;a href="https://conda.io/docs/"&gt;conda&lt;/a&gt; which is the package
 manager for &lt;a href="https://www.anaconda.com/distribution/"&gt;Anaconda&lt;/a&gt;, a popular Python distribution for data science. For
@@ -1545,28 +1565,9 @@ out that R is also available with &lt;code&gt;conda&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ activate project
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Hint: Since my os is running on Windows, I prefer to use Powershell.
-  Unfortunately, activating and deactivating your …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;TL;DR: This article shows how to compile and distribute R packages on
-anaconda.org to be used in your data science projects.&lt;/p&gt;
-&lt;h3 id="introduction-to-anaconda-and-r"&gt;Introduction to Anaconda and R&lt;/h3&gt;
-&lt;p&gt;I like to manage my research projects with &lt;a href="https://conda.io/docs/"&gt;conda&lt;/a&gt; which is the package
-manager for &lt;a href="https://www.anaconda.com/distribution/"&gt;Anaconda&lt;/a&gt;, a popular Python distribution for data science. For
-one of my recent projects I also needed to install R and I was lucky to find
-out that R is also available with &lt;code&gt;conda&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;First, you create your normal Python environment for your new project&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda create --name project &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.6 anaconda
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This installs a complete Anaconda distribution with Python 3.6 under the name
-&lt;code&gt;project&lt;/code&gt;. If you only want the bare Python interpreter, call&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda create -n project &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.6
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Activate the environment with&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ activate project
-&lt;/pre&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Hint: Since my os is running on Windows, I prefer to use Powershell.
-  Unfortunately, activating and deactivating your environment usually fails.
-  Try out &lt;a href="https://github.com/BCSharp/PSCondaEnvs"&gt;pscondaenvs&lt;/a&gt; which installs corrected Powershell scripts.&lt;/p&gt;
+&lt;p&gt;Hint: Since my os is Windows, I prefer to use Powershell. Unfortunately,
+activating and deactivating your environment usually fails. Try out
+&lt;a href="https://github.com/BCSharp/PSCondaEnvs"&gt;pscondaenvs&lt;/a&gt; which installs corrected Powershell scripts.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;If we also need an R distribution for our project, we have to make the decision
 between to &lt;a href="https://www.r-project.org/"&gt;R&lt;/a&gt; from R-Project and
@@ -1594,8 +1595,8 @@ $ conda install -c r r-essentials r-base
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ conda update r-essentials
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If your desired package is not available in &lt;code&gt;r-essentials&lt;/code&gt;, you can use the
-search on anaconda.org to find a channel which offers your package. But what if
-your package is not available?&lt;/p&gt;
+search on https://anaconda.org to find a channel which offers your package. But
+what if your package is not available?&lt;/p&gt;
 &lt;h3 id="building-and-distributing-an-r-package"&gt;Building and Distributing an R package&lt;/h3&gt;
 &lt;p&gt;I had the same issue when I wanted to use &lt;a href="https://github.com/stefvanbuuren/mice"&gt;&lt;code&gt;mice&lt;/code&gt;&lt;/a&gt; which is a known
 framework for multiple imputation by chained equations.&lt;/p&gt;
@@ -1678,11 +1679,10 @@ there is a lot of room to grow :).&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://conda.io/docs/"&gt;conda: documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/IRkernel/IRkernel"&gt;IRkernel: Use R with Jupyter notebooks&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://cran.r-project.org/bin/windows/Rtools/"&gt;RTools: Download&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Conda"></category><category term="Anaconda"></category><category term="R"></category><category term="conda-build"></category><category term="MRO"></category></entry><entry><title>The Tragedy of Titanic</title><link href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html" rel="alternate"></link><published>2017-10-22T00:00:00+02:00</published><updated>2017-10-22T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2017-10-22:/blog/the-tragedy-of-titanic.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;TL;DR: Analysis of survival rates on the Titanic with a cool placebo test for
-whether traveling in couples increased the likelihood of survival. An
-interactive version of the notebook is available by clicking on the binder
-badge above.&lt;/p&gt;
+&lt;/ul&gt;</content><category term="conda"></category><category term="Anaconda"></category><category term="R"></category><category term="conda-build"></category><category term="MRO"></category></entry><entry><title>The Tragedy of Titanic</title><link href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html" rel="alternate"></link><published>2017-10-22T00:00:00+02:00</published><updated>2017-10-22T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2017-10-22:/blog/the-tragedy-of-titanic.html</id><summary type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Analysis of survival rates on the Titanic with a placebo test for whether
+traveling in couples increased the likelihood of survival. An interactive
+version of the notebook is available by clicking on the binder badge above.&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
@@ -1760,11 +1760,11 @@ div.cell {
   align-items: stretch;
   border-radius: 2px;
   box-sizing: border-box;
-  -moz-box-sizing …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;TL;DR: Analysis of survival rates on the Titanic with a cool placebo test for
-whether traveling in couples increased the likelihood of survival. An
-interactive version of the notebook is available by clicking on the binder
-badge above.&lt;/p&gt;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Analysis of survival rates on the Titanic with a placebo test for whether
+traveling in couples increased the likelihood of survival. An interactive
+version of the notebook is available by clicking on the binder badge above.&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 &lt;style type="text/css"&gt;/*!
 *
@@ -2737,6 +2737,22 @@ h6:hover .anchor-link {
 .ansi-white-intense-bg { background-color: #A1A6B2; }
 
 .ansi-bold { font-weight: bold; }
+&lt;/style&gt;
+&lt;style type="text/css"&gt;
+
+/* Remove prompts like [1] from output. */
+div.prompt {
+    display: none;
+}
+
+/* Remove indentation of notebook. */
+div.cell {
+    padding-left: 0px;
+}
+div.text_cell_render {
+    padding: 0px;
+}
+
 &lt;/style&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
