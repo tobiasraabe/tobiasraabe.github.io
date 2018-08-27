@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Beginners Guide to ovmm Part IV - User - Tobias Raabe</title>
+    <title>Facilitate reproducible research with cookiecutter-research-template - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,21 +10,23 @@
 
     <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/drafts/ovmm_user.html">
+<link rel="canonical" href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html">
 
         <meta name="author" content="Tobias Raabe" />
-        <meta name="keywords" content="ovmm,oTree" />
-        <meta name="description" content="asdsad aksdlkajdslkj" />
+        <meta name="keywords" content="Research,Reproducibility,Waf,cookiecutter" />
+        <meta name="description" content="This DAG is produced by a sample project for reproducible research from https://github.com/hmgaudecker/econ-project-templates. I extended this template with the templating engine cookiecutter and various other software engineering tools." />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Beginners Guide to ovmm Part IV - User"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io/drafts/ovmm_user.html"/>
-        <meta property="og:description" content="asdsad aksdlkajdslkj"/>
-        <meta property="article:published_time" content="2017-10-22" />
+        <meta property="og:title" content="Facilitate reproducible research with cookiecutter-research-template"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html"/>
+        <meta property="og:description" content="This DAG is produced by a sample project for reproducible research from https://github.com/hmgaudecker/econ-project-templates. I extended this template with the templating engine cookiecutter and various other software engineering tools."/>
+        <meta property="article:published_time" content="2018-08-27" />
             <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="ovmm" />
-            <meta property="article:tag" content="oTree" />
+            <meta property="article:tag" content="Research" />
+            <meta property="article:tag" content="Reproducibility" />
+            <meta property="article:tag" content="Waf" />
+            <meta property="article:tag" content="cookiecutter" />
             <meta property="article:author" content="Tobias Raabe" />
 
 
@@ -94,16 +96,16 @@ Tobias Raabe            </a>
             <ol class="breadcrumb">
                 <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
                 <li><a href="https://tobiasraabe.github.io/category/blog.html" title="blog">blog</a></li>
-                <li class="active">Beginners Guide to ovmm Part IV - User</li>
+                <li class="active">Facilitate reproducible research with cookiecutter-research-template</li>
             </ol>
     <section id="content">
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://tobiasraabe.github.io/drafts/ovmm_user.html"
+                    <a href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html"
                        rel="bookmark"
-                       title="Permalink to Beginners Guide to ovmm Part IV - User">
-                        Beginners Guide to ovmm Part IV - User
+                       title="Permalink to Facilitate reproducible research with cookiecutter-research-template">
+                        Facilitate reproducible research with cookiecutter-research-template
                     </a>
                 </h1>
             </header>
@@ -113,7 +115,7 @@ Tobias Raabe            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2017-10-22T00:00:00+02:00"> Sun 22 October 2017</time>
+        <i class="fa fa-calendar"></i><time datetime="2018-08-27T00:00:00+02:00"> Mon 27 August 2018</time>
     </span>
 
 
@@ -123,20 +125,113 @@ Tobias Raabe            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://tobiasraabe.github.io/tag/ovmm.html">ovmm</a>
+	<a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
         /
-	<a href="https://tobiasraabe.github.io/tag/otree.html">oTree</a>
+	<a href="https://tobiasraabe.github.io/tag/reproducibility.html">Reproducibility</a>
+        /
+	<a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
+        /
+	<a href="https://tobiasraabe.github.io/tag/cookiecutter.html">cookiecutter</a>
     
         <span class="label label-default">Read in</span>
-        1 minutes
+        3 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>asdsad aksdlkajdslkj</p>
+                <p>In one of my university courses I was introduced to a <a href="https://github.com/hmgaudecker/econ-project-templates">Waf framework for
+reproducible research by Hans-Martin von
+Gaudecker</a> which is
+amazingly useful to manage your research project.</p>
+<p>The basic idea is that a project is structured as a DAG, a directed-acyclic
+graph. A DAG is a graph with a finite amount of node and edges where the edges
+have a specific direction leading from input to output files. Furthermore,
+starting at node <span class="math">\(\nu\)</span> and following the directed edges, it is not possible to
+find a way back to <span class="math">\(\nu\)</span>. Here is the DAG for the sample project:</p>
+<p align="center">
+<b>DAG of sample project</b><br/>
+<img src="https://tobiasraabe.github.io/images/dag.png"/>
+</p>
+<p>As you can see everything starts off at <code>get_simulation_draws.py</code> which
+serves as the source of <code>initial_locations.csv</code> which is the input of ....
+You get it.</p>
+<p>You get the sample project by installing <code>cookiecutter</code> first with</p>
+<div class="highlight"><pre><span></span>$ pip install -U cookiecutter
+</pre></div>
+<p>Then, go to the directory which should contain the folder with the project and
+type</p>
+<div class="highlight"><pre><span></span>$ cookiecutter https://github.com/tobiasraabe/cookiecutter-research-template.git
+</pre></div>
+<p>Answer the following prompts so the project will be customized to your needs.</p>
+<p>At the end, go into the project folder and setup the <code>conda</code> environment.</p>
+<div class="highlight"><pre><span></span>$ conda env create -n &lt;project-name&gt; -f environment.yml
+</pre></div>
+<p>At last, run the following command to make sure that the sample project works.</p>
+<div class="highlight"><pre><span></span>$ python waf.py distclean configure build
+</pre></div>
+<p>For more information on Waf read <a href="http://hmgaudecker.github.io/econ-project-templates/">Gaudecker's
+documentation</a> and my
+<a href="https://github.com/tobiasraabe/cookiecutter-research-template/
+blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/WAF.rst">Waf Tips &amp;
+Tricks</a>.</p>
+<p>To use all features of the template check out the
+<a href="https://cookiecutter-research-template.readthedocs.io/
+en/latest/index.html">documentation</a>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div>
             <!-- /.entry-content -->
-<section class="well" id="related-posts">
-    <h4>Part <built-in method index of str object at 0x000001E0B3388F90> of </h4>
-</section>
         </article>
     </section>
 
