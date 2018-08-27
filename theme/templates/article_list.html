@@ -8,7 +8,15 @@
                 <li class="groupby">{{ list_[0].date | strftime('%b') }}, {{ year }}</li>
                 {% for article in list_ %}
                     <li class="article-item">
-                        <span class="article">{{ article.date | strftime('%b %d, %Y') }}</span><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                        <span class="article">{{ article.date | strftime('%b %d, %Y') }}</span><a href="{{ SITEURL }}/{{ article.url }}"><b>{{ article.title }}</b></a>
+                    </li>
+                    <li class="article-summary">
+                        <div class="article-summary">
+                        {% if article.cover %}
+                            <p align="center"><img src="{{ article.cover }}" style="width: auto; max-height: 264px;"></p>
+                        {% endif %}
+                        <span class="article-summary">{{ article.summary }}</span>
+                        </div>
                     </li>
                 {% endfor %}
             {% endfor %}

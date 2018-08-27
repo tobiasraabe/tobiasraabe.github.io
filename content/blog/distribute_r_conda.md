@@ -1,9 +1,16 @@
 Date: 2018-03-21
 Title: How to compile and distribute an R package with conda
-Tags: Conda, Anaconda, R, conda-build, MRO
+Tags: conda, Anaconda, R, conda-build, MRO
 
-TL;DR: This article shows how to compile and distribute R packages on
-anaconda.org to be used in your data science projects.
+This article shows how to compile and distribute R packages on anaconda.org to
+be used in your data science projects. This is useful as R has not really a
+neat dependency pinning tool like Python with ``requirements.txt`` or
+``environment.yml`` with ``conda`` and R is shipped with ``conda`` anyway. But,
+if you want to use the MKL accelerated Microsoft R Open instead of plain R,
+there are some packages which are currently not provided in ``conda``'s default
+channels or ``conda-forge``. Here is how to lift this obstacle.
+
+<!-- PELICAN_END_SUMMARY -->
 
 ### Introduction to Anaconda and R
 
@@ -31,9 +38,9 @@ Activate the environment with
 $ activate project
 ```
 
-> Hint: Since my os is running on Windows, I prefer to use Powershell.
-  Unfortunately, activating and deactivating your environment usually fails.
-  Try out [pscondaenvs][2] which installs corrected Powershell scripts.
+> Hint: Since my os is Windows, I prefer to use Powershell. Unfortunately,
+> activating and deactivating your environment usually fails. Try out
+> [pscondaenvs][2] which installs corrected Powershell scripts.
 
 If we also need an R distribution for our project, we have to make the decision
 between to [R](https://www.r-project.org/) from R-Project and
@@ -73,8 +80,8 @@ $ conda update r-essentials
 ```
 
 If your desired package is not available in ``r-essentials``, you can use the
-search on anaconda.org to find a channel which offers your package. But what if
-your package is not available?
+search on https://anaconda.org to find a channel which offers your package. But
+what if your package is not available?
 
 ### Building and Distributing an R package
 
