@@ -101,7 +101,7 @@ IGNORE_FILES = ['.ipynb_checkpoints', '*.bib.bak', '*.bib.sav']
 # IPYNB_FIX_CSS = True
 IPYNB_SKIP_CSS = True
 MARKUP = ('md',)
-LIQUID_CONFIGS = (("IPYNB_EXPORT_TEMPLATE", "notebook.tpl", ""), )
+LIQUID_CONFIGS = (("IPYNB_EXPORT_TEMPLATE", "notebook.tpl", ""),)
 
 # series
 SERIES_TEXT = 'Part %(index)s of %(name)s'

@@ -2,6 +2,7 @@ Title: The Tragedy of Titanic
 Date: 2017-10-22
 Tags: Data Analysis, Machine Learning
 Cover: images/the-tragedy-of-titanic-placebo-test.png
+Notebook: true
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb)
 
