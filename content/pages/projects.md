@@ -4,7 +4,7 @@ toc: true
 
 ### Research
 
-#### Identification Strategies for Software Patents
+#### Identification Strategies for Software Patents (2015 - 2018)
 
 This project deals with the identification of software patents and combines
 multiple approaches from simple algorithms (see [@Bessen2007]) to novel machine
@@ -16,10 +16,11 @@ textual data.
 
 - [Paper](https://github.com/tobiasraabe/software_patents/paper.pdf)
 - [Project on Github](https://github.com/tobiasraabe/software_patents)
+- [Blog Post]({filename}/blog/software_patents.md)
 
 <br>
 
-#### Malleability of Locus of Control
+#### Malleability of Locus of Control (2017)
 
 This research project is concerned with a person's Locus of Control which is
 the degree to which people believe that they have control over the outcome of
@@ -37,7 +38,7 @@ individual whereas internal means the opposite.
 
 <br>
 
-#### Cryptocurrency Market Prediction
+#### Cryptocurrency Market Prediction (2017)
 
 The project is about market prediction in cryptocurrency markets like Potcoin
 and was developed during a programing class for economists which focused on the
@@ -50,11 +51,12 @@ for software design.
 
 ### Software Engineering
 
-#### oTree Virtual Machine Manager
+#### oTree Virtual Machine Manager (2017 - 2018)
 
 This tool is designed to handle many administrative tasks on a server with
-multiple running oTree instances. In addition to that, multiple virtual machine
-images are provided based on the hosts performance and administrator's needs.
+multiple running oTree instances. In addition to that, a collection of virtual
+machine images are provided based on the host's performance and administrator's
+needs.
 
 - [Project on Github](https://github.com/tobiasraabe/otree_virtual_machine_manager)
 - [Documentation](https://otree-virtual-machine-manager.readthedocs.io)

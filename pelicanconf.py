@@ -20,7 +20,7 @@ ARTICLE_URL = 'blog/{slug}.html'
 ARTICLE_SAVE_AS = 'blog/{slug}.html'
 ARCHIVES_SAVE_AS = 'archives.html'
 
-MENUITEMS = (('Curriculum Vitae', '../static/cv.pdf'),)
+MENUITEMS = (('Curriculum Vitae', '../pdfs/cv.pdf'),)
 
 DIRECT_TEMPLATES = ['index', 'categories', 'tags', 'archives', 'search']
 
@@ -84,7 +84,7 @@ SHOW_ARTICLE_AUTHOR = False  # Website with one author
 SHOW_ARTICLE_CATEGORY = True
 SHOW_DATE_MODIFIED = True
 
-STATIC_PATHS = ['static', 'extra']
+STATIC_PATHS = ['extra', 'images', 'pdfs']
 
 EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/css/custom.css'},
@@ -93,13 +93,15 @@ EXTRA_PATH_METADATA = {
 
 # summary and clean_summary
 SUMMARY_MAX_LENGTH = 150
-SUMMARY_USE_FIRST_PARAGRAPH = True
+SUMMARY_USE_FIRST_PARAGRAPH = False
 CLEAN_SUMMARY_MAXIMUM = 1
 
 # pelican-ipynb
 IGNORE_FILES = ['.ipynb_checkpoints', '*.bib.bak', '*.bib.sav']
+# IPYNB_FIX_CSS = True
 IPYNB_SKIP_CSS = True
 MARKUP = ('md',)
+LIQUID_CONFIGS = (("IPYNB_EXPORT_TEMPLATE", "notebook.tpl", ""), )
 
 # series
 SERIES_TEXT = 'Part %(index)s of %(name)s'

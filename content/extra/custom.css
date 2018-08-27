@@ -37,25 +37,13 @@ li.article-item {
 li.article-summary {
     display: flex;
     list-style: none;
+    padding-top: 0.5em;
     padding-left: 2.5em;
 }
 span.article {
     display: block;
     min-width: 100px;
     color: grey;
-}
-
-/* Make tables look more beautiful. */
-/*.table {
-    width: inherit;
-    max-width: 100%;
-    margin-bottom: 21px;
-    padding: 6px 13px;
-}*/
-
-/* Removes In[ ] and Out[ ] from rendered Jupyter notebooks. */
-div.prompt {
-    display: none;
 }
 
 /* CSS for tag_cloud plugin */

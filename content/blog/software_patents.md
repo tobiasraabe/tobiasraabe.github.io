@@ -1,6 +1,7 @@
 Date: 2018-08-21
 Title: Identifying Software Patents
 Tags: Machine Learning, Deep Learning, Text Data
+Cover: images/fig-patents-distribution-vs.png
 
 While finishing my bachelor in 2015, I wrote my thesis about identifying
 software patents. This is useful and necessary in two ways. First, there is no
@@ -17,6 +18,8 @@ approximately 90GB of disk space whereas the data for replicating the previous
 results based on a simple algorithm is currently less than 1GB.
 
 Now, let us see what has been done so far.
+
+<!-- PELICAN_END_SUMMARY -->
 
 ---
 
@@ -82,21 +85,21 @@ distributions of patents and software versus non-software patents.
 
 <p align="center">
     <b>Absolute Number of Utility Patents</b><br>
-    <img src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution.png"
+    <img src="{filename}/images/fig-patents-distribution.png"
     width="600" height="400">
 </p>
 
 
 <p align="center">
     <b>Absolute Number of Software vs. Non-Software Patents</b><br>
-    <img src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution-vs.png"
+    <img src="{filename}/images/fig-patents-distribution-vs.png"
     width="600" height="400">
 </p>
 
 
 <p align="center">
     <b>Relative Number of Software vs. Non-Software Patents</b><br>
-    <img src="https://raw.github.com/tobiasraabe/software_patents/master/_static/fig-patents-distribution-vs-shares.png"
+    <img src="{filename}/images/fig-patents-distribution-vs-shares.png"
     width="600" height="400">
 </p>
 
