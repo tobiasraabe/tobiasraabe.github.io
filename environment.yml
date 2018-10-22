@@ -1,8 +1,9 @@
 name: website
 channels:
   - defaults
+  - conda-forge
 dependencies:
-  - pip=10.0.1
+  - pip=18.1
   - python=3.6.6
   - pip:
     - pelican==3.7.1
