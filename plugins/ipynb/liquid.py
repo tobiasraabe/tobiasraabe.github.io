@@ -42,7 +42,7 @@ def notebook(preprocessor, tag, markup):
     ignore_css = preprocessor.configs.getConfig('IPYNB_SKIP_CSS', False)
     content = parse_css(content, info, fix_css=fix_css, ignore_css=ignore_css)
 
-    content = preprocessor.configs.htmlStash.store(content, safe=True)
+    content = preprocessor.configs.htmlStash.store(content)
     return content
 
 
