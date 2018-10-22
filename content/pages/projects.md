@@ -15,6 +15,18 @@ engineering to help newcomers to write better Python.
 
 <br>
 
+### Time Series (2018)
+
+This project comprises the content of a time series analysis course. There is a
+theoretical section and problems sets with implementations in Julia. If you
+want to give it a try yourself, you can follow the Binder badges where you can
+code on-line in your browser without installing Julia on your system.
+
+- [Project on Github](https://github.com/tobiasraabe/time_series)
+- [Project Page](https://tobiasraabe.github.com/time_series)
+
+<br>
+
 ### Identification Strategies for Software Patents (2015 - 2018)
 
 This project deals with the identification of software patents and combines
