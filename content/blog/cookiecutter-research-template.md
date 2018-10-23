@@ -2,7 +2,7 @@ Title: Facilitate reproducible research with cookiecutter-research-template
 Slug: cookiecutter-research-template
 Date: 2018-08-27
 Tags: Research, Reproducibility, Waf, cookiecutter
-Cover: images/dag.png
+Cover: images/fig-dag.png
 Summary: This DAG is produced by a sample project for reproducible research
          from <a href="https://github.com/hmgaudecker/econ-project-templates">
          https://github.com/hmgaudecker/econ-project-templates</a>. I extended
@@ -22,7 +22,7 @@ find a way back to $\nu$. Here is the DAG for the sample project:
 
 <p align="center">
     <b>DAG of sample project</b><br>
-    <img src="{filename}/images/dag.png">
+    <img src="{filename}/images/fig-dag.png">
 </p>
 
 As you can see everything starts off at ``get_simulation_draws.py`` which
