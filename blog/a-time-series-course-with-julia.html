@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Python - Tobias Raabe</title>
+    <title>A time series course with Julia - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,16 +10,22 @@
 
     <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
 
+<link rel="canonical" href="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html">
 
-    <meta name="author" content="Tobias Raabe" />
-    <meta name="keywords" content="Python" />
+        <meta name="author" content="Tobias Raabe" />
+        <meta name="keywords" content="Time Series,Julia" />
+        <meta name="description" content="Last semester, I had a time series course where we implemented some models like the Hodrick-Prescott filter or structural vector autoregressive processes in Julia. The whole thing is available on-line with the notebooks running on Binder which allows you to run the programming examples in your browser. So, if you plan to use Julia yourself and want to play around a little bit, that is a place to start. As I had not used Julia before and only heard about how fast it is, that it is statically typed, and so on, I was very interested in the beginning, but that changed quickly. The main cause of frustration was that the Julia developers released three versions during the time of the course. Version 0.6.4 was released on 9 July 2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All versions changed …" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Tobias Raabe" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Tobias Raabe"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io"/>
-        <meta property="og:description" content="Tobias Raabe"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="A time series course with Julia"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html"/>
+        <meta property="og:description" content="Last semester, I had a time series course where we implemented some models like the Hodrick-Prescott filter or structural vector autoregressive processes in Julia. The whole thing is available on-line with the notebooks running on Binder which allows you to run the programming examples in your browser. So, if you plan to use Julia yourself and want to play around a little bit, that is a place to start. As I had not used Julia before and only heard about how fast it is, that it is statically typed, and so on, I was very interested in the beginning, but that changed quickly. The main cause of frustration was that the Julia developers released three versions during the time of the course. Version 0.6.4 was released on 9 July 2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All versions changed …"/>
+        <meta property="article:published_time" content="2018-10-17" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="Time Series" />
+            <meta property="article:tag" content="Julia" />
+            <meta property="article:author" content="Tobias Raabe" />
 
 
 
@@ -37,6 +43,8 @@
 
 
 
+        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Tobias Raabe blog ATOM Feed"/>
 
 </head>
 <body>
@@ -83,30 +91,87 @@ Tobias Raabe            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <ol class="breadcrumb">
-        <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-        <li><a href="https://tobiasraabe.github.io/" title="Tags">Tags</a></li>
-        <li class="active">Python</li>
-    </ol>
-    <h2>Latest Posts:</h2>
-        <ul>
-                <li class="groupby">Jun, 2018</li>
-                    <li class="article-item">
-                        <span class="article">Jun 11, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"><b>How to download files with Python</b></a>
-                    </li>
-                    <li class="article-summary">
-                        <div class="article-summary">
-                        <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>This is a short script in python to download files, resume downloads and to
-validate downloads with hash values. For me it was necessary to write a program
-like this so I can easily pass my projects to others without writing
-instructions in detail which files they should download and where to place
-them. You can find it at the end of the article. An interactive version of the
-notebook is available by clicking on the binder badge above.</p>
-</span>
-                        </div>
-                    </li>
-        </ul>
+            <ol class="breadcrumb">
+                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="blog">blog</a></li>
+                <li class="active">A time series course with Julia</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html"
+                       rel="bookmark"
+                       title="Permalink to A time series course with Julia">
+                        A time series course with Julia
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-10-17T00:00:00+02:00"> Wed 17 October 2018</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="https://tobiasraabe.github.io/category/blog.html">blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
+        /
+	<a href="https://tobiasraabe.github.io/tag/julia.html">Julia</a>
+    
+        <span class="label label-default">Read in</span>
+        2 minutes
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Last semester, I had a time series course where we implemented some models like
+the Hodrick-Prescott filter or structural vector autoregressive processes in
+Julia. The whole thing is available
+<a href="https://tobiasraabe.github.io/time_series">on-line</a> with the notebooks running
+on Binder which allows you to run the programming examples in your browser. So,
+if you plan to use Julia yourself and want to play around a little bit, that is
+a place to start.</p>
+<p>As I had not used Julia before and only heard about how fast it is, that it is
+statically typed, and so on, I was very interested in the beginning, but that
+changed quickly.</p>
+<p>The main cause of frustration was that the Julia developers released three
+versions during the time of the course. Version 0.6.4 was released on 9 July
+2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All
+versions changed main parts of the API and probably the last change made most
+standard modules importable. As much as I appreciate the effort of making a
+language more modular and optimizing the structure, the changes probably broke
+all code examples on the web which totally clashes with my way of learning a
+new language by copying and pasting parts together. At least, one can assume
+that the changes will be minor in the future after the release of 1.0.0.</p>
+<p>Another disadvantage is that Julia cannot be shipped with conda on Windows
+which is still my platform of choice, but maybe I am the one to blame here :).</p>
+<p>Apart from that, I do not really much about Julia and my current critique is
+more about convenience which definitely comes with a more mature languages.
+But comparing a 27-year-old to a 6-year-old is pretty unfair.</p>
+<p>The main selling points of Julia are speed and its mixture of dynamic and
+static typing. Regarding the first item, Python can be brought to comparable
+speed by using CPython or Numba, but all the benchmarks always depend on
+whether you hold the implementation over all languages constant or whether you
+optimized the problem for each language and whether there is a huge difference
+between a simple program and large implementation. So, I am not very sure what
+the final answer is here. Furthermore, all projects are heavily under
+development and benchmarks are quickly outdated. Regarding static typing, I
+think it would make some some data analyses more consistent and currently there
+is no real match in Python.</p>
+<p>Maybe I will use Julia in the future, but currently I am too comfortable with
+Python and do not have a real use case where I am forced to switch to something
+else. Path dependency is a bitch.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
         </div>
         <div class="col-sm-3" id="sidebar">

@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Tobias Raabe - blog</title><link href="https://tobiasraabe.github.io/" rel="alternate"></link><link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tobiasraabe.github.io/</id><updated>2018-08-27T00:00:00+02:00</updated><entry><title>Facilitate reproducible research with cookiecutter-research-template</title><link href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html" rel="alternate"></link><published>2018-08-27T00:00:00+02:00</published><updated>2018-08-27T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-08-27:/blog/cookiecutter-research-template.html</id><summary type="html">&lt;p&gt;This DAG is produced by a sample project for reproducible research
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tobias Raabe - blog</title><link href="https://tobiasraabe.github.io/" rel="alternate"></link><link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tobiasraabe.github.io/</id><updated>2018-10-17T00:00:00+02:00</updated><entry><title>A time series course with Julia</title><link href="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html" rel="alternate"></link><published>2018-10-17T00:00:00+02:00</published><updated>2018-10-17T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-10-17:/blog/a-time-series-course-with-julia.html</id><summary type="html">&lt;p&gt;Last semester, I had a time series course where we implemented some models like
+the Hodrick-Prescott filter or structural vector autoregressive processes in
+Julia. The whole thing is available
+&lt;a href="https://tobiasraabe.github.io/time_series"&gt;on-line&lt;/a&gt; with the notebooks running
+on Binder which allows you to run the programming examples in your browser. So,
+if you plan to use Julia yourself and want to play around a little bit, that is
+a place to start.&lt;/p&gt;
+&lt;p&gt;As I had not used Julia before and only heard about how fast it is, that it is
+statically typed, and so on, I was very interested in the beginning, but that
+changed quickly.&lt;/p&gt;
+&lt;p&gt;The main cause of frustration was that the Julia developers released three
+versions during the time of the course. Version 0.6.4 was released on 9 July
+2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All
+versions changed …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last semester, I had a time series course where we implemented some models like
+the Hodrick-Prescott filter or structural vector autoregressive processes in
+Julia. The whole thing is available
+&lt;a href="https://tobiasraabe.github.io/time_series"&gt;on-line&lt;/a&gt; with the notebooks running
+on Binder which allows you to run the programming examples in your browser. So,
+if you plan to use Julia yourself and want to play around a little bit, that is
+a place to start.&lt;/p&gt;
+&lt;p&gt;As I had not used Julia before and only heard about how fast it is, that it is
+statically typed, and so on, I was very interested in the beginning, but that
+changed quickly.&lt;/p&gt;
+&lt;p&gt;The main cause of frustration was that the Julia developers released three
+versions during the time of the course. Version 0.6.4 was released on 9 July
+2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All
+versions changed main parts of the API and probably the last change made most
+standard modules importable. As much as I appreciate the effort of making a
+language more modular and optimizing the structure, the changes probably broke
+all code examples on the web which totally clashes with my way of learning a
+new language by copying and pasting parts together. At least, one can assume
+that the changes will be minor in the future after the release of 1.0.0.&lt;/p&gt;
+&lt;p&gt;Another disadvantage is that Julia cannot be shipped with conda on Windows
+which is still my platform of choice, but maybe I am the one to blame here :).&lt;/p&gt;
+&lt;p&gt;Apart from that, I do not really much about Julia and my current critique is
+more about convenience which definitely comes with a more mature languages.
+But comparing a 27-year-old to a 6-year-old is pretty unfair.&lt;/p&gt;
+&lt;p&gt;The main selling points of Julia are speed and its mixture of dynamic and
+static typing. Regarding the first item, Python can be brought to comparable
+speed by using CPython or Numba, but all the benchmarks always depend on
+whether you hold the implementation over all languages constant or whether you
+optimized the problem for each language and whether there is a huge difference
+between a simple program and large implementation. So, I am not very sure what
+the final answer is here. Furthermore, all projects are heavily under
+development and benchmarks are quickly outdated. Regarding static typing, I
+think it would make some some data analyses more consistent and currently there
+is no real match in Python.&lt;/p&gt;
+&lt;p&gt;Maybe I will use Julia in the future, but currently I am too comfortable with
+Python and do not have a real use case where I am forced to switch to something
+else. Path dependency is a bitch.&lt;/p&gt;</content><category term="Time Series"></category><category term="Julia"></category></entry><entry><title>Facilitate reproducible research with cookiecutter-research-template</title><link href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html" rel="alternate"></link><published>2018-08-27T00:00:00+02:00</published><updated>2018-08-27T00:00:00+02:00</updated><author><name>Tobias Raabe</name></author><id>tag:tobiasraabe.github.io,2018-08-27:/blog/cookiecutter-research-template.html</id><summary type="html">&lt;p&gt;This DAG is produced by a sample project for reproducible research
 from &lt;a href="https://github.com/hmgaudecker/econ-project-templates"&gt;
 https://github.com/hmgaudecker/econ-project-templates&lt;/a&gt;. I extended
 this template with the templating engine &lt;code&gt;cookiecutter&lt;/code&gt; and various
@@ -14,7 +63,7 @@ starting at node &lt;span class="math"&gt;\(\nu\)&lt;/span&gt; and following the
 find a way back to &lt;span class="math"&gt;\(\nu\)&lt;/span&gt;. Here is the DAG for the sample project:&lt;/p&gt;
 &lt;p align="center"&gt;
 &lt;b&gt;DAG of sample project&lt;/b&gt;&lt;br/&gt;
-&lt;img src="https://tobiasraabe.github.io/images/dag.png"/&gt;
+&lt;img src="https://tobiasraabe.github.io/images/fig-dag.png"/&gt;
 &lt;/p&gt;
 &lt;p&gt;As you can see everything starts off at &lt;code&gt;get_simulation_draws.py&lt;/code&gt; which
 serves as the source of &lt;code&gt;initial_locations.csv&lt;/code&gt; which is the input of ....
@@ -107,7 +156,8 @@ doing my first steps into the world of machine learning.&lt;/p&gt;
 is also a script to download different kinds of data sets. The raw data uses
 approximately 90GB of disk space whereas the data for replicating the previous
 results based on a simple algorithm is currently less than 1GB.&lt;/p&gt;
-&lt;p&gt;Now, let us …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While finishing my bachelor in 2015, I wrote my thesis about identifying
+&lt;p&gt;Now, let us see what has been done so far.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;While finishing my bachelor in 2015, I wrote my thesis about identifying
 software patents. This is useful and necessary in two ways. First, there is no
 system by which patents are grouped into topics like software, automation,
 etc.. But this is what researchers are ultimately interested in. The main
@@ -120,7 +170,7 @@ is also a script to download different kinds of data sets. The raw data uses
 approximately 90GB of disk space whereas the data for replicating the previous
 results based on a simple algorithm is currently less than 1GB.&lt;/p&gt;
 &lt;p&gt;Now, let us see what has been done so far.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;hr/&gt;
 &lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;This project deals with the identification of software patents and combines
@@ -208,76 +258,137 @@ like this so I can easily pass my projects to others without writing
 instructions in detail which files they should download and where to place
 them. You can find it at the end of the article. An interactive version of the
 notebook is available by clicking on the binder badge above.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-&lt;style type="text/css"&gt;/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font colors for translated ANSI colors. */
-.ansibold {
-  font-weight: bold;
-}
-/* use dark versions for foreground, to improve visibility */
-.ansiblack {
-  color: black;
-}
-.ansired {
-  color: darkred;
-}
-.ansigreen {
-  color: darkgreen;
-}
-.ansiyellow {
-  color: #c4a000;
-}
-.ansiblue {
-  color: darkblue;
-}
-.ansipurple {
-  color: darkviolet;
-}
-.ansicyan {
-  color: steelblue;
-}
-.ansigray {
-  color: gray;
-}
-/* and light for background, for the same reason */
-.ansibgblack {
-  background-color: black;
-}
-.ansibgred {
-  background-color: red;
-}
-.ansibggreen {
-  background-color: green;
-}
-.ansibgyellow {
-  background-color: yellow;
-}
-.ansibgblue {
-  background-color: blue;
-}
-.ansibgpurple {
-  background-color: magenta;
-}
-.ansibgcyan …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This is a short script in python to download files, resume downloads and to
 validate downloads with hash values. For me it was necessary to write a program
 like this so I can easily pass my projects to others without writing
 instructions in detail which files they should download and where to place
 them. You can find it at the end of the article. An interactive version of the
 notebook is available by clicking on the binder badge above.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -356,12 +467,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -374,27 +493,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -590,7 +721,9 @@ div.input_area &gt; div.highlight &gt; pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -600,11 +733,24 @@ div.input_area &gt; div.highlight &gt; pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -852,6 +998,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -890,7 +1039,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -1012,6 +1161,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -1028,16 +1181,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1053,6 +1214,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1103,8 +1269,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1259,8 +1432,7 @@ div.text_cell_render {
 
 &lt;/style&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In one of my recent projects on natural language processing and patents,
 I tried to program a little script which downloads files needed for the
@@ -1291,8 +1463,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In the next step, we will download a file and store it on the disk. The file size is 19kb, so you are save to download it. If you have doubts about the file, insert any other link which can be a picture or something else.&lt;/p&gt;
 &lt;/div&gt;
@@ -1315,8 +1486,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Note that &lt;code&gt;requests.get&lt;/code&gt; will download the file immediately and store it in memory. For larger files, this does not work as they might not fit in memory. Therefore, we use the &lt;code&gt;stream&lt;/code&gt; keyword to receive the file in chunks and store them on disk. The next file is about 3MB big. Use a different URL if you feel more comfortable with that.&lt;/p&gt;
 &lt;/div&gt;
@@ -1340,8 +1510,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Resuming-downloads"&gt;Resuming downloads&lt;a class="anchor-link" href="#Resuming-downloads"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;If you download large files, chances are that your download is interrupted. For that, we need a way to resume the download at the last byte position. We can do that by sending an Range-request to the server and specifying the range of bytes, we want to receive.&lt;/p&gt;
 &lt;/div&gt;
@@ -1365,8 +1534,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We look at the file size whether we have been able to download the file partially.&lt;/p&gt;
 &lt;/div&gt;
@@ -1399,8 +1567,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Now, we resume the download at the position of the last byte. We also have to change the mode from &lt;code&gt;open()&lt;/code&gt; to &lt;code&gt;'ab'&lt;/code&gt; as we are appending new content and do not want to overwrite existing content.&lt;/p&gt;
 &lt;/div&gt;
@@ -1424,16 +1591,14 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The crucial aspect of this code is that we correctly define the following range of bytes for the following downloads. It is important to know that the boundaries of the Range header are inclusive so that bytes in positions 0 and 2000000 are downloaded. Therefore, the file size is 2000001 and we can plug in the value to correctly resume the download.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Validating-downloads"&gt;Validating downloads&lt;a class="anchor-link" href="#Validating-downloads"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;At last, we want to make sure that the download of the file worked as expected. To assert whether two files are identical, one of the easiest solutions is to compare hashes. A hash function projects any kind of data onto data with fixed-length. The resulting object is called hash and should be different for two different objects but identical for the same. In this example, we use SHA256 to validate the two files.&lt;/p&gt;
 &lt;/div&gt;
@@ -1500,16 +1665,14 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Both hashes match and we have correctly resumed the download :).&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Visualizing-download-progress"&gt;Visualizing download progress&lt;a class="anchor-link" href="#Visualizing-download-progress"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;There are multiple options to print pretty progress bars in python to the command line interface (&lt;a href="https://github.com/WoLpH/python-progressbar"&gt;&lt;code&gt;progressbar2&lt;/code&gt;&lt;/a&gt; e.g.), but I used &lt;code&gt;tqdm&lt;/code&gt; for unknown reason.&lt;/p&gt;
 &lt;p&gt;To display the progress of the download, we have to know the total file size which we can easily request without downloading the whole file. Use &lt;code&gt;requests.head()&lt;/code&gt; instead of &lt;code&gt;requests.get()&lt;/code&gt;.&lt;/p&gt;
@@ -1545,8 +1708,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Note that content length returns a string and not a number.&lt;/p&gt;
 &lt;/div&gt;
@@ -1589,8 +1751,7 @@ connections to web content.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Complete-script"&gt;Complete script&lt;a class="anchor-link" href="#Complete-script"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;At last, here is the complete script.&lt;/p&gt;
 &lt;script src="https://gist.github.com/tobiasraabe/58adee67de619ce621464c1a6511d7d9.js"&gt;&lt;/script&gt;
@@ -1631,20 +1792,14 @@ neat dependency pinning tool like Python with &lt;code&gt;requirements.txt&lt;/c
 if you want to use the MKL accelerated Microsoft R Open instead of plain R,
 there are some packages which are currently not provided in &lt;code&gt;conda&lt;/code&gt;'s default
 channels or &lt;code&gt;conda-forge&lt;/code&gt;. Here is how to lift this obstacle.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-&lt;h3 id="introduction-to-anaconda-and-r"&gt;Introduction to Anaconda and R&lt;/h3&gt;
-&lt;p&gt;I like to manage my research projects with &lt;a href="https://conda.io/docs/"&gt;conda&lt;/a&gt; which is the package
-manager for &lt;a href="https://www.anaconda.com/distribution/"&gt;Anaconda&lt;/a&gt;, a popular Python distribution for data science. For
-one of my recent projects I also needed to install R and I was lucky to find
-out that R is also available with &lt;code&gt;conda&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;First, you create your normal Python …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article shows how to compile and distribute R packages on anaconda.org to
+</summary><content type="html">&lt;p&gt;This article shows how to compile and distribute R packages on anaconda.org to
 be used in your data science projects. This is useful as R has not really a
 neat dependency pinning tool like Python with &lt;code&gt;requirements.txt&lt;/code&gt; or
 &lt;code&gt;environment.yml&lt;/code&gt; with &lt;code&gt;conda&lt;/code&gt; and R is shipped with &lt;code&gt;conda&lt;/code&gt; anyway. But,
 if you want to use the MKL accelerated Microsoft R Open instead of plain R,
 there are some packages which are currently not provided in &lt;code&gt;conda&lt;/code&gt;'s default
 channels or &lt;code&gt;conda-forge&lt;/code&gt;. Here is how to lift this obstacle.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;h3 id="introduction-to-anaconda-and-r"&gt;Introduction to Anaconda and R&lt;/h3&gt;
 &lt;p&gt;I like to manage my research projects with &lt;a href="https://conda.io/docs/"&gt;conda&lt;/a&gt; which is the package
 manager for &lt;a href="https://www.anaconda.com/distribution/"&gt;Anaconda&lt;/a&gt;, a popular Python distribution for data science. For
@@ -1779,97 +1934,134 @@ there is a lot of room to grow :).&lt;/p&gt;
 &lt;p&gt;Analysis of survival rates on the Titanic with a placebo test for whether
 traveling in couples increased the likelihood of survival. An interactive
 version of the notebook is available by clicking on the binder badge above.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-&lt;style type="text/css"&gt;/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font colors for translated ANSI colors. */
-.ansibold {
-  font-weight: bold;
-}
-/* use dark versions for foreground, to improve visibility */
-.ansiblack {
-  color: black;
-}
-.ansired {
-  color: darkred;
-}
-.ansigreen {
-  color: darkgreen;
-}
-.ansiyellow {
-  color: #c4a000;
-}
-.ansiblue {
-  color: darkblue;
-}
-.ansipurple {
-  color: darkviolet;
-}
-.ansicyan {
-  color: steelblue;
-}
-.ansigray {
-  color: gray;
-}
-/* and light for background, for the same reason */
-.ansibgblack {
-  background-color: black;
-}
-.ansibgred {
-  background-color: red;
-}
-.ansibggreen {
-  background-color: green;
-}
-.ansibgyellow {
-  background-color: yellow;
-}
-.ansibgblue {
-  background-color: blue;
-}
-.ansibgpurple {
-  background-color: magenta;
-}
-.ansibgcyan {
-  background-color: cyan;
-}
-.ansibggray {
-  background-color: gray;
-}
-div.cell {
-  /* Old browsers */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-align: stretch;
-  display: -moz-box;
-  -moz-box-orient: vertical;
-  -moz-box-align: stretch;
-  display: box;
-  box-orient: vertical;
-  box-align: stretch;
-  /* Modern browsers */
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  border-radius: 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"/&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Analysis of survival rates on the Titanic with a placebo test for whether
 traveling in couples increased the likelihood of survival. An interactive
 version of the notebook is available by clicking on the binder badge above.&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -1948,12 +2140,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -1966,27 +2166,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -2182,7 +2394,9 @@ div.input_area &gt; div.highlight &gt; pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -2192,11 +2406,24 @@ div.input_area &gt; div.highlight &gt; pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -2444,6 +2671,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -2482,7 +2712,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -2604,6 +2834,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -2620,16 +2854,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -2645,6 +2887,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -2695,8 +2942,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -2851,8 +3105,7 @@ div.text_cell_render {
 
 &lt;/style&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="#Introduction"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This Jupyter notebook uses the &lt;a href="https://www.kaggle.com/c/titanic"&gt;Titanic dataset from Kaggle&lt;/a&gt; for the prediction of survival rates among passengers on the Titanic.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/RMS_Titanic"&gt;RMS Titanic&lt;/a&gt; was a British passenger liner that sank in the North Atlantic Ocean in the early morning of 15 April 1912, after colliding with an iceberg during her maiden voyage from Southampton to New York City. Of the 2,224 passengers and crew aboard, more than 1,500 died in the sinking, making it one of the deadliest commercial peacetime maritime disasters in modern history. The largest ship afloat at the time it entered service, the RMS Titanic was the second of three Olympic class ocean liners operated by the White Star Line, and was built by the Harland and Wolff shipyard in Belfast. Thomas Andrews, her architect, died in the disaster.&lt;/p&gt;
@@ -2932,16 +3185,14 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Descriptive-Analysis"&gt;Descriptive Analysis&lt;a class="anchor-link" href="#Descriptive-Analysis"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;For exploration the whole dataset is used. It consists of 1309 observations and 12 variables. The variables are:&lt;/p&gt;
 &lt;table&gt;
@@ -3044,24 +3295,21 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="PassengerId,-Ticket,-Cabin"&gt;PassengerId, Ticket, Cabin&lt;a class="anchor-link" href="#PassengerId,-Ticket,-Cabin"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;These variables are not important for the analysis.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Passenger-Class"&gt;Passenger Class&lt;a class="anchor-link" href="#Passenger-Class"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -3093,8 +3341,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Sex"&gt;Sex&lt;a class="anchor-link" href="#Sex"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -3126,8 +3373,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Age"&gt;Age&lt;a class="anchor-link" href="#Age"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -3225,8 +3471,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Fare"&gt;Fare&lt;a class="anchor-link" href="#Fare"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -3261,24 +3506,21 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Missing-Computation-and-Feature-Engineering_1"&gt;Missing Computation and Feature Engineering&lt;a class="anchor-link" href="#Missing-Computation-and-Feature-Engineering"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Fare_1"&gt;Fare&lt;a class="anchor-link" href="#Fare"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We forgot to fix one missing value in fare in the test dataset. We will replace it by the median fare value for the specific passenger class.&lt;/p&gt;
 &lt;/div&gt;
@@ -3296,16 +3538,14 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Cabin"&gt;Cabin&lt;a class="anchor-link" href="#Cabin"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Previously discarded, we will take a look at the cabin variable. The variable consists of a letter indicating the deck and a room number. The number is less important, but an indicator variable for the deck could reveal further information despite the fact that the cabin number is missing in 75% of the data. For further information look at &lt;a href="https://en.wikipedia.org/wiki/RMS_Titanic#Dimensions_and_layout"&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;It seems impossible to predict deck membership.&lt;/p&gt;
@@ -3381,8 +3621,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Embarked"&gt;Embarked&lt;a class="anchor-link" href="#Embarked"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;There are two missing values in the training dataset. Let us have a look at the port of embarkation and the fare. The dotted horizontal line in the second graph shows the fare value of observations with missing port values. The fare values seem to overlap with Cherbourg.&lt;/p&gt;
 &lt;/div&gt;
@@ -3417,8 +3656,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The boxplot does not show very clear whether the two passengers embarked in Southampton or Cherbourg. A fare of 80 seems to be on the edge of the box and therefore on the upper quartile. What you can also see is a concentration of passengers embarked in Southampton between a fare of 70 and 90.&lt;/p&gt;
 &lt;/div&gt;
@@ -3476,8 +3714,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;As you can see in graphic one, the density of for Cherbourg is slightly higher than for Southampton. But this is only in relation to all passengers from this port. Since passengers are not equally distributed among ports, we have to look at the absolute distribution. The histograms in graphic two and three show that the thresholds for similar observations is the critical assumption. Consider that passengers with fares from 75 to 85 are the correct comparison, you will favor Cherbourg over Southampton. But, you would have the opposite view if you choose fare values between 70 and 90.&lt;/p&gt;
 &lt;p&gt;Since normal data analysis seems to be ambiguous, I guide you to &lt;a href="https://www.encyclopedia-titanica.org/"&gt;Encyclopedia Titanica&lt;/a&gt;, a site which offers more information about the passengers and their destiny, &lt;a href="https://www.encyclopedia-titanica.org/titanic-deckplans/"&gt;deckplans&lt;/a&gt; and a lot more. The passenger list also includes biographies of passenger and among them the two. Mrs. Stone embarked with her maid Miss. Icard in Southampton &lt;a href="https://www.encyclopedia-titanica.org/titanic-survivor/martha-evelyn-stone.html"&gt;(Link)&lt;/a&gt;.&lt;/p&gt;
@@ -3497,16 +3734,14 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Construct-Title-and-Surname"&gt;Construct Title and Surname&lt;a class="anchor-link" href="#Construct-Title-and-Surname"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Here we are going to construct a variable which includes the title and the surname of passengers. The title should also reveal insights into the socio-economic status of passengers if doctors or aristocrats are among these. This is probably already covered by face and passenger class, but nevermind. The second variable is especially important to find families among the passengers and see whether they have higher survival probabilities because of mutual assistance.&lt;/p&gt;
 &lt;p&gt;The titles are surprisingly not wildly different. There are only 18 different titles. There are Spanish and English aristocrates and also a Belgian or Dutch Jonkheer which is a title for a young aristocrat without a royal or noble rank. Some of titles are the same in different translations. In the dictionary below you can find the mapping to English expressions.&lt;/p&gt;
@@ -3547,16 +3782,14 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Age_1"&gt;Age&lt;a class="anchor-link" href="#Age"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Yes, again age. Before, we made very simple calculation to fill empty spaces. Now, we will try to compute age values by using a random forest regression.&lt;/p&gt;
 &lt;/div&gt;
@@ -3587,8 +3820,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Let us have a look at feature importance.&lt;/p&gt;
 &lt;p&gt;Note that, in a previous version I also used &lt;code&gt;Survived&lt;/code&gt; as a feature and it is the fith most important feature. But, obviously it is not included in the test set, so I will drop it for now and maybe revisit &lt;code&gt;Age&lt;/code&gt; after we predicted the survival rates of passengers in the test set.&lt;/p&gt;
@@ -3630,8 +3862,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This is a small plot to show the convergence speed of the &lt;code&gt;RandomForestRegressor&lt;/code&gt; by the number of trees. It seems that basically 20 trees are sufficient. But since it is not computationally expensive, we will stick with 1000 trees to be on the safe side.&lt;/p&gt;
 &lt;/div&gt;
@@ -3692,8 +3923,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Let us look at the new distributions. The first comparison is to evaluate whether the overall distribution of age has significantly changed.&lt;/p&gt;
 &lt;/div&gt;
@@ -3732,8 +3962,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In the second comparison we can see the computed distribution tends to be more centered around 30. Of course, we cannot say whether this is false, since the groups could potentially differ. But more observations around the mean of the distribution will not make the data corrupt and the behaviour towards the tails is similar.&lt;/p&gt;
 &lt;/div&gt;
@@ -3769,8 +3998,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Women-and-Children-First!_1"&gt;Women and Children First!&lt;a class="anchor-link" href="#Women-and-Children-First!"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In the next analysis we focus on a special code of conduct which states that women and children must be saved first in case of an emergency on the high sea. Here is an excerpt from Wikipedia:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;While the phrase first appeared in the 1860 novel Harrington: A Story of True Love, by William Douglas O'Connor, the first documented application of "women and children first" occurred during the 1852 evacuation of the Royal Navy troopship HMS Birkenhead. It is, however, most famously associated with the sinking of RMS Titanic in 1912. As a code of conduct, "women and children first" has no basis in maritime law. According to disaster evacuation expert Ed Galea, in modern-day evacuations people will usually "help the most vulnerable to leave the scene first. It's not necessarily women, but is likely to be the injured, elderly and young children." Furthermore, the results of a 2012 Uppsala University study said that the application of "women and children first" did not necessarily produce a survival advantage for women and children in practice.&lt;/p&gt;
@@ -3869,8 +4097,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="A-shared-destiny?-Families-on-board-of-the-Titanic"&gt;A shared destiny? Families on board of the Titanic&lt;a class="anchor-link" href="#A-shared-destiny?-Families-on-board-of-the-Titanic"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After we extracted a surname, we can look for further details about families. First, we are creating a variable for the size of the family and we will look at a simple comparison of survival rates for passengers in company and on their own. After that, we take a more detailed look at different family sizes. Note, the third graph which shows the frequencies of family sizes counts each observation independently and does not represent the actual number of families given a certain size.&lt;/p&gt;
 &lt;/div&gt;
@@ -3941,8 +4168,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Up to this point, we have seen that survival rates are favorable for passenger in company. This effect could be due to two reasons: first, families helped each other during the tragedy or, second, kids drive up survival rates for families.&lt;/p&gt;
 &lt;p&gt;There are two possible solutions:&lt;/p&gt;
@@ -4116,16 +4342,14 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The graphic above shows that the size of the constructed families and the frequency of average survival rates for families. Since only complete families have been selected and bigger families have a higher probability of being split among test and train dataset, the distribution of complete families is probably right-skewed (positive skew). To correct for this bias, we will only consider families with two members.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="First:-compare-loners-with-couples"&gt;First: compare loners with couples&lt;a class="anchor-link" href="#First:-compare-loners-with-couples"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -4160,8 +4384,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="Second:-placebo-test-for-couples"&gt;Second: placebo test for couples&lt;a class="anchor-link" href="#Second:-placebo-test-for-couples"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The approach for the placebo test is to match all passengers who traveled in couples randomly with another. The idea is that if there is a special bond between couples which increases or decreases survival rates, then randomizing will change the distribution to a binomial distribution.&lt;/p&gt;
 &lt;p&gt;What is needed? First, the actual distribution of survival outcomes for couples. Second, a distribution of survival outcomes for randomly matched couples. Third, a binomial distribution with a probability equal to the expected individual survival rate.&lt;/p&gt;
@@ -4217,8 +4440,7 @@ div.text_cell_render {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We need to other factors, the sample size and the individual survival rate:&lt;/p&gt;
 &lt;/div&gt;
@@ -4287,16 +4509,14 @@ Sample size: 84
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;I'm not very sure what to make out these graphs. Certainly, the last two graphs look almost identical which would strengthen my belief, that there is some kind of structure in survival rates for families. But still, I have a lot of doubts concerning the methodology and the credibility of the results.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Predicting-Survival_1"&gt;Predicting Survival&lt;a class="anchor-link" href="#Predicting-Survival"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Finally, here is the section about predicting survival rates.&lt;/p&gt;
 &lt;/div&gt;
