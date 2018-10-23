@@ -3,11 +3,12 @@ channels:
   - defaults
   - conda-forge
 dependencies:
-  - pip=18.1
   - python=3.6.6
+  - pip=18.1
   - pip:
-    - pelican==3.7.1
+    - beautifulsoup4==4.6.3
+    - ghp-import==0.5.5
     - jupyter==1.0.0
     - markdown==3.0.1
+    - pelican==3.7.1
     - pybtex==0.21
-    - beautifulsoup4==4.6.3
