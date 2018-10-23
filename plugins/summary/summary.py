@@ -80,6 +80,9 @@ def extract_summary(instance):
     summary = re.sub(r"<div.*>", "", summary)
     summary = re.sub(r"</div>", "", summary)
 
+    # Convert headings to bold expressions
+    summary = re.sub(r"<h\d .*>(.*)<\/h\d>", "<b>\g<1><\/b>", summary)
+
     instance._content = content
     # default_status was added to Pelican Content objects after 3.7.1.
     # Its use here is strictly to decide on how to set the summary.
