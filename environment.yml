@@ -1,9 +1,9 @@
-name: website
+name: hp
 channels:
   - defaults
   - conda-forge
 dependencies:
-  - python=3.6.6
+  - python=3.7.2
   - pip=18.1
   - pip:
     - beautifulsoup4==4.6.3
