@@ -16,7 +16,7 @@ channels or ``conda-forge``. Here is how to lift this obstacle.
 
 I like to manage my research projects with [conda][6] which is the package
 manager for [Anaconda][7], a popular Python distribution for data science. For
-one of my recent projects I also needed to install R and I was lucky to find
+one of my recent projects, I also needed to install R and I was lucky to find
 out that R is also available with ``conda``.
 
 First, you create your normal Python environment for your new project
@@ -51,7 +51,7 @@ it is using the Intel Math Kernel Library (MKL) and enables multithreading by
 default ([here](https://mran.microsoft.com/documents/rro/multithread) are some
 benchmark reports and information on how to set the number of threads used).
 
-Installing a basic R interpreter from MRO is as simle as typing
+Installing a basic R interpreter from MRO is as simple as typing
 
 ```bash
 $ conda install --channel r mro-base
@@ -86,7 +86,7 @@ what if your package is not available?
 ### Building and Distributing an R package
 
 I had the same issue when I wanted to use [``mice``][3] which is a known
-framework for multiple imputation by chained equations.
+framework for multiple imputations by chained equations.
 
 To build the package for your conda distribution, invoke the following command
 
@@ -98,7 +98,7 @@ This will create a folder called ``r-mice`` which contains three files,
 ``bld.bat``, ``build.sh`` and ``meta.yml``. ``meta.yml`` is the important file
 which controls the compilation. An example can be found [here][1]. Note the key
 called ``requirements``. inside ``host`` and ``run`` the R interpreter is
-defined. By default it is ``r-base``. If you are using MRO, you have to change
+defined. By default, it is ``r-base``. If you are using MRO, you have to change
 this to ``mro-base``.
 
 ```yaml
@@ -149,7 +149,7 @@ repository and make it accessible to all people.
 
 That's what I did. I have created a [repository][11] which builds the package
 for Linux and macOS with [Travis-CI][12] and Windows with [Appveyor][13]. The
-compiled packages are uploaded to my account and can be install via
+compiled packages are uploaded to my account and can be installed via
 
 ```bash
 $ conda install -c brimborium r-mice
@@ -180,7 +180,7 @@ But that is why I created my repository which is reduced to the minimal amount
 of code to do the task.
 
 I will also extend this post and the repository description in the future.
-Since I do only have rudimentary knowledge of the background of what I did,
+Since I do only have a rudimentary knowledge of the background of what I did,
 there is a lot of room to grow :).
 
 **References**

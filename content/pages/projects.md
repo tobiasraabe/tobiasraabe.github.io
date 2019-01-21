@@ -2,12 +2,13 @@ title: Projects
 slug: projects
 toc: true
 
-### cookiecutter-research-template (2018)
+### cookiecutter-research-template (2018-2019)
 
 [Cookiecutter](https://github.com/audreyr/cookiecutter) is a tool to quickly
-generate project templates of any kind. It is based on Gaudecker's template for
-reproducible economic research enhanced with some useful tools from software
-engineering to help newcomers to write better Python.
+generate project templates of any kind. This template for reproducible research
+is based on Gaudecker's template for reproducible economic research enhanced
+with some useful tools from software engineering to help newcomers to write
+better Python code.
 
 - [Gaudecker's econ-project-templates](https://github.com/hmgaudecker/econ-project-templates)
 - [Project on Github](https://github.com/tobiasraabe/cookiecutter-research-template)
@@ -20,7 +21,7 @@ engineering to help newcomers to write better Python.
 This project comprises the content of a time series analysis course. There is a
 theoretical section and problems sets with implementations in Julia. If you
 want to give it a try yourself, you can follow the Binder badges where you can
-code on-line in your browser without installing Julia on your system.
+code online in your browser without installing Julia on your system.
 
 - [Project on Github](https://github.com/tobiasraabe/time_series)
 - [Project Page](https://tobiasraabe.github.com/time_series)
@@ -39,7 +40,7 @@ textual data.
 
 - [Paper](https://github.com/tobiasraabe/software_patents/paper.pdf)
 - [Project on Github](https://github.com/tobiasraabe/software_patents)
-- [Blog Post]({filename}/blog/software_patents.md)
+- [Blog Post]({static}/blog/software_patents.md)
 
 <br>
 
@@ -61,9 +62,9 @@ This research project is concerned with a person's Locus of Control which is
 the degree to which people believe that they have control over the outcome of
 events in their lives. We use the GSOEP (German Socio-Economic Panel) from
 2005-2015 and estimate in a difference-and-difference design the changes in
-Locus of Control due to potentially exogenous and negative events like death of
-a close relative. The reasoning is that sudden, negative events raise the
-salience of lack of power which might push the individual towards a more
+Locus of Control due to potentially exogenous and negative events like the
+death of a close relative. The reasoning is that sudden, negative events raise
+the salience of lack of power which might push the individual towards a more
 external Locus of Control. External in contrast to internal Locus of Control
 means that the individual believes outcomes cannot be controlled by the
 individual whereas internal means the opposite.
@@ -76,7 +77,7 @@ individual whereas internal means the opposite.
 ### Cryptocurrency Market Prediction (2017)
 
 The project is about market prediction in cryptocurrency markets like Potcoin
-and was developed during a programing class for economists which focused on the
+and was developed during a programming class for economists which focused on the
 embedding of the research project in a Waf framework. Waf is an automation tool
 for software design.
 
