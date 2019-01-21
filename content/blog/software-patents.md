@@ -7,7 +7,7 @@ While finishing my bachelor in 2015, I wrote my thesis about identifying
 software patents. This is useful and necessary in two ways. First, there is no
 system by which patents are grouped into topics like software, automation,
 etc.. But this is what researchers are ultimately interested in. The main
-system used by the USPTO focuses on technological and functional form which
+system used by the USPTO focuses on the technological and functional form which
 means that a subclass dealing with dispensing solids contains manure spreaders
 and toothpaste tubes. Second, I could use the thesis for learning Python and
 doing my first steps into the world of machine learning.
@@ -51,19 +51,19 @@ patents. The algorithm is as follows:
 
     ANDNOT ("antigen" OR "antigenic" OR "chromatography" in specification)
 
-Whereas title is simply identified, specification is defined as the abstract
-and the description of the patent ([PatentsView] separates the description in
-[@Bessen2007] definition into description and summary).
+Whereas title is simply identified, the specification is defined as the
+abstract and the description of the patent ([PatentsView] separates the
+description in [@Bessen2007] definition into description and summary).
 
 To replicate the algorithm, the project relies on two strategies. The first
-data source is [Google Patents] where the texts
-can be crawled. As this procedure is not feasible for the whole corpus of
-patents, the second data source is [PatentsView] which provides large data
-files for all patents from 1976 on.
+data source is [Google Patents] where the texts can be crawled. As this
+procedure is not feasible for the whole corpus of patents, the second data
+source is [PatentsView] which provides large data files for all patents from
+1976 on.
 
 The replication of the original algorithm succeeds in 398 of 400 cases as one
 patent was retracted and in one case an indicator was overlooked which lead to
-a error in the classification.
+an error in the classification.
 
 Compared to the manual classification of the authors, the algorithm performed
 in the following way:
@@ -74,32 +74,32 @@ in the following way:
 | **Retrieved**     | 42         | 8              |
 | **Not Retrieved** | 12         | 337            |
 
-Relevant refers to software patents according to the  manual classification
+Relevant refers to software patents according to the manual classification
 whereas retrieved indicates software patents detected by the algorithm. The
 upper left corner can also be called true-positives whereas the lower right
 corner shows the number of true-negatives.
 
-Applying the algorithm on the whole patent corpus, we get the following
+Applying the algorithm to the whole patent corpus, we get the following
 distributions of patents and software versus non-software patents.
 
 
 <p align="center">
     <b>Absolute Number of Utility Patents</b><br>
-    <img src="{filename}/images/fig-patents-distribution.png"
+    <img src="{static}/images/fig-patents-distribution.png"
     width="600" height="400">
 </p>
 
 
 <p align="center">
     <b>Absolute Number of Software vs. Non-Software Patents</b><br>
-    <img src="{filename}/images/fig-patents-distribution-vs.png"
+    <img src="{static}/images/fig-patents-distribution-vs.png"
     width="600" height="400">
 </p>
 
 
 <p align="center">
     <b>Relative Number of Software vs. Non-Software Patents</b><br>
-    <img src="{filename}/images/fig-patents-distribution-vs-shares.png"
+    <img src="{static}/images/fig-patents-distribution-vs-shares.png"
     width="600" height="400">
 </p>
 

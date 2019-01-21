@@ -42,6 +42,8 @@ def notebook(preprocessor, tag, markup):
     ignore_css = preprocessor.configs.getConfig('IPYNB_SKIP_CSS', False)
     content = parse_css(content, info, fix_css=fix_css, ignore_css=ignore_css)
 
+    # TODO: add bleach parsing for safe html
+    # https://github.com/Python-Markdown/markdown/commit/7f63b20b819b83afef0ddadc2e210ddce32a2be3
     content = preprocessor.configs.htmlStash.store(content)
     return content
 

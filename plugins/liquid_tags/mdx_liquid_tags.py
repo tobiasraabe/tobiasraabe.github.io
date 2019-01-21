@@ -19,23 +19,19 @@ from functools import wraps
 # Define some regular expressions
 LIQUID_TAG = re.compile(r'\{%.*?%\}', re.MULTILINE | re.DOTALL)
 EXTRACT_TAG = re.compile(r'(?:\s*)(\S+)(?:\s*)')
-LT_CONFIG = {
-    'CODE_DIR': 'code',
-    'NOTEBOOK_DIR': 'notebooks',
-    'FLICKR_API_KEY': 'flickr',
-    'GIPHY_API_KEY': 'giphy',
+LT_CONFIG = { 'CODE_DIR': 'code',
+              'NOTEBOOK_DIR': 'notebooks',
+              'FLICKR_API_KEY': 'flickr',
+              'GIPHY_API_KEY': 'giphy'
 }
-LT_HELP = {
-    'CODE_DIR': 'Code directory for include_code subplugin',
-    'NOTEBOOK_DIR': 'Notebook directory for notebook subplugin',
-    'FLICKR_API_KEY': 'Flickr key for accessing the API',
-    'GIPHY_API_KEY': 'Giphy key for accessing the API',
+LT_HELP = { 'CODE_DIR' : 'Code directory for include_code subplugin',
+            'NOTEBOOK_DIR' : 'Notebook directory for notebook subplugin',
+            'FLICKR_API_KEY': 'Flickr key for accessing the API',
+            'GIPHY_API_KEY': 'Giphy key for accessing the API'
 }
-
 
 class _LiquidTagsPreprocessor(markdown.preprocessors.Preprocessor):
     _tags = {}
-
     def __init__(self, configs):
         self.configs = configs
 
@@ -55,9 +51,8 @@ class _LiquidTagsPreprocessor(markdown.preprocessors.Preprocessor):
         liquid_tags.append('')
 
         # reconstruct string
-        page = ''.join(
-            itertools.chain(*zip(LIQUID_TAG.split(page), liquid_tags))
-        )
+        page = ''.join(itertools.chain(*zip(LIQUID_TAG.split(page),
+                                            liquid_tags)))
 
         # resplit the lines
         return page.split("\n")
@@ -65,29 +60,26 @@ class _LiquidTagsPreprocessor(markdown.preprocessors.Preprocessor):
 
 class LiquidTags(markdown.Extension):
     """Wrapper for MDPreprocessor"""
-
     def __init__(self, config):
         try:
             # Needed for markdown versions >= 2.5
-            for key, value in LT_CONFIG.items():
-                self.config[key] = [value, LT_HELP[key]]
-            super(LiquidTags, self).__init__(**config)
+            for key,value in LT_CONFIG.items():
+                self.config[key] = [value,LT_HELP[key]]
+            super(LiquidTags,self).__init__(**config)
         except AttributeError:
             # Markdown versions < 2.5
-            for key, value in LT_CONFIG.items():
-                config[key] = [config[key], LT_HELP[key]]
-            super(LiquidTags, self).__init__(config)
+            for key,value in LT_CONFIG.items():
+                config[key] = [config[key],LT_HELP[key]]
+            super(LiquidTags,self).__init__(config)
 
     @classmethod
     def register(cls, tag):
         """Decorator to register a new include tag"""
-
         def dec(func):
             if tag in _LiquidTagsPreprocessor._tags:
                 warnings.warn("Enhanced Markdown: overriding tag '%s'" % tag)
             _LiquidTagsPreprocessor._tags[tag] = func
             return func
-
         return dec
 
     def extendMarkdown(self, md, md_globals):
@@ -97,9 +89,8 @@ class LiquidTags(markdown.Extension):
         # fenced code block preprocessor after substituting the code.
         # Because the fenced code processor is run before, {% %} tags
         # within equations will not be parsed as an include.
-        md.preprocessors.add(
-            'mdincludes', _LiquidTagsPreprocessor(self), ">html_block"
-        )
+        md.preprocessors.add('mdincludes',
+                             _LiquidTagsPreprocessor(self), ">html_block")
 
 
 def makeExtension(configs=None):

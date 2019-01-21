@@ -9,7 +9,7 @@ Summary: This DAG is produced by a sample project for reproducible research
          this template with the templating engine ``cookiecutter`` and various
          other software engineering tools.
 
-In one of my university courses I was introduced to a [Waf framework for
+In one of the university courses I was introduced to a [Waf framework for
 reproducible research by Hans-Martin von
 Gaudecker](https://github.com/hmgaudecker/econ-project-templates) which is
 amazingly useful to manage your research project.
@@ -22,11 +22,11 @@ find a way back to $\nu$. Here is the DAG for the sample project:
 
 <p align="center">
     <b>DAG of sample project</b><br>
-    <img src="{filename}/images/fig-dag.png">
+    <img src="{static}/images/fig-dag.png">
 </p>
 
 As you can see everything starts off at ``get_simulation_draws.py`` which
-serves as the source of ``initial_locations.csv`` which is the input of ....
+serves as the source of ``initial_locations.csv`` which is the input of ...
 You get it.
 
 You get the sample project by installing ``cookiecutter`` first with
@@ -44,7 +44,7 @@ $ cookiecutter https://github.com/tobiasraabe/cookiecutter-research-template.git
 
 Answer the following prompts so the project will be customized to your needs.
 
-At the end, go into the project folder and setup the ``conda`` environment.
+In the end, go into the project folder and set up the ``conda`` environment.
 
 ```bash
 $ conda env create -n <project-name> -f environment.yml

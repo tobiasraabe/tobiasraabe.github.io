@@ -159,8 +159,6 @@ def generate_toc(content):
         tree_string = '{}'.format(tree)
         tree_soup = BeautifulSoup(tree_string, 'html.parser')
         content.toc = tree_soup.decode(formatter='html')
-        if content.settings[TOC_KEY]['TOC_PARAGRAPH_SIGN'] != 'true':
-            content.toc = content.toc.replace('&para', '')
     content._content = soup.decode(formatter='html')
 
 
