@@ -11,4 +11,4 @@ dependencies:
     - jupyter==1.0.0
     - markdown==3.0.1
     - pelican==4.0.1
-    - pybtex==0.21
+    - pybtex==0.22.2
