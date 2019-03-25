@@ -14,13 +14,13 @@
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="Machine Learning,Deep Learning,Text Data" />
-        <meta name="description" content="While finishing my bachelor in 2015, I wrote my thesis about identifying software patents. This is useful and necessary in two ways. First, there is no system by which patents are grouped into topics like software, automation, etc.. But this is what researchers are ultimately interested in. The main system used by the USPTO focuses on technological and functional form which means that a subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. Second, I could use the thesis for learning Python and doing my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far." />
+        <meta name="description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far." />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Identifying Software Patents"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/identifying-software-patents.html"/>
-        <meta property="og:description" content="While finishing my bachelor in 2015, I wrote my thesis about identifying software patents. This is useful and necessary in two ways. First, there is no system by which patents are grouped into topics like software, automation, etc.. But this is what researchers are ultimately interested in. The main system used by the USPTO focuses on technological and functional form which means that a subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. Second, I could use the thesis for learning Python and doing my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far."/>
+        <meta property="og:description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far."/>
         <meta property="article:published_time" content="2018-08-21" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="Machine Learning" />
@@ -44,7 +44,7 @@
 
 
 
-        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
 
 </head>
@@ -134,60 +134,51 @@ Tobias Raabe            </a>
         3 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#introduction" title="Introduction">Introduction</a></li><li><a class="toc-href" href="#background" title="Background">Background</a></li></ul></div></div>
-                    </div>
-                <p>While finishing my bachelor in 2015, I wrote my thesis about identifying
-software patents. This is useful and necessary in two ways. First, there is no
-system by which patents are grouped into topics like software, automation,
-etc.. But this is what researchers are ultimately interested in. The main
-system used by the USPTO focuses on technological and functional form which
-means that a subclass dealing with dispensing solids contains manure spreaders
-and toothpaste tubes. Second, I could use the thesis for learning Python and
-doing my first steps into the world of machine learning.</p>
-<p>You can find the whole project on <a href="https://github.com/tobiasraabe/software_patents">Github</a> as well as the <a href="https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf">paper</a>. There
-is also a script to download different kinds of data sets. The raw data uses
-approximately 90GB of disk space whereas the data for replicating the previous
-results based on a simple algorithm is currently less than 1GB.</p>
+                <p>In 2015, I wrote my Bachelor's thesis on identifying software patents. This is useful
+and necessary in two ways. First, there is no official system to sort patents this way.
+The main system used by the USPTO focuses on the technological and functional form. A
+subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes.
+In contrast, researchers are more interested in topics like automation or software.
+Second, I learned Python and made my first steps into the world of machine learning.</p>
+<p>You can find the whole project on <a href="https://github.com/tobiasraabe/software_patents">Github</a> as well as the <a href="https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf">paper</a>. There is also a
+script to download different kinds of data sets. The raw data uses approximately 90GB of
+disk space whereas the data for replicating the previous results based on a simple
+algorithm is currently less than 1GB.</p>
 <p>Now, let us see what has been done so far.</p>
-
-<hr/>
-<h3 id="introduction">Introduction</h3>
-<p>This project deals with the identification of software patents and combines
-multiple approaches from simple algorithms to novel machine learning models to
-achieve this goal.</p>
-<h3 id="background">Background</h3>
-<p>The origin of this project was a Bachelor's thesis built on the algorithmic
-approach of <a href='#Bessen2007' id='ref-Bessen2007-1'>Bessen and Hunt (2007)</a>. The authors wanted to estimate the number of
-software patents and find out where software patents are used and what economic
-indicators are correlated with having more software patents.</p>
-<p>To classify patents into categories of software and non-software, the authors
-developed a simple algorithm based on the evaluation of a random sample of
-patents. The algorithm is as follows:</p>
-<div class="highlight"><pre><span></span>(("software" in specification) OR ("computer" AND "program" in
-specification))
+<!-- PELICAN_END_SUMMARY -->
+<p>The idea of the project is based on an algorithmic approach of <a href='#Bessen2007' id='ref-Bessen2007-1'>Bessen and Hunt (2007)</a>. The
+authors wanted to estimate the number of software patents and find out where software
+patents are used and what economic indicators are correlated with having more software
+patents.</p>
+<p>To classify patents into categories of software and non-software, the authors developed
+a simple algorithm based on the evaluation of a random sample of patents. The algorithm
+is as follows:</p>
+<div class="highlight"><pre><span></span>(("software" in specification)
+ OR ("computer" AND "program" in specification))
 
 AND (utility patent excluding reissues)
 
-ANDNOT ("chip" OR "semiconductor" OR "bus" OR "circuit" OR "circuitry" in
-title)
+ANDNOT ("chip"
+        OR "semiconductor"
+        OR "bus"
+        OR "circuit"
+        OR "circuitry"
+        in title)
 
 ANDNOT ("antigen" OR "antigenic" OR "chromatography" in specification)
 </pre></div>
-<p>Whereas title is simply identified, specification is defined as the abstract
-and the description of the patent (<a href="https://www.patentsview.org/web/">PatentsView</a> separates the description in
-<a href='#Bessen2007' id='ref-Bessen2007-2'>Bessen and Hunt (2007)</a> definition into description and summary).</p>
-<p>To replicate the algorithm, the project relies on two strategies. The first
-data source is <a href="https://patents.google.com">Google Patents</a> where the texts
-can be crawled. As this procedure is not feasible for the whole corpus of
-patents, the second data source is <a href="https://www.patentsview.org/web/">PatentsView</a> which provides large data
-files for all patents from 1976 on.</p>
-<p>The replication of the original algorithm succeeds in 398 of 400 cases as one
-patent was retracted and in one case an indicator was overlooked which lead to
-a error in the classification.</p>
-<p>Compared to the manual classification of the authors, the algorithm performed
-in the following way:</p>
+<p>According to <a href='#Bessen2007' id='ref-Bessen2007-2'>Bessen and Hunt (2007)</a>, the specification is the abstract and the description of the
+patent. Note that, <a href="https://www.patentsview.org/web/">PatentsView</a> separates description into two parts, summary and
+description.</p>
+<p>To replicate the algorithm, the project relies on two strategies. The first data source
+is <a href="https://patents.google.com">Google Patents</a> where the texts can be crawled. As this procedure is not feasible
+for the whole corpus of patents, the second data source is <a href="https://www.patentsview.org/web/">PatentsView</a> which provides
+large data files for all patents from 1976 on.</p>
+<p>The replication of the original algorithm succeeds in 398 of 400 cases as one patent was
+retracted and in one case an indicator was overlooked which lead to an error in the
+classification.</p>
+<p>Compared to the manual classification of the authors, the algorithm performed in the
+following way:</p>
 <table>
 <thead>
 <tr>
@@ -209,12 +200,12 @@ in the following way:</p>
 </tr>
 </tbody>
 </table>
-<p>Relevant refers to software patents according to the  manual classification
-whereas retrieved indicates software patents detected by the algorithm. The
-upper left corner can also be called true-positives whereas the lower right
-corner shows the number of true-negatives.</p>
-<p>Applying the algorithm on the whole patent corpus, we get the following
-distributions of patents and software versus non-software patents.</p>
+<p>Relevant refers to software patents according to the manual classification whereas
+retrieved indicates software patents detected by the algorithm. The upper left corner
+can also be called true-positives whereas the lower right corner shows the number of
+true-negatives.</p>
+<p>Applying the algorithm to the whole patent corpus, we get the following distributions of
+patents and software versus non-software patents.</p>
 <p align="center">
 <b>Absolute Number of Utility Patents</b><br/>
 <img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution.png" width="600"/>
@@ -227,7 +218,7 @@ distributions of patents and software versus non-software patents.</p>
 <b>Relative Number of Software vs. Non-Software Patents</b><br/>
 <img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs-shares.png" width="600"/>
 </p><hr>
-<h3>Bibliography</h3>
+<h2>Bibliography</h2>
 <p id='Bessen2007'>James Bessen and Robert&nbsp;M Hunt.
 An empirical look at software patents.
 <em>Journal of Economics &amp; Management Strategy</em>, 16(1):157–189, 2007.
@@ -282,6 +273,9 @@ An empirical look at software patents.
       <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
     </li>
     <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
+    </li>
+    <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
     </li>
     <li class="list-group-item tag-3">
@@ -326,7 +320,7 @@ An empirical look at software patents.
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Tobias Raabe         </div>
+         <div class="col-xs-10">&copy; 2019 Tobias Raabe         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>

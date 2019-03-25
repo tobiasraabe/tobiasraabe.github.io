@@ -14,13 +14,13 @@
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="Python,Downloader" />
-        <meta name="description" content="This is a short script in python to download files, resume downloads and to validate downloads with hash values. For me it was necessary to write a program like this so I can easily pass my projects to others without writing instructions in detail which files they should download and where to place them. You can find it at the end of the article. An interactive version of the notebook is available by clicking on the binder badge above." />
+        <meta name="description" content="This is a short script in python to download files, resume and to validate downloads with hash values. It is useful to distribute projects and data separately. You can find it at the end of the article. An interactive version of the notebook is available as a Binder notebook." />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="How to download files with Python"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"/>
-        <meta property="og:description" content="This is a short script in python to download files, resume downloads and to validate downloads with hash values. For me it was necessary to write a program like this so I can easily pass my projects to others without writing instructions in detail which files they should download and where to place them. You can find it at the end of the article. An interactive version of the notebook is available by clicking on the binder badge above."/>
+        <meta property="og:description" content="This is a short script in python to download files, resume and to validate downloads with hash values. It is useful to distribute projects and data separately. You can find it at the end of the article. An interactive version of the notebook is available as a Binder notebook."/>
         <meta property="article:published_time" content="2018-06-11" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="Python" />
@@ -43,7 +43,7 @@
 
 
 
-        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
 
 </head>
@@ -133,16 +133,14 @@ Tobias Raabe            </a>
                 </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Downloading-files" title="Downloading files;">Downloading files;</a></li><li><a class="toc-href" href="#Resuming-downloads" title="Resuming downloads;">Resuming downloads;</a></li><li><a class="toc-href" href="#Validating-downloads" title="Validating downloads;">Validating downloads;</a></li><li><a class="toc-href" href="#Visualizing-download-progress" title="Visualizing download progress;">Visualizing download progress;</a></li><li><a class="toc-href" href="#Complete-script" title="Complete script;">Complete script;</a></li></ul></div></div>
+                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Downloading-files" title="Downloading files&para;">Downloading files&para;</a></li><li><a class="toc-href" href="#Resuming-downloads" title="Resuming downloads&para;">Resuming downloads&para;</a></li><li><a class="toc-href" href="#Validating-downloads" title="Validating downloads&para;">Validating downloads&para;</a></li><li><a class="toc-href" href="#Visualizing-download-progress" title="Visualizing download progress&para;">Visualizing download progress&para;</a></li><li><a class="toc-href" href="#Complete-script" title="Complete script&para;">Complete script&para;</a></li></ul></div></div>
                     </div>
                 <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>This is a short script in python to download files, resume downloads and to
-validate downloads with hash values. For me it was necessary to write a program
-like this so I can easily pass my projects to others without writing
-instructions in detail which files they should download and where to place
-them. You can find it at the end of the article. An interactive version of the
-notebook is available by clicking on the binder badge above.</p>
-
+<p>This is a short script in python to download files, resume and to validate
+downloads with hash values. It is useful to distribute projects and data
+separately. You can find it at the end of the article. An interactive version
+of the notebook is available as a Binder notebook.</p>
+<!-- PELICAN_END_SUMMARY -->
 <style type="text/css">/*!
 *
 * IPython notebook
@@ -1333,7 +1331,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
@@ -1342,7 +1340,7 @@ connections to web content.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the next step, we will download a file and store it on the disk. The file size is 19kb, so you are save to download it. If you have doubts about the file, insert any other link which can be a picture or something else.</p>
+<p>In the next step, we will download a file and store it on the disk. The file size is 19kb, so you are safe to download it. If you have doubts about the file, insert any other link which can be a picture or something else.</p>
 </div>
 </div>
 </div>
@@ -1351,7 +1349,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/cpc_group.tsv.zip'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/cpc_group.tsv.zip'</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1374,7 +1372,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1389,7 +1387,7 @@ connections to web content.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Resuming-downloads">Resuming downloads<a class="anchor-link" href="#Resuming-downloads">&para;</a></h3><p>If you download large files, chances are that your download is interrupted. For that, we need a way to resume the download at the last byte position. We can do that by sending an Range-request to the server and specifying the range of bytes, we want to receive.</p>
+<h3 id="Resuming-downloads">Resuming downloads<a class="anchor-link" href="#Resuming-downloads">&para;</a></h3><p>If you download large files, chances are that your download is interrupted. For that, we need a way to resume the download at the last byte position. We can do that by sending a Range-request to the server and specifying the range of bytes, we want to receive.</p>
 </div>
 </div>
 </div>
@@ -1398,7 +1396,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resume_header</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'Range'</span><span class="p">:</span> <span class="n">f</span><span class="s1">'bytes=0-2000000'</span><span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">resume_header</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'Range'</span><span class="p">:</span> <span class="n">f</span><span class="s1">'bytes=0-2000000'</span><span class="p">})</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">resume_header</span><span class="p">)</span>
 
@@ -1422,11 +1420,11 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Size of file: {path.stat().st_size} Bytes'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Size of the file: {path.stat().st_size} Bytes'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1455,7 +1453,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resume_header</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'Range'</span><span class="p">:</span> <span class="n">f</span><span class="s1">'bytes={path.stat().st_size}-'</span><span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">resume_header</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'Range'</span><span class="p">:</span> <span class="n">f</span><span class="s1">'bytes={path.stat().st_size}-'</span><span class="p">})</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">resume_header</span><span class="p">)</span>
 
@@ -1486,7 +1484,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest.tsv.zip'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -1517,7 +1515,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     
 <span class="n">sha</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
@@ -1551,7 +1549,7 @@ connections to web content.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Visualizing-download-progress">Visualizing download progress<a class="anchor-link" href="#Visualizing-download-progress">&para;</a></h3><p>There are multiple options to print pretty progress bars in python to the command line interface (<a href="https://github.com/WoLpH/python-progressbar"><code>progressbar2</code></a> e.g.), but I used <code>tqdm</code> for unknown reason.</p>
+<h3 id="Visualizing-download-progress">Visualizing download progress<a class="anchor-link" href="#Visualizing-download-progress">&para;</a></h3><p>There are multiple options to print pretty progress bars in python to the command line interface (<a href="https://github.com/WoLpH/python-progressbar"><code>progressbar2</code></a> e.g.), but I used <code>tqdm</code> for unknown reasons.</p>
 <p>To display the progress of the download, we have to know the total file size which we can easily request without downloading the whole file. Use <code>requests.head()</code> instead of <code>requests.get()</code>.</p>
 </div>
 </div>
@@ -1561,7 +1559,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1596,7 +1594,7 @@ connections to web content.</p>
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
 
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1712,6 +1710,9 @@ connections to web content.</p>
       <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
     </li>
     <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
+    </li>
+    <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
     </li>
     <li class="list-group-item tag-3">
@@ -1756,7 +1757,7 @@ connections to web content.</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Tobias Raabe         </div>
+         <div class="col-xs-10">&copy; 2019 Tobias Raabe         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>

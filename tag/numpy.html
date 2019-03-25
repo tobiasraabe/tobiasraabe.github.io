@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Notebooks - Tobias Raabe</title>
+    <title>Numpy - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,13 +10,17 @@
 
     <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/notebooks.html"> 
- <meta name="author" content="Tobias Raabe" />  <meta name="description" content="This page contains a list of all posts containing notebooks. You can start each notebook individually by clicking on the mybinder badges at the top of each post or you can start binder in the notebooks directory where you can browse through all notebooks. Click on the following button if you want to do that." />  
- <meta property="og:site_name" content="Tobias Raabe" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Notebooks" />
-<meta property="og:url" content="https://tobiasraabe.github.io/notebooks.html" />
-<meta property="og:description" content="This page contains a list of all posts containing notebooks. You can start each notebook individually by clicking on the mybinder badges at the top of each post or you can start binder in the notebooks directory where you can browse through all notebooks. Click on the following button if you want to do that." />  
+
+    <meta name="author" content="Tobias Raabe" />
+    <meta name="keywords" content="Numpy" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Tobias Raabe" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Tobias Raabe"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io"/>
+        <meta property="og:description" content="Tobias Raabe"/>
+
 
 
     <!-- Bootstrap -->
@@ -52,7 +56,7 @@ Tobias Raabe            </a>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                     <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li class="active"><a href="https://tobiasraabe.github.io/notebooks.html">
+                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
                              Notebooks
                           </a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
@@ -79,26 +83,20 @@ Tobias Raabe            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
- <ol class="breadcrumb">
-    <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-    <li class="active">Notebooks</li>
-</ol>
- <section id="content" class="body">
-    <h1 class="entry-title">Notebooks</h1>         <div class="entry-content">
-        <p>This page contains a list of all posts containing notebooks. You can start each
-notebook individually by clicking on the mybinder badges at the top of each
-post or you can start binder in the <code>notebooks</code> directory where you can
-browse through all notebooks. Click on the following button if you want to do
-that.</p>
-<p><center><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks"><img src="https://mybinder.org/badge.svg"/></a></center></p>
-        <h3>List of Notebooks:</h3>         <ul>
-             <li class="groupby">Mar, 2019</li>
-             <li class="article-item">
-                <span class="article">Mar 25, 2019</span><a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html"><b>Numpy - Views vs. Copies</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumpy-views-vs-copies.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+    <ol class="breadcrumb">
+        <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+        <li><a href="https://tobiasraabe.github.io/" title="Tags">Tags</a></li>
+        <li class="active">Numpy</li>
+    </ol>
+    <h2>Latest Posts:</h2>
+        <ul>
+                <li class="groupby">Mar, 2019</li>
+                    <li class="article-item">
+                        <span class="article">Mar 25, 2019</span><a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html"><b>Numpy - Views vs. Copies</b></a>
+                    </li>
+                    <li class="article-summary">
+                        <div class="article-summary">
+                        <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumpy-views-vs-copies.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
 <style type="text/css">/*!
 *
 * IPython notebook
@@ -1267,46 +1265,17 @@ div.text_cell_render {
 
 
 
-<h3 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&para;</a></h3><p>In one of my recent projects, I needed to accelarate a discrete choice dynamic programming model. After I changed a part of the implementation, the program was indeed faster. But, the most expensive operation according to profiling with snakeviz was now <code>~:0(&lt;method 'copy' of 'numpy.ndarray' objects&gt;)</code>. I was puzzled. I was sure that there was no use of <code>np.copy()</code> at all. After reading some StackOverflow posts and blog entries, it became clear that some operations and more importantly indexing methods return copies instead of views. The difference between the two is that views refer to the same underlying data in memory whereas a copy creates a new object. The disadvantages of a copy are:</p>
+<p>In one of my recent projects, I needed to accelarate a discrete choice dynamic programming model. After I changed a part of the implementation, the program was indeed faster. But, the most expensive operation according to profiling with snakeviz was now <code>~:0(&lt;method 'copy' of 'numpy.ndarray' objects&gt;)</code>. I was puzzled. I was sure that there was no use of <code>np.copy()</code> at all. After reading some StackOverflow posts and blog entries, it became clear that some operations and more importantly indexing methods return copies instead of views. The difference between the two is that views refer to the same underlying data in memory whereas a copy creates a new object. The disadvantages of a copy are:</p>
 <ul>
 <li>takes more time</li>
 <li>takes more memory</li>
 </ul>
 <p>But, what operations return copies?</p>
 </span>
-                </div>
-            </li>
-                <li class="groupby">Jun, 2018</li>
-             <li class="article-item">
-                <span class="article">Jun 11, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"><b>How to download files with Python</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>This is a short script in python to download files, resume and to validate
-downloads with hash values. It is useful to distribute projects and data
-separately. You can find it at the end of the article. An interactive version
-of the notebook is available as a Binder notebook.</p>
-</span>
-                </div>
-            </li>
-                <li class="groupby">Oct, 2017</li>
-             <li class="article-item">
-                <span class="article">Oct 22, 2017</span><a href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html"><b>The Tragedy of Titanic</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <p align="center"><img src="images/fig-titanic-placebo-test.png" style="width: auto; max-height: 264px;"></p>
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>Analysis of survival rates on the Titanic with a placebo test for whether
-traveling in couples increased the likelihood of survival. An interactive
-version of the notebook is available by clicking on the binder badge above.</p>
-</span>
-                </div>
-            </li>
-           </ul>
-     </div>
-</section>
+                        </div>
+                    </li>
+        </ul>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

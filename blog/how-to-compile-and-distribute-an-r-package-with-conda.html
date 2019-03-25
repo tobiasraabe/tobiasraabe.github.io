@@ -46,7 +46,7 @@
 
 
 
-        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
 
 </head>
@@ -142,7 +142,7 @@ Tobias Raabe            </a>
                 </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#introduction-to-anaconda-and-r" title="Introduction to Anaconda and R">Introduction to Anaconda and R</a></li><li><a class="toc-href" href="#building-and-distributing-an-r-package" title="Building and Distributing an R package">Building and Distributing an R package</a></li><li><a class="toc-href" href="#compile-your-own-package" title="Compile your own package">Compile your own package</a></li></ul></div></div>
+                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#introduction to anaconda and r" title="Introduction to Anaconda and R">Introduction to Anaconda and R</a></li><li><a class="toc-href" href="#building and distributing an r package" title="Building and Distributing an R package">Building and Distributing an R package</a></li><li><a class="toc-href" href="#compile your own package" title="Compile your own package">Compile your own package</a></li></ul></div></div>
                     </div>
                 <p>This article shows how to compile and distribute R packages on anaconda.org to
 be used in your data science projects. This is useful as R has not really a
@@ -151,11 +151,11 @@ neat dependency pinning tool like Python with <code>requirements.txt</code> or
 if you want to use the MKL accelerated Microsoft R Open instead of plain R,
 there are some packages which are currently not provided in <code>conda</code>'s default
 channels or <code>conda-forge</code>. Here is how to lift this obstacle.</p>
-
-<h3 id="introduction-to-anaconda-and-r">Introduction to Anaconda and R</h3>
+<!-- PELICAN_END_SUMMARY -->
+<h3 id="introduction to anaconda and r">Introduction to Anaconda and R</h3>
 <p>I like to manage my research projects with <a href="https://conda.io/docs/">conda</a> which is the package
 manager for <a href="https://www.anaconda.com/distribution/">Anaconda</a>, a popular Python distribution for data science. For
-one of my recent projects I also needed to install R and I was lucky to find
+one of my recent projects, I also needed to install R and I was lucky to find
 out that R is also available with <code>conda</code>.</p>
 <p>First, you create your normal Python environment for your new project</p>
 <div class="highlight"><pre><span></span>$ conda create --name project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 anaconda
@@ -180,7 +180,7 @@ default with Anaconda, but the former is still provided if you are running a
 it is using the Intel Math Kernel Library (MKL) and enables multithreading by
 default (<a href="https://mran.microsoft.com/documents/rro/multithread">here</a> are some
 benchmark reports and information on how to set the number of threads used).</p>
-<p>Installing a basic R interpreter from MRO is as simle as typing</p>
+<p>Installing a basic R interpreter from MRO is as simple as typing</p>
 <div class="highlight"><pre><span></span>$ conda install --channel r mro-base
 </pre></div>
 <p>If you want to install R from R-Project, type <code>conda install -c r r-base</code>.</p>
@@ -200,9 +200,9 @@ $ conda install -c r r-essentials r-base
 <p>If your desired package is not available in <code>r-essentials</code>, you can use the
 search on https://anaconda.org to find a channel which offers your package. But
 what if your package is not available?</p>
-<h3 id="building-and-distributing-an-r-package">Building and Distributing an R package</h3>
+<h3 id="building and distributing an r package">Building and Distributing an R package</h3>
 <p>I had the same issue when I wanted to use <a href="https://github.com/stefvanbuuren/mice"><code>mice</code></a> which is a known
-framework for multiple imputation by chained equations.</p>
+framework for multiple imputations by chained equations.</p>
 <p>To build the package for your conda distribution, invoke the following command</p>
 <div class="highlight"><pre><span></span>$ conda skeleton cran r-mice
 </pre></div>
@@ -210,17 +210,17 @@ framework for multiple imputation by chained equations.</p>
 <code>bld.bat</code>, <code>build.sh</code> and <code>meta.yml</code>. <code>meta.yml</code> is the important file
 which controls the compilation. An example can be found <a href="https://github.com/tobiasraabe/r-mice/blob/master/conda-recipe/meta.yaml">here</a>. Note the key
 called <code>requirements</code>. inside <code>host</code> and <code>run</code> the R interpreter is
-defined. By default it is <code>r-base</code>. If you are using MRO, you have to change
+defined. By default, it is <code>r-base</code>. If you are using MRO, you have to change
 this to <code>mro-base</code>.</p>
-<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">build</span><span class="p p-Indicator">:</span>
+<div class="highlight"><pre><span></span><span class="nt">requirements</span><span class="p">:</span>
+  <span class="nt">build</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span> <span class="nv">compiler('c')</span> <span class="p p-Indicator">}}</span>          <span class="c1"># [not win]</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span> <span class="nv">compiler('cxx')</span> <span class="p p-Indicator">}}</span>        <span class="c1"># [not win]</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">native</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">toolchain</span>          <span class="c1"># [win]</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">posix</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>          <span class="c1"># [win]</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">posix</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">make</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+  <span class="nt">host</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-base</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-mass</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rcpp</span>
@@ -229,7 +229,7 @@ this to <code>mro-base</code>.</p>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rpart</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-survival</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span>
+  <span class="nt">run</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-base</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span><span class="nv">native</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">gcc-libs</span>           <span class="c1"># [win]</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-mass</span>
@@ -251,10 +251,10 @@ during the installation. To compile the package, type</p>
 repository and make it accessible to all people.</p>
 <p>That's what I did. I have created a <a href="https://github.com/tobiasraabe/r-mice">repository</a> which builds the package
 for Linux and macOS with <a href="https://www.travis-ci.org/">Travis-CI</a> and Windows with <a href="https://www.appveyor.com/">Appveyor</a>. The
-compiled packages are uploaded to my account and can be install via</p>
+compiled packages are uploaded to my account and can be installed via</p>
 <div class="highlight"><pre><span></span>$ conda install -c brimborium r-mice
 </pre></div>
-<h3 id="compile-your-own-package">Compile your own package</h3>
+<h3 id="compile your own package">Compile your own package</h3>
 <p>If you want to use my solution for yourself, fork my repository. Then, replace
 the recipe in conda-recipe with your recipe create with</p>
 <div class="highlight"><pre><span></span>$ conda skeleton cran &lt;package name&gt;
@@ -271,7 +271,7 @@ automation tools like Travis-CI and Appveyor, this looks even more deterrent.
 But that is why I created my repository which is reduced to the minimal amount
 of code to do the task.</p>
 <p>I will also extend this post and the repository description in the future.
-Since I do only have rudimentary knowledge of the background of what I did,
+Since I do only have a rudimentary knowledge of the background of what I did,
 there is a lot of room to grow :).</p>
 <p><strong>References</strong></p>
 <ul>
@@ -332,6 +332,9 @@ there is a lot of room to grow :).</p>
       <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
     </li>
     <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
+    </li>
+    <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
     </li>
     <li class="list-group-item tag-3">
@@ -376,7 +379,7 @@ there is a lot of room to grow :).</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Tobias Raabe         </div>
+         <div class="col-xs-10">&copy; 2019 Tobias Raabe         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
