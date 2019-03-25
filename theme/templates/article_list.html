@@ -15,7 +15,7 @@
                         {% if article.cover %}
                             <p align="center"><img src="{{ article.cover }}" style="max-width: 400px; height: auto;"></p>
                         {% endif %}
-                        <span class="article-summary">{{ article.summary }}</span>
+                        <span class="article-summary">{{ article.summary | regex_replace('(<h[1-6].*<\/h[1-6]>)', '') }}</span>
                         </div>
                     </li>
                 {% endfor %}

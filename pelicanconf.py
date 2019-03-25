@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import jinja2_extensions as je
+
 # Pelican options
 LOAD_CONTENT_CACHE = False
 
@@ -62,6 +64,7 @@ DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_ARTICLE_INFO_ON_INDEX = False  # Without effect.
 JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
+JINJA_FILTERS = {"regex_replace": je.regex_replace}
 I18N_TEMPLATES_LANG = "en"
 
 PLUGIN_PATHS = ["plugins"]

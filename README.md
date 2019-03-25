@@ -2,31 +2,15 @@
 
 ---
 
-# Develope the website
+# Develop the website
 
-There are two possibilities to run a development server.
+The easiest way is to open a bash terminal and hit
 
-1. The easiest way is to open a bash terminal and hit
+        $ pelican -lrD
 
-        $ make devserver
-
-2. Another way to debug your script is to run
-
-        $ python -m pelican.server
-
-   to view the published website on http://localhost:8000. Make sure to use
-   your browser in private mode.
-
-   The second terminal runs
-
-        $ pelican -r
-
-   or
-
-        $ make DEBUG=1 html
-
-   if you want to see the full traceback of your error.
-
+Currently, this option is not working under Windows
+([#2400](https://github.com/getpelican/pelican/issues/2400)), but you can use WLS
+instead.
 
 # Publish the website
 
