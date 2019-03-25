@@ -9,25 +9,24 @@ Summary: This DAG is produced by a sample project for reproducible research
          this template with the templating engine ``cookiecutter`` and various
          other software engineering tools.
 
-In one of the university courses I was introduced to a [Waf framework for
-reproducible research by Hans-Martin von
-Gaudecker](https://github.com/hmgaudecker/econ-project-templates) which is
-amazingly useful to manage your research project.
+In one of the university courses I was introduced to a [Waf framework for reproducible
+research by Hans-Martin von
+Gaudecker](https://github.com/hmgaudecker/econ-project-templates) which is amazingly
+useful to manage your research project.
 
-The basic idea is that a project is structured as a DAG, a directed-acyclic
-graph. A DAG is a graph with a finite amount of node and edges where the edges
-have a specific direction leading from input to output files. Furthermore,
-starting at node $\nu$ and following the directed edges, it is not possible to
-find a way back to $\nu$. Here is the DAG for the sample project:
+The basic idea is that a project is structured as a DAG, a directed-acyclic graph. A DAG
+is a graph with a finite amount of node and edges where the edges have a specific
+direction leading from input to output files. Furthermore, starting at node $\nu$ and
+following the directed edges, it is not possible to find a way back to $\nu$. Here is
+the DAG for the sample project:
 
 <p align="center">
     <b>DAG of sample project</b><br>
     <img src="{static}/images/fig-dag.png">
 </p>
 
-As you can see everything starts off at ``get_simulation_draws.py`` which
-serves as the source of ``initial_locations.csv`` which is the input of ...
-You get it.
+As you can see everything starts off at ``get_simulation_draws.py`` which serves as the
+source of ``initial_locations.csv`` which is the input of ... You get it.
 
 You get the sample project by installing ``cookiecutter`` first with
 
@@ -35,8 +34,7 @@ You get the sample project by installing ``cookiecutter`` first with
 $ pip install -U cookiecutter
 ```
 
-Then, go to the directory which should contain the folder with the project and
-type
+Then, go to the directory which should contain the folder with the project and type
 
 ```bash
 $ cookiecutter https://github.com/tobiasraabe/cookiecutter-research-template.git
@@ -57,8 +55,7 @@ $ python waf.py distclean configure build
 ```
 
 For more information on Waf read [Gaudecker's
-documentation](http://hmgaudecker.github.io/econ-project-templates/) and my
-[Waf Tips &
+documentation](http://hmgaudecker.github.io/econ-project-templates/) and my [Waf Tips &
 Tricks](https://github.com/tobiasraabe/cookiecutter-research-template/
 blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/WAF.rst).
 
