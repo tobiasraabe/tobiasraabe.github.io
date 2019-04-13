@@ -1,9 +1,8 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
 import sys
-sys.path.append('.')
+
+sys.path.append(".")
 
 import jinja2_extensions as je
 
@@ -20,7 +19,7 @@ PATH = "content"
 PAGE_PATHS = ["pages"]
 PAGE_URL = "{slug}.html"
 PAGE_SAVE_AS = "{slug}.html"
-ARTICLE_PATHS = ["blog"]
+ARTICLE_PATHS = ["Blog"]
 ARTICLE_URL = "blog/{slug}.html"
 ARTICLE_SAVE_AS = "blog/{slug}.html"
 ARCHIVES_SAVE_AS = "archives.html"
@@ -31,7 +30,7 @@ DIRECT_TEMPLATES = ["index", "categories", "tags", "archives", "search"]
 
 TIMEZONE = "Europe/Paris"
 DEFAULT_LANG = "en"
-LOCALE = "en"
+LOCALE = ("en-US", "en_US.utf8")
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
