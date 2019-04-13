@@ -17,13 +17,13 @@
     <li class="active">{{ page.title }}</li>
     {% endif %}
 </ol>
-{% endif %} {% endblock %} {% block content %}
+{% endif %} {% endblock %}
+
+{% block content %}
 <section id="content" class="body">
     {% if page.title %}
     <h1 class="entry-title">{{ page.title }}</h1> {% endif %} {% import 'includes/translations.html' as translations with context %} {{ translations.translations_for(page) }} {% if PDF_PROCESSOR %}
-    <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">
-                get the pdf
-            </a> {% endif %} {% if page.toc %}
+    <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">get the pdf</a> {% endif %} {% if page.toc %}
     <div class="panel panel-default">
         <div class="panel-heading">Table of Contents</div>
         <div class="panel-body">{{ page.toc }}</div>
