@@ -30,7 +30,7 @@ DIRECT_TEMPLATES = ["index", "categories", "tags", "archives", "search"]
 
 TIMEZONE = "Europe/Paris"
 DEFAULT_LANG = "en"
-LOCALE = ("en-US", "en_US.utf8")
+LOCALE = ("en", "en_US.utf8")
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
