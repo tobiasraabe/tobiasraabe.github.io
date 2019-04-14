@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Archives - Tobias Raabe</title>
+    <title>A time series course with Julia - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,15 +10,22 @@
 
     <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
 
+<link rel="canonical" href="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html">
 
         <meta name="author" content="Tobias Raabe" />
+        <meta name="keywords" content="Time Series,Julia" />
+        <meta name="description" content="Last semester, I had a time series course where we implemented some models like the Hodrick-Prescott filter or structural vector autoregressive processes in Julia. The whole thing is available online with the notebooks running on Binder which allows you to run the programming examples in your browser. So, if you plan to use Julia yourself and want to play around a little, that is a place to start. As I had not used Julia before and only heard about how fast it is, that it is statically typed, and so on, I was very interested in the beginning, but that changed quickly. The main cause of frustration was that the Julia developers released three versions during the time of the course. Version 0.6.4 was released on 9 July 2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All versions changed the …" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Tobias Raabe" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Tobias Raabe"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io"/>
-        <meta property="og:description" content="Tobias Raabe"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="A time series course with Julia"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html"/>
+        <meta property="og:description" content="Last semester, I had a time series course where we implemented some models like the Hodrick-Prescott filter or structural vector autoregressive processes in Julia. The whole thing is available online with the notebooks running on Binder which allows you to run the programming examples in your browser. So, if you plan to use Julia yourself and want to play around a little, that is a place to start. As I had not used Julia before and only heard about how fast it is, that it is statically typed, and so on, I was very interested in the beginning, but that changed quickly. The main cause of frustration was that the Julia developers released three versions during the time of the course. Version 0.6.4 was released on 9 July 2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All versions changed the …"/>
+        <meta property="article:published_time" content="2018-10-17" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="Time Series" />
+            <meta property="article:tag" content="Julia" />
+            <meta property="article:author" content="Tobias Raabe" />
 
 
 
@@ -36,6 +43,8 @@
 
 
 
+        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Tobias Raabe Blog ATOM Feed"/>
 
 </head>
 <body>
@@ -82,47 +91,89 @@ Tobias Raabe            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <ol class="breadcrumb">
-        <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="active">Archives</li>
-    </ol>
+            <ol class="breadcrumb">
+                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="Blog">Blog</a></li>
+                <li class="active">A time series course with Julia</li>
+            </ol>
     <section id="content">
-      <h1>Archives for Tobias Raabe</h1>
-        <div id="archives">
-                <p>
-                    <span class="categories-timestamp"><time datetime="2019-04-14T00:00:00+02:00">Sun 14 April 2019</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html">Numba - @vectorize and @guvectorize</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2019-03-25T00:00:00+01:00">Mon 25 March 2019</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html">Numpy - Views vs. Copies</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2018-10-17T00:00:00+02:00">Wed 17 October 2018</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html">A time series course with Julia</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2018-08-27T00:00:00+02:00">Mon 27 August 2018</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html">Facilitate reproducible research with cookiecutter-research-template</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2018-08-21T00:00:00+02:00">Tue 21 August 2018</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/identifying-software-patents.html">Identifying Software Patents</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2018-06-11T00:00:00+02:00">Mon 11 June 2018</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html">How to download files with Python</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2018-03-21T00:00:00+01:00">Wed 21 March 2018</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html">How to compile and distribute an R package with conda</a>
-                </p>
-                <p>
-                    <span class="categories-timestamp"><time datetime="2017-10-22T00:00:00+02:00">Sun 22 October 2017</time></span>
-                    <a href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html">The Tragedy of Titanic</a>
-                </p>
-        </div>
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://tobiasraabe.github.io/blog/a-time-series-course-with-julia.html"
+                       rel="bookmark"
+                       title="Permalink to A time series course with Julia">
+                        A time series course with Julia
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-10-17T00:00:00+02:00"> Wed 17 October 2018</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
+        /
+	<a href="https://tobiasraabe.github.io/tag/julia.html">Julia</a>
+    
+        <span class="label label-default">Read in</span>
+        2 minutes
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Last semester, I had a time series course where we implemented some models like
+the Hodrick-Prescott filter or structural vector autoregressive processes in
+Julia. The whole thing is available
+<a href="https://tobiasraabe.github.io/time_series">online</a> with the notebooks running
+on Binder which allows you to run the programming examples in your browser. So,
+if you plan to use Julia yourself and want to play around a little, that is
+a place to start.</p>
+<p>As I had not used Julia before and only heard about how fast it is, that it is
+statically typed, and so on, I was very interested in the beginning, but that
+changed quickly.</p>
+<p>The main cause of frustration was that the Julia developers released three
+versions during the time of the course. Version 0.6.4 was released on 9 July
+2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All
+versions changed the main parts of the API and probably the last change made
+most standard modules importable. As much as I appreciate the effort of making
+a language more modular and optimizing the structure, the changes probably
+broke all code examples on the web which totally clashes with my way of
+learning a new language by copying and pasting parts together. At least, one
+can assume that the changes will be minor in the future after the release of
+1.0.0.</p>
+<p>Another disadvantage is that Julia cannot be shipped with conda on Windows
+which is still my platform of choice, but maybe I am the one to blame here :).</p>
+<p>Apart from that, I do not know much about Julia and my current critique is more
+about convenience which comes with a more mature language. But comparing a
+27-year-old to a 6-year-old is unfair.</p>
+<p>The main selling points of Julia are speed and its mixture of dynamic and
+static typing. Regarding the first item, Python can be brought to comparable
+speed by using CPython or Numba, but all the benchmarks always depend on
+whether you hold the implementation over all languages constant or whether you
+optimized the problem for each language and whether there is a huge difference
+between a simple program and large implementation. So, I am not very sure what
+the final answer is here. Furthermore, all projects are heavily under
+development and benchmarks are quickly outdated. Regarding static typing, I
+think it would make some data analyses more consistent and currently, there is
+no real match in Python.</p>
+<p>Maybe I will use Julia in the future, but currently, I am too comfortable with
+Python and do not have a real use case where I am forced to switch to something
+else. Path dependency is a bitch.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
     </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

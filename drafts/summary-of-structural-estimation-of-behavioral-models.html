@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Summary of Structural Estimation of Behavioral Models - Tobias Raabe</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
+
+<link rel="canonical" href="https://tobiasraabe.github.io/drafts/summary-of-structural-estimation-of-behavioral-models.html">
+
+        <meta name="author" content="Tobias Raabe" />
+        <meta name="keywords" content="Structural Estimation" />
+        <meta name="description" content="This is a short summary of the fourth chapter in the Handbook of Labor Economics on structural estimation of behavioral models by Keane, Todd and Wolpin (Keane et al., 2011). The Latent Variable Framework for Discrete Choice Problems All discrete choice dynamic programming (DCDP) models share a common structure. Consider an economic agent \(i\) who faces a binary choice problem at each discrete period \(t\) from \(t = 1, \dots, T\) between to alternatives \(d_{it} \in \{0, 1\}\). The decision is determined by whether a latent variable \(v^*_{it}\), the difference in the expected payoff of the two choices crosses a scalar threshold values which is without loss of generality (w.l.o.g.) 0. Therefore, \(d_{it} = 1\) if \(v^*_{it} &gt; 0\) and else \(d_{it} = 0\). In most applications, the latent variable is dependent on three types of variables: \(\tilde D_{it}\) is a vector of …" />
+
+        <meta property="og:site_name" content="Tobias Raabe" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Summary of Structural Estimation of Behavioral Models"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io/drafts/summary-of-structural-estimation-of-behavioral-models.html"/>
+        <meta property="og:description" content="This is a short summary of the fourth chapter in the Handbook of Labor Economics on structural estimation of behavioral models by Keane, Todd and Wolpin (Keane et al., 2011). The Latent Variable Framework for Discrete Choice Problems All discrete choice dynamic programming (DCDP) models share a common structure. Consider an economic agent \(i\) who faces a binary choice problem at each discrete period \(t\) from \(t = 1, \dots, T\) between to alternatives \(d_{it} \in \{0, 1\}\). The decision is determined by whether a latent variable \(v^*_{it}\), the difference in the expected payoff of the two choices crosses a scalar threshold values which is without loss of generality (w.l.o.g.) 0. Therefore, \(d_{it} = 1\) if \(v^*_{it} &gt; 0\) and else \(d_{it} = 0\). In most applications, the latent variable is dependent on three types of variables: \(\tilde D_{it}\) is a vector of …"/>
+        <meta property="article:published_time" content="2019-01-25" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="Structural Estimation" />
+            <meta property="article:author" content="Tobias Raabe" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="https://tobiasraabe.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://tobiasraabe.github.io/theme/css/pygments/default.css" rel="stylesheet">
+    <link href="https://tobiasraabe.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/style.css" type="text/css"/>
+        <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+
+        <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Tobias Raabe ATOM Feed"/>
+
+
+
+        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Tobias Raabe Blog ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://tobiasraabe.github.io/" class="navbar-brand">
+Tobias Raabe            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
+                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
+                             Notebooks
+                          </a></li>
+                         <li><a href="https://tobiasraabe.github.io/projects.html">
+                             Projects
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="https://tobiasraabe.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="Blog">Blog</a></li>
+                <li class="active">Summary of Structural Estimation of Behavioral Models</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://tobiasraabe.github.io/drafts/summary-of-structural-estimation-of-behavioral-models.html"
+                       rel="bookmark"
+                       title="Permalink to Summary of Structural Estimation of Behavioral Models">
+                        Summary of Structural Estimation of Behavioral Models
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2019-01-25T00:00:00+01:00"> Fri 25 January 2019</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://tobiasraabe.github.io/tag/structural-estimation.html">Structural Estimation</a>
+    
+        <span class="label label-default">Read in</span>
+        4 minutes
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Table of Contents</div>
+                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#the latent variable framework for discrete choice problems" title="The Latent Variable Framework for Discrete Choice Problems">The Latent Variable Framework for Discrete Choice Problems</a></li><li><a class="toc-href" href="#the common empirical structure of static and dynamic discrete choice models" title="The common empirical structure of static and dynamic discrete choice models">The common empirical structure of static and dynamic discrete choice models</a><ul><li><a class="toc-href" href="#static model" title="Static model">Static model</a></li></ul></li><li><a class="toc-href" href="#dynamic models of schooling and occupational choices_1" title="Dynamic models of schooling and occupational choices">Dynamic models of schooling and occupational choices</a><ul><li><a class="toc-href" href="#foundational literature" title="Foundational literature">Foundational literature</a></li></ul></li><li><a class="toc-href" href="#glossary and definitions_1" title="Glossary and Definitions">Glossary and Definitions</a></li></ul></div></div>
+                    </div>
+                <p>This is a short summary of the fourth chapter in the Handbook of Labor
+Economics on structural estimation of behavioral models by Keane, Todd and
+Wolpin <a href='#Keane2011' id='ref-Keane2011-1'>(Keane et al., 2011)</a>.</p>
+<!-- PELICAN_END_SUMMARY -->
+<h3 id="the latent variable framework for discrete choice problems">The Latent Variable Framework for Discrete Choice Problems</h3>
+<p>All discrete choice dynamic programming (DCDP) models share a common structure.
+Consider an economic agent <span class="math">\(i\)</span> who faces a binary choice problem at each
+discrete period <span class="math">\(t\)</span> from <span class="math">\(t = 1, \dots, T\)</span> between to alternatives <span class="math">\(d_{it} \in
+\{0, 1\}\)</span>. The decision is determined by whether a latent variable <span class="math">\(v^*_{it}\)</span>,
+the difference in the expected payoff of the two choices crosses a scalar
+threshold values which is without loss of generality (w.l.o.g.) 0. Therefore,
+<span class="math">\(d_{it} = 1\)</span> if <span class="math">\(v^*_{it} &gt; 0\)</span> and else <span class="math">\(d_{it} = 0\)</span>.</p>
+<p>In most applications, the latent variable is dependent on three types of
+variables: <span class="math">\(\tilde D_{it}\)</span> is a vector of past choices, <span class="math">\(\tilde X_{it}\)</span> is a
+vector of contemporaneous or lagged variables and <span class="math">\(\tilde \epsilon_{it}\)</span> is a
+vector of contemporaneous and lagged unobservables.</p>
+<p>The decision rule can be written as</p>
+<div class="math">$$\begin{align*}
+    d_{it} &amp;= 1 &amp; \text{if } v_{it}^*(\tilde D_{it}, \tilde X_{it}, \tilde \epsilon_{it}) \geq 0\\
+           &amp;= 0 &amp; \text{if } v_{it}^*(\tilde D_{it}, \tilde X_{it}, \tilde \epsilon_{it}) &lt; 0
+\end{align*}$$</div>
+<h3 id="the common empirical structure of static and dynamic discrete choice models">The common empirical structure of static and dynamic discrete choice models</h3>
+<p>In this chapter the authors lay out a static and dynamic model of married
+woman's labor force participation and show relations between research goals and
+estimation techniques.</p>
+<h4 id="static model">Static model</h4>
+<h3 id="dynamic models of schooling and occupational choices_1">Dynamic models of schooling and occupational choices</h3>
+<h4 id="foundational literature">Foundational literature</h4>
+<p><a href='#Walsh1935' id='ref-Walsh1935-1'>Walsh (1935)</a> describes a model in which individuals invest into education until
+the return equals the return on other possible investments. He calculates
+returns for different levels of education and occupations, adjusting for costs
+and foregone earnings. The variability in returns minus cost which is negative
+and positive for some groups is attributed to non-pecuniary benefits in some
+professions.</p>
+<p><a href='#Roy1951' id='ref-Roy1951-1'>Roy (1951)</a> provides the modern framework for modeling occupational choices as
+an earnings maximization problem. Then, the impact of self-selection into
+different occupations on the wage distributions is analyzed.
+<a href="https://tobiasraabe.github.io/drafts/the-roy-model.html">Here</a> is a toy example of the Roy model.</p>
+<h3 id="glossary and definitions_1">Glossary and Definitions</h3>
+<p>Here are some definitions I find useful revisiting from time to time if things
+get messy.</p>
+<dl>
+<dt><strong>Forward looking and Myopic</strong></dt>
+<dd>
+        Forward looking simply means that agents take into account the effect
+        of their current actions on future wealth. How agents form expectations
+        is a modeling choice.
+    </dd>
+<dt><strong>Static or Dynamic</strong></dt>
+<dd>
+        A choice model is dynamic if agents are forward looking and the latent
+        variable contains either past choices or unobservables are serially
+        correlated.
+
+        A choice model is static if agents are myopic or if agents are forward
+        looking, but there exist no link between past, current and future via
+        choices and unobservables.
+    </dd>
+</dl>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%&#64;#$&#64;#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%&#64;#$&#64;#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script><hr>
+<h2>Bibliography</h2>
+<p id='Keane2011'>Michael&nbsp;P Keane, Petra&nbsp;E Todd, and Kenneth&nbsp;I Wolpin.
+The structural estimation of behavioral models: discrete choice dynamic programming methods and applications.
+In <em>Handbook of labor economics</em>, volume&nbsp;4, pages 331–461.
+Elsevier, 2011.
+URL: <a href="https://www.ssc.wisc.edu/~walker/wp/wp-content/uploads/2013/09/KeaneEtalHBLE2011.pdf">https://www.ssc.wisc.edu/~walker/wp/wp-content/uploads/2013/09/KeaneEtalHBLE2011.pdf</a>. <a class="cite-backref" href="#ref-Keane2011-1" title="Jump back to reference 1">↩</a></p>
+<p id='Roy1951'>Andrew&nbsp;Donald Roy.
+Some thoughts on the distribution of earnings.
+<em>Oxford economic papers</em>, 3(2):135–146, 1951.
+URL: <a href="https://www.jstor.org/stable/2662082">https://www.jstor.org/stable/2662082</a>. <a class="cite-backref" href="#ref-Roy1951-1" title="Jump back to reference 1">↩</a></p>
+<p id='Walsh1935'>John&nbsp;Raymond Walsh.
+Capital concept applied to man.
+<em>The Quarterly Journal of Economics</em>, 49(2):255–285, 1935.
+<a href="https://doi.org/10.2307/1884067">doi:10.2307/1884067</a>. <a class="cite-backref" href="#ref-Walsh1935-1" title="Jump back to reference 1">↩</a></p>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="https://tobiasraabe.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group " id="tags">
+    <li class="list-group-item tag-1">
+      <a href="https://tobiasraabe.github.io/tag/machine-learning.html">Machine Learning</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/deep-learning.html">Deep Learning</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/downloader.html">Downloader</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/julia.html">Julia</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/numba.html">Numba</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/r.html">R</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/reproducibility.html">Reproducibility</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/cookiecutter.html">cookiecutter</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2019 Tobias Raabe         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://tobiasraabe.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://tobiasraabe.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://tobiasraabe.github.io/theme/js/respond.min.js"></script>
+
+    <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
+
+
+
+</body>
+</html>

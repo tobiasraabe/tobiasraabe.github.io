@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Notebooks - Tobias Raabe</title>
+    <title>How to download files with Python - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,13 +10,23 @@
 
     <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/notebooks.html"> 
- <meta name="author" content="Tobias Raabe" />  <meta name="description" content="This page contains a list of all posts containing notebooks. You can start each notebook individually by clicking on the mybinder badges at the top of each post or you can start binder in the notebooks directory where you can browse through all notebooks. Click on the following button if you want to do that." />  
- <meta property="og:site_name" content="Tobias Raabe" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Notebooks" />
-<meta property="og:url" content="https://tobiasraabe.github.io/notebooks.html" />
-<meta property="og:description" content="This page contains a list of all posts containing notebooks. You can start each notebook individually by clicking on the mybinder badges at the top of each post or you can start binder in the notebooks directory where you can browse through all notebooks. Click on the following button if you want to do that." />  
+<link rel="canonical" href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html">
+
+        <meta name="author" content="Tobias Raabe" />
+        <meta name="keywords" content="Python,Downloader" />
+        <meta name="description" content="This is a short script in python to download files, resume and to validate downloads with hash values. It is useful to distribute projects and data separately. You can find it at the end of the article. An interactive version of the notebook is available as a Binder notebook." />
+
+        <meta property="og:site_name" content="Tobias Raabe" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="How to download files with Python"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"/>
+        <meta property="og:description" content="This is a short script in python to download files, resume and to validate downloads with hash values. It is useful to distribute projects and data separately. You can find it at the end of the article. An interactive version of the notebook is available as a Binder notebook."/>
+        <meta property="article:published_time" content="2018-06-11" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="Python" />
+            <meta property="article:tag" content="Downloader" />
+            <meta property="article:author" content="Tobias Raabe" />
+
 
 
     <!-- Bootstrap -->
@@ -33,6 +43,8 @@
 
 
 
+        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Tobias Raabe Blog ATOM Feed"/>
 
 </head>
 <body>
@@ -52,7 +64,7 @@ Tobias Raabe            </a>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                     <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li class="active"><a href="https://tobiasraabe.github.io/notebooks.html">
+                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
                              Notebooks
                           </a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
@@ -79,37 +91,56 @@ Tobias Raabe            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
- <ol class="breadcrumb">
-    <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-    <li class="active">Notebooks</li>
-</ol>
- <section id="content" class="body">
-    <h1 class="entry-title">Notebooks</h1>         <div class="entry-content">
-        <p>This page contains a list of all posts containing notebooks. You can start each
-notebook individually by clicking on the mybinder badges at the top of each
-post or you can start binder in the <code>notebooks</code> directory where you can
-browse through all notebooks. Click on the following button if you want to do
-that.</p>
-<p><center><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks"><img src="https://mybinder.org/badge.svg"/></a></center></p>
-        <h3>List of Notebooks:</h3>         <ul>
-             <li class="groupby">Apr, 2019</li>
-             <li class="article-item">
-                <span class="article">Apr 14, 2019</span><a href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html"><b>Numba - @vectorize and @guvectorize</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions.</p>
-</span>
+            <ol class="breadcrumb">
+                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="Blog">Blog</a></li>
+                <li class="active">How to download files with Python</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"
+                       rel="bookmark"
+                       title="Permalink to How to download files with Python">
+                        How to download files with Python
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-06-11T00:00:00+02:00"> Mon 11 June 2018</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
+        /
+	<a href="https://tobiasraabe.github.io/tag/downloader.html">Downloader</a>
+    
+        <span class="label label-default">Read in</span>
+        21 minutes
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </li>
-              <li class="groupby">Mar, 2019</li>
-             <li class="article-item">
-                <span class="article">Mar 25, 2019</span><a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html"><b>Numpy - Views vs. Copies</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumpy-views-vs-copies.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Table of Contents</div>
+                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Downloading-files" title="Downloading files">Downloading files</a></li><li><a class="toc-href" href="#Resuming-downloads" title="Resuming downloads">Resuming downloads</a></li><li><a class="toc-href" href="#Validating-downloads" title="Validating downloads">Validating downloads</a></li><li><a class="toc-href" href="#Visualizing-download-progress" title="Visualizing download progress">Visualizing download progress</a></li><li><a class="toc-href" href="#Complete-script" title="Complete script">Complete script</a></li></ul></div></div>
+                    </div>
+                <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+<p>This is a short script in python to download files, resume and to validate
+downloads with hash values. It is useful to distribute projects and data
+separately. You can find it at the end of the article. An interactive version
+of the notebook is available as a Binder notebook.</p>
+<!-- PELICAN_END_SUMMARY -->
 <style type="text/css">/*!
 *
 * IPython notebook
@@ -1275,49 +1306,366 @@ div.text_cell_render {
 }
 
 </style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In one of my recent projects on natural language processing and patents,
+I tried to program a little script which downloads files needed for the
+analysis.</p>
+<p>The program should be able to do the following things:</p>
+<ol>
+<li>Download a given file</li>
+<li>Resume the download if the file is incomplete</li>
+<li>Validate the file at the end of the download using hashes</li>
+<li>Wrap everything with beautiful progress bars</li>
+</ol>
+<p>Note that, to run the script you have to have at least a python 3.6 environment as I am using <a href="https://www.python.org/dev/peps/pep-0498/"><code>f-strings</code></a>.</p>
+<h3 id="Downloading-files">Downloading files<a class="anchor-link" href="#Downloading-files">&para;</a></h3><p>At first, we need to know how to download a file. We will use
+<a href="http://docs.python-requests.org/en/latest/"><code>requests</code></a> to handle
+connections to web content.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the next step, we will download a file and store it on the disk. The file size is 19kb, so you are safe to download it. If you have doubts about the file, insert any other link which can be a picture or something else.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/cpc_group.tsv.zip'</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'cpc_group.tsv.zip'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that <code>requests.get</code> will download the file immediately and store it in memory. For larger files, this does not work as they might not fit in memory. Therefore, we use the <code>stream</code> keyword to receive the file in chunks and store them on disk. The next file is about 3MB big. Use a different URL if you feel more comfortable with that.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest.tsv.zip'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Resuming-downloads">Resuming downloads<a class="anchor-link" href="#Resuming-downloads">&para;</a></h3><p>If you download large files, chances are that your download is interrupted. For that, we need a way to resume the download at the last byte position. We can do that by sending a Range-request to the server and specifying the range of bytes, we want to receive.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">resume_header</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'Range'</span><span class="p">:</span> <span class="n">f</span><span class="s1">'bytes=0-2000000'</span><span class="p">})</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">resume_header</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We look at the file size whether we have been able to download the file partially.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Size of the file: {path.stat().st_size} Bytes'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Size of file: 2000001 Bytes
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, we resume the download at the position of the last byte. We also have to change the mode from <code>open()</code> to <code>'ab'</code> as we are appending new content and do not want to overwrite existing content.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">resume_header</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'Range'</span><span class="p">:</span> <span class="n">f</span><span class="s1">'bytes={path.stat().st_size}-'</span><span class="p">})</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">resume_header</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">,</span> <span class="s1">'ab'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The crucial aspect of this code is that we correctly define the following range of bytes for the following downloads. It is important to know that the boundaries of the Range header are inclusive so that bytes in positions 0 and 2000000 are downloaded. Therefore, the file size is 2000001 and we can plug in the value to correctly resume the download.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Validating-downloads">Validating downloads<a class="anchor-link" href="#Validating-downloads">&para;</a></h3><p>At last, we want to make sure that the download of the file worked as expected. To assert whether two files are identical, one of the easiest solutions is to compare hashes. A hash function projects any kind of data onto data with fixed-length. The resulting object is called hash and should be different for two different objects but identical for the same. In this example, we use SHA256 to validate the two files.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest.tsv.zip'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+<span class="n">sha</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+
+<span class="n">sha</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sha</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>42e53da0f2adc03e035eb2f967998da5cb8e2b1235cd2630efc59e31df866372
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest_part.tsv.zip'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+<span class="n">sha</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+
+<span class="n">sha</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sha</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>42e53da0f2adc03e035eb2f967998da5cb8e2b1235cd2630efc59e31df866372
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Both hashes match and we have correctly resumed the download :).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Visualizing-download-progress">Visualizing download progress<a class="anchor-link" href="#Visualizing-download-progress">&para;</a></h3><p>There are multiple options to print pretty progress bars in python to the command line interface (<a href="https://github.com/WoLpH/python-progressbar"><code>progressbar2</code></a> e.g.), but I used <code>tqdm</code> for unknown reasons.</p>
+<p>To display the progress of the download, we have to know the total file size which we can easily request without downloading the whole file. Use <code>requests.head()</code> instead of <code>requests.get()</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.patentsview.org/data/20171226/government_interest.tsv.zip'</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">file_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'content-length'</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Size of file: </span><span class="si">{file_size}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3895459
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that content length returns a string and not a number.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
 
 
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<h3 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&para;</a></h3><p>In one of my recent projects, I needed to accelarate a discrete choice dynamic programming model. After I changed a part of the implementation, the program was indeed faster. But, the most expensive operation according to profiling with snakeviz was now <code>~:0(&lt;method 'copy' of 'numpy.ndarray' objects&gt;)</code>. I was puzzled. I was sure that there was no use of <code>np.copy()</code> at all. After reading some StackOverflow posts and blog entries, it became clear that some operations and more importantly indexing methods return copies instead of views. The difference between the two is that views refer to the same underlying data in memory whereas a copy creates a new object. The disadvantages of a copy are:</p>
-<ul>
-<li>takes more time</li>
-<li>takes more memory</li>
-</ul>
-<p>But, what operations return copies?</p>
-</span>
-                </div>
-            </li>
-                <li class="groupby">Jun, 2018</li>
-             <li class="article-item">
-                <span class="article">Jun 11, 2018</span><a href="https://tobiasraabe.github.io/blog/how-to-download-files-with-python.html"><b>How to download files with Python</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fhow-to-download-files-with-python.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>This is a short script in python to download files, resume and to validate
-downloads with hash values. It is useful to distribute projects and data
-separately. You can find it at the end of the article. An interactive version
-of the notebook is available as a Binder notebook.</p>
-</span>
-                </div>
-            </li>
-                <li class="groupby">Oct, 2017</li>
-             <li class="article-item">
-                <span class="article">Oct 22, 2017</span><a href="https://tobiasraabe.github.io/blog/the-tragedy-of-titanic.html"><b>The Tragedy of Titanic</b></a>
-            </li>
-            <li class="article-summary">
-                <div class="article-summary">
-                    <p align="center"><img src="images/fig-titanic-placebo-test.png" style="width: auto; max-height: 264px;"></p>
-                    <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Ftitanic%2Ftitanic.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>Analysis of survival rates on the Titanic with a placebo test for whether
-traveling in couples increased the likelihood of survival. An interactive
-version of the notebook is available by clicking on the binder badge above.</p>
-</span>
-                </div>
-            </li>
-           </ul>
-     </div>
-</section>
+<span class="n">initial_pos</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'government_interest.tsv.zip'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">file_size</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">'B'</span><span class="p">,</span>
+              <span class="n">unit_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unit_divisor</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+              <span class="n">desc</span><span class="o">=</span><span class="s1">'government_interest.tsv.zip'</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="n">initial_pos</span><span class="p">,</span>
+              <span class="n">ascii</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">):</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+            <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>government_interest.tsv.zip: 100%|#################################################| 3.71M/3.71M [00:26&lt;00:00, 254kB/s]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Complete-script">Complete script<a class="anchor-link" href="#Complete-script">&para;</a></h3><p>At last, here is the complete script.</p>
+<script src="https://gist.github.com/tobiasraabe/58adee67de619ce621464c1a6511d7d9.js"></script>
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
