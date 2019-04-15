@@ -14,5 +14,5 @@ dependencies:
     - markdown==3.1
     - pelican==4.0.1
     - pybtex==0.22.2
-    - jupyterlab
+    - jupyterlab==0.35.4
     - matplotlib
