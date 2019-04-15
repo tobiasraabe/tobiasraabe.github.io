@@ -1250,7 +1250,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;616 &amp;micro;s &amp;plusmn; 117 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 1000 loops each)
+&lt;pre&gt;584 &amp;micro;s &amp;plusmn; 17.3 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 1000 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1272,7 +1272,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;89.8 &amp;micro;s &amp;plusmn; 19.7 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 10000 loops each)
+&lt;pre&gt;80 &amp;micro;s &amp;plusmn; 3.36 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 10000 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1317,7 +1317,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;292 &amp;micro;s &amp;plusmn; 28.4 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 1000 loops each)
+&lt;pre&gt;274 &amp;micro;s &amp;plusmn; 50 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 1000 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1366,7 +1366,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;309 &amp;micro;s &amp;plusmn; 19.7 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 1000 loops each)
+&lt;pre&gt;284 &amp;micro;s &amp;plusmn; 31.6 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 1000 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1376,7 +1376,7 @@ div.text_cell_render {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The extra speed is negligible, but this is just a showcase. If the operation does not involve many calculations and the input is not big, you cannot expect more performance than plain Numpy. If we increase the number of calculations and set the &lt;code&gt;target&lt;/code&gt; keyword from &lt;code&gt;cpu&lt;/code&gt; to &lt;code&gt;parallel&lt;/code&gt;, we get similar performances.&lt;/p&gt;
+&lt;p&gt;We do not gain any performance, but this is just a showcase. If the operation does not involve many calculations and the input is not big, you cannot expect more performance than plain Numpy. If we increase the number of calculations and set the &lt;code&gt;target&lt;/code&gt; keyword from &lt;code&gt;cpu&lt;/code&gt; to &lt;code&gt;parallel&lt;/code&gt;, we get similar performances.&lt;/p&gt;
 &lt;p&gt;The different target means that the compiled function does not use one core, but a recommended amount of cores on your machine.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1407,7 +1407,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;4.89 s &amp;plusmn; 133 ms per loop (mean &amp;plusmn; std. dev. of 7 runs, 1 loop each)
+&lt;pre&gt;4.32 s &amp;plusmn; 90.2 ms per loop (mean &amp;plusmn; std. dev. of 7 runs, 1 loop each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1429,7 +1429,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;3.85 s &amp;plusmn; 79 ms per loop (mean &amp;plusmn; std. dev. of 7 runs, 1 loop each)
+&lt;pre&gt;3.35 s &amp;plusmn; 57.9 ms per loop (mean &amp;plusmn; std. dev. of 7 runs, 1 loop each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1640,7 +1640,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;41.3 ms &amp;plusmn; 927 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 10 loops each)
+&lt;pre&gt;37.1 ms &amp;plusmn; 960 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 10 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1662,7 +1662,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;3.04 ms &amp;plusmn; 91.1 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 100 loops each)
+&lt;pre&gt;2.59 ms &amp;plusmn; 47.5 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 100 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1704,7 +1704,7 @@ div.text_cell_render {
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;15.7 ms &amp;plusmn; 1.13 ms per loop (mean &amp;plusmn; std. dev. of 7 runs, 100 loops each)
+&lt;pre&gt;13.6 ms &amp;plusmn; 945 &amp;micro;s per loop (mean &amp;plusmn; std. dev. of 7 runs, 100 loops each)
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;

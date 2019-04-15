@@ -1384,7 +1384,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>616 &micro;s &plusmn; 117 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>584 &micro;s &plusmn; 17.3 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -1406,7 +1406,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>89.8 &micro;s &plusmn; 19.7 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10000 loops each)
+<pre>80 &micro;s &plusmn; 3.36 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10000 loops each)
 </pre>
 </div>
 </div>
@@ -1451,7 +1451,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>292 &micro;s &plusmn; 28.4 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>274 &micro;s &plusmn; 50 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -1500,7 +1500,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>309 &micro;s &plusmn; 19.7 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>284 &micro;s &plusmn; 31.6 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -1510,7 +1510,7 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The extra speed is negligible, but this is just a showcase. If the operation does not involve many calculations and the input is not big, you cannot expect more performance than plain Numpy. If we increase the number of calculations and set the <code>target</code> keyword from <code>cpu</code> to <code>parallel</code>, we get similar performances.</p>
+<p>We do not gain any performance, but this is just a showcase. If the operation does not involve many calculations and the input is not big, you cannot expect more performance than plain Numpy. If we increase the number of calculations and set the <code>target</code> keyword from <code>cpu</code> to <code>parallel</code>, we get similar performances.</p>
 <p>The different target means that the compiled function does not use one core, but a recommended amount of cores on your machine.</p>
 </div>
 </div>
@@ -1541,7 +1541,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4.89 s &plusmn; 133 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
+<pre>4.32 s &plusmn; 90.2 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1563,7 +1563,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>3.85 s &plusmn; 79 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
+<pre>3.35 s &plusmn; 57.9 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1774,7 +1774,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>41.3 ms &plusmn; 927 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10 loops each)
+<pre>37.1 ms &plusmn; 960 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10 loops each)
 </pre>
 </div>
 </div>
@@ -1796,7 +1796,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>3.04 ms &plusmn; 91.1 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+<pre>2.59 ms &plusmn; 47.5 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
 </pre>
 </div>
 </div>
@@ -1838,7 +1838,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>15.7 ms &plusmn; 1.13 ms per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+<pre>13.6 ms &plusmn; 945 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
 </pre>
 </div>
 </div>
