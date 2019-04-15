@@ -15,4 +15,4 @@ dependencies:
     - pelican==4.0.1
     - pybtex==0.22.2
     - jupyterlab==0.35.4
-    - matplotlib
+    - matplotlib==3.0.3
