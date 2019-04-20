@@ -6,7 +6,7 @@
 
 The easiest way is to open a bash terminal and hit
 
-        $ pelican -lrD
+    $ pelican -lrD
 
 Currently, this option is not working under Windows
 ([#2400](https://github.com/getpelican/pelican/issues/2400)), but you can use WLS
