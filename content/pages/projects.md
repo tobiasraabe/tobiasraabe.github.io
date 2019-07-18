@@ -40,7 +40,7 @@ textual data.
 
 - [Paper](https://github.com/tobiasraabe/software_patents/paper.pdf)
 - [Project on Github](https://github.com/tobiasraabe/software_patents)
-- [Blog Post]({static}/blog/software-patents.md)
+- [Blog Post]({static}/blog/20180821-software-patents.md)
 
 <br>
 
