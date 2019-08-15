@@ -71,6 +71,9 @@ Tobias Raabe            </a>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
+                         <li><a href="https://tobiasraabe.github.io/publications.html">
+                             Publications
+                          </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><span>
@@ -145,7 +148,7 @@ script to download different kinds of data sets. The raw data uses approximately
 disk space whereas the data for replicating the previous results based on a simple
 algorithm is currently less than 1GB.</p>
 <p>Now, let us see what has been done so far.</p>
-<!-- PELICAN_END_SUMMARY -->
+
 <p>The idea of the project is based on an algorithmic approach of <a href='#Bessen2007' id='ref-Bessen2007-1'>Bessen and Hunt (2007)</a>. The
 authors wanted to estimate the number of software patents and find out where software
 patents are used and what economic indicators are correlated with having more software
@@ -153,19 +156,19 @@ patents.</p>
 <p>To classify patents into categories of software and non-software, the authors developed
 a simple algorithm based on the evaluation of a random sample of patents. The algorithm
 is as follows:</p>
-<div class="highlight"><pre><span></span>(("software" in specification)
- OR ("computer" AND "program" in specification))
+<div class="highlight"><pre><span></span><span class="p">((</span><span class="ss">"software"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
+ <span class="k">OR</span> <span class="p">(</span><span class="ss">"computer"</span> <span class="k">AND</span> <span class="ss">"program"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">))</span>
 
-AND (utility patent excluding reissues)
+<span class="k">AND</span> <span class="p">(</span><span class="n">utility</span> <span class="n">patent</span> <span class="k">excluding</span> <span class="n">reissues</span><span class="p">)</span>
 
-ANDNOT ("chip"
-        OR "semiconductor"
-        OR "bus"
-        OR "circuit"
-        OR "circuitry"
-        in title)
+<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">"chip"</span>
+        <span class="k">OR</span> <span class="ss">"semiconductor"</span>
+        <span class="k">OR</span> <span class="ss">"bus"</span>
+        <span class="k">OR</span> <span class="ss">"circuit"</span>
+        <span class="k">OR</span> <span class="ss">"circuitry"</span>
+        <span class="k">in</span> <span class="n">title</span><span class="p">)</span>
 
-ANDNOT ("antigen" OR "antigenic" OR "chromatography" in specification)
+<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">"antigen"</span> <span class="k">OR</span> <span class="ss">"antigenic"</span> <span class="k">OR</span> <span class="ss">"chromatography"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
 </pre></div>
 <p>According to <a href='#Bessen2007' id='ref-Bessen2007-2'>Bessen and Hunt (2007)</a>, the specification is the abstract and the description of the
 patent. Note that, <a href="https://www.patentsview.org/web/">PatentsView</a> separates description into two parts, summary and
@@ -243,6 +246,7 @@ An empirical look at software patents.
     <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
     <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
     <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
@@ -252,6 +256,9 @@ An empirical look at software patents.
   <a href="https://tobiasraabe.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
   <ul class="list-group " id="tags">
     <li class="list-group-item tag-1">
+      <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
+    </li>
+    <li class="list-group-item tag-1">
       <a href="https://tobiasraabe.github.io/tag/machine-learning.html">Machine Learning</a>
     </li>
     <li class="list-group-item tag-1">
@@ -259,9 +266,6 @@ An empirical look at software patents.
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/deep-learning.html">Deep Learning</a>
@@ -295,6 +299,9 @@ An empirical look at software patents.
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/visualization.html">Visualization</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
