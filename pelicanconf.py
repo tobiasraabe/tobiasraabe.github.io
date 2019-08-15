@@ -48,6 +48,7 @@ SOCIAL = (
         "stack-overflow",
     ),
     ("linkedin", "https://linkedin.com/in/tobiasraabe"),
+    ("Google Scholar", "https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"),
 )
 
 DEFAULT_PAGINATION = 50
