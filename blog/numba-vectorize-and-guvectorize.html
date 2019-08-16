@@ -131,12 +131,12 @@ Tobias Raabe            </a>
 	<a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
     
         <span class="label label-default">Read in</span>
-        29 minutes
+        30 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Why-should-I-use-them" title="Why should I use them">Why should I use them</a></li><li><a class="toc-href" href="#When-should-I-use-them" title="When should I use them">When should I use them</a></li><li><a class="toc-href" href="#Using-the-@vectorize-decorator" title="Using the @vectorize decorator">Using the @vectorize decorator</a></li><li><a class="toc-href" href="#Using-the-@guvectorize-decorator" title="Using the @guvectorize decorator">Using the @guvectorize decorator</a><ul><li><a class="toc-href" href="#1.-Simulate-emax-for-one-agent-with-Numpy" title="1. Simulate emax for one agent with Numpy">1. Simulate emax for one agent with Numpy</a></li><li><a class="toc-href" href="#2.-Simulate-emax-for-one-agent-with-Numba" title="2. Simulate emax for one agent with Numba">2. Simulate emax for one agent with Numba</a></li><li><a class="toc-href" href="#3.-Simulate-emax-for-many-agents-and-many-draws" title="3. Simulate emax for many agents and many draws">3. Simulate emax for many agents and many draws</a></li></ul></li><li><a class="toc-href" href="#Conclusion_1" title="Conclusion">Conclusion</a></li><li><a class="toc-href" href="#Appendix" title="Appendix">Appendix</a><ul><li><a class="toc-href" href="#More-information-on-Numba" title="More information on Numba">More information on Numba</a></li><li><a class="toc-href" href="#Example-for-reduction,-accumulation-and-broadcasting" title="Example for reduction, accumulation and broadcasting">Example for reduction, accumulation and broadcasting</a></li><li><a class="toc-href" href="#Example-using-doctest" title="Example using doctest">Example using doctest</a></li></ul></li></ul></div></div>
+                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Why-should-I-use-them" title="Why should I use them">Why should I use them</a></li><li><a class="toc-href" href="#When-should-I-use-them" title="When should I use them">When should I use them</a></li><li><a class="toc-href" href="#Using-the-@vectorize-decorator" title="Using the @vectorize decorator">Using the @vectorize decorator</a></li><li><a class="toc-href" href="#Using-the-@guvectorize-decorator" title="Using the @guvectorize decorator">Using the @guvectorize decorator</a><ul><li><a class="toc-href" href="#1.-Simulate-emax-for-one-agent-with-Numpy" title="1. Simulate emax for one agent with Numpy">1. Simulate emax for one agent with Numpy</a></li><li><a class="toc-href" href="#2.-Simulate-emax-for-one-agent-with-Numba" title="2. Simulate emax for one agent with Numba">2. Simulate emax for one agent with Numba</a></li><li><a class="toc-href" href="#3.-Simulate-emax-for-many-agents-and-many-draws" title="3. Simulate emax for many agents and many draws">3. Simulate emax for many agents and many draws</a></li></ul></li><li><a class="toc-href" href="#Inlining-functions_1" title="Inlining functions">Inlining functions</a></li><li><a class="toc-href" href="#Conclusion" title="Conclusion">Conclusion</a></li><li><a class="toc-href" href="#Appendix" title="Appendix">Appendix</a><ul><li><a class="toc-href" href="#More-information-on-Numba" title="More information on Numba">More information on Numba</a></li><li><a class="toc-href" href="#Example-for-reduction,-accumulation-and-broadcasting" title="Example for reduction, accumulation and broadcasting">Example for reduction, accumulation and broadcasting</a></li><li><a class="toc-href" href="#Example-using-doctest" title="Example using doctest">Example using doctest</a></li></ul></li></ul></div></div>
                     </div>
                 <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
 <p>In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions.</p>
@@ -1309,10 +1309,11 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Why-should-I-use-them">Why should I use them<a class="anchor-link" href="#Why-should-I-use-them">&para;</a></h3><p>Both decorators are extremely powerful as Numba compiles the instructions of the decorated function to machine code which makes them significantly faster than the same operation written with Numpy. Of course, this is also true for functions decorated with <code>@jit</code>, but the other two decorators enable other features like reduction, accumulation and broadcasting (<a href="#Example-for-reduction,-accumulation-and-broadcasting">explanation</a>) which make operations on big matrices even faster.</p>
-<h3 id="When-should-I-use-them">When should I use them<a class="anchor-link" href="#When-should-I-use-them">&para;</a></h3><p>The root of all evil is pre-mature optimization. Before you start to optimize your implementation use tools like <a href="https://github.com/rkern/line_profiler">line_profiler</a> or <a href="https://github.com/jiffyclub/snakeviz">snakeviz</a> to profile your code and find perfomance bottlenecks. Often it is sufficient to find better implementations from the standard library or rewrite parts such that they use Numpy or similar optimised frameworks. If you use Numpy, do not use loops but array operations. Use higher-dimensional arrays to gain performance by broadcasting. <a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html">Avoid copies</a>. Also refactoring and rewriting parts of the code may not give direct speed improvements, but your code becomes more compact and you can single out expensive operations.</p>
-<p>Imagine you have done all this, but still there are some functions which take up the majority of runtime. Then, decide whether you need a function that operates on single elements or on arrays.</p>
-<h3 id="Using-the-@vectorize-decorator">Using the <code>@vectorize</code> decorator<a class="anchor-link" href="#Using-the-@vectorize-decorator">&para;</a></h3><p>The <code>@vectorize</code> is for writing efficient functions which work on every element of an array. One useful application for me was to compute the probability of <code>x</code> under a normal distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. There already exists an implemenation in scipy, but it was too slow in my case. Let us start to write the function.</p>
+<p><em>Updated 16.08.2019. Better syntax, less errors and an example to show inlining of functions.</em></p>
+<h3 id="Why-should-I-use-them">Why should I use them<a class="anchor-link" href="#Why-should-I-use-them">&para;</a></h3><p>Both decorators are extremely powerful as Numba compiles the instructions of the decorated function to machine code. That makes them significantly faster than the same operation written with Numpy. Of course, this is also true for functions decorated with <code>@jit</code>, but the other two decorators enable other features like reduction, accumulation and broadcasting (<a href="#Example-for-reduction,-accumulation-and-broadcasting">explanation</a>) which make operations on bigger matrices even faster.</p>
+<h3 id="When-should-I-use-them">When should I use them<a class="anchor-link" href="#When-should-I-use-them">&para;</a></h3><p>"[P]remature optimization is the root of all evil" (Donald Knuth in <em>Computer Programming as an Art</em>, p. 671). Before you start to optimize your implementation use tools like <a href="https://github.com/rkern/line_profiler">line_profiler</a> or <a href="https://github.com/jiffyclub/snakeviz">snakeviz</a> to profile your code and find the real bottlenecks, not the ones you think about. Often it is sufficient to find better implementations from the standard library or rewrite parts such that they use Numpy or similar optimized frameworks. If you use Numpy, do not use loops but array operations. Use higher-dimensional arrays to gain performance by broadcasting. <a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html">Avoid copies</a>. Also, refactoring and rewriting parts of the code may not give direct speed improvements, but your code becomes more compact and you can single out expensive operations.</p>
+<p>Imagine you have done this, but still there are some functions which take up the majority of runtime. Next, decide whether you need a function that operates on single elements of an array or on arrays.</p>
+<h3 id="Using-the-@vectorize-decorator">Using the <code>@vectorize</code> decorator<a class="anchor-link" href="#Using-the-@vectorize-decorator">&para;</a></h3><p>The <code>@vectorize</code> is for writing efficient functions which work on every element of an array. One useful application for me was to compute the probability of <code>x</code> under a normal distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. There already exists an implemenation in scipy, but it is incredibly slow. Let us start to write our own implementation.</p>
 </div>
 </div>
 </div>
@@ -1333,7 +1334,7 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can check our implementation against the scipy version to make sure it works as expected. Use the testing utilities from <code>numpy.testing</code> as the precision of the returns can differ because of the implementation or the underlying dependencies. (Tip: Use <a href="https://docs.python.org/3.7/library/doctest.html">doctest</a> to document and test your function at the same time. <a href="#Example-using-doctest">Here is an example</a>.)</p>
+<p>We can compare our implementation with the scipy version to make sure it works as expected. Use the testing utilities from <code>numpy.testing</code> as the precision of floating point numbers will always differ to some extent. (Tip: Use <a href="https://docs.python.org/3.7/library/doctest.html">doctest</a> to document and test your function at the same time. <a href="#Example-using-doctest">Here is an example</a>.)</p>
 </div>
 </div>
 </div>
@@ -1387,7 +1388,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>584 &micro;s &plusmn; 17.3 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>647 &micro;s &plusmn; 47.4 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -1409,7 +1410,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>80 &micro;s &plusmn; 3.36 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10000 loops each)
+<pre>78.4 &micro;s &plusmn; 1.68 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10000 loops each)
 </pre>
 </div>
 </div>
@@ -1419,8 +1420,8 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Surprisingly, we are already faster by a factor of 8. At this point you should ask yourself again if further optimization is really necessary and whether your time is better spent anywhere else. But, in this example we want to go down the rabbit hole a little bit further. The next step involves rewriting the function with the <code>@vectorize</code> decorator.</p>
-<p>The major new thing is that the decorator requires a signature or even multiple signatures which define the input and output types of the function. The output type wraps the input types with round brackets. There are two ways to define the signature: declare the types of the arguments with types from Numba or declare the types with a string. I prefer the latter as it keeps your import statements short. With <code>nopython=True</code>, Numba does not use Python as a fallback if compilation fails, so we get notified. Also, the new function does not like our default arguments.</p>
+<p>Surprisingly, we are already faster by a factor of 8. At this point you should ask yourself again if further optimization is really necessary and whether your time is better spent anywhere else - remember Donald Knuth! In this example we will come down the rabbit hole a little bit more. The next step involves rewriting the function with the <code>@vectorize</code> decorator.</p>
+<p>The major new thing is that the decorator requires a signature or even multiple signatures which define the input and output types of the function. The output type wraps the input types with round brackets. There are two ways to define the signature: declare the types of the arguments with types from Numba or declare the types with a string. I prefer the latter as it keeps your import statements short. With <code>nopython=True</code>, Numba does not use Python as a fallback if compilation fails, so we get notified. Also, the new function does not like default arguments.</p>
 </div>
 </div>
 </div>
@@ -1454,7 +1455,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>274 &micro;s &plusmn; 50 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>248 &micro;s &plusmn; 6.23 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -1503,7 +1504,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>284 &micro;s &plusmn; 31.6 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>248 &micro;s &plusmn; 3.92 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -1523,7 +1524,16 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"float64(float64, float64, float64)"</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"parallel"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_prob_norm_dist_fast_parallel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mu</span>
+    
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">probability</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+    <span class="k">return</span> <span class="n">probability</span>
 </pre></div>
 </div>
 </div>
@@ -1534,7 +1544,18 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast(x, 0, 1)
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast_parallel(x, 0, 1)
 </pre></div>
 </div>
 </div>
@@ -1544,7 +1565,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4.32 s &plusmn; 90.2 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
+<pre>2.72 s &plusmn; 161 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1553,7 +1574,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist(x, 0, 1)
@@ -1566,7 +1587,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>3.35 s &plusmn; 57.9 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
+<pre>2.32 s &plusmn; 66.2 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1576,16 +1597,16 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Even if the resulting function is slower than the Numpy implementation, it can still make sense to write one. For example, you can only use a function inside a Numba-compiled function if the same function is also compiled. When this <a href="https://github.com/numba/numba/pull/2469">PR for Numba</a> is finished, nesting functions is no obstacle anymore, but until then it is not possible all the time. Also, Numba <a href="https://numba.pydata.org/numba-doc/dev/user/faq.html#does-numba-inline-functions">inlines functions</a> which means the function and its calls are compiled as one function. So, you do not have to worry whether calling another function reduces performance.</p>
-<h3 id="Using-the-@guvectorize-decorator">Using the <code>@guvectorize</code> decorator<a class="anchor-link" href="#Using-the-@guvectorize-decorator">&para;</a></h3><p>I found the <code>@guvectorize</code> extremely useful and powerful, but at the same time hard to understand as I was not really experienced in the more general concepts of array computation. The following example is a Monte Carlo integration with which I understand gradually more and more of this approach.</p>
-<p>The hardest part to understand for me was what extrapolating from arrays to arrays of higher dimension means. Therefore, we will start with the simplest example and then gradually expand the problem. Along the way, will notice that the gufunc does not need to be changed.</p>
+<p>Even if the resulting function is slower than the Numpy implementation, it can still make sense to write one. For example, you can only use Numba-compiled functions in other Numba-compiled functions. When this <a href="https://github.com/numba/numba/pull/2469">PR for Numba</a> is finished, nesting functions is no obstacle anymore, but until then it is not possible all the time. Also, Numba <a href="https://numba.pydata.org/numba-doc/dev/user/faq.html#does-numba-inline-functions">inlines functions</a> which means the function and its calls are compiled as one function. So, you do not have to worry whether calling another function reduces performance.</p>
+<h3 id="Using-the-@guvectorize-decorator">Using the <code>@guvectorize</code> decorator<a class="anchor-link" href="#Using-the-@guvectorize-decorator">&para;</a></h3><p>I found the <code>@guvectorize</code> extremely useful and powerful, but at the same time hard to understand as I was not experienced in the more general concepts of array computation. The following example is a Monte Carlo integration which was my first point of contact with Numba.</p>
+<p>Trying to understand what extrapolating from arrays to arrays of higher dimension means can be hard. Thus, we will start with the simplest example and then gradually expand the problem. Along the way, you will learn about the flexibility and to some extent elegance of <code>@guvectorize</code> :).</p>
 <p>The problem is that we have an agent faced with four choices which yield constant utilities plus a stochastic component which is i.i.d. and normally distributed. We want to find the expected maximum utility (emax) from all choices which can be simulated by calculating maximum utility for a number of draws. The average yields the emax.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1600,17 +1621,17 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="1.-Simulate-emax-for-one-agent-with-Numpy">1. Simulate emax for one agent with Numpy<a class="anchor-link" href="#1.-Simulate-emax-for-one-agent-with-Numpy">&para;</a></h4><p>We start by simulating emax for one agent with Numpy just to solve the problem the normal way. We create 1000 draws add them to the deterministic component of the utility, take the max and then the average.</p>
+<h4 id="1.-Simulate-emax-for-one-agent-with-Numpy">1. Simulate emax for one agent with Numpy<a class="anchor-link" href="#1.-Simulate-emax-for-one-agent-with-Numpy">&para;</a></h4><p>We start by simulating the emax for one agent with Numpy to showcase the normal solution. We create 1000 draws add them to the deterministic component of the utility, take the max and then the average over all maxima.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_draws</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_draws</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_draws</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_draws</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1618,7 +1639,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">):</span>
@@ -1633,7 +1654,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">)</span>
@@ -1644,7 +1665,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>4.247215674679622</pre>
 </div>
@@ -1661,22 +1682,22 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">guvectorize</span>
 
 
 <span class="nd">@guvectorize</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">"f8[:], f8[:, :], f8[:]"</span><span class="p">],</span> <span class="s2">"(n), (p, n) -&gt; ()"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"cpu"</span>
+    <span class="p">[</span><span class="s2">"f8[:], f8[:, :], f8[:]"</span><span class="p">],</span> <span class="s2">"(n_choices), (n_draws, n_choices) -&gt; ()"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"cpu"</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">simulate_emax</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">,</span> <span class="n">emax</span><span class="p">):</span>
-    <span class="n">num_draws</span><span class="p">,</span> <span class="n">num_choices</span> <span class="o">=</span> <span class="n">draws</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">n_draws</span><span class="p">,</span> <span class="n">n_choices</span> <span class="o">=</span> <span class="n">draws</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">emax_</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_draws</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_draws</span><span class="p">):</span>
         <span class="n">max_utility</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_choices</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_choices</span><span class="p">):</span>
             <span class="n">utility</span> <span class="o">=</span> <span class="n">static_utilities</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">draws</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">utility</span> <span class="o">&gt;</span> <span class="n">max_utility</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1684,7 +1705,7 @@ div.text_cell_render {
 
         <span class="n">emax_</span> <span class="o">+=</span> <span class="n">max_utility</span>
 
-    <span class="n">emax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">emax_</span> <span class="o">/</span> <span class="n">num_draws</span>
+    <span class="n">emax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">emax_</span> <span class="o">/</span> <span class="n">n_draws</span>
 </pre></div>
 </div>
 </div>
@@ -1692,7 +1713,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">emax</span> <span class="o">=</span> <span class="n">simulate_emax</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">)</span>
@@ -1704,7 +1725,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>4.247215674679617</pre>
 </div>
@@ -1715,26 +1736,26 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First, we will look at the decorator and the two new components.</p>
+<p>First, we will take a look at the decorator and the two new components.</p>
 <ol>
 <li>The first argument is the signature, a list containing type declarations of the inputs. <code>f8</code> is just short-hand for <code>float64</code> and <code>f8[:]</code> represents an one-dimensional, <code>f8[:, :]</code> a two-dimensional array (<a href="https://numba.pydata.org/numba-doc/dev/reference/types.html">types and signatures</a>). Note that the output type does not wrap the input types. Instead it is added to the end of the list. Furthermore, this function should return a scalar which has to be declared as an array in the signature. Later, we will only write to the first entry of the array.</li>
-<li>The second argument is the layout which specifies the dimension of the inputs. You can use an arbitrary letter for a dimension, but assign the same letter to dimensions which should match. <code>()</code> represents a scalar and <code>(p, n)</code> an array where the first dimension is of size p and the second of size n. The return argument is separated from the rest with an arrow, <code>-&gt;</code>. Here the return is declared as a scalar.</li>
+<li>The second argument is the layout which specifies the dimension of the inputs. You can use an arbitrary letter for a dimension, but assign the same letter to dimensions which should match. <code>()</code> represents a scalar and <code>(n_draws, n_choices)</code> an array where the first dimension is the number of draws and the second the number of choices. The return argument is separated from the rest with an arrow, <code>-&gt;</code>. Here the return is declared as a scalar.</li>
 </ol>
 <p>Now, we will examine the function. In the special case of gufuncs, the return value is added to the arguments of the function.</p>
-<p>Instead of array operations, we are very explicit within the function and do everything with loops. For each set of draws, we add the deterministic and stochastic components and save only the maximum which is saved to a temporary variable. In the end, the average over the sum of maximum utilities is saved to the initial slot of the output array to get a scalar output.</p>
-<p>The clumsy syntax helps Numba optimize the syntax. As before, use also temporary variables.</p>
-<h4 id="3.-Simulate-emax-for-many-agents-and-many-draws">3. Simulate emax for many agents and many draws<a class="anchor-link" href="#3.-Simulate-emax-for-many-agents-and-many-draws">&para;</a></h4><p>The power of the gufunc is visible if we apply the function to many agents. This is possible without further adjustments as the implementation automatically infers that the defined operation has to be repeated over all other dimensions.</p>
+<p>Instead of array operations, we are very explicit within the function and do everything with loops. For each set of draws, we add the deterministic and stochastic components and keep only the maximum which is stored in a temporary variable. In the end, the average over the sum of maximum utilities is saved to the initial slot of the output array to get a scalar output.</p>
+<p>The clumsy syntax helps Numba optimize the syntax. As before, temporary variables can help Numba to optimize memory accesses.</p>
+<h4 id="3.-Simulate-emax-for-many-agents-and-many-draws">3. Simulate emax for many agents and many draws<a class="anchor-link" href="#3.-Simulate-emax-for-many-agents-and-many-draws">&para;</a></h4><p>The power of the gufunc is visible if we apply the function to many agents. This is possible without further adjustments as the implementation automatically infers that the defined operation has to be repeated over all other dimensions. Specifically, <code>@guvectorize</code> extends the function defined for dimensions <code>(n_choices,)</code> and <code>(n_draws, n_choices)</code> to whichever dimensions are added to the left meaning <code>(..., n_choices)</code> and <code>(..., n_draws, n_choices)</code>.</p>
 <p>Note that, we use the same draws for all individuals.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_agents</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">num_agents</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_agents</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">n_agents</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1749,7 +1770,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">):</span>
@@ -1764,7 +1785,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax_np(static_utilities, draws)
@@ -1777,40 +1798,10 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>37.1 ms &plusmn; 960 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10 loops each)
+<pre>37.1 ms &plusmn; 948 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10 loops each)
 </pre>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2.59 ms &plusmn; 47.5 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the magic of the gufunc. You only have to define what should happen with the innermost dimensions and the function will recognize that the operations should be repeated for all other dimensions.</p>
-<p>Just to make the point, assume that we do the operation for 500 individuals in five villages. So we add another dimension on the left side of the static utilities. Here is only the case for the gufunc because I do not want to adjust the Numpy function again.</p>
 </div>
 </div>
 </div>
@@ -1819,8 +1810,38 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">num_villages</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">num_villages</span><span class="p">,</span> <span class="n">num_agents</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2.22 ms &plusmn; 121 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the magic of the gufunc. You only have to define what should happen with the innermost dimensions and the function will recognize that the operations should be repeated for all other dimensions added to the left. The basic rules of broadcasting apply. In the previous example we have reused the same set of draws for all agents. We could have also passed a draw matrix with dimensions <code>(n_agents, n_draws, n_choices)</code>.</p>
+<p>Just to drive the point home, assume that we do the operation for 500 individuals in five villages. So we add another dimension on the left side of the static utilities. Here is only the case for the gufunc because I do not want to adjust the Numpy function again.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_villages</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">n_villages</span><span class="p">,</span> <span class="n">n_agents</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1828,7 +1849,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
@@ -1841,7 +1862,7 @@ div.text_cell_render {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>13.6 ms &plusmn; 945 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+<pre>11 ms &plusmn; 323 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
 </pre>
 </div>
 </div>
@@ -1851,7 +1872,81 @@ div.text_cell_render {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Conclusion_1">Conclusion<a class="anchor-link" href="#Conclusion">&para;</a></h3><p>I have illustrated how <code>@vectorize</code> and <code>@guvectorize</code> decorators work and in which settings they can be applied. I omitted <code>@jit</code> because it is easy to understand with the documentation and does not require much knowledge besides basic Numpy. But also, the subset of supported functions and/or its keywords is so restricted, it was not really useful to me. I achieved major performance boosts with the presented decorators and would recommend to use them. If you find something helpful which is not covered here but suits the topic, write me an email.</p>
+<h3 id="Inlining-functions_1">Inlining functions<a class="anchor-link" href="#Inlining-functions">&para;</a></h3><p>To show an example of <code>@jit</code> and how to inline functions, here is the following trick. Assume that you want to test different utility functions, but you want not duplicate the Monte Carlo integration over and over again. In this case, we can single out the utility function as a <code>@jit</code>-compiled function. Within the <code>@jit</code>-function assume, that you only receive the objects which you define within the <code>@guvectorize</code>-function - a single static utility and one draw.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">njit</span>
+
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">utility_func</span><span class="p">(</span><span class="n">static_utility</span><span class="p">,</span> <span class="n">draw</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">static_utility</span> <span class="o">+</span> <span class="n">draw</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nd">@guvectorize</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"f8[:], f8[:, :], f8[:]"</span><span class="p">],</span> <span class="s2">"(n_choices), (n_draws, n_choices) -&gt; ()"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"cpu"</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">simulate_emax_inlined</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">,</span> <span class="n">emax</span><span class="p">):</span>
+    <span class="n">n_draws</span><span class="p">,</span> <span class="n">n_choices</span> <span class="o">=</span> <span class="n">draws</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">emax_</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_draws</span><span class="p">):</span>
+        <span class="n">max_utility</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_choices</span><span class="p">):</span>
+            <span class="n">utility</span> <span class="o">=</span> <span class="n">utility_func</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">draws</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">utility</span> <span class="o">&gt;</span> <span class="n">max_utility</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">max_utility</span> <span class="o">=</span> <span class="n">utility</span>
+
+        <span class="n">emax_</span> <span class="o">+=</span> <span class="n">max_utility</span>
+
+    <span class="n">emax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">emax_</span> <span class="o">/</span> <span class="n">n_draws</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax_inlined(static_utilities, draws)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>11.1 ms &plusmn; 254 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is no hit to performance, but a clear division between numerical technique and economic model.</p>
+<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&para;</a></h3><p>I have illustrated how <code>@vectorize</code> and <code>@guvectorize</code> decorators work and in which settings they can be applied. <code>@jit</code> will be covered in a different post and linked here. Luckily, it is easier to understand with the documentation and does not require much knowledge besides basic Numpy. But, because the subset of supported functions and/or its keywords is so restricted, it was not really useful to me. I achieved major performance boosts with the presented decorators and would recommend to use them. If you find something helpful which is not covered here but suits the topic, write me an email.</p>
 <h3 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&para;</a></h3><h4 id="More-information-on-Numba">More information on Numba<a class="anchor-link" href="#More-information-on-Numba">&para;</a></h4><ul>
 <li>It is also possible to set <code>target="cuda"</code> and transfer the computation to the processor of your graphic card, GPU. This can provide better performance if the arithmetic intensity per byte transfered to the GPU is sufficiently high. What does that mean? There is an additional overhead to run the function on the GPU instead on CPU (the processors of the computer) which is the transfer of the data. The function can only make up for the additional cost, if there are enough operations on each byte. I read somewhere that you need at least 10 arithmetic operations per byte as a rule of thumb. (More information: <a href="https://stackoverflow.com/questions/52046102/numba-and-guvectorize-for-cuda-target-code-running-slower-than-expected/52132523#52132523">here</a> and <a href="https://stackoverflow.com/questions/49646182/numba-vectorize-for-cuda-what-is-the-correct-signature-to-return-arrays/49661183#49661183">here</a>.)</li>
 </ul>
@@ -1861,7 +1956,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1877,7 +1972,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -1889,7 +1984,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[26]:</div>
+<div class="prompt output_prompt">Out[30]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 0,  1,  2,  3],
        [ 4,  5,  6,  7],
@@ -1901,7 +1996,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1912,7 +2007,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[31]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([12, 15, 18, 21])</pre>
 </div>
@@ -1922,7 +2017,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1933,7 +2028,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[32]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([ 6, 22, 38])</pre>
 </div>
@@ -1943,7 +2038,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -1954,7 +2049,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[33]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 0,  1,  2,  3],
        [ 4,  6,  8, 10],
@@ -1966,7 +2061,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1977,7 +2072,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[30]:</div>
+<div class="prompt output_prompt">Out[34]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 0,  1,  3,  6],
        [ 4,  9, 15, 22],
@@ -1996,7 +2091,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
@@ -2008,7 +2103,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
@@ -2019,7 +2114,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[36]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([2, 4, 6])</pre>
 </div>
@@ -2036,7 +2131,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -2048,7 +2143,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[33]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[[1., 1., 1., 1., 1.],
         [1., 1., 1., 1., 1.]],
@@ -2062,7 +2157,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
@@ -2074,7 +2169,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[34]:</div>
+<div class="prompt output_prompt">Out[38]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([2, 2, 2, 2, 2])</pre>
 </div>
@@ -2084,7 +2179,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
@@ -2095,7 +2190,7 @@ div.text_cell_render {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[[2., 2., 2., 2., 2.],
         [2., 2., 2., 2., 2.]],
@@ -2127,7 +2222,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_prob_norm_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -2156,7 +2251,7 @@ div.text_cell_render {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">doctest</span><span class="p">;</span> <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
@@ -2185,7 +2280,7 @@ Got:
 </div>
 </div>
 <div class="output_area">
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>TestResults(failed=1, attempted=3)</pre>
 </div>
