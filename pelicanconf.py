@@ -133,3 +133,7 @@ TAG_CLOUD_STEPS = 3
 
 # cite
 PUBLICATIONS_SRC = "content/references.bib"
+
+
+# Analytics
+GOOGLE_ANALYTICS = "UA-178274443-1"
