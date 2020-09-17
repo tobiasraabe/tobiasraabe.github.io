@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
+    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
 
 <link rel="canonical" href="https://tobiasraabe.github.io/blog/matplotlib-for-publications.html">
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="Data Analysis,Visualization" />
-        <meta name="description" content="This article shows how to create plots with matplotlib for publications where fonts and font sizes match the LaTeX document and graphics are not blocky, but allow for infinite zooming." />
+        <meta name="description" content="This article shows how to create plots with matplotlib for publications where fonts and font sizes match the LaTeX document and graphics are not blocky, but allow for infinite zooming. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color: #007427; } .ansi-yellow-fg { color: #DDB62B; } .ansi-yellow-bg { background-color: #DDB62B; } .ansi-yellow-intense-fg { color: #B27D12; } .ansi-yellow-intense-bg { background-color: #B27D12; } .ansi-blue-fg { color: #208FFB; } .ansi-blue-bg { background-color: #208FFB; } .ansi-blue-intense-fg { color: #0065CA; } .ansi-blue-intense-bg { background-color: #0065CA; } .ansi-magenta-fg { color: #D160C4; } .ansi-magenta-bg { background-color: #D160C4; } .ansi-magenta-intense-fg { color: #A03196; } .ansi-magenta-intense-bg { background-color: #A03196; } .ansi-cyan-fg { color: #60C6C8; } .ansi-cyan-bg { background-color: #60C6C8; } .ansi-cyan-intense-fg { color: #258F8F; } .ansi-cyan-intense-bg { background-color: #258F8F; } .ansi-white-fg { color: #C5C1B4; } .ansi-white-bg { background-color: #C5C1B4 …" />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Matplotlib for publications"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/matplotlib-for-publications.html"/>
-        <meta property="og:description" content="This article shows how to create plots with matplotlib for publications where fonts and font sizes match the LaTeX document and graphics are not blocky, but allow for infinite zooming."/>
+        <meta property="og:description" content="This article shows how to create plots with matplotlib for publications where fonts and font sizes match the LaTeX document and graphics are not blocky, but allow for infinite zooming. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color: #007427; } .ansi-yellow-fg { color: #DDB62B; } .ansi-yellow-bg { background-color: #DDB62B; } .ansi-yellow-intense-fg { color: #B27D12; } .ansi-yellow-intense-bg { background-color: #B27D12; } .ansi-blue-fg { color: #208FFB; } .ansi-blue-bg { background-color: #208FFB; } .ansi-blue-intense-fg { color: #0065CA; } .ansi-blue-intense-bg { background-color: #0065CA; } .ansi-magenta-fg { color: #D160C4; } .ansi-magenta-bg { background-color: #D160C4; } .ansi-magenta-intense-fg { color: #A03196; } .ansi-magenta-intense-bg { background-color: #A03196; } .ansi-cyan-fg { color: #60C6C8; } .ansi-cyan-bg { background-color: #60C6C8; } .ansi-cyan-intense-fg { color: #258F8F; } .ansi-cyan-intense-bg { background-color: #258F8F; } .ansi-white-fg { color: #C5C1B4; } .ansi-white-bg { background-color: #C5C1B4 …"/>
         <meta property="article:published_time" content="2019-08-15" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="Data Analysis" />
@@ -41,11 +41,8 @@
         <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe ATOM Feed"/>
 
-
-
-        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
-
 </head>
 <body>
 
@@ -63,10 +60,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
-                             Notebooks
-                          </a></li>
+                    <li><a href="../pdfs/cv.pdf">CV</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -130,19 +124,13 @@ Tobias Raabe            </a>
         /
 	<a href="https://tobiasraabe.github.io/tag/visualization.html">Visualization</a>
     
-        <span class="label label-default">Read in</span>
-        21 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Introduction" title="Introduction">Introduction</a></li><li><a class="toc-href" href="#matplotlibrc-or-style-sheets" title="matplotlibrc or style sheets">matplotlibrc or style sheets</a></li><li><a class="toc-href" href="#The-font" title="The font">The font</a></li><li><a class="toc-href" href="#The-plot-size" title="The plot size">The plot size</a></li><li><a class="toc-href" href="#Vector-or-raster-graphics" title="Vector or raster graphics">Vector or raster graphics</a></li><li><a class="toc-href" href="#Conclusion" title="Conclusion">Conclusion</a></li><li><a class="toc-href" href="#References" title="References">References</a></li></ul></div></div>
-                    </div>
                 <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fmatplotlib%2Ffor%2Fpublications.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
 <p>This article shows how to create plots with matplotlib for publications where fonts and
 font sizes match the LaTeX document and graphics are not blocky, but allow for infinite
 zooming.</p>
-
+<!-- PELICAN_END_SUMMARY -->
 <style type="text/css">/*!
 *
 * IPython notebook
@@ -1254,45 +1242,7 @@ h6:hover .anchor-link {
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<style type="text/css">
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-</style>
-<style type="text/css">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><style type="text/css">
 
 /* Remove prompts like [1] from output. */
 div.prompt {
@@ -1650,9 +1600,9 @@ lines.linewidth : 3         # line width in pt.</code></pre>
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
     <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
     <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
@@ -1699,6 +1649,12 @@ lines.linewidth : 3         # line width in pt.</code></pre>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
@@ -1751,6 +1707,23 @@ lines.linewidth : 3         # line width in pt.</code></pre>
 
     <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-178274443-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
 
 
 </body>

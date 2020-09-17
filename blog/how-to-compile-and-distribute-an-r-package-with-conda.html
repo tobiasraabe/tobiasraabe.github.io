@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
+    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
 
 <link rel="canonical" href="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html">
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="conda,Anaconda,R,conda-build,MRO" />
-        <meta name="description" content="This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. This is useful as R has not really a neat dependency pinning tool like Python with requirements.txt or environment.yml with conda and R is shipped with conda anyway. But, if you want to use the MKL accelerated Microsoft R Open instead of plain R, there are some packages which are currently not provided in conda&#39;s default channels or conda-forge. Here is how to lift this obstacle." />
+        <meta name="description" content="This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. This is useful as R has not really a neat dependency pinning tool like Python with requirements.txt or environment.yml with conda and R is shipped with conda anyway. But, if you want to use the MKL accelerated Microsoft R Open instead of plain R, there are some packages which are currently not provided in conda&#39;s default channels or conda-forge. Here is how to lift this obstacle. Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects, I also needed to install R and I was lucky to find out that R is also available with conda. First, you create your normal Python …" />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="How to compile and distribute an R package with conda"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/how-to-compile-and-distribute-an-r-package-with-conda.html"/>
-        <meta property="og:description" content="This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. This is useful as R has not really a neat dependency pinning tool like Python with requirements.txt or environment.yml with conda and R is shipped with conda anyway. But, if you want to use the MKL accelerated Microsoft R Open instead of plain R, there are some packages which are currently not provided in conda&#39;s default channels or conda-forge. Here is how to lift this obstacle."/>
+        <meta property="og:description" content="This article shows how to compile and distribute R packages on anaconda.org to be used in your data science projects. This is useful as R has not really a neat dependency pinning tool like Python with requirements.txt or environment.yml with conda and R is shipped with conda anyway. But, if you want to use the MKL accelerated Microsoft R Open instead of plain R, there are some packages which are currently not provided in conda&#39;s default channels or conda-forge. Here is how to lift this obstacle. Introduction to Anaconda and R I like to manage my research projects with conda which is the package manager for Anaconda, a popular Python distribution for data science. For one of my recent projects, I also needed to install R and I was lucky to find out that R is also available with conda. First, you create your normal Python …"/>
         <meta property="article:published_time" content="2018-03-21" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="conda" />
@@ -44,11 +44,8 @@
         <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe ATOM Feed"/>
 
-
-
-        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
-
 </head>
 <body>
 
@@ -66,10 +63,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
-                             Notebooks
-                          </a></li>
+                    <li><a href="../pdfs/cv.pdf">CV</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -139,14 +133,8 @@ Tobias Raabe            </a>
         /
 	<a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
     
-        <span class="label label-default">Read in</span>
-        5 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#introduction to anaconda and r" title="Introduction to Anaconda and R">Introduction to Anaconda and R</a></li><li><a class="toc-href" href="#building and distributing an r package" title="Building and Distributing an R package">Building and Distributing an R package</a></li><li><a class="toc-href" href="#compile your own package" title="Compile your own package">Compile your own package</a></li></ul></div></div>
-                    </div>
                 <p>This article shows how to compile and distribute R packages on anaconda.org to
 be used in your data science projects. This is useful as R has not really a
 neat dependency pinning tool like Python with <code>requirements.txt</code> or
@@ -154,22 +142,22 @@ neat dependency pinning tool like Python with <code>requirements.txt</code> or
 if you want to use the MKL accelerated Microsoft R Open instead of plain R,
 there are some packages which are currently not provided in <code>conda</code>'s default
 channels or <code>conda-forge</code>. Here is how to lift this obstacle.</p>
-
+<!-- PELICAN_END_SUMMARY -->
 <h3 id="introduction to anaconda and r">Introduction to Anaconda and R</h3>
 <p>I like to manage my research projects with <a href="https://conda.io/docs/">conda</a> which is the package
 manager for <a href="https://www.anaconda.com/distribution/">Anaconda</a>, a popular Python distribution for data science. For
 one of my recent projects, I also needed to install R and I was lucky to find
 out that R is also available with <code>conda</code>.</p>
 <p>First, you create your normal Python environment for your new project</p>
-<div class="highlight"><pre><span></span>$ conda create --name project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 anaconda
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda create --name project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 anaconda
+</code></pre></div>
 <p>This installs a complete Anaconda distribution with Python 3.6 under the name
 <code>project</code>. If you only want the bare Python interpreter, call</p>
-<div class="highlight"><pre><span></span>$ conda create -n project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda create -n project <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+</code></pre></div>
 <p>Activate the environment with</p>
-<div class="highlight"><pre><span></span>$ activate project
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ activate project
+</code></pre></div>
 <blockquote>
 <p>Hint: Since my os is Windows, I prefer to use Powershell. Unfortunately,
 activating and deactivating your environment usually fails. Try out
@@ -184,8 +172,8 @@ it is using the Intel Math Kernel Library (MKL) and enables multithreading by
 default (<a href="https://mran.microsoft.com/documents/rro/multithread">here</a> are some
 benchmark reports and information on how to set the number of threads used).</p>
 <p>Installing a basic R interpreter from MRO is as simple as typing</p>
-<div class="highlight"><pre><span></span>$ conda install --channel r mro-base
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda install --channel r mro-base
+</code></pre></div>
 <p>If you want to install R from R-Project, type <code>conda install -c r r-base</code>.</p>
 <p>It is important to note that it is impossible to have both R interpreters in
 one environment and that packages for either one of them do not work with the
@@ -194,12 +182,12 @@ other. You can find more information <a href="https://github.com/conda-forge/r-b
 <code>r-essentials</code>. It bundles many useful packages along with <a href="https://github.com/IRkernel/IRkernel"><code>IRkernel</code></a>
 which enables you to use R in Jupyter notebooks. Again, there are two commands
 depending on which R interpreter you are using.</p>
-<div class="highlight"><pre><span></span>$ conda install -c r r-essentials
+<div class="highlight"><pre><span></span><code>$ conda install -c r r-essentials
 $ conda install -c r r-essentials r-base
-</pre></div>
+</code></pre></div>
 <p>To update all of your R packages run</p>
-<div class="highlight"><pre><span></span>$ conda update r-essentials
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda update r-essentials
+</code></pre></div>
 <p>If your desired package is not available in <code>r-essentials</code>, you can use the
 search on https://anaconda.org to find a channel which offers your package. But
 what if your package is not available?</p>
@@ -207,15 +195,15 @@ what if your package is not available?</p>
 <p>I had the same issue when I wanted to use <a href="https://github.com/stefvanbuuren/mice"><code>mice</code></a> which is a known
 framework for multiple imputations by chained equations.</p>
 <p>To build the package for your conda distribution, invoke the following command</p>
-<div class="highlight"><pre><span></span>$ conda skeleton cran r-mice
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda skeleton cran r-mice
+</code></pre></div>
 <p>This will create a folder called <code>r-mice</code> which contains three files,
 <code>bld.bat</code>, <code>build.sh</code> and <code>meta.yml</code>. <code>meta.yml</code> is the important file
 which controls the compilation. An example can be found <a href="https://github.com/tobiasraabe/r-mice/blob/master/conda-recipe/meta.yaml">here</a>. Note the key
 called <code>requirements</code>. inside <code>host</code> and <code>run</code> the R interpreter is
 defined. By default, it is <code>r-base</code>. If you are using MRO, you have to change
 this to <code>mro-base</code>.</p>
-<div class="highlight"><pre><span></span><span class="nt">requirements</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">requirements</span><span class="p">:</span>
   <span class="nt">build</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span> <span class="nv">compiler('c')</span> <span class="p p-Indicator">}}</span>          <span class="c1"># [not win]</span>
     <span class="p p-Indicator">-</span> <span class="p p-Indicator">{{</span> <span class="nv">compiler('cxx')</span> <span class="p p-Indicator">}}</span>        <span class="c1"># [not win]</span>
@@ -241,27 +229,27 @@ this to <code>mro-base</code>.</p>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-nnet</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-rpart</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">r-survival</span>
-</pre></div>
+</code></pre></div>
 <p>In the next step, we want to compile the package. If you are on Windows, make
 sure to install <a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a> in advance and add binaries to your system's path
 during the installation. To compile the package, type</p>
-<div class="highlight"><pre><span></span>$ conda build r-mice
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda build r-mice
+</code></pre></div>
 <p>After the compilation ended successfully, you can install the package with</p>
-<div class="highlight"><pre><span></span>$ conda install --use-local r-mice
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda install --use-local r-mice
+</code></pre></div>
 <p>You can also <a href="https://www.anaconda.com/blog/developer-blog/conda-data-science/">upload the package to Anaconda.org</a> to your private
 repository and make it accessible to all people.</p>
 <p>That's what I did. I have created a <a href="https://github.com/tobiasraabe/r-mice">repository</a> which builds the package
 for Linux and macOS with <a href="https://www.travis-ci.org/">Travis-CI</a> and Windows with <a href="https://www.appveyor.com/">Appveyor</a>. The
 compiled packages are uploaded to my account and can be installed via</p>
-<div class="highlight"><pre><span></span>$ conda install -c brimborium r-mice
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda install -c brimborium r-mice
+</code></pre></div>
 <h3 id="compile your own package">Compile your own package</h3>
 <p>If you want to use my solution for yourself, fork my repository. Then, replace
 the recipe in conda-recipe with your recipe create with</p>
-<div class="highlight"><pre><span></span>$ conda skeleton cran &lt;package name&gt;
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ conda skeleton cran &lt;package name&gt;
+</code></pre></div>
 <p>Push the repository to your Github account and create accounts on <a href="https://www.travis-ci.org/">Travis-
 CI</a>, <a href="https://www.appveyor.com/">Appveyor</a> and <a href="https://anaconda.org/">Anaconda.org</a>.</p>
 <p>Next, go to Anaconda.org, settings, access and create a token. Make sure to
@@ -303,9 +291,9 @@ there is a lot of room to grow :).</p>
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
     <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
     <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
@@ -352,6 +340,12 @@ there is a lot of room to grow :).</p>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
@@ -404,6 +398,23 @@ there is a lot of room to grow :).</p>
 
     <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-178274443-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
 
 
 </body>

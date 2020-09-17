@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
+    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
 
 <link rel="canonical" href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html">
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="Numba,Numpy" />
-        <meta name="description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions." />
+        <meta name="description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color: #007427; } .ansi-yellow-fg { color: #DDB62B; } .ansi-yellow-bg { background-color: #DDB62B; } .ansi-yellow-intense-fg { color: #B27D12; } .ansi-yellow-intense-bg { background-color: #B27D12; } .ansi-blue-fg { color: #208FFB; } .ansi-blue-bg { background-color: #208FFB; } .ansi-blue-intense-fg { color: #0065CA; } .ansi-blue-intense-bg { background-color: #0065CA; } .ansi-magenta-fg { color: #D160C4; } .ansi-magenta-bg { background-color: #D160C4; } .ansi-magenta-intense-fg { color: #A03196 …" />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Numba - @vectorize and @guvectorize"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html"/>
-        <meta property="og:description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions."/>
+        <meta property="og:description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color: #007427; } .ansi-yellow-fg { color: #DDB62B; } .ansi-yellow-bg { background-color: #DDB62B; } .ansi-yellow-intense-fg { color: #B27D12; } .ansi-yellow-intense-bg { background-color: #B27D12; } .ansi-blue-fg { color: #208FFB; } .ansi-blue-bg { background-color: #208FFB; } .ansi-blue-intense-fg { color: #0065CA; } .ansi-blue-intense-bg { background-color: #0065CA; } .ansi-magenta-fg { color: #D160C4; } .ansi-magenta-bg { background-color: #D160C4; } .ansi-magenta-intense-fg { color: #A03196 …"/>
         <meta property="article:published_time" content="2019-04-14" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="Numba" />
@@ -41,11 +41,8 @@
         <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe ATOM Feed"/>
 
-
-
-        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
-
 </head>
 <body>
 
@@ -63,10 +60,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
-                             Notebooks
-                          </a></li>
+                    <li><a href="../pdfs/cv.pdf">CV</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -130,17 +124,11 @@ Tobias Raabe            </a>
         /
 	<a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
     
-        <span class="label label-default">Read in</span>
-        30 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body"><div id="toc"><ul><li><a class="toc-href" href="#Why-should-I-use-them" title="Why should I use them">Why should I use them</a></li><li><a class="toc-href" href="#When-should-I-use-them" title="When should I use them">When should I use them</a></li><li><a class="toc-href" href="#Using-the-@vectorize-decorator" title="Using the @vectorize decorator">Using the @vectorize decorator</a></li><li><a class="toc-href" href="#Using-the-@guvectorize-decorator" title="Using the @guvectorize decorator">Using the @guvectorize decorator</a><ul><li><a class="toc-href" href="#1.-Simulate-emax-for-one-agent-with-Numpy" title="1. Simulate emax for one agent with Numpy">1. Simulate emax for one agent with Numpy</a></li><li><a class="toc-href" href="#2.-Simulate-emax-for-one-agent-with-Numba" title="2. Simulate emax for one agent with Numba">2. Simulate emax for one agent with Numba</a></li><li><a class="toc-href" href="#3.-Simulate-emax-for-many-agents-and-many-draws" title="3. Simulate emax for many agents and many draws">3. Simulate emax for many agents and many draws</a></li></ul></li><li><a class="toc-href" href="#Inlining-functions_1" title="Inlining functions">Inlining functions</a></li><li><a class="toc-href" href="#Conclusion" title="Conclusion">Conclusion</a></li><li><a class="toc-href" href="#Appendix" title="Appendix">Appendix</a><ul><li><a class="toc-href" href="#More-information-on-Numba" title="More information on Numba">More information on Numba</a></li><li><a class="toc-href" href="#Example-for-reduction,-accumulation-and-broadcasting" title="Example for reduction, accumulation and broadcasting">Example for reduction, accumulation and broadcasting</a></li><li><a class="toc-href" href="#Example-using-doctest" title="Example using doctest">Example using doctest</a></li></ul></li></ul></div></div>
-                    </div>
                 <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
 <p>In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions.</p>
-
+<!-- PELICAN_END_SUMMARY -->
 <style type="text/css">/*!
 *
 * IPython notebook
@@ -1252,45 +1240,7 @@ h6:hover .anchor-link {
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<style type="text/css">
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-</style>
-<style type="text/css">
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><style type="text/css">
 
 /* Remove prompts like [1] from output. */
 div.prompt {
@@ -1343,7 +1293,7 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1430,7 +1380,7 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">vectorize</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
 
 <span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"float64(float64, float64, float64)"</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_prob_norm_dist_fast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
@@ -1685,7 +1635,7 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">guvectorize</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">guvectorize</span>
 
 
 <span class="nd">@guvectorize</span><span class="p">(</span>
@@ -1881,7 +1831,7 @@ div.text_cell_render {
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">njit</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
 
 
 <span class="nd">@njit</span>
@@ -1960,7 +1910,7 @@ div.text_cell_render {
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">vectorize</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
 
 <span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"int32(int32, int32)"</span><span class="p">,</span> <span class="s2">"int64(int64, int64)"</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -2333,9 +2283,9 @@ Got:
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
     <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
     <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
@@ -2382,6 +2332,12 @@ Got:
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
@@ -2434,6 +2390,23 @@ Got:
 
     <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-178274443-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
 
 
 </body>

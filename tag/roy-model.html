@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Judea Perl and Causal Graphs - Tobias Raabe</title>
+    <title>Roy Model - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
+    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/drafts/judea-perl-and-causal-graphs.html">
 
-        <meta name="author" content="Tobias Raabe" />
-        <meta name="keywords" content="Judea Pearl" />
-        <meta name="description" content="Template for post." />
+    <meta name="author" content="Tobias Raabe" />
+    <meta name="keywords" content="Roy Model" />
 
+    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Tobias Raabe" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Judea Perl and Causal Graphs"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io/drafts/judea-perl-and-causal-graphs.html"/>
-        <meta property="og:description" content="Template for post."/>
-        <meta property="article:published_time" content="2019-01-31" />
-            <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="Judea Pearl" />
-            <meta property="article:author" content="Tobias Raabe" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Tobias Raabe"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io"/>
+        <meta property="og:description" content="Tobias Raabe"/>
 
 
 
@@ -40,10 +35,6 @@
         <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe ATOM Feed"/>
 
-
-
-        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Tobias Raabe blog ATOM Feed"/>
 
 </head>
 <body>
@@ -62,10 +53,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
-                             Notebooks
-                          </a></li>
+                    <li><a href="../pdfs/cv.pdf">CV</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -93,29 +81,18 @@ Tobias Raabe            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <ol class="breadcrumb">
-                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="blog">blog</a></li>
-                <li class="active">Judea Perl and Causal Graphs</li>
-            </ol>
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="https://tobiasraabe.github.io/drafts/judea-perl-and-causal-graphs.html"
-                       rel="bookmark"
-                       title="Permalink to Judea Perl and Causal Graphs">
-                        Judea Perl and Causal Graphs
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
+    <ol class="breadcrumb">
+        <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
+        <li><a href="https://tobiasraabe.github.io/" title="Tags">Tags</a></li>
+        <li class="active">Roy Model</li>
+    </ol>
+            <article>
+                <h2><a href="https://tobiasraabe.github.io/blog/the-roy-model.html">The Roy Model</a></h2>
+                    <div class="well well-sm">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2019-01-31T00:00:00+01:00"> Thu 31 January 2019</time>
+        <i class="fa fa-calendar"></i><time datetime="2019-01-19T00:00:00+01:00"> Sat 19 January 2019</time>
     </span>
 
 
@@ -125,17 +102,134 @@ Tobias Raabe            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://tobiasraabe.github.io/tag/judea-pearl.html">Judea Pearl</a>
+	<a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
+        /
+	<a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
     
-        <span class="label label-default">Read in</span>
-        1 minutes
 </footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Froy-model.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+<style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future …</style>
+                    <a class="btn btn-default btn-xs" href="https://tobiasraabe.github.io/blog/the-roy-model.html">more ...</a>
                 </div>
-                <p>Template for post.</p>
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
@@ -149,9 +243,9 @@ Tobias Raabe            </a>
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
     <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
     <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
@@ -198,6 +292,12 @@ Tobias Raabe            </a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
@@ -250,6 +350,23 @@ Tobias Raabe            </a>
 
     <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-178274443-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
 
 
 </body>

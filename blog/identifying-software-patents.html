@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.png" rel="icon">
+    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
 
 <link rel="canonical" href="https://tobiasraabe.github.io/blog/identifying-software-patents.html">
 
         <meta name="author" content="Tobias Raabe" />
         <meta name="keywords" content="Machine Learning,Deep Learning,Text Data" />
-        <meta name="description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far." />
+        <meta name="description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far. The idea of the project …" />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Identifying Software Patents"/>
         <meta property="og:url" content="https://tobiasraabe.github.io/blog/identifying-software-patents.html"/>
-        <meta property="og:description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far."/>
+        <meta property="og:description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far. The idea of the project …"/>
         <meta property="article:published_time" content="2018-08-21" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="Machine Learning" />
@@ -42,11 +42,8 @@
         <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe ATOM Feed"/>
 
-
-
-        <link href="https://tobiasraabe.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Tobias Raabe blog ATOM Feed"/>
-
 </head>
 <body>
 
@@ -64,10 +61,7 @@ Tobias Raabe            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">Curriculum Vitae</a></li>
-                         <li><a href="https://tobiasraabe.github.io/notebooks.html">
-                             Notebooks
-                          </a></li>
+                    <li><a href="../pdfs/cv.pdf">CV</a></li>
                          <li><a href="https://tobiasraabe.github.io/projects.html">
                              Projects
                           </a></li>
@@ -133,8 +127,6 @@ Tobias Raabe            </a>
         /
 	<a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
     
-        <span class="label label-default">Read in</span>
-        3 minutes
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>In 2015, I wrote my Bachelor's thesis on identifying software patents. This is useful
@@ -148,7 +140,7 @@ script to download different kinds of data sets. The raw data uses approximately
 disk space whereas the data for replicating the previous results based on a simple
 algorithm is currently less than 1GB.</p>
 <p>Now, let us see what has been done so far.</p>
-
+<!-- PELICAN_END_SUMMARY -->
 <p>The idea of the project is based on an algorithmic approach of <a href='#Bessen2007' id='ref-Bessen2007-1'>Bessen and Hunt (2007)</a>. The
 authors wanted to estimate the number of software patents and find out where software
 patents are used and what economic indicators are correlated with having more software
@@ -156,7 +148,7 @@ patents.</p>
 <p>To classify patents into categories of software and non-software, the authors developed
 a simple algorithm based on the evaluation of a random sample of patents. The algorithm
 is as follows:</p>
-<div class="highlight"><pre><span></span><span class="p">((</span><span class="ss">"software"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="ss">"software"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
  <span class="k">OR</span> <span class="p">(</span><span class="ss">"computer"</span> <span class="k">AND</span> <span class="ss">"program"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">))</span>
 
 <span class="k">AND</span> <span class="p">(</span><span class="n">utility</span> <span class="n">patent</span> <span class="k">excluding</span> <span class="n">reissues</span><span class="p">)</span>
@@ -169,7 +161,7 @@ is as follows:</p>
         <span class="k">in</span> <span class="n">title</span><span class="p">)</span>
 
 <span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">"antigen"</span> <span class="k">OR</span> <span class="ss">"antigenic"</span> <span class="k">OR</span> <span class="ss">"chromatography"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 <p>According to <a href='#Bessen2007' id='ref-Bessen2007-2'>Bessen and Hunt (2007)</a>, the specification is the abstract and the description of the
 patent. Note that, <a href="https://www.patentsview.org/web/">PatentsView</a> separates description into two parts, summary and
 description.</p>
@@ -244,9 +236,9 @@ An empirical look at software patents.
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
     <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/brimborium"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
+    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
     <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
@@ -293,6 +285,12 @@ An empirical look at software patents.
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
     </li>
     <li class="list-group-item tag-3">
       <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
@@ -345,6 +343,23 @@ An empirical look at software patents.
 
     <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-178274443-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
 
 
 </body>
