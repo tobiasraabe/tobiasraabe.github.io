@@ -11,7 +11,7 @@ dependencies:
   - ghp-import>=0.5.5
   - jupyter>=1.0.0
   - markdown>=3.1.1
-  - pelican>=4.1
+  - pelican>=4.1,<4.5
   - pybtex>=0.22.2
   - jupyterlab>=1.0.0
   - matplotlib>=3.1.0

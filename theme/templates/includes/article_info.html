@@ -40,8 +40,4 @@
     {% include 'includes/taglist.html' %}
     {% import 'includes/translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
-    {% if SHOW_READTIME %}
-        <span class="label label-default">Read in</span>
-        {{article.readtime.minutes}} minutes
-    {% endif %}
 </footer><!-- /.post-info -->

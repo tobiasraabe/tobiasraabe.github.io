@@ -24,7 +24,7 @@ ARTICLE_URL = "blog/{slug}.html"
 ARTICLE_SAVE_AS = "blog/{slug}.html"
 ARCHIVES_SAVE_AS = "archives.html"
 
-MENUITEMS = (("Curriculum Vitae", "../pdfs/cv.pdf"),)
+MENUITEMS = (("CV", "../pdfs/cv.pdf"),)
 
 DIRECT_TEMPLATES = ["index", "categories", "tags", "archives", "search"]
 
@@ -44,11 +44,15 @@ SOCIAL = (
     ("Github", "https://github.com/tobiasraabe"),
     (
         "Stack Overflow",
-        "https://stackoverflow.com/users/7523785/brimborium",
+        "https://stackoverflow.com/users/7523785/tobiasraabe",
         "stack-overflow",
     ),
     ("linkedin", "https://linkedin.com/in/tobiasraabe"),
-    ("Google Scholar", "https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"),
+    (
+        "Google Scholar",
+        "https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl",
+        "fa-graduation-cap",
+    ),
 )
 
 DEFAULT_PAGINATION = 50
@@ -56,8 +60,8 @@ DEFAULT_PAGINATION = 50
 THEME = "theme"
 BOOTSTRAP_THEME = "united"
 BOOTSTRAP_FLUID = False
-FAVICON = "extra/favicon.png"
-# AVATAR ='extra/gear-wrench-icon-512-278694.png'
+FAVICON = "extra/favicon.ico"
+# AVATAR = "extra/avatar.png"
 CUSTOM_CSS = "static/css/custom.css"
 CUSTOM_JS = "static/js/custom.js"
 PYGMENTS_STYLE = "default"
@@ -65,7 +69,7 @@ USE_PAGER = True
 DISPLAY_BREADCRUMBS = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 DISPLAY_CATEGORIES_ON_MENU = False
-DISPLAY_ARTICLE_INFO_ON_INDEX = False  # Without effect.
+DISPLAY_ARTICLE_INFO_ON_INDEX = True
 JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
 JINJA_FILTERS = {"regex_replace": je.regex_replace}
 I18N_TEMPLATES_LANG = "en"

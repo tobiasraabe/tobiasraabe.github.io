@@ -8,19 +8,37 @@ colors.
 The border color is two levels darker.
 
 */
-.navbar-collapse, .navbar-default .navbar-form {
-    background-color: #dd4814;
-    border-color: #bf3e11;
+.navbar-collapse, .navbar-default, .navbar-form {
+    background-color: #6C4A4D;
+    border-color: #6C4A4D;
 }
 .label-default {
-    background-color: #f07e56;
-    border-color: #ed6637;
+    background-color: #6C4A4D;
+    border-color: #6C4A4D;
 }
 .btn-default {
-    background-color: #f07e56;
-    border-color: #ed6637;
+    background-color: #6C4A4D;
+    border-color: #6C4A4D;
     font-weight: bold;
     font-size: 75%;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    background-color: #A16F73;
+}
+
+.navbar-default .navbar-nav>.active>a {
+    background-color: #A16F73;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    background-color: #A16F73;
+}
+
+
+.well {
+    background-color: #ffffff;
+    border: #fff;
 }
 
 /* Index page */
@@ -79,6 +97,7 @@ ul.tagcloud .list-group-item span.badge {
 
 /* Add round boxes and space around box to search form. */
 #tipue_search_input {
+    height: 39px;
     border-radius: 4px;
     margin: 4px;
 }

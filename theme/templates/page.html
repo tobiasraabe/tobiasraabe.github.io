@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
+{% block title %}{{ page.title | striptags }} - {{ SITENAME }}{% endblock %}
 {% block html_lang %}{{ page.lang }}{% endblock %}
 {% block meta %}
     {% if page.author %}
@@ -55,12 +55,6 @@
             <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">
                 get the pdf
             </a>
-        {% endif %}
-        {% if page.toc %}
-            <div class="panel panel-default">
-                <div class="panel-heading">Table of Contents</div>
-                <div class="panel-body">{{ page.toc }}</div>
-            </div>
         {% endif %}
         <div class="entry-content">
             {{ page.content }}

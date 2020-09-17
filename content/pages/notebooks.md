@@ -1,6 +1,7 @@
 Title: Notebooks
 Slug: notebooks
 Template: notebook_list
+Status: draft
 
 This page contains a list of all posts containing notebooks. You can start each
 notebook individually by clicking on the mybinder badges at the top of each

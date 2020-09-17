@@ -85,12 +85,6 @@
                         {% include "includes/article_info.html" %}
                     </div>
                 </div>
-                {% if article.toc %}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Table of Contents</div>
-                        <div class="panel-body">{{ article.toc }}</div>
-                    </div>
-                {% endif %}
                 {{ article.content }}
             </div>
             <!-- /.entry-content -->

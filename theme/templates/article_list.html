@@ -1,27 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
     {% if articles %}
-    <h2>Latest Posts:</h2>
-        <ul>
-        {% for year, list in articles | groupby('date.year') | reverse %}
-            {% for month, list_ in list | groupby('date.month') | reverse %}
-                <li class="groupby">{{ list_[0].date | strftime('%b') }}, {{ year }}</li>
-                {% for article in list_ %}
-                    <li class="article-item">
-                        <span class="article">{{ article.date | strftime('%b %d, %Y') }}</span><a href="{{ SITEURL }}/{{ article.url }}"><b>{{ article.title }}</b></a>
-                    </li>
-                    <li class="article-summary">
-                        <div class="article-summary">
-                        {% if article.cover %}
-                            <p align="center"><img src="{{ article.cover }}" style="max-width: 400px; height: auto;"></p>
-                        {% endif %}
-                        <span class="article-summary">{{ article.summary | regex_replace('(<h[1-6].*<\/h[1-6]>)', '') }}</span>
-                        </div>
-                    </li>
-                {% endfor %}
-            {% endfor %}
+        {% for article in (articles_page.object_list if articles_page else articles) %}
+            <article>
+                <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
+                    <div class="well well-sm">
+                        {% include "includes/article_info.html" %}
+                    </div>
+                {% endif %}
+                <div class="summary">{{ article.summary }}
+                    {% include 'includes/comment_count.html' %}
+                    <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }} ...</a>
+                </div>
+            </article>
+            <hr/>
         {% endfor %}
-        </ul>
     {% endif %}
 
     {% include 'includes/pagination.html' %}
