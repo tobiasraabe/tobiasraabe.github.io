@@ -3,13 +3,14 @@ Title: A time series course with Julia
 Tags: Time Series, Julia
 Cover: images/fig-hodrick-prescott-filter.png
 
-Last semester, I had a time series course where we implemented some models like
-the Hodrick-Prescott filter or structural vector autoregressive processes in
-Julia. The whole thing is available
-[online](https://tobiasraabe.github.io/time_series) with the notebooks running
-on Binder which allows you to run the programming examples in your browser. So,
-if you plan to use Julia yourself and want to play around a little, that is
-a place to start.
+Last semester, I took a time series course where we implemented some models like the
+Hodrick-Prescott filter or structural vector autoregressive processes in Julia. The
+whole thing is available [online](https://tobiasraabe.github.io/time_series) with the
+notebooks running on Binder which allows you to go through the programming examples in
+your browser. If you plan to use Julia yourself and want to play around, it might be a
+place to start.
+
+<!-- PELICAN_END_SUMMARY -->
 
 As I had not used Julia before and only heard about how fast it is, that it is
 statically typed, and so on, I was very interested in the beginning, but that

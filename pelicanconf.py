@@ -27,6 +27,7 @@ ARCHIVES_SAVE_AS = "archives.html"
 MENUITEMS = (("CV", "../pdfs/cv.pdf"),)
 
 DIRECT_TEMPLATES = ["index", "categories", "tags", "archives", "search"]
+THEME_TEMPLATES_OVERRIDES = ["templates"]
 
 TIMEZONE = "Europe/Paris"
 DEFAULT_LANG = "en"
@@ -69,7 +70,7 @@ USE_PAGER = True
 DISPLAY_BREADCRUMBS = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 DISPLAY_CATEGORIES_ON_MENU = False
-DISPLAY_ARTICLE_INFO_ON_INDEX = True
+DISPLAY_ARTICLE_INFO_ON_INDEX = False
 JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
 JINJA_FILTERS = {"regex_replace": je.regex_replace}
 I18N_TEMPLATES_LANG = "en"

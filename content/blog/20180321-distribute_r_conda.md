@@ -38,7 +38,7 @@ Activate the environment with
 $ activate project
 ```
 
-> Hint: Since my os is Windows, I prefer to use Powershell. Unfortunately,
+> Hint: Since my OS is Windows, I prefer to use Powershell. Unfortunately,
 > activating and deactivating your environment usually fails. Try out
 > [pscondaenvs][2] which installs corrected Powershell scripts.
 
