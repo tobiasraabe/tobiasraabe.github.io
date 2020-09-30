@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Facilitate reproducible research with cookiecutter-research-template - Tobias Raabe</title>
+    <title>What I have been doing lately - Tobias Raabe</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,23 +10,20 @@
 
     <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html">
+<link rel="canonical" href="https://tobiasraabe.github.io/blog/what-i-have-been-doing-lately.html">
 
         <meta name="author" content="Tobias Raabe" />
-        <meta name="keywords" content="Research,Reproducibility,Waf,cookiecutter" />
-        <meta name="description" content="This DAG is produced by a sample project for reproducible research from https://github.com/hmgaudecker/econ-project-templates. I extended this template with the templating engine cookiecutter and various other software engineering tools." />
+        <meta name="keywords" content="Software Engineering" />
+        <meta name="description" content="Hi everybody, I have not written a post in a long time and so I resuming this blog by keeping you posted on some of the projects I have been working on. In general, I have been developing or contributing to several research applications in the last year. I learned a lot about software engineering and designing applications. Maybe I find the time to make a post on some of the things I learned along the way." />
 
         <meta property="og:site_name" content="Tobias Raabe" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Facilitate reproducible research with cookiecutter-research-template"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html"/>
-        <meta property="og:description" content="This DAG is produced by a sample project for reproducible research from https://github.com/hmgaudecker/econ-project-templates. I extended this template with the templating engine cookiecutter and various other software engineering tools."/>
-        <meta property="article:published_time" content="2018-08-27" />
+        <meta property="og:title" content="What I have been doing lately"/>
+        <meta property="og:url" content="https://tobiasraabe.github.io/blog/what-i-have-been-doing-lately.html"/>
+        <meta property="og:description" content="Hi everybody, I have not written a post in a long time and so I resuming this blog by keeping you posted on some of the projects I have been working on. In general, I have been developing or contributing to several research applications in the last year. I learned a lot about software engineering and designing applications. Maybe I find the time to make a post on some of the things I learned along the way."/>
+        <meta property="article:published_time" content="2020-09-30" />
             <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="Research" />
-            <meta property="article:tag" content="Reproducibility" />
-            <meta property="article:tag" content="Waf" />
-            <meta property="article:tag" content="cookiecutter" />
+            <meta property="article:tag" content="Software Engineering" />
             <meta property="article:author" content="Tobias Raabe" />
 
 
@@ -93,16 +90,16 @@ Tobias Raabe            </a>
             <ol class="breadcrumb">
                 <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
                 <li><a href="https://tobiasraabe.github.io/category/blog.html" title="blog">blog</a></li>
-                <li class="active">Facilitate reproducible research with cookiecutter-research-template</li>
+                <li class="active">What I have been doing lately</li>
             </ol>
     <section id="content">
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://tobiasraabe.github.io/blog/cookiecutter-research-template.html"
+                    <a href="https://tobiasraabe.github.io/blog/what-i-have-been-doing-lately.html"
                        rel="bookmark"
-                       title="Permalink to Facilitate reproducible research with cookiecutter-research-template">
-                        Facilitate reproducible research with cookiecutter-research-template
+                       title="Permalink to What I have been doing lately">
+                        What I have been doing lately
                     </a>
                 </h1>
             </header>
@@ -112,7 +109,7 @@ Tobias Raabe            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-08-27T00:00:00+02:00"> Mon 27 August 2018</time>
+        <i class="fa fa-calendar"></i><time datetime="2020-09-30T00:00:00+02:00"> Wed 30 September 2020</time>
     </span>
 
 
@@ -122,106 +119,90 @@ Tobias Raabe            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
-        /
-	<a href="https://tobiasraabe.github.io/tag/reproducibility.html">Reproducibility</a>
-        /
-	<a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
-        /
-	<a href="https://tobiasraabe.github.io/tag/cookiecutter.html">cookiecutter</a>
+	<a href="https://tobiasraabe.github.io/tag/software-engineering.html">Software Engineering</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>In one of the university courses I was introduced to a <a href="https://github.com/hmgaudecker/econ-project-templates">Waf framework for reproducible
-research by Hans-Martin von
-Gaudecker</a> which is amazingly
-useful to manage your research project.</p>
-<p>The basic idea is that a project is structured as a DAG, a directed-acyclic graph. A DAG
-is a graph with a finite amount of node and edges where the edges have a specific
-direction leading from input to output files. Furthermore, starting at node <span class="math">\(\nu\)</span> and
-following the directed edges, it is not possible to find a way back to <span class="math">\(\nu\)</span>. Here is
-the DAG for the sample project:</p>
-<p align="center">
-<b>DAG of sample project</b><br/>
-<img src="https://tobiasraabe.github.io/images/fig-dag.png"/>
-</p>
-<p>As you can see everything starts off at <code>get_simulation_draws.py</code> which serves as the
-source of <code>initial_locations.csv</code> which is the input of ... You get it.</p>
-<p>You get the sample project by installing <code>cookiecutter</code> first with</p>
-<div class="highlight"><pre><span></span><code>$ pip install -U cookiecutter
-</code></pre></div>
-<p>Then, go to the directory which should contain the folder with the project and type</p>
-<div class="highlight"><pre><span></span><code>$ cookiecutter https://github.com/tobiasraabe/cookiecutter-research-template.git
-</code></pre></div>
-<p>Answer the following prompts so the project will be customized to your needs.</p>
-<p>In the end, go into the project folder and set up the <code>conda</code> environment.</p>
-<div class="highlight"><pre><span></span><code>$ conda env create -n &lt;project-name&gt; -f environment.yml
-</code></pre></div>
-<p>At last, run the following command to make sure that the sample project works.</p>
-<div class="highlight"><pre><span></span><code>$ python waf.py distclean configure build
-</code></pre></div>
-<p>For more information on Waf read <a href="http://hmgaudecker.github.io/econ-project-templates/">Gaudecker's
-documentation</a> and my <a href="https://github.com/tobiasraabe/cookiecutter-research-template/
-blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/WAF.rst">Waf Tips &amp;
-Tricks</a>.</p>
-<p>To use all features of the template check out the
-<a href="https://cookiecutter-research-template.readthedocs.io/
-en/latest/index.html">documentation</a>.</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+                <p>Hi everybody,</p>
+<p>I have not written a post in a long time and so I resuming this blog by keeping you
+posted on some of the projects I have been working on.</p>
+<p>In general, I have been developing or contributing to several research applications in
+the last year. I learned a lot about software engineering and designing applications.
+Maybe I find the time to make a post on some of the things I learned along the way.</p>
 
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
+<h3 id="pytask">pytask</h3>
+<p>The project I am most excited about right now is
+<a href="https://github.com/pytask-dev/pytask">pytask</a>, a build system designed for researchers
+to run their project pipeline from data preparation over analyses to
+compiling the reports.</p>
+<p>I was extremely frustrated with existing solutions and programmed my own build system.
+One of the highlights is the interface which is pretty similar to pytest to lower the
+entry-barrier. It also burrows the plugin system from pytest which is based on
+<a href="https://github.com/pytest-dev/pluggy">pluggy</a>.</p>
+<p>If you already know my <a href="https://github.com/tobiasraabe/cookiecutter-research-template">cookiecutter for reproducible
+research</a>, you know Waf.
+pytask replaces Waf. I will probably not update the cookiecutter for the foreseeable
+future and, instead, I recommend <a href="https://github.com/hmgaudecker/econ-project-templates">Hans-Martin's cookiecutter</a> which will support pytask.</p>
+<p>Please take a look at pytask and try it out in your next project. I appreciate any
+feedback, comments, feature requests and also harsh criticism :). Write me an email or
+file an issue to get in touch.</p>
+<p>I already held a presentation about pytask's design which I will probably post here in
+some weeks. Half the time is about plugin architectures in general and pluggy and the
+other half is about pytask.</p>
+<h3 id="respy">respy</h3>
+<p>Together with <a href="https://github.com/janosg">Janos</a> I created a framework for a certain
+class of econometric models, called
+<a href="https://github.com/OpenSourceEconomics/respy">respy</a>.</p>
+<p>For the insiders, it is a framework for finite-horizon discrete choice dynamic
+programming models also called Eckstein-Keane-Wolpin models which are used to study the
+human capital accumulation process of individuals in the labor market.</p>
+<p>The documentation is quite extensive for such a young project and is currently extended
+by other contributors which take over the project.</p>
+<p>If you are an economist and interested in structural modeling, it might be a good place
+to start. Even if you do not want to use this model, you might be able to get some
+inspiration for your own model.</p>
+<p>I learned a lot about how to build interfaces people actually are able to use and how to
+write performant code by choosing the right design and Numba where necessary.</p>
+<h3 id="gettsim">gettsim</h3>
+<p>I redesigned the computational backend of
+<a href="https://github.com/iza-institute-of-labor-economics/gettsim">gettsim</a> with
+<a href="https://github.com/janosg">Janos</a> and <a href="https://github.com/hmgaudecker">Hans-Martin</a>.
+gettsim offers a representation of the German tax and transfer system and allows
+researchers to study the impact of reforms on the amount of taxes and benefits people
+face.</p>
+<p>The task was to design an interface which allows users to modify or extend the
+pre-implemented tax and transfer system.</p>
+<p>Our solution is a mixture inspired by pytest's fixtures and a DAG (directed acyclic
+graph).</p>
+<p>The general idea is that the whole tax and transfer system is a function which receives
+data on individuals and returns relevant quantities like child benefits or the amount of
+taxes on capital gains.</p>
+<p>We can divide the function into smaller functions which compute quantities in the tax
+and transfer system we are not ultimately interested in, but whose result can be shared
+to compute following, relevant quantities.</p>
+<p>Now, we divided the tax and transfer system into a collection of smaller functions which
+need to tell us how they related to each other, meaning that the result of one function
+needs to be passed to another function as an argument.</p>
+<p>Here, we use the idea of pytest's fixtures where using a fixture's name as an argument
+in a test function gives you access to the return of the fixture inside the test
+function. Similarly, a function in gettsim looks like this</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">child_benefits</span><span class="p">(</span><span class="n">n_children</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n_children</span> <span class="o">*</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">"child_benefits"</span><span class="p">]</span>
+</code></pre></div>
+<p>where <code>n_children</code> is either a variable in the input data or a function with the same
+name which computes the quantity.</p>
+<p>From a function's name and the its argument names, we can build a DAG which allows us to
+determine the correct order in which functions should be evaluated.</p>
+<p>Now, a user can modify the collection of function by overwriting existing functions or
+adding her own which will create a new DAG.</p>
+<p>If this sketch of the core idea was too rough, take a look at the documentation and
+maybe the <a href="https://gettsim.readthedocs.io/en/latest/tutorials/visualizing_the_system.html">visualiuzation of such a
+DAG</a>.</p>
+<h3 id="sid">sid</h3>
+<p>Last but not least, I have been working on an epidemiological model to predict the
+spread of infectious diseases. This is my COVID-19 project with
+<a href="https://github.com/roecla">Klara</a> and <a href="https://github.com/janosg">Janos</a>. It is called
+<a href="https://github.com/covid-19-impact-lab/sid">sid</a> and we hope to get something out soon.</p>
             </div>
             <!-- /.entry-content -->
         </article>
