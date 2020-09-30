@@ -9,30 +9,30 @@ The border color is two levels darker.
 
 */
 .navbar-collapse, .navbar-default, .navbar-form {
-    background-color: #6C4A4D;
-    border-color: #6C4A4D;
+    background-color: #547482;
+    border-color: #547482;
 }
 .label-default {
-    background-color: #6C4A4D;
-    border-color: #6C4A4D;
+    background-color: #547482;
+    border-color: #547482;
 }
 .btn-default {
-    background-color: #6C4A4D;
-    border-color: #6C4A4D;
+    background-color: #547482;
+    border-color: #547482;
     font-weight: bold;
     font-size: 75%;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    background-color: #A16F73;
+    background-color: #C2D8C2;
 }
 
 .navbar-default .navbar-nav>.active>a {
-    background-color: #A16F73;
+    background-color: #C2D8C2;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    background-color: #A16F73;
+    background-color: #C2D8C2;
 }
 
 
