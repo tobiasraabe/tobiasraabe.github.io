@@ -1,245 +1,267 @@
+
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Numba - Tobias Raabe</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/stylesheet/style.min.css">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://tobiasraabe.github.io/theme/pygments/default.min.css">
 
+
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/solid.css">
+
+    <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+
+    <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tobias Raabe's Blog Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-178274443-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
 
     <meta name="author" content="Tobias Raabe" />
-    <meta name="keywords" content="Numba" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Tobias Raabe's Blog"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Tobias Raabe's Blog"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://tobiasraabe.github.io"/>
+<meta property="og:image" content="/extra/avatar.png">
 
-    <!-- Open Graph tags -->
-        <meta property="og:site_name" content="Tobias Raabe" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Tobias Raabe"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io"/>
-        <meta property="og:description" content="Tobias Raabe"/>
-
-
-
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/bootstrap.united.min.css" type="text/css"/>
-    <link href="https://tobiasraabe.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
-
-    <link href="https://tobiasraabe.github.io/theme/css/pygments/default.css" rel="stylesheet">
-    <link href="https://tobiasraabe.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/style.css" type="text/css"/>
-        <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
-
-        <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Tobias Raabe ATOM Feed"/>
-
+  <title>Tobias Raabe's Blog &ndash; Tag Numba</title>
 
 </head>
-<body>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://tobiasraabe.github.io">
+        <img src="/extra/avatar.png" alt="Tobias Raabe" title="Tobias Raabe">
+      </a>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="https://tobiasraabe.github.io/" class="navbar-brand">
-Tobias Raabe            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">CV</a></li>
-                         <li><a href="https://tobiasraabe.github.io/projects.html">
-                             Projects
-                          </a></li>
-                         <li><a href="https://tobiasraabe.github.io/publications.html">
-                             Publications
-                          </a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><span>
-                <form class="navbar-search" action="/search.html">
-                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
-                </form></span>
-              </li>
-              <li><a href="https://tobiasraabe.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</div> <!-- /.navbar -->
+      <h1>
+        <a href="https://tobiasraabe.github.io">Tobias Raabe</a>
+      </h1>
 
-<!-- Banner -->
-<!-- End Banner -->
 
-<!-- Content Container -->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9">
-    <ol class="breadcrumb">
-        <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-        <li><a href="https://tobiasraabe.github.io/" title="Tags">Tags</a></li>
-        <li class="active">Numba</li>
-    </ol>
-    <h2>Latest Posts:</h2>
-        <ul>
-                <li class="groupby">Apr, 2019</li>
-                    <li class="article-item">
-                        <span class="article">Apr 14, 2019</span><a href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html"><b>Numba - @vectorize and @guvectorize</b></a>
-                    </li>
-                    <li class="article-summary">
-                        <div class="article-summary">
-                        <span class="article-summary"><p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
-<p>In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions.</p>
-</span>
-                        </div>
-                    </li>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="/projects.html" >Projects</a>
+            </li>
+            <li>
+              <a target="_self" href="/publications.html" >Publications</a>
+            </li>
+            <li>
+              <a target="_self" href="../pdfs/cv.pdf" >CV</a>
+            </li>
         </ul>
+      </nav>
 
-        </div>
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-<!-- Sidebar -->
-<section class="well well-sm">
-  <ul class="list-group list-group-flush">
-
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
-    <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
-
-<!-- Sidebar/Tag Cloud -->
-<li class="list-group-item">
-  <a href="https://tobiasraabe.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-  <ul class="list-group " id="tags">
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
-    </li>
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/machine-learning.html">Machine Learning</a>
-    </li>
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/deep-learning.html">Deep Learning</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/downloader.html">Downloader</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/julia.html">Julia</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/numba.html">Numba</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/r.html">R</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/reproducibility.html">Reproducibility</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/software-engineering.html">Software Engineering</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/visualization.html">Visualization</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/cookiecutter.html">cookiecutter</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Tag Cloud -->
-  </ul>
-</section>
-<!-- End Sidebar -->            </aside>
-        </div>
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/tobiasraabe" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://linkedin.com/in/tobiasraabe" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/tobraab" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+      </ul>
     </div>
-</div>
-<!-- End Content Container -->
 
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         <div class="col-xs-10">&copy; 2019 Tobias Raabe         </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
-</footer>
-<script src="https://tobiasraabe.github.io/theme/js/jquery.min.js"></script>
+  </aside>
+  <main>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://tobiasraabe.github.io/theme/js/bootstrap.min.js"></script>
+    <nav>
+      <a href="https://tobiasraabe.github.io">Home</a>
 
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="https://tobiasraabe.github.io/theme/js/respond.min.js"></script>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
 
-    <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
+      <a href="https://tobiasraabe.github.io/feeds/all.atom.xml">Atom</a>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
+    </nav>
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-178274443-1']);
-        _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
+
+<article>
+  <header>
+    <h2><a href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html#numba-vectorize-and-guvectorize">Numba - @vectorize and @guvectorize</a></h2>
+    <p>
+      Posted on Sun 14 April 2019 in <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+          &#8226; Tagged with
+              <a href="https://tobiasraabe.github.io/tag/numba.html">Numba</a>,              <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"></a></p>
+<p>In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions.</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196 …</style>
+        <br>
+        <a class="btn"
+           href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html#numba-vectorize-and-guvectorize">
+          Continue reading
+        </a>
+  </div>
+</article>
+
+
+
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tobias Raabe's Blog ",
+  "url" : "https://tobiasraabe.github.io",
+  "image": "/extra/avatar.png",
+  "description": ""
+}
+</script>
 
 
 </body>

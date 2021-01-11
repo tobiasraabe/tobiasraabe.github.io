@@ -1,135 +1,152 @@
+
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Identifying Software Patents - Tobias Raabe</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/stylesheet/style.min.css">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://tobiasraabe.github.io/theme/pygments/default.min.css">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/blog/identifying-software-patents.html">
 
-        <meta name="author" content="Tobias Raabe" />
-        <meta name="keywords" content="Machine Learning,Deep Learning,Text Data" />
-        <meta name="description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far." />
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/solid.css">
 
-        <meta property="og:site_name" content="Tobias Raabe" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Identifying Software Patents"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io/blog/identifying-software-patents.html"/>
-        <meta property="og:description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far."/>
-        <meta property="article:published_time" content="2018-08-21" />
-            <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="Machine Learning" />
-            <meta property="article:tag" content="Deep Learning" />
-            <meta property="article:tag" content="Text Data" />
-            <meta property="article:author" content="Tobias Raabe" />
+    <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+
+    <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tobias Raabe's Blog Atom">
 
 
 
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/bootstrap.united.min.css" type="text/css"/>
-    <link href="https://tobiasraabe.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <link href="https://tobiasraabe.github.io/theme/css/pygments/default.css" rel="stylesheet">
-    <link href="https://tobiasraabe.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/style.css" type="text/css"/>
-        <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+  ga('create', 'UA-178274443-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
 
-        <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Tobias Raabe ATOM Feed"/>
+<meta name="author" content="Tobias Raabe" />
+<meta name="description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far. The idea of the project …" />
+<meta name="keywords" content="[Machine Learning, Deep Learning, Text Data]">
 
-        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Tobias Raabe blog ATOM Feed"/>
+
+<meta property="og:site_name" content="Tobias Raabe's Blog"/>
+<meta property="og:title" content="Identifying Software Patents"/>
+<meta property="og:description" content="In 2015, I wrote my Bachelor&#39;s thesis on identifying software patents. This is useful and necessary in two ways. First, there is no official system to sort patents this way. The main system used by the USPTO focuses on the technological and functional form. A subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes. In contrast, researchers are more interested in topics like automation or software. Second, I learned Python and made my first steps into the world of machine learning. You can find the whole project on Github as well as the paper. There is also a script to download different kinds of data sets. The raw data uses approximately 90GB of disk space whereas the data for replicating the previous results based on a simple algorithm is currently less than 1GB. Now, let us see what has been done so far. The idea of the project …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://tobiasraabe.github.io/blog/identifying-software-patents.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-08-21 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://tobiasraabe.github.io/author/tobias-raabe.html">
+<meta property="article:section" content="Blog"/>
+<meta property="article:tag" content="[Machine Learning"/>
+<meta property="article:tag" content="Deep Learning"/>
+<meta property="article:tag" content="Text Data]"/>
+<meta property="og:image" content="https://tobiasraabe.github.io/images/fig-patents-distribution-vs.png">
+
+  <title>Tobias Raabe's Blog &ndash; Identifying Software Patents</title>
+
 </head>
-<body>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://tobiasraabe.github.io">
+        <img src="/extra/avatar.png" alt="Tobias Raabe" title="Tobias Raabe">
+      </a>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="https://tobiasraabe.github.io/" class="navbar-brand">
-Tobias Raabe            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">CV</a></li>
-                         <li><a href="https://tobiasraabe.github.io/projects.html">
-                             Projects
-                          </a></li>
-                         <li><a href="https://tobiasraabe.github.io/publications.html">
-                             Publications
-                          </a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><span>
-                <form class="navbar-search" action="/search.html">
-                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
-                </form></span>
-              </li>
-              <li><a href="https://tobiasraabe.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+      <h1>
+        <a href="https://tobiasraabe.github.io">Tobias Raabe</a>
+      </h1>
+
+
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="/projects.html" >Projects</a>
+            </li>
+            <li>
+              <a target="_self" href="/publications.html" >Publications</a>
+            </li>
+            <li>
+              <a target="_self" href="../pdfs/cv.pdf" >CV</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/tobiasraabe" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://linkedin.com/in/tobiasraabe" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/tobraab" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+      </ul>
     </div>
-</div> <!-- /.navbar -->
 
-<!-- Banner -->
-<!-- End Banner -->
+  </aside>
+  <main>
 
-<!-- Content Container -->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9">
-            <ol class="breadcrumb">
-                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="blog">blog</a></li>
-                <li class="active">Identifying Software Patents</li>
-            </ol>
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="https://tobiasraabe.github.io/blog/identifying-software-patents.html"
-                       rel="bookmark"
-                       title="Permalink to Identifying Software Patents">
-                        Identifying Software Patents
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-08-21T00:00:00+02:00"> Tue 21 August 2018</time>
-    </span>
+    <nav>
+      <a href="https://tobiasraabe.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://tobiasraabe.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="identifying-software-patents">Identifying Software Patents</h1>
+    <p>
+      Posted on Tue 21 August 2018 in <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+    </p>
+  </header>
 
 
-
-        <span class="label label-default">Category</span>
-        <a href="https://tobiasraabe.github.io/category/blog.html">blog</a>
-
-
-<span class="label label-default">Tags</span>
-	<a href="https://tobiasraabe.github.io/tag/machine-learning.html">Machine Learning</a>
-        /
-	<a href="https://tobiasraabe.github.io/tag/deep-learning.html">Deep Learning</a>
-        /
-	<a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                </div>
-                <p>In 2015, I wrote my Bachelor's thesis on identifying software patents. This is useful
+  <div>
+    <p>In 2015, I wrote my Bachelor's thesis on identifying software patents. This is useful
 and necessary in two ways. First, there is no official system to sort patents this way.
 The main system used by the USPTO focuses on the technological and functional form. A
 subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes.
@@ -140,6 +157,7 @@ script to download different kinds of data sets. The raw data uses approximately
 disk space whereas the data for replicating the previous results based on a simple
 algorithm is currently less than 1GB.</p>
 <p>Now, let us see what has been done so far.</p>
+<!-- PELICAN_END_SUMMARY -->
 
 <p>The idea of the project is based on an algorithmic approach of <a href='#Bessen2007' id='ref-Bessen2007-1'>Bessen and Hunt (2007)</a>. The
 authors wanted to estimate the number of software patents and find out where software
@@ -148,20 +166,21 @@ patents.</p>
 <p>To classify patents into categories of software and non-software, the authors developed
 a simple algorithm based on the evaluation of a random sample of patents. The algorithm
 is as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="ss">"software"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
- <span class="k">OR</span> <span class="p">(</span><span class="ss">"computer"</span> <span class="k">AND</span> <span class="ss">"program"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="ss">&quot;software&quot;</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
+ <span class="k">OR</span> <span class="p">(</span><span class="ss">&quot;computer&quot;</span> <span class="k">AND</span> <span class="ss">&quot;program&quot;</span> <span class="k">in</span> <span class="n">specification</span><span class="p">))</span>
 
 <span class="k">AND</span> <span class="p">(</span><span class="n">utility</span> <span class="n">patent</span> <span class="k">excluding</span> <span class="n">reissues</span><span class="p">)</span>
 
-<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">"chip"</span>
-        <span class="k">OR</span> <span class="ss">"semiconductor"</span>
-        <span class="k">OR</span> <span class="ss">"bus"</span>
-        <span class="k">OR</span> <span class="ss">"circuit"</span>
-        <span class="k">OR</span> <span class="ss">"circuitry"</span>
+<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">&quot;chip&quot;</span>
+        <span class="k">OR</span> <span class="ss">&quot;semiconductor&quot;</span>
+        <span class="k">OR</span> <span class="ss">&quot;bus&quot;</span>
+        <span class="k">OR</span> <span class="ss">&quot;circuit&quot;</span>
+        <span class="k">OR</span> <span class="ss">&quot;circuitry&quot;</span>
         <span class="k">in</span> <span class="n">title</span><span class="p">)</span>
 
-<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">"antigen"</span> <span class="k">OR</span> <span class="ss">"antigenic"</span> <span class="k">OR</span> <span class="ss">"chromatography"</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
+<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">&quot;antigen&quot;</span> <span class="k">OR</span> <span class="ss">&quot;antigenic&quot;</span> <span class="k">OR</span> <span class="ss">&quot;chromatography&quot;</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
 </code></pre></div>
+
 <p>According to <a href='#Bessen2007' id='ref-Bessen2007-2'>Bessen and Hunt (2007)</a>, the specification is the abstract and the description of the
 patent. Note that, <a href="https://www.patentsview.org/web/">PatentsView</a> separates description into two parts, summary and
 description.</p>
@@ -202,16 +221,21 @@ true-negatives.</p>
 <p>Applying the algorithm to the whole patent corpus, we get the following distributions of
 patents and software versus non-software patents.</p>
 <p align="center">
-<b>Absolute Number of Utility Patents</b><br/>
-<img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution.png" width="600"/>
+    <b>Absolute Number of Utility Patents</b><br>
+    <img src="https://tobiasraabe.github.io/images/fig-patents-distribution.png"
+    width="600" height="400">
 </p>
+
 <p align="center">
-<b>Absolute Number of Software vs. Non-Software Patents</b><br/>
-<img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs.png" width="600"/>
+    <b>Absolute Number of Software vs. Non-Software Patents</b><br>
+    <img src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs.png"
+    width="600" height="400">
 </p>
+
 <p align="center">
-<b>Relative Number of Software vs. Non-Software Patents</b><br/>
-<img height="400" src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs-shares.png" width="600"/>
+    <b>Relative Number of Software vs. Non-Software Patents</b><br>
+    <img src="https://tobiasraabe.github.io/images/fig-patents-distribution-vs-shares.png"
+    width="600" height="400">
 </p><hr>
 <h2>Bibliography</h2>
 <p id='Bessen2007'>James Bessen and Robert&nbsp;M Hunt.
@@ -219,150 +243,54 @@ An empirical look at software patents.
 <em>Journal of Economics &amp; Management Strategy</em>, 16(1):157–189, 2007.
 <a href="https://doi.org/10.1111/j.1530-9134.2007.00136.x">doi:10.1111/j.1530-9134.2007.00136.x</a>. <a class="cite-backref" href="#ref-Bessen2007-1" title="Jump back to reference 1">↩</a><a class="cite-backref" href="#ref-Bessen2007-1" title="Jump back to reference 1"> <sup>1</sup> </a><a class="cite-backref" href="#ref-Bessen2007-2" title="Jump back to reference 2"><sup>2</sup> </a></p>
 
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
-
-        </div>
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-<!-- Sidebar -->
-<section class="well well-sm">
-  <ul class="list-group list-group-flush">
-
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
-    <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
-
-<!-- Sidebar/Tag Cloud -->
-<li class="list-group-item">
-  <a href="https://tobiasraabe.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-  <ul class="list-group " id="tags">
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
-    </li>
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/machine-learning.html">Machine Learning</a>
-    </li>
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
-    </li>
-    <li class="list-group-item tag-3">
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://tobiasraabe.github.io/tag/machine-learning.html">[Machine Learning</a>
       <a href="https://tobiasraabe.github.io/tag/deep-learning.html">Deep Learning</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/downloader.html">Downloader</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/julia.html">Julia</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/numba.html">Numba</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/r.html">R</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/reproducibility.html">Reproducibility</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/software-engineering.html">Software Engineering</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/visualization.html">Visualization</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/cookiecutter.html">cookiecutter</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Tag Cloud -->
-  </ul>
-</section>
-<!-- End Sidebar -->            </aside>
-        </div>
-    </div>
-</div>
-<!-- End Content Container -->
+      <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data]</a>
+    </p>
+  </div>
 
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         <div class="col-xs-10">&copy; 2020 Tobias Raabe         </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
-</footer>
-<script src="https://tobiasraabe.github.io/theme/js/jquery.min.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://tobiasraabe.github.io/theme/js/bootstrap.min.js"></script>
 
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="https://tobiasraabe.github.io/theme/js/respond.min.js"></script>
 
-    <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
+</article>
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-178274443-1']);
-        _gaq.push(['_trackPageview']);
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tobias Raabe's Blog ",
+  "url" : "https://tobiasraabe.github.io",
+  "image": "/extra/avatar.png",
+  "description": ""
+}
+</script>
 
 
 </body>

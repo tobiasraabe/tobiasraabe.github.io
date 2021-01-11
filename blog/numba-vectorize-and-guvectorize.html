@@ -1,133 +1,153 @@
+
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Numba - @vectorize and @guvectorize - Tobias Raabe</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/stylesheet/style.min.css">
 
 
-    <link href="https://tobiasraabe.github.io/extra/favicon.ico" rel="icon">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://tobiasraabe.github.io/theme/pygments/default.min.css">
 
-<link rel="canonical" href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html">
 
-        <meta name="author" content="Tobias Raabe" />
-        <meta name="keywords" content="Numba,Numpy" />
-        <meta name="description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions." />
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/solid.css">
 
-        <meta property="og:site_name" content="Tobias Raabe" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Numba - @vectorize and @guvectorize"/>
-        <meta property="og:url" content="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html"/>
-        <meta property="og:description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions."/>
-        <meta property="article:published_time" content="2019-04-14" />
-            <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="Numba" />
-            <meta property="article:tag" content="Numpy" />
-            <meta property="article:author" content="Tobias Raabe" />
+    <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+
+    <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tobias Raabe's Blog Atom">
 
 
 
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/bootstrap.united.min.css" type="text/css"/>
-    <link href="https://tobiasraabe.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <link href="https://tobiasraabe.github.io/theme/css/pygments/default.css" rel="stylesheet">
-    <link href="https://tobiasraabe.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://tobiasraabe.github.io/theme/css/style.css" type="text/css"/>
-        <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+  ga('create', 'UA-178274443-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
 
-        <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Tobias Raabe ATOM Feed"/>
+<meta name="author" content="Tobias Raabe" />
+<meta name="description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color: #007427; } .ansi-yellow-fg { color: #DDB62B; } .ansi-yellow-bg { background-color: #DDB62B; } .ansi-yellow-intense-fg { color: #B27D12; } .ansi-yellow-intense-bg { background-color: #B27D12; } .ansi-blue-fg { color: #208FFB; } .ansi-blue-bg { background-color: #208FFB; } .ansi-blue-intense-fg { color: #0065CA; } .ansi-blue-intense-bg { background-color: #0065CA; } .ansi-magenta-fg { color: #D160C4; } .ansi-magenta-bg { background-color: #D160C4; } .ansi-magenta-intense-fg { color: #A03196 …" />
+<meta name="keywords" content="Numba, Numpy">
 
-        <link href="https://tobiasraabe.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Tobias Raabe blog ATOM Feed"/>
+
+<meta property="og:site_name" content="Tobias Raabe's Blog"/>
+<meta property="og:title" content="Numba - @vectorize and @guvectorize"/>
+<meta property="og:description" content="In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions. /*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color: #007427; } .ansi-yellow-fg { color: #DDB62B; } .ansi-yellow-bg { background-color: #DDB62B; } .ansi-yellow-intense-fg { color: #B27D12; } .ansi-yellow-intense-bg { background-color: #B27D12; } .ansi-blue-fg { color: #208FFB; } .ansi-blue-bg { background-color: #208FFB; } .ansi-blue-intense-fg { color: #0065CA; } .ansi-blue-intense-bg { background-color: #0065CA; } .ansi-magenta-fg { color: #D160C4; } .ansi-magenta-bg { background-color: #D160C4; } .ansi-magenta-intense-fg { color: #A03196 …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-04-14 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://tobiasraabe.github.io/author/tobias-raabe.html">
+<meta property="article:section" content="Blog"/>
+<meta property="article:tag" content="Numba"/>
+<meta property="article:tag" content="Numpy"/>
+<meta property="og:image" content="/extra/avatar.png">
+
+  <title>Tobias Raabe's Blog &ndash; Numba - @vectorize and @guvectorize</title>
+
 </head>
-<body>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://tobiasraabe.github.io">
+        <img src="/extra/avatar.png" alt="Tobias Raabe" title="Tobias Raabe">
+      </a>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="https://tobiasraabe.github.io/" class="navbar-brand">
-Tobias Raabe            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                    <li><a href="../pdfs/cv.pdf">CV</a></li>
-                         <li><a href="https://tobiasraabe.github.io/projects.html">
-                             Projects
-                          </a></li>
-                         <li><a href="https://tobiasraabe.github.io/publications.html">
-                             Publications
-                          </a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><span>
-                <form class="navbar-search" action="/search.html">
-                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
-                </form></span>
-              </li>
-              <li><a href="https://tobiasraabe.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+      <h1>
+        <a href="https://tobiasraabe.github.io">Tobias Raabe</a>
+      </h1>
+
+
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="/projects.html" >Projects</a>
+            </li>
+            <li>
+              <a target="_self" href="/publications.html" >Publications</a>
+            </li>
+            <li>
+              <a target="_self" href="../pdfs/cv.pdf" >CV</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/tobiasraabe" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://linkedin.com/in/tobiasraabe" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/tobraab" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+      </ul>
     </div>
-</div> <!-- /.navbar -->
 
-<!-- Banner -->
-<!-- End Banner -->
+  </aside>
+  <main>
 
-<!-- Content Container -->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9">
-            <ol class="breadcrumb">
-                <li><a href="https://tobiasraabe.github.io" title="Tobias Raabe"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="https://tobiasraabe.github.io/category/blog.html" title="blog">blog</a></li>
-                <li class="active">Numba - @vectorize and @guvectorize</li>
-            </ol>
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="https://tobiasraabe.github.io/blog/numba-vectorize-and-guvectorize.html"
-                       rel="bookmark"
-                       title="Permalink to Numba - @vectorize and @guvectorize">
-                        Numba - @vectorize and @guvectorize
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2019-04-14T00:00:00+02:00"> Sun 14 April 2019</time>
-    </span>
+    <nav>
+      <a href="https://tobiasraabe.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://tobiasraabe.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="numba-vectorize-and-guvectorize">Numba - @vectorize and @guvectorize</h1>
+    <p>
+      Posted on Sun 14 April 2019 in <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+    </p>
+  </header>
 
 
-
-        <span class="label label-default">Category</span>
-        <a href="https://tobiasraabe.github.io/category/blog.html">blog</a>
-
-
-<span class="label label-default">Tags</span>
-	<a href="https://tobiasraabe.github.io/tag/numba.html">Numba</a>
-        /
-	<a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                </div>
-                <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"/></a></p>
+  <div>
+    <p><a href="https://mybinder.org/v2/gh/tobiasraabe/tobiasraabe.github.io/sources?filepath=notebooks%2Fnumba-guvectorize.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg"></a></p>
 <p>In this post, I will explain how to use the @vectorize and @guvectorize decorator from Numba. You can use the former if you want to write a function which extrapolates from scalars to elements of arrays and the latter for a function which extrapolates from arrays to arrays of higher dimensions.</p>
+<!-- PELICAN_END_SUMMARY -->
 
 <style type="text/css">/*!
 *
@@ -1172,75 +1192,80 @@ h6:hover .anchor-link {
   font-style: italic;
 }
 </style>
-<style type="text/css">.highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f8f8f8; }
-.highlight .c { color: #408080; font-style: italic } /* Comment */
-.highlight .err { border: 1px solid #FF0000 } /* Error */
-.highlight .k { color: #008000; font-weight: bold } /* Keyword */
-.highlight .o { color: #666666 } /* Operator */
-.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
-.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
-.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
-.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
-.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
-.highlight .gd { color: #A00000 } /* Generic.Deleted */
-.highlight .ge { font-style: italic } /* Generic.Emph */
-.highlight .gr { color: #FF0000 } /* Generic.Error */
-.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.highlight .gi { color: #00A000 } /* Generic.Inserted */
-.highlight .go { color: #888888 } /* Generic.Output */
-.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.highlight .gs { font-weight: bold } /* Generic.Strong */
-.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.highlight .gt { color: #0044DD } /* Generic.Traceback */
-.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
-.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
-.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
-.highlight .kp { color: #008000 } /* Keyword.Pseudo */
-.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
-.highlight .kt { color: #B00040 } /* Keyword.Type */
-.highlight .m { color: #666666 } /* Literal.Number */
-.highlight .s { color: #BA2121 } /* Literal.String */
-.highlight .na { color: #7D9029 } /* Name.Attribute */
-.highlight .nb { color: #008000 } /* Name.Builtin */
-.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.highlight .no { color: #880000 } /* Name.Constant */
-.highlight .nd { color: #AA22FF } /* Name.Decorator */
-.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.highlight .nf { color: #0000FF } /* Name.Function */
-.highlight .nl { color: #A0A000 } /* Name.Label */
-.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
-.highlight .nv { color: #19177C } /* Name.Variable */
-.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.highlight .w { color: #bbbbbb } /* Text.Whitespace */
-.highlight .mb { color: #666666 } /* Literal.Number.Bin */
-.highlight .mf { color: #666666 } /* Literal.Number.Float */
-.highlight .mh { color: #666666 } /* Literal.Number.Hex */
-.highlight .mi { color: #666666 } /* Literal.Number.Integer */
-.highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
-.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
-.highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
-.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
-.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
-.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.highlight .sx { color: #008000 } /* Literal.String.Other */
-.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
-.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
-.highlight .ss { color: #19177C } /* Literal.String.Symbol */
-.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
-.highlight .vc { color: #19177C } /* Name.Variable.Class */
-.highlight .vg { color: #19177C } /* Name.Variable.Global */
-.highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><style type="text/css">
+<style type="text/css">pre { line-height: 125%; }
+td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
+td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+ .highlight pre  .hll { background-color: #ffffcc }
+ .highlight pre  { background: #f8f8f8; }
+ .highlight pre  .c { color: #408080; font-style: italic } /* Comment */
+ .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
+ .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+ .highlight pre  .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+ .highlight pre  .cp { color: #BC7A00 } /* Comment.Preproc */
+ .highlight pre  .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+ .highlight pre  .c1 { color: #408080; font-style: italic } /* Comment.Single */
+ .highlight pre  .cs { color: #408080; font-style: italic } /* Comment.Special */
+ .highlight pre  .gd { color: #A00000 } /* Generic.Deleted */
+ .highlight pre  .ge { font-style: italic } /* Generic.Emph */
+ .highlight pre  .gr { color: #FF0000 } /* Generic.Error */
+ .highlight pre  .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+ .highlight pre  .gi { color: #00A000 } /* Generic.Inserted */
+ .highlight pre  .go { color: #888888 } /* Generic.Output */
+ .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+ .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
+ .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+ .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+ .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+ .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+ .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
+ .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+ .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
+ .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .s { color: #BA2121 } /* Literal.String */
+ .highlight pre  .na { color: #7D9029 } /* Name.Attribute */
+ .highlight pre  .nb { color: #008000 } /* Name.Builtin */
+ .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #880000 } /* Name.Constant */
+ .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .ni { color: #999999; font-weight: bold } /* Name.Entity */
+ .highlight pre  .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+ .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nl { color: #A0A000 } /* Name.Label */
+ .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
+ .highlight pre  .nv { color: #19177C } /* Name.Variable */
+ .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
+ .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
+ .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
+ .highlight pre  .dl { color: #BA2121 } /* Literal.String.Delimiter */
+ .highlight pre  .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+ .highlight pre  .s2 { color: #BA2121 } /* Literal.String.Double */
+ .highlight pre  .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+ .highlight pre  .sh { color: #BA2121 } /* Literal.String.Heredoc */
+ .highlight pre  .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+ .highlight pre  .sx { color: #008000 } /* Literal.String.Other */
+ .highlight pre  .sr { color: #BB6688 } /* Literal.String.Regex */
+ .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
+ .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
+ .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
+ .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
+ .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
+ .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
+ .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
+ .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */</style><style type="text/css">
 
 /* Remove prompts like [1] from output. */
 div.prompt {
@@ -1260,10 +1285,11 @@ div.text_cell_render {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Updated 16.08.2019. Better syntax, less errors and an example to show inlining of functions.</em></p>
-<h3 id="Why-should-I-use-them">Why should I use them<a class="anchor-link" href="#Why-should-I-use-them">&para;</a></h3><p>Both decorators are extremely powerful as Numba compiles the instructions of the decorated function to machine code. That makes them significantly faster than the same operation written with Numpy. Of course, this is also true for functions decorated with <code>@jit</code>, but the other two decorators enable other features like reduction, accumulation and broadcasting (<a href="#Example-for-reduction,-accumulation-and-broadcasting">explanation</a>) which make operations on bigger matrices even faster.</p>
-<h3 id="When-should-I-use-them">When should I use them<a class="anchor-link" href="#When-should-I-use-them">&para;</a></h3><p>"[P]remature optimization is the root of all evil" (Donald Knuth in <em>Computer Programming as an Art</em>, p. 671). Before you start to optimize your implementation use tools like <a href="https://github.com/rkern/line_profiler">line_profiler</a> or <a href="https://github.com/jiffyclub/snakeviz">snakeviz</a> to profile your code and find the real bottlenecks, not the ones you think about. Often it is sufficient to find better implementations from the standard library or rewrite parts such that they use Numpy or similar optimized frameworks. If you use Numpy, do not use loops but array operations. Use higher-dimensional arrays to gain performance by broadcasting. <a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html">Avoid copies</a>. Also, refactoring and rewriting parts of the code may not give direct speed improvements, but your code becomes more compact and you can single out expensive operations.</p>
+<h3 id="Why-should-I-use-them">Why should I use them<a class="anchor-link" href="#Why-should-I-use-them">&#182;</a></h3><p>Both decorators are extremely powerful as Numba compiles the instructions of the decorated function to machine code. That makes them significantly faster than the same operation written with Numpy. Of course, this is also true for functions decorated with <code>@jit</code>, but the other two decorators enable other features like reduction, accumulation and broadcasting (<a href="#Example-for-reduction,-accumulation-and-broadcasting">explanation</a>) which make operations on bigger matrices even faster.</p>
+<h3 id="When-should-I-use-them">When should I use them<a class="anchor-link" href="#When-should-I-use-them">&#182;</a></h3><p>"[P]remature optimization is the root of all evil" (Donald Knuth in <em>Computer Programming as an Art</em>, p. 671). Before you start to optimize your implementation use tools like <a href="https://github.com/rkern/line_profiler">line_profiler</a> or <a href="https://github.com/jiffyclub/snakeviz">snakeviz</a> to profile your code and find the real bottlenecks, not the ones you think about. Often it is sufficient to find better implementations from the standard library or rewrite parts such that they use Numpy or similar optimized frameworks. If you use Numpy, do not use loops but array operations. Use higher-dimensional arrays to gain performance by broadcasting. <a href="{filename}/blog/20190325-numpy-views-vs-copies.md">Avoid copies</a>. Also, refactoring and rewriting parts of the code may not give direct speed improvements, but your code becomes more compact and you can single out expensive operations.</p>
 <p>Imagine you have done this, but still there are some functions which take up the majority of runtime. Next, decide whether you need a function that operates on single elements of an array or on arrays.</p>
-<h3 id="Using-the-@vectorize-decorator">Using the <code>@vectorize</code> decorator<a class="anchor-link" href="#Using-the-@vectorize-decorator">&para;</a></h3><p>The <code>@vectorize</code> is for writing efficient functions which work on every element of an array. One useful application for me was to compute the probability of <code>x</code> under a normal distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. There already exists an implemenation in scipy, but it is incredibly slow. Let us start to write our own implementation.</p>
+<h3 id="Using-the-@vectorize-decorator">Using the <code>@vectorize</code> decorator<a class="anchor-link" href="#Using-the-@vectorize-decorator">&#182;</a></h3><p>The <code>@vectorize</code> is for writing efficient functions which work on every element of an array. One useful application for me was to compute the probability of <code>x</code> under a normal distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. There already exists an implemenation in scipy, but it is incredibly slow. Let us start to write our own implementation.</p>
+
 </div>
 </div>
 </div>
@@ -1271,20 +1297,23 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">get_prob_norm_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can compare our implementation with the scipy version to make sure it works as expected. Use the testing utilities from <code>numpy.testing</code> as the precision of floating point numbers will always differ to some extent. (Tip: Use <a href="https://docs.python.org/3.7/library/doctest.html">doctest</a> to document and test your function at the same time. <a href="#Example-using-doctest">Here is an example</a>.)</p>
+
 </div>
 </div>
 </div>
@@ -1292,8 +1321,8 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1301,14 +1330,17 @@ div.text_cell_render {
 
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_array_almost_equal</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">get_prob_norm_dist</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">decimal</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, create test data and measure the performance of our two methods.</p>
+
 </div>
 </div>
 </div>
@@ -1316,62 +1348,83 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> norm.pdf(a)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> norm.pdf(a)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>647 &micro;s &plusmn; 47.4 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>647 µs ± 47.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist(a)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist(a)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>78.4 &micro;s &plusmn; 1.68 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10000 loops each)
+<pre>78.4 µs ± 1.68 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Surprisingly, we are already faster by a factor of 8. At this point you should ask yourself again if further optimization is really necessary and whether your time is better spent anywhere else - remember Donald Knuth! In this example we will come down the rabbit hole a little bit more. The next step involves rewriting the function with the <code>@vectorize</code> decorator.</p>
 <p>The major new thing is that the decorator requires a signature or even multiple signatures which define the input and output types of the function. The output type wraps the input types with round brackets. There are two ways to define the signature: declare the types of the arguments with types from Numba or declare the types with a string. I prefer the latter as it keeps your import statements short. With <code>nopython=True</code>, Numba does not use Python as a fallback if compilation fails, so we get notified. Also, the new function does not like default arguments.</p>
+
 </div>
 </div>
 </div>
@@ -1379,43 +1432,55 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
 
-<span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"float64(float64, float64, float64)"</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@vectorize</span><span class="p">([</span><span class="s2">&quot;float64(float64, float64, float64)&quot;</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_prob_norm_dist_fast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast(a, 0, 1)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast(a, 0, 1)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>248 &micro;s &plusmn; 6.23 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>248 µs ± 6.23 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The new version actually requires three times the runtime of the Numpy version. But, while using Numba we need to code a little bit different. As appealing the one-liner may look, Numba works better if we store intermediate results in other variables and combine them later.</p>
+
 </div>
 </div>
 </div>
@@ -1423,8 +1488,8 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"float64(float64, float64, float64)"</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@vectorize</span><span class="p">([</span><span class="s2">&quot;float64(float64, float64, float64)&quot;</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_prob_norm_dist_fast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mu</span>
     
@@ -1435,37 +1500,49 @@ div.text_cell_render {
 
     <span class="k">return</span> <span class="n">probability</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast(a, 0, 1)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast(a, 0, 1)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>248 &micro;s &plusmn; 3.92 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 1000 loops each)
+<pre>248 µs ± 3.92 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We do not gain any performance, but this is just a showcase. If the operation does not involve many calculations and the input is not big, you cannot expect more performance than plain Numpy. If we increase the number of calculations and set the <code>target</code> keyword from <code>cpu</code> to <code>parallel</code>, we get similar performances.</p>
 <p>The different target means that the compiled function does not use one core, but a recommended amount of cores on your machine.</p>
+
 </div>
 </div>
 </div>
@@ -1473,8 +1550,8 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"float64(float64, float64, float64)"</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"parallel"</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@vectorize</span><span class="p">([</span><span class="s2">&quot;float64(float64, float64, float64)&quot;</span><span class="p">],</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;parallel&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_prob_norm_dist_fast_parallel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mu</span>
     
@@ -1485,72 +1562,95 @@ div.text_cell_render {
 
     <span class="k">return</span> <span class="n">probability</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast_parallel(x, 0, 1)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist_fast_parallel(x, 0, 1)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2.72 s &plusmn; 161 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
+<pre>2.72 s ± 161 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist(x, 0, 1)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> get_prob_norm_dist(x, 0, 1)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2.32 s &plusmn; 66.2 ms per loop (mean &plusmn; std. dev. of 7 runs, 1 loop each)
+<pre>2.32 s ± 66.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Even if the resulting function is slower than the Numpy implementation, it can still make sense to write one. For example, you can only use Numba-compiled functions in other Numba-compiled functions. When this <a href="https://github.com/numba/numba/pull/2469">PR for Numba</a> is finished, nesting functions is no obstacle anymore, but until then it is not possible all the time. Also, Numba <a href="https://numba.pydata.org/numba-doc/dev/user/faq.html#does-numba-inline-functions">inlines functions</a> which means the function and its calls are compiled as one function. So, you do not have to worry whether calling another function reduces performance.</p>
-<h3 id="Using-the-@guvectorize-decorator">Using the <code>@guvectorize</code> decorator<a class="anchor-link" href="#Using-the-@guvectorize-decorator">&para;</a></h3><p>I found the <code>@guvectorize</code> extremely useful and powerful, but at the same time hard to understand as I was not experienced in the more general concepts of array computation. The following example is a Monte Carlo integration which was my first point of contact with Numba.</p>
+<h3 id="Using-the-@guvectorize-decorator">Using the <code>@guvectorize</code> decorator<a class="anchor-link" href="#Using-the-@guvectorize-decorator">&#182;</a></h3><p>I found the <code>@guvectorize</code> extremely useful and powerful, but at the same time hard to understand as I was not experienced in the more general concepts of array computation. The following example is a Monte Carlo integration which was my first point of contact with Numba.</p>
 <p>Trying to understand what extrapolating from arrays to arrays of higher dimension means can be hard. Thus, we will start with the simplest example and then gradually expand the problem. Along the way, you will learn about the flexibility and to some extent elegance of <code>@guvectorize</code> :).</p>
 <p>The problem is that we have an agent faced with four choices which yield constant utilities plus a stochastic component which is i.i.d. and normally distributed. We want to find the expected maximum utility (emax) from all choices which can be simulated by calculating maximum utility for a number of draws. The average yields the emax.</p>
+
 </div>
 </div>
 </div>
@@ -1558,20 +1658,23 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="1.-Simulate-emax-for-one-agent-with-Numpy">1. Simulate emax for one agent with Numpy<a class="anchor-link" href="#1.-Simulate-emax-for-one-agent-with-Numpy">&para;</a></h4><p>We start by simulating the emax for one agent with Numpy to showcase the normal solution. We create 1000 draws add them to the deterministic component of the utility, take the max and then the average over all maxima.</p>
+<h4 id="1.-Simulate-emax-for-one-agent-with-Numpy">1. Simulate emax for one agent with Numpy<a class="anchor-link" href="#1.-Simulate-emax-for-one-agent-with-Numpy">&#182;</a></h4><p>We start by simulating the emax for one agent with Numpy to showcase the normal solution. We create 1000 draws add them to the deterministic component of the utility, take the max and then the average over all maxima.</p>
+
 </div>
 </div>
 </div>
@@ -1579,54 +1682,71 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_draws</span> <span class="o">=</span> <span class="mi">1000</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_draws</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_draws</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">):</span>
     <span class="n">utilities</span> <span class="o">=</span> <span class="n">static_utilities</span> <span class="o">+</span> <span class="n">draws</span>
     <span class="n">max_utilities</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">emax</span> <span class="o">=</span> <span class="n">max_utilities</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">emax</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[17]:</div>
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>4.247215674679622</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="2.-Simulate-emax-for-one-agent-with-Numba">2. Simulate emax for one agent with Numba<a class="anchor-link" href="#2.-Simulate-emax-for-one-agent-with-Numba">&para;</a></h4><p>Now, we will do the same thing with Numba. I will give you the function first and then we will discuss its components.</p>
+<h4 id="2.-Simulate-emax-for-one-agent-with-Numba">2. Simulate emax for one agent with Numba<a class="anchor-link" href="#2.-Simulate-emax-for-one-agent-with-Numba">&#182;</a></h4><p>Now, we will do the same thing with Numba. I will give you the function first and then we will discuss its components.</p>
+
 </div>
 </div>
 </div>
@@ -1634,12 +1754,12 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">guvectorize</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">guvectorize</span>
 
 
 <span class="nd">@guvectorize</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">"f8[:], f8[:, :], f8[:]"</span><span class="p">],</span> <span class="s2">"(n_choices), (n_draws, n_choices) -&gt; ()"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"cpu"</span>
+    <span class="p">[</span><span class="s2">&quot;f8[:], f8[:, :], f8[:]&quot;</span><span class="p">],</span> <span class="s2">&quot;(n_choices), (n_draws, n_choices) -&gt; ()&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">simulate_emax</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">,</span> <span class="n">emax</span><span class="p">):</span>
     <span class="n">n_draws</span><span class="p">,</span> <span class="n">n_choices</span> <span class="o">=</span> <span class="n">draws</span><span class="o">.</span><span class="n">shape</span>
@@ -1657,31 +1777,45 @@ div.text_cell_render {
 
     <span class="n">emax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">emax_</span> <span class="o">/</span> <span class="n">n_draws</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">emax</span> <span class="o">=</span> <span class="n">simulate_emax</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">emax</span> <span class="o">=</span> <span class="n">simulate_emax</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">)</span>
 <span class="n">emax</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[19]:</div>
+
+    <div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>4.247215674679617</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -1694,8 +1828,9 @@ div.text_cell_render {
 <p>Now, we will examine the function. In the special case of gufuncs, the return value is added to the arguments of the function.</p>
 <p>Instead of array operations, we are very explicit within the function and do everything with loops. For each set of draws, we add the deterministic and stochastic components and keep only the maximum which is stored in a temporary variable. In the end, the average over the sum of maximum utilities is saved to the initial slot of the output array to get a scalar output.</p>
 <p>The clumsy syntax helps Numba optimize the syntax. As before, temporary variables can help Numba to optimize memory accesses.</p>
-<h4 id="3.-Simulate-emax-for-many-agents-and-many-draws">3. Simulate emax for many agents and many draws<a class="anchor-link" href="#3.-Simulate-emax-for-many-agents-and-many-draws">&para;</a></h4><p>The power of the gufunc is visible if we apply the function to many agents. This is possible without further adjustments as the implementation automatically infers that the defined operation has to be repeated over all other dimensions. Specifically, <code>@guvectorize</code> extends the function defined for dimensions <code>(n_choices,)</code> and <code>(n_draws, n_choices)</code> to whichever dimensions are added to the left meaning <code>(..., n_choices)</code> and <code>(..., n_draws, n_choices)</code>.</p>
+<h4 id="3.-Simulate-emax-for-many-agents-and-many-draws">3. Simulate emax for many agents and many draws<a class="anchor-link" href="#3.-Simulate-emax-for-many-agents-and-many-draws">&#182;</a></h4><p>The power of the gufunc is visible if we apply the function to many agents. This is possible without further adjustments as the implementation automatically infers that the defined operation has to be repeated over all other dimensions. Specifically, <code>@guvectorize</code> extends the function defined for dimensions <code>(n_choices,)</code> and <code>(n_draws, n_choices)</code> to whichever dimensions are added to the left meaning <code>(..., n_choices)</code> and <code>(..., n_draws, n_choices)</code>.</p>
 <p>Note that, we use the same draws for all individuals.</p>
+
 </div>
 </div>
 </div>
@@ -1703,18 +1838,21 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_agents</span> <span class="o">=</span> <span class="mi">500</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_agents</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">n_agents</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Unfortunately, we have to adjust the Numpy function as it cannot handle the new dimension. The gufunc is just fine ;). Let's timeit!</p>
+
 </div>
 </div>
 </div>
@@ -1722,66 +1860,87 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">simulate_emax_np</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">):</span>
     <span class="n">utilities</span> <span class="o">=</span> <span class="n">static_utilities</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">draws</span>
     <span class="n">max_utilities</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">emax</span> <span class="o">=</span> <span class="n">max_utilities</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">emax</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax_np(static_utilities, draws)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax_np(static_utilities, draws)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>37.1 ms &plusmn; 948 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 10 loops each)
+<pre>37.1 ms ± 948 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2.22 ms &plusmn; 121 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+<pre>2.22 ms ± 121 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is the magic of the gufunc. You only have to define what should happen with the innermost dimensions and the function will recognize that the operations should be repeated for all other dimensions added to the left. The basic rules of broadcasting apply. In the previous example we have reused the same set of draws for all agents. We could have also passed a draw matrix with dimensions <code>(n_agents, n_draws, n_choices)</code>.</p>
 <p>Just to drive the point home, assume that we do the operation for 500 individuals in five villages. So we add another dimension on the left side of the static utilities. Here is only the case for the gufunc because I do not want to adjust the Numpy function again.</p>
+
 </div>
 </div>
 </div>
@@ -1789,40 +1948,52 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_villages</span> <span class="o">=</span> <span class="mi">5</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_villages</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">static_utilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">n_villages</span><span class="p">,</span> <span class="n">n_agents</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax(static_utilities, draws)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>11 ms &plusmn; 323 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+<pre>11 ms ± 323 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Inlining-functions_1">Inlining functions<a class="anchor-link" href="#Inlining-functions">&para;</a></h3><p>To show an example of <code>@jit</code> and how to inline functions, here is the following trick. Assume that you want to test different utility functions, but you want not duplicate the Monte Carlo integration over and over again. In this case, we can single out the utility function as a <code>@jit</code>-compiled function. Within the <code>@jit</code>-function assume, that you only receive the objects which you define within the <code>@guvectorize</code>-function - a single static utility and one draw.</p>
+<h3 id="Inlining-functions">Inlining functions<a class="anchor-link" href="#Inlining-functions">&#182;</a></h3><p>To show an example of <code>@jit</code> and how to inline functions, here is the following trick. Assume that you want to test different utility functions, but you want not duplicate the Monte Carlo integration over and over again. In this case, we can single out the utility function as a <code>@jit</code>-compiled function. Within the <code>@jit</code>-function assume, that you only receive the objects which you define within the <code>@guvectorize</code>-function - a single static utility and one draw.</p>
+
 </div>
 </div>
 </div>
@@ -1830,25 +2001,27 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
 
 
 <span class="nd">@njit</span>
 <span class="k">def</span> <span class="nf">utility_func</span><span class="p">(</span><span class="n">static_utility</span><span class="p">,</span> <span class="n">draw</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">static_utility</span> <span class="o">+</span> <span class="n">draw</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nd">@guvectorize</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">"f8[:], f8[:, :], f8[:]"</span><span class="p">],</span> <span class="s2">"(n_choices), (n_draws, n_choices) -&gt; ()"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"cpu"</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@guvectorize</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;f8[:], f8[:, :], f8[:]&quot;</span><span class="p">],</span> <span class="s2">&quot;(n_choices), (n_draws, n_choices) -&gt; ()&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">simulate_emax_inlined</span><span class="p">(</span><span class="n">static_utilities</span><span class="p">,</span> <span class="n">draws</span><span class="p">,</span> <span class="n">emax</span><span class="p">):</span>
     <span class="n">n_draws</span><span class="p">,</span> <span class="n">n_choices</span> <span class="o">=</span> <span class="n">draws</span><span class="o">.</span><span class="n">shape</span>
@@ -1866,41 +2039,52 @@ div.text_cell_render {
 
     <span class="n">emax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">emax_</span> <span class="o">/</span> <span class="n">n_draws</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax_inlined(static_utilities, draws)
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> simulate_emax_inlined(static_utilities, draws)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>11.1 ms &plusmn; 254 &micro;s per loop (mean &plusmn; std. dev. of 7 runs, 100 loops each)
+<pre>11.1 ms ± 254 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There is no hit to performance, but a clear division between numerical technique and economic model.</p>
-<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&para;</a></h3><p>I have illustrated how <code>@vectorize</code> and <code>@guvectorize</code> decorators work and in which settings they can be applied. <code>@jit</code> will be covered in a different post and linked here. Luckily, it is easier to understand with the documentation and does not require much knowledge besides basic Numpy. But, because the subset of supported functions and/or its keywords is so restricted, it was not really useful to me. I achieved major performance boosts with the presented decorators and would recommend to use them. If you find something helpful which is not covered here but suits the topic, write me an email.</p>
-<h3 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&para;</a></h3><h4 id="More-information-on-Numba">More information on Numba<a class="anchor-link" href="#More-information-on-Numba">&para;</a></h4><ul>
+<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h3><p>I have illustrated how <code>@vectorize</code> and <code>@guvectorize</code> decorators work and in which settings they can be applied. <code>@jit</code> will be covered in a different post and linked here. Luckily, it is easier to understand with the documentation and does not require much knowledge besides basic Numpy. But, because the subset of supported functions and/or its keywords is so restricted, it was not really useful to me. I achieved major performance boosts with the presented decorators and would recommend to use them. If you find something helpful which is not covered here but suits the topic, write me an email.</p>
+<h3 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h3><h4 id="More-information-on-Numba">More information on Numba<a class="anchor-link" href="#More-information-on-Numba">&#182;</a></h4><ul>
 <li>It is also possible to set <code>target="cuda"</code> and transfer the computation to the processor of your graphic card, GPU. This can provide better performance if the arithmetic intensity per byte transfered to the GPU is sufficiently high. What does that mean? There is an additional overhead to run the function on the GPU instead on CPU (the processors of the computer) which is the transfer of the data. The function can only make up for the additional cost, if there are enough operations on each byte. I read somewhere that you need at least 10 arithmetic operations per byte as a rule of thumb. (More information: <a href="https://stackoverflow.com/questions/52046102/numba-and-guvectorize-for-cuda-target-code-running-slower-than-expected/52132523#52132523">here</a> and <a href="https://stackoverflow.com/questions/49646182/numba-vectorize-for-cuda-what-is-the-correct-signature-to-return-arrays/49661183#49661183">here</a>.)</li>
 </ul>
-<h4 id="Example-for-reduction,-accumulation-and-broadcasting">Example for reduction, accumulation and broadcasting<a class="anchor-link" href="#Example-for-reduction,-accumulation-and-broadcasting">&para;</a></h4>
+<h4 id="Example-for-reduction,-accumulation-and-broadcasting">Example for reduction, accumulation and broadcasting<a class="anchor-link" href="#Example-for-reduction,-accumulation-and-broadcasting">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -1908,134 +2092,197 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
 
-<span class="nd">@vectorize</span><span class="p">([</span><span class="s2">"int32(int32, int32)"</span><span class="p">,</span> <span class="s2">"int64(int64, int64)"</span><span class="p">])</span>
+<span class="nd">@vectorize</span><span class="p">([</span><span class="s2">&quot;int32(int32, int32)&quot;</span><span class="p">,</span> <span class="s2">&quot;int64(int64, int64)&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">a</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[30]:</div>
+
+    <div class="prompt output_prompt">Out[30]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 0,  1,  2,  3],
        [ 4,  5,  6,  7],
        [ 8,  9, 10, 11]])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[31]:</div>
+
+    <div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([12, 15, 18, 21])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[32]:</div>
+
+    <div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([ 6, 22, 38])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[33]:</div>
+
+    <div class="prompt output_prompt">Out[33]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 0,  1,  2,  3],
        [ 4,  6,  8, 10],
        [12, 15, 18, 21]])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[34]:</div>
+
+    <div class="prompt output_prompt">Out[34]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[ 0,  1,  3,  6],
        [ 4,  9, 15, 22],
        [ 8, 17, 27, 38]])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Broadcasting is a complicated but fundamentally useful concept to understand when writing Numba (g)ufuncs. It is about how Numpy treats two arrays of different shapes while performing arithmetic operations. The simplest example is the following.</p>
+
 </div>
 </div>
 </div>
@@ -2043,39 +2290,54 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[36]:</div>
+
+    <div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([2, 4, 6])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Obviously, the shapes of the two arrays do not match, but still the result is what we would expect namely that b is applied to each element of a. This also works for higher dimensional structures.</p>
+
 </div>
 </div>
 </div>
@@ -2083,17 +2345,26 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">a</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[37]:</div>
+
+    <div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[[1., 1., 1., 1., 1.],
         [1., 1., 1., 1., 1.]],
@@ -2101,46 +2372,70 @@ div.text_cell_render {
        [[1., 1., 1., 1., 1.],
         [1., 1., 1., 1., 1.]]])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">b</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[38]:</div>
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([2, 2, 2, 2, 2])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[39]:</div>
+
+    <div class="prompt output_prompt">Out[39]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[[2., 2., 2., 2., 2.],
         [2., 2., 2., 2., 2.]],
@@ -2148,9 +2443,12 @@ div.text_cell_render {
        [[2., 2., 2., 2., 2.],
         [2., 2., 2., 2., 2.]]])</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -2160,13 +2458,15 @@ div.text_cell_render {
 <li>they are equal, or</li>
 <li>one of them is 1</li>
 </ol>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Example-using-doctest">Example using doctest<a class="anchor-link" href="#Example-using-doctest">&para;</a></h4><p>We extend the function by writing an example in the docstring. Then, we run doctest which executes the example and checks whether outputs match. Note that doctest does not work for gufuncs.</p>
+<h4 id="Example-using-doctest">Example using doctest<a class="anchor-link" href="#Example-using-doctest">&#182;</a></h4><p>We extend the function by writing an example in the docstring. Then, we run doctest which executes the example and checks whether outputs match. Note that doctest does not work for gufuncs.</p>
+
 </div>
 </div>
 </div>
@@ -2174,9 +2474,9 @@ div.text_cell_render {
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_prob_norm_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">"""Get probability of ``x`` under the normal distribution.</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_prob_norm_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get probability of ``x`` under the normal distribution.</span>
 <span class="sd">    </span>
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
@@ -2188,34 +2488,43 @@ div.text_cell_render {
 <span class="sd">    &gt;&gt;&gt; get_prob_norm_dist(0)</span>
 <span class="sd">    0.3989422804014328</span>
 <span class="sd">    </span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="mi">1</span> <span class="o">/</span>
         <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span>
         <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
     <span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">doctest</span><span class="p">;</span> <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">doctest</span><span class="p">;</span> <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>**********************************************************************
-File "__main__", line 11, in __main__.get_prob_norm_dist
+File &#34;__main__&#34;, line 11, in __main__.get_prob_norm_dist
 Failed example:
     get_prob_norm_dist(0)
 Expected:
@@ -2229,15 +2538,27 @@ Got:
 </pre>
 </div>
 </div>
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[41]:</div>
+
+    <div class="prompt output_prompt">Out[41]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>TestResults(failed=1, attempted=3)</pre>
 </div>
+
+</div>
+
 </div>
 </div>
+
 </div>
-</div>
+ 
+
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -2266,150 +2587,53 @@ Got:
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
-
-        </div>
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-<!-- Sidebar -->
-<section class="well well-sm">
-  <ul class="list-group list-group-flush">
-
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://github.com/tobiasraabe"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
-    <li class="list-group-item"><a href="https://stackoverflow.com/users/7523785/tobiasraabe"><i class="fa fa-stack-overflow fa-lg"></i> Stack Overflow</a></li>
-    <li class="list-group-item"><a href="https://linkedin.com/in/tobiasraabe"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&hl"><i class="fa fa-fa-graduation-cap-square fa-lg"></i> Google Scholar</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
-
-<!-- Sidebar/Tag Cloud -->
-<li class="list-group-item">
-  <a href="https://tobiasraabe.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-  <ul class="list-group " id="tags">
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/data-analysis.html">Data Analysis</a>
-    </li>
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/machine-learning.html">Machine Learning</a>
-    </li>
-    <li class="list-group-item tag-1">
-      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/anaconda.html">Anaconda</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/deep-learning.html">Deep Learning</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/downloader.html">Downloader</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/julia.html">Julia</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/mro.html">MRO</a>
-    </li>
-    <li class="list-group-item tag-3">
+  </div>
+  <div class="tag-cloud">
+    <p>
       <a href="https://tobiasraabe.github.io/tag/numba.html">Numba</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/r.html">R</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/reproducibility.html">Reproducibility</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/research.html">Research</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/roy-model.html">Roy Model</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/selection-bias.html">Selection Bias</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/software-engineering.html">Software Engineering</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/text-data.html">Text Data</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/time-series.html">Time Series</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/visualization.html">Visualization</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/waf.html">Waf</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda.html">conda</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/conda-build.html">conda-build</a>
-    </li>
-    <li class="list-group-item tag-3">
-      <a href="https://tobiasraabe.github.io/tag/cookiecutter.html">cookiecutter</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Tag Cloud -->
-  </ul>
-</section>
-<!-- End Sidebar -->            </aside>
-        </div>
-    </div>
-</div>
-<!-- End Content Container -->
+      <a href="https://tobiasraabe.github.io/tag/numpy.html">Numpy</a>
+    </p>
+  </div>
 
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         <div class="col-xs-10">&copy; 2020 Tobias Raabe         </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
-</footer>
-<script src="https://tobiasraabe.github.io/theme/js/jquery.min.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://tobiasraabe.github.io/theme/js/bootstrap.min.js"></script>
 
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="https://tobiasraabe.github.io/theme/js/respond.min.js"></script>
 
-    <script src="https://tobiasraabe.github.io/static/js/custom.js"></script>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
+</article>
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-178274443-1']);
-        _gaq.push(['_trackPageview']);
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tobias Raabe's Blog ",
+  "url" : "https://tobiasraabe.github.io",
+  "image": "/extra/avatar.png",
+  "description": ""
+}
+</script>
 
 
 </body>
