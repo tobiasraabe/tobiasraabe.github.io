@@ -1,6 +1,6 @@
 Date: 2018-08-21
 Title: Identifying Software Patents
-Tags: Machine Learning, Deep Learning, Text Data
+Tags: [Machine Learning, Deep Learning, Text Data]
 Cover: images/fig-patents-distribution-vs.png
 
 In 2015, I wrote my Bachelor's thesis on identifying software patents. This is useful

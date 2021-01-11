@@ -1,27 +1,22 @@
+{% if PLUGINS and 'tipue_search' in PLUGINS %}
 {% extends 'base.html' %}
-
-{% block title %}
-{{ _('Search') }} - {{ super() }}
-{% endblock %}
-
-{% block scripts %}
-    {% if 'assets' in PLUGINS %}
-    {% include 'includes/minify_tipuesearch.html' with context %}
-    {% else %}
-    <script src="{{ SITEURL }}/tipuesearch_content.js"></script>
-    <script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/tipuesearch/tipuesearch_set.js"></script>
-    <script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/tipuesearch/tipuesearch.min.js"></script>
-    {% endif %}
-    <script>
-    $(document).ready(function() {
-      $('#tipue_search_input').tipuesearch({
-        'show': 10,
-        'newWindow': false
-      });
-    });
-    </script>
-{% endblock %}
-
+{% block title %}{{ _('Search') }} - {{ SITENAME|striptags }}{% endblock title %}
 {% block content %}
-<div id="tipue_search_content"></div>
-{% endblock %}
+<script>
+    $(document).ready(function() {
+        $('#tipue_search_input').tipuesearch({
+            'show': 10,
+            'mode': 'json',
+            'contentLocation': '{{ SITEURL }}/tipuesearch_content.js'
+        });
+    });
+</script>
+
+<article class="single">
+    <header>
+        <h1 id="categories">{{ _('Search Results') }}</h1>
+    </header>
+    <div id="tipue_search_content"></div>
+</article>
+{% endblock content %}
+{% endif %}
