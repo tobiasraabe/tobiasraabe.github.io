@@ -166,19 +166,19 @@ patents.</p>
 <p>To classify patents into categories of software and non-software, the authors developed
 a simple algorithm based on the evaluation of a random sample of patents. The algorithm
 is as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="ss">&quot;software&quot;</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
- <span class="k">OR</span> <span class="p">(</span><span class="ss">&quot;computer&quot;</span> <span class="k">AND</span> <span class="ss">&quot;program&quot;</span> <span class="k">in</span> <span class="n">specification</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code>((&quot;software&quot; in specification)
+ OR (&quot;computer&quot; AND &quot;program&quot; in specification))
 
-<span class="k">AND</span> <span class="p">(</span><span class="n">utility</span> <span class="n">patent</span> <span class="k">excluding</span> <span class="n">reissues</span><span class="p">)</span>
+AND (utility patent excluding reissues)
 
-<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">&quot;chip&quot;</span>
-        <span class="k">OR</span> <span class="ss">&quot;semiconductor&quot;</span>
-        <span class="k">OR</span> <span class="ss">&quot;bus&quot;</span>
-        <span class="k">OR</span> <span class="ss">&quot;circuit&quot;</span>
-        <span class="k">OR</span> <span class="ss">&quot;circuitry&quot;</span>
-        <span class="k">in</span> <span class="n">title</span><span class="p">)</span>
+ANDNOT (&quot;chip&quot;
+        OR &quot;semiconductor&quot;
+        OR &quot;bus&quot;
+        OR &quot;circuit&quot;
+        OR &quot;circuitry&quot;
+        in title)
 
-<span class="n">ANDNOT</span> <span class="p">(</span><span class="ss">&quot;antigen&quot;</span> <span class="k">OR</span> <span class="ss">&quot;antigenic&quot;</span> <span class="k">OR</span> <span class="ss">&quot;chromatography&quot;</span> <span class="k">in</span> <span class="n">specification</span><span class="p">)</span>
+ANDNOT (&quot;antigen&quot; OR &quot;antigenic&quot; OR &quot;chromatography&quot; in specification)
 </code></pre></div>
 
 <p>According to <a href='#Bessen2007' id='ref-Bessen2007-2'>Bessen and Hunt (2007)</a>, the specification is the abstract and the description of the

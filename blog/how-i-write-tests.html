@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://tobiasraabe.github.io/theme/pygments/default.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/solid.css">
+
+    <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+
+    <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tobias Raabe's Blog Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-178274443-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Tobias Raabe" />
+<meta name="description" content="Hi everybody, I assume that all of you write tests for Python programs with pytest. If you do not use pytest or if you do not even write tests, you should check out the following links which are useful and provide some examples and an overview of pytest&#39;s capabilities. Effective Python Testing With Pytest - Real Python Customizing your pytest suite (Part 1) - Raphael Pierzina Customizing your pytest suite (Part 2) - Raphael Pierzina Maybe you should also have heard about test driven development (TDD), but I have little experience with it myself. If you have a great resource for beginners, send it my way and I can include it here. What I did not find in these guides is a combination of patterns I use fairly often to write tests. Hopefully, it is useful for you as well. Let&#39;s go! The function First, here is the function we are going to …" />
+<meta name="keywords" content="Python, Testing, Tests">
+
+
+<meta property="og:site_name" content="Tobias Raabe's Blog"/>
+<meta property="og:title" content="How I write tests"/>
+<meta property="og:description" content="Hi everybody, I assume that all of you write tests for Python programs with pytest. If you do not use pytest or if you do not even write tests, you should check out the following links which are useful and provide some examples and an overview of pytest&#39;s capabilities. Effective Python Testing With Pytest - Real Python Customizing your pytest suite (Part 1) - Raphael Pierzina Customizing your pytest suite (Part 2) - Raphael Pierzina Maybe you should also have heard about test driven development (TDD), but I have little experience with it myself. If you have a great resource for beginners, send it my way and I can include it here. What I did not find in these guides is a combination of patterns I use fairly often to write tests. Hopefully, it is useful for you as well. Let&#39;s go! The function First, here is the function we are going to …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://tobiasraabe.github.io/blog/how-i-write-tests.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-03-31 00:00:00+02:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://tobiasraabe.github.io/author/tobias-raabe.html">
+<meta property="article:section" content="Blog"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="Testing"/>
+<meta property="article:tag" content="Tests"/>
+<meta property="og:image" content="/extra/avatar.png">
+
+  <title>Tobias Raabe's Blog &ndash; How I write tests</title>
+
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://tobiasraabe.github.io">
+        <img src="/extra/avatar.png" alt="Tobias Raabe" title="Tobias Raabe">
+      </a>
+
+      <h1>
+        <a href="https://tobiasraabe.github.io">Tobias Raabe</a>
+      </h1>
+
+
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="/projects.html" >Projects</a>
+            </li>
+            <li>
+              <a target="_self" href="/publications.html" >Publications</a>
+            </li>
+            <li>
+              <a target="_self" href="../pdfs/cv.pdf" >CV</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/tobiasraabe" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://linkedin.com/in/tobiasraabe" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/tobraab" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://tobiasraabe.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://tobiasraabe.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="how-i-write-tests">How I write tests</h1>
+    <p>
+      Posted on Wed 31 March 2021 in <a href="https://tobiasraabe.github.io/category/blog.html">Blog</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Hi everybody,</p>
+<p>I assume that all of you write tests for Python programs with
+<a href="https://pytest.org/">pytest</a>. If you do not use pytest or if you do not even write
+tests, you should check out the following links which are useful and provide some
+examples and an overview of pytest's capabilities.</p>
+<ul>
+<li><a href="https://realpython.com/pytest-python-testing/">Effective Python Testing With Pytest - Real
+  Python</a></li>
+<li><a href="https://raphael.codes/blog/customizing-your-pytest-test-suite-part-1/">Customizing your pytest suite (Part 1) - Raphael
+  Pierzina</a></li>
+<li><a href="https://raphael.codes/blog/customizing-your-pytest-test-suite-part-2/">Customizing your pytest suite (Part 2) - Raphael
+  Pierzina</a></li>
+</ul>
+<p>Maybe you should also have heard about test driven development (TDD), but I have little
+experience with it myself. If you have a great resource for beginners, send it my way
+and I can include it here.</p>
+<p>What I did not find in these guides is a combination of patterns I use fairly often to
+write tests. Hopefully, it is useful for you as well. Let's go!</p>
+<h3>The function</h3>
+<p>First, here is the function we are going to test. The function takes any number of paths
+and tries to find the longest parent path common to all paths.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_common_ancestor</span><span class="p">(</span><span class="o">*</span><span class="n">paths</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Find a common ancestor of many paths.&quot;&quot;&quot;</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">PurePath</span><span class="p">)</span> <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot find common ancestor for relative paths. </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> is relative.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="n">common_parents</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_parents</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Paths have no common ancestor.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">longest_parent</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">common_parents</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">parts</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">longest_parent</span>
+</code></pre></div>
+
+<p>Here is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">find_common_ancestor</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">Tobias&quot;</span><span class="p">,</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">Tobi&quot;</span><span class="p">)</span>
+<span class="go">WindowsPath(&#39;C:/Users&#39;)</span>
+</code></pre></div>
+
+<p>The function returns errors if ...</p>
+<ul>
+<li>one of the paths is relative.</li>
+<li>the paths do not have a common ancestor.</li>
+</ul>
+<h3>The test function</h3>
+<p>I will first show you the test function and, then, comment on some details.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">ExitStack</span> <span class="k">as</span> <span class="n">does_not_raise</span>  <span class="c1"># noqa: N813</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">PurePosixPath</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">PureWindowsPath</span>
+
+<span class="kn">import</span> <span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">unit</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="s2">&quot;path_1, path_2, expectation, expected&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span>
+            <span class="n">PurePosixPath</span><span class="p">(</span><span class="s2">&quot;relative_1&quot;</span><span class="p">),</span>
+            <span class="n">PurePosixPath</span><span class="p">(</span><span class="s2">&quot;/home/relative_2&quot;</span><span class="p">),</span>
+            <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span>
+                <span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;Cannot find common ancestor for relative paths.&quot;</span>
+            <span class="p">),</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;test path 1 is relative&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;C:/home/relative_1&quot;</span><span class="p">),</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;relative_2&quot;</span><span class="p">),</span>
+            <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span>
+                <span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;Cannot find common ancestor for relative paths.&quot;</span>
+            <span class="p">),</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;test path 2 is relative&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span>
+            <span class="n">PurePosixPath</span><span class="p">(</span><span class="s2">&quot;/home/user/folder_a&quot;</span><span class="p">),</span>
+            <span class="n">PurePosixPath</span><span class="p">(</span><span class="s2">&quot;/home/user/folder_b/sub_folder&quot;</span><span class="p">),</span>
+            <span class="n">does_not_raise</span><span class="p">(),</span>
+            <span class="n">PurePosixPath</span><span class="p">(</span><span class="s2">&quot;/home/user&quot;</span><span class="p">),</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;normal behavior with UNIX paths&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">home</span><span class="se">\\</span><span class="s2">user</span><span class="se">\\</span><span class="s2">folder_a&quot;</span><span class="p">),</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">home</span><span class="se">\\</span><span class="s2">user</span><span class="se">\\</span><span class="s2">folder_b</span><span class="se">\\</span><span class="s2">sub_folder&quot;</span><span class="p">),</span>
+            <span class="n">does_not_raise</span><span class="p">(),</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">home</span><span class="se">\\</span><span class="s2">user&quot;</span><span class="p">),</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;normal behavior with Windows paths&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">home</span><span class="se">\\</span><span class="s2">user</span><span class="se">\\</span><span class="s2">folder_a&quot;</span><span class="p">),</span>
+            <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">home</span><span class="se">\\</span><span class="s2">user</span><span class="se">\\</span><span class="s2">folder_b</span><span class="se">\\</span><span class="s2">sub_folder&quot;</span><span class="p">),</span>
+            <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;Paths have no common ancestor.&quot;</span><span class="p">),</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;no common ancestor&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_find_common_ancestor</span><span class="p">(</span><span class="n">path_1</span><span class="p">,</span> <span class="n">path_2</span><span class="p">,</span> <span class="n">expectation</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">expectation</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">find_common_ancestor</span><span class="p">(</span><span class="n">path_1</span><span class="p">,</span> <span class="n">path_2</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="n">expected</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>Use <code>pytest.mark.parametrize</code> to minimize the test code and to make adding more
+  tests easier.</p>
+</li>
+<li>
+<p>Use <code>pytest.param</code> to wrap each iteration. It allows to add the <code>id</code> parameter to
+  each iteration. Use the id to document the specific test case. With many test cases,
+  you will quickly forget the purpose of each single test.</p>
+</li>
+<li>
+<p>The third argument of the parametrization, <code>expectation</code>, can be used to assert that
+  the tested function throws an exception. In case no exception is thrown, use
+  <code>does_not_raise()</code>.</p>
+</li>
+<li>
+<p>If you expect an exception, you can pick an arbitrary object as the <code>expected</code>
+  output.</p>
+</li>
+</ul>
+<h3>Conclusion</h3>
+<p>I hope you enjoyed this tutorial. Feel free to send me any feedback.</p>
+<p><em>PS: When I started writing this guide, I discovered this
+<a href="https://docs.python.org/3/library/os.path.html#os.path.commonpath">function</a>. Maybe I
+do not need my implementation plus the tests</em>.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://tobiasraabe.github.io/tag/python.html">Python</a>
+      <a href="https://tobiasraabe.github.io/tag/testing.html">Testing</a>
+      <a href="https://tobiasraabe.github.io/tag/tests.html">Tests</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>
+  &copy; 2021  - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Tobias Raabe's Blog ",
+  "url" : "https://tobiasraabe.github.io",
+  "image": "/extra/avatar.png",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>
