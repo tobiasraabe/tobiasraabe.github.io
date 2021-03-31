@@ -1,9 +1,9 @@
 name: hp
 channels:
-  - defaults
   - conda-forge
+  - nodefaults
 dependencies:
-  - python=3.7
+  - python
   - pip
   - numba
   - scipy
