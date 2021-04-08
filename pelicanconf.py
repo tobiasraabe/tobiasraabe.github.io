@@ -79,8 +79,8 @@ SOCIAL = (
 
 THEME = "theme"
 
-CUSTOM_CSS = "static/css/custom.css"
-CUSTOM_JS = "static/js/custom.js"
+CUSTOM_CSS = "extra/custom.css"
+CUSTOM_JS = "extra/custom.js"
 
 PYGMENTS_STYLE = "default"
 
