@@ -21,7 +21,7 @@
   <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/brands.css">
   <link rel="stylesheet" type="text/css" href="https://tobiasraabe.github.io/theme/font-awesome/css/solid.css">
 
-    <link href="https://tobiasraabe.github.io/static/css/custom.css" rel="stylesheet">
+    <link href="https://tobiasraabe.github.io/extra/custom.css" rel="stylesheet">
 
     <link href="https://tobiasraabe.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tobias Raabe's Blog Atom">
 
@@ -1286,7 +1286,7 @@ div.text_cell_render {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Updated 16.08.2019. Better syntax, less errors and an example to show inlining of functions.</em></p>
 <h3 id="Why-should-I-use-them">Why should I use them<a class="anchor-link" href="#Why-should-I-use-them">&#182;</a></h3><p>Both decorators are extremely powerful as Numba compiles the instructions of the decorated function to machine code. That makes them significantly faster than the same operation written with Numpy. Of course, this is also true for functions decorated with <code>@jit</code>, but the other two decorators enable other features like reduction, accumulation and broadcasting (<a href="#Example-for-reduction,-accumulation-and-broadcasting">explanation</a>) which make operations on bigger matrices even faster.</p>
-<h3 id="When-should-I-use-them">When should I use them<a class="anchor-link" href="#When-should-I-use-them">&#182;</a></h3><p>"[P]remature optimization is the root of all evil" (Donald Knuth in <em>Computer Programming as an Art</em>, p. 671). Before you start to optimize your implementation use tools like <a href="https://github.com/rkern/line_profiler">line_profiler</a> or <a href="https://github.com/jiffyclub/snakeviz">snakeviz</a> to profile your code and find the real bottlenecks, not the ones you think about. Often it is sufficient to find better implementations from the standard library or rewrite parts such that they use Numpy or similar optimized frameworks. If you use Numpy, do not use loops but array operations. Use higher-dimensional arrays to gain performance by broadcasting. <a href="{filename}/blog/20190325-numpy-views-vs-copies.md">Avoid copies</a>. Also, refactoring and rewriting parts of the code may not give direct speed improvements, but your code becomes more compact and you can single out expensive operations.</p>
+<h3 id="When-should-I-use-them">When should I use them<a class="anchor-link" href="#When-should-I-use-them">&#182;</a></h3><p>"[P]remature optimization is the root of all evil" (Donald Knuth in <em>Computer Programming as an Art</em>, p. 671). Before you start to optimize your implementation use tools like <a href="https://github.com/rkern/line_profiler">line_profiler</a> or <a href="https://github.com/jiffyclub/snakeviz">snakeviz</a> to profile your code and find the real bottlenecks, not the ones you think about. Often it is sufficient to find better implementations from the standard library or rewrite parts such that they use Numpy or similar optimized frameworks. If you use Numpy, do not use loops but array operations. Use higher-dimensional arrays to gain performance by broadcasting. <a href="https://tobiasraabe.github.io/blog/numpy-views-vs-copies.html">Avoid copies</a>. Also, refactoring and rewriting parts of the code may not give direct speed improvements, but your code becomes more compact and you can single out expensive operations.</p>
 <p>Imagine you have done this, but still there are some functions which take up the majority of runtime. Next, decide whether you need a function that operates on single elements of an array or on arrays.</p>
 <h3 id="Using-the-@vectorize-decorator">Using the <code>@vectorize</code> decorator<a class="anchor-link" href="#Using-the-@vectorize-decorator">&#182;</a></h3><p>The <code>@vectorize</code> is for writing efficient functions which work on every element of an array. One useful application for me was to compute the probability of <code>x</code> under a normal distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. There already exists an implemenation in scipy, but it is incredibly slow. Let us start to write our own implementation.</p>
 
@@ -2599,7 +2599,14 @@ Got:
 
 
 
-</article>
+<script src="https://utteranc.es/client.js"
+        repo="tobiasraabe/tobiasraabe.github.io"
+        issue-term="title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script></article>
 
     <footer>
 <p>
