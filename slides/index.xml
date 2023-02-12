@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slides | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/slides/</link>
+      <atom:link href="https://tobiasraabe.github.io/slides/index.xml" rel="self" type="application/rss+xml" />
+    <description>Slides</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>pytask</title>
+      <link>https://tobiasraabe.github.io/slides/pytask/</link>
+      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/slides/pytask/</guid>
+      <description>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_6713905054386d3777d250888f80694b.webp 400w,
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_668fd313a364b8aba6054ca86bc985ac.webp 760w,
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_6713905054386d3777d250888f80694b.webp&#34;
+               width=&#34;650&#34;
+               height=&#34;252&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;p&gt;A workflow management system for reproducible data analyses&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;why-do-you-need-pytask&#34;&gt;Why do you need pytask?&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ve probably organized your project using a similar folder structure where each
+folder contains scripts carrying out specific tasks.&lt;/p&gt;
+&lt;p&gt;But, how do you execute all tasks or keep your project in sync?&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_b1eff23266637135116c98e2cd9116db.webp 400w,
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_c9650e332161839b5b515931ba8bb645.webp 760w,
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_b1eff23266637135116c98e2cd9116db.webp&#34;
+               width=&#34;50%&#34;
+               height=&#34;50%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;how-does-pytask-help-you&#34;&gt;How does pytask help you?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;By defining dependencies and products of tasks, you implicitly define an execution
+order.&lt;/li&gt;
+&lt;li&gt;pytask validates this definition&lt;/li&gt;
+&lt;li&gt;and executes only tasks which need to be updated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-do-you-define-tasks-dependencies-and-products&#34;&gt;How do you define tasks, dependencies, and products?&lt;/h2&gt;
+&lt;p&gt;Tasks are functions starting with &lt;code&gt;task_&lt;/code&gt;. Use decorators to specify the dependencies
+and products of a task. Using &lt;code&gt;depends_on&lt;/code&gt; and &lt;code&gt;produces&lt;/code&gt; as function args, you access
+the paths to the files in the function body.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_c45300d44c89c981cd6cea53d701728f.webp 400w,
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_d00940f96ed2e16fb9bfad85d106d918.webp 760w,
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_c45300d44c89c981cd6cea53d701728f.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;execute-a-task&#34;&gt;Execute a task&lt;/h2&gt;
+&lt;p&gt;Type &lt;code&gt;pytask&lt;/code&gt; in your terminal, and it will automatically collect and execute all tasks.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_6e9d542121037bdd8b75cf6e5ecdc5d2.webp 400w,
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_0ae5bee1a07736f41a6b1e73b787e655.webp 760w,
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_6e9d542121037bdd8b75cf6e5ecdc5d2.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;what-are-the-benefits&#34;&gt;What are the benefits?&lt;/h2&gt;
+&lt;p&gt;👉 Automation reduces errors and increases reproducibility.&lt;/p&gt;
+&lt;p&gt;👉 The build process is documented in code.&lt;/p&gt;
+&lt;p&gt;👉 You can iterate faster and be more productive.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;research&#34;&gt;Research&lt;/h2&gt;
+&lt;p&gt;Is pytask used for actual research? Yes!&lt;/p&gt;
+&lt;p&gt;Here is a Covid-19 forecast project with an agent-based model, 10+ datasets, many different policy scenarios and 1,000+ simulations.&lt;/p&gt;
+&lt;p&gt;👉 &lt;a href=&#34;https://arxiv.org/abs/2106.11129&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://arxiv.org/abs/2106.11129&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;teaching&#34;&gt;Teaching&lt;/h2&gt;
+&lt;p&gt;pytask is also part of a graduate course, teaching economists programming and best practices for research projects.&lt;/p&gt;
+&lt;p&gt;👉 &lt;a href=&#34;https://github.com/OpenSourceEconomics/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/OpenSourceEconomics/econ-project-templates&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;what-else-has-pytask-to-offer&#34;&gt;What else has pytask to offer?&lt;/h2&gt;
+&lt;p&gt;Scale your project by repeating tasks! 🚀&lt;/p&gt;
+&lt;p&gt;For example, create ten different datasets with randomly generated data.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_dc3afaefc80d44e7d270a96621fc531a.webp 400w,
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_c154bcbcab4bf809e87caf157cf8dc6a.webp 760w,
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_dc3afaefc80d44e7d270a96621fc531a.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;customize-pytask-with-plugins&#34;&gt;Customize pytask with plugins!&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatically parallelize the execution with &lt;a href=&#34;https://github.com/pytask-dev/pytask-parallel&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/pytask-dev/pytask-parallel&lt;/a&gt; ⚡️&lt;/li&gt;
+&lt;li&gt;Support for executing R, Julia, and Stata scripts.&lt;/li&gt;
+&lt;li&gt;All plugins are here: &lt;a href=&#34;https://pytask-dev.readthedocs.io/en/stable/plugin_list.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pytask-dev.readthedocs.io/en/stable/plugin_list.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;templating&#34;&gt;Templating&lt;/h2&gt;
+&lt;p&gt;Start a new project from a template!&lt;/p&gt;
+&lt;p&gt;A minimal template: &lt;a href=&#34;https://github.com/pytask-dev/cookiecutter-pytask-project&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/pytask-dev/cookiecutter-pytask-project&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A template for reproducible economics projects: &lt;a href=&#34;https://github.com/OpenSourceEconomics/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/OpenSourceEconomics/econ-project-templates&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;debugging&#34;&gt;Debugging&lt;/h2&gt;
+&lt;p&gt;Enter the debugger if one of your tasks fails, and you want to find out why! 🏗️&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_902fdde7c463d2fe50ea34b000a83672.webp 400w,
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_f6c550f5f722609531459e9d6d8657ee.webp 760w,
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_902fdde7c463d2fe50ea34b000a83672.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+&lt;p&gt;You can find out more about pytask in the documentation: &lt;a href=&#34;https://pytask-dev.readthedocs.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pytask-dev.readthedocs.io/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Follow the tutorials for a step-by-step introduction: &lt;a href=&#34;https://pytask-dev.readthedocs.io/en/stable/tutorials/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pytask-dev.readthedocs.io/en/stable/tutorials/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ecosystem&#34;&gt;Ecosystem&lt;/h2&gt;
+&lt;p&gt;pytask is also part of a more extensive ecosystem of research tools developed at &lt;a href=&#34;https://twitter.com/open_econ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@open_econ&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We will soon write about tools like &lt;a href=&#34;https://github.com/OpenSourceEconomics/estimagic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;estimagic&lt;/a&gt;, a package for complex numerical optimization, and estimation/calibration of scientific models.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;acknowledgements&#34;&gt;Acknowledgements&lt;/h2&gt;
+&lt;p&gt;Thanks for staying with me until the end! At last, some shout-outs to amazing people and projects.&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/kroehrl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@kroehrl&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/JanosGabler&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@JanosGabler&lt;/a&gt;, and &lt;a href=&#34;https://twitter.com/econ_hmg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@econ_hmg&lt;/a&gt;, who helped me build this tool in endless and fruitful discussions! 🙇&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;acknowledgements-1&#34;&gt;Acknowledgements&lt;/h2&gt;
+&lt;p&gt;pytask stands on the shoulders of these projects. Thank you!🙏&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/pytestdotorg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@pytestdotorg&lt;/a&gt; for pytest and pluggy.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/textualizeio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@textualizeio&lt;/a&gt; for cli interface created with
+&lt;a href=&#34;https://github.com/Textualize/rich&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rich&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/_darrenburns&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@_darrenburns&lt;/a&gt; for parametrizations burrowed from
+&lt;a href=&#34;https://github.com/darrenburns/ward&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ward&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

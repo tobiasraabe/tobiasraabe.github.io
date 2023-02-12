@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>time series | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/time-series/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/time-series/index.xml" rel="self" type="application/rss+xml" />
+    <description>time series</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>time series</title>
+      <link>https://tobiasraabe.github.io/tag/time-series/</link>
+    </image>
+    
+    <item>
+      <title>A time series course with Julia</title>
+      <link>https://tobiasraabe.github.io/post/time-series/</link>
+      <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/time-series/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;If you are here for some examples of time series analysis in Julia, you are right where you belong. If you are looking for opinions on Julia and how it fits into the scientific computational landscape, you should read these posts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.stochasticlifestyle.com/why-numba-and-cython-are-not-substitutes-for-julia/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why Numba and Cython are not substitutes for Julia&lt;/a&gt; by  Christopher Rackauckas&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kidger.site/thoughts/jax-vs-julia/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;JAX vs Julia (vs PyTorch)&lt;/a&gt; by Patrick Kidger&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;As I had not used Julia before and only heard about how fast it is, that it is
+statically typed, and so on, I was very interested in the beginning, but that
+changed quickly.&lt;/p&gt;
+&lt;p&gt;The main cause of frustration was that the Julia developers released three
+versions during the time of the course. Version 0.6.4 was released on 9 July
+2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All
+versions changed the main parts of the API and probably the last change made
+most standard modules importable. As much as I appreciate the effort of making
+a language more modular and optimizing the structure, the changes probably
+broke all code examples on the web which totally clashes with my way of
+learning a new language by copying and pasting parts together. At least, one
+can assume that the changes will be minor in the future after the release of
+1.0.0.&lt;/p&gt;
+&lt;p&gt;Another disadvantage is that Julia cannot be shipped with conda on Windows
+which is still my platform of choice, but maybe I am the one to blame here 😄.&lt;/p&gt;
+&lt;p&gt;Apart from that, I do not know much about Julia and my current critique is more
+about convenience which comes with a more mature language. Comparing a
+27-year-old to a 6-year-old is unfair.&lt;/p&gt;
+&lt;p&gt;The main selling points of Julia are speed and its mixture of dynamic and
+static typing. Regarding the first item, Python can be brought to comparable
+speed by using CPython or Numba, but all the benchmarks always depend on
+whether you hold the implementation over all languages constant or whether you
+optimized the problem for each language and whether there is a huge difference
+between a simple program and large implementation. So, I am not very sure what
+the final answer is here. Furthermore, all projects are heavily under
+development and benchmarks are quickly outdated. Regarding static typing, I
+think it would make some data analyses more consistent and currently, there is
+no real match in Python.&lt;/p&gt;
+&lt;p&gt;Maybe I will use Julia in the future, but currently, I am too comfortable with
+Python and do not have a real use case where I am forced to switch to something
+else. Path dependency is a bitch.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

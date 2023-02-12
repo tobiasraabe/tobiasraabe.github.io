@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Workflow | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/workflow/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <description>Workflow</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>Workflow</title>
+      <link>https://tobiasraabe.github.io/tag/workflow/</link>
+    </image>
+    
+    <item>
+      <title>pytask</title>
+      <link>https://tobiasraabe.github.io/project/pytask/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/project/pytask/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sid | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/sid/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/sid/index.xml" rel="self" type="application/rss+xml" />
+    <description>sid</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 30 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>sid</title>
+      <link>https://tobiasraabe.github.io/tag/sid/</link>
+    </image>
+    
+    <item>
+      <title>What I have been doing lately</title>
+      <link>https://tobiasraabe.github.io/post/what-i-have-been-doing-lately/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/what-i-have-been-doing-lately/</guid>
+      <description>&lt;p&gt;Hi everybody,&lt;/p&gt;
+&lt;p&gt;I have not written a post in a long time, so I am resuming this blog by keeping you
+posted on some of my more recent projects.&lt;/p&gt;
+&lt;p&gt;I have been developing or contributing to several research applications last year. I
+learned a lot about software engineering and designing applications. Maybe I will find
+the time to make a post on some of the things I learned along the way.&lt;/p&gt;
+&lt;h2 id=&#34;pytaskhahahugoshortcode-s0-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/pytask/&#34;&gt;pytask&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The project I am most excited about is &lt;a href=&#34;https://github.com/pytask-dev/pytask&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pytask&lt;/a&gt;, a
+build system designed for researchers to run their project pipeline from data
+preparation over analyses to compiling the reports.&lt;/p&gt;
+&lt;p&gt;I was highly frustrated with existing solutions and programmed my build system. The
+interface is one of the highlights. It is similar to pytest to lower the entry barrier
+but more beautiful because it uses &lt;a href=&#34;https://textualize/rich&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rich&lt;/a&gt;. pytask uses
+&lt;a href=&#34;https://github.com/pytest-dev/pluggy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pluggy&lt;/a&gt; under the hood to offer a plugin system.&lt;/p&gt;
+&lt;p&gt;If you already know my &lt;a href=&#34;https://github.com/tobiasraabe/cookiecutter-research-template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cookiecutter for reproducible
+research&lt;/a&gt;, you know Waf.
+pytask replaces Waf. I will probably not update the cookiecutter for the foreseeable
+future and, instead, I recommend &lt;a href=&#34;https://github.com/hmgaudecker/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hans-Martin&amp;rsquo;s cookiecutter&lt;/a&gt;, which will support pytask.&lt;/p&gt;
+&lt;p&gt;Please take a look at pytask and try it out in your next project. I appreciate any
+feedback, comments, feature requests, and harsh criticism :).&lt;/p&gt;
+&lt;p&gt;I already held a presentation about pytask&amp;rsquo;s design which I will probably post here in
+some weeks. Half the time is about plugin architectures in general and pluggy, and the
+other half is about pytask.&lt;/p&gt;
+&lt;h2 id=&#34;respyhahahugoshortcode-s1-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/respy/&#34;&gt;respy&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Together with &lt;a href=&#34;https://github.com/janosg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Janos&lt;/a&gt;, I created a framework for a certain
+class of econometric models called
+&lt;a href=&#34;https://github.com/OpenSourceEconomics/respy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;respy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For the insiders, it is a framework for finite-horizon discrete choice dynamic
+programming models, also called Eckstein-Keane-Wolpin models. Researchers use them to
+study the human capital accumulation process in the labor market.&lt;/p&gt;
+&lt;p&gt;The documentation is quite extensive for such a young project—contributors taking over
+the project plan to extend it with even more examples and applications.&lt;/p&gt;
+&lt;p&gt;If you are an economist interested in structural modeling, it might be an excellent
+place to start. Even if you do not want to use this model, you might be able to get some
+inspiration for your model.&lt;/p&gt;
+&lt;p&gt;I learned a lot about building interfaces people can use and how to write performant
+code by choosing the right design and Numba where necessary.&lt;/p&gt;
+&lt;h2 id=&#34;gettsimhahahugoshortcode-s2-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/gettsim/&#34;&gt;gettsim&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I redesigned the computational backend of
+&lt;a href=&#34;https://github.com/iza-institute-of-labor-economics/gettsim&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gettsim&lt;/a&gt; with
+&lt;a href=&#34;https://github.com/janosg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Janos&lt;/a&gt; and &lt;a href=&#34;https://github.com/hmgaudecker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hans-Martin&lt;/a&gt;.
+gettsim offers a representation of the German tax and transfer system and allows
+researchers to study the impact of reforms on the amount of taxes and benefits people
+face.&lt;/p&gt;
+&lt;p&gt;The task was to design an interface that allows users to modify or extend the
+pre-implemented tax and transfer system.&lt;/p&gt;
+&lt;p&gt;Our solution is a mixture inspired by pytest&amp;rsquo;s fixtures and a DAG (directed acyclic
+graph).&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-a-subset-of-the-german-tax-and-transfer-system&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;A subset of the German tax and transfer system.&#34; srcset=&#34;
+               /post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_1a832a87a02c02082e864f9e06ee961c.webp 400w,
+               /post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_39fc8dbc1761862e1d7a094a243ac647.webp 760w,
+               /post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_1a832a87a02c02082e864f9e06ee961c.webp&#34;
+               width=&#34;601&#34;
+               height=&#34;604&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      A subset of the German tax and transfer system.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can view the whole tax and transfer system as an extensive network. In this network,
+nodes are quantities like child benefits, capital gains, or taxes on capital gains.
+Edges represent how quantities relate to each other. For example, taxes paid on capital
+gains is derived from capital gains subject to income tax. Quantities are part of the
+data, or a function exists that computes it.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The network is a directed graph because edges point in one direction. And it is acyclic
+since there are no cycles in this graph, meaning you will never return to the same node
+following the edges. These properties make the network a directed acyclic graph or a
+DAG.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This network view has a couple of benefits.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A quantity can be computed once and then passed to the following nodes saving runtime
+and reducing code duplication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you want to model a policy change, you can single out the relevant nodes in the
+network and modify the underlying functions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you are interested only in a subset of tax and transfer system, subset the network
+and remove unnecessary nodes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This flexibility is highly desirable, but what does the interface look like for a user.&lt;/p&gt;
+&lt;p&gt;Here, we use the idea of pytest&amp;rsquo;s fixtures where using a fixture&amp;rsquo;s name as an argument
+in a test function gives you access to the return of the fixture inside the test
+function. Similarly, a function in gettsim looks like this.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;child_benefits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n_children&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n_children&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;child_benefits&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here, &lt;code&gt;n_children&lt;/code&gt; is either a variable in the input data or a function with the same
+name which computes the quantity.&lt;/p&gt;
+&lt;p&gt;We can build a DAG that allows us to determine an execution order for the functions from
+a function&amp;rsquo;s name and its argument names.&lt;/p&gt;
+&lt;p&gt;Users can modify the collection of functions by overwriting existing functions or adding
+their own.&lt;/p&gt;
+&lt;p&gt;You can find out more about the package in the
+&lt;a href=&#34;https://gettsim.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;documentation&lt;/a&gt; or check out the code to
+build a DAG in the standalone package
+&lt;a href=&#34;https://github.com/OpenSourceEconomics/dags&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;dags&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;sidhahahugoshortcode-s5-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/sid/&#34;&gt;sid&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Last but not least, I have been working on an epidemiological model to predict the
+spread of infectious diseases. It is my COVID-19 project with
+&lt;a href=&#34;https://github.com/roecla&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Klara&lt;/a&gt; and &lt;a href=&#34;https://github.com/janosg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Janos&lt;/a&gt;. It is called
+&lt;a href=&#34;https://github.com/covid-19-impact-lab/sid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sid&lt;/a&gt;, and we hope to publish something
+soon.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

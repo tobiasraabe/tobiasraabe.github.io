@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>research | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/category/research/</link>
+      <atom:link href="https://tobiasraabe.github.io/category/research/index.xml" rel="self" type="application/rss+xml" />
+    <description>research</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 21 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>research</title>
+      <link>https://tobiasraabe.github.io/category/research/</link>
+    </image>
+    
+    <item>
+      <title>Identifying Software Patents</title>
+      <link>https://tobiasraabe.github.io/post/software-patents/</link>
+      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/software-patents/</guid>
+      <description>&lt;p&gt;In 2015, I wrote my Bachelor&amp;rsquo;s thesis on identifying software patents. This is useful
+and necessary in two ways. First, there is no official system to sort patents this way.
+The main system used by the USPTO focuses on the technological and functional form. A
+subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes.
+In contrast, researchers are more interested in topics like automation or software.
+Second, I learned Python and made my first steps into the world of machine learning.&lt;/p&gt;
+&lt;p&gt;You can find the whole project on &lt;a href=&#34;https://github.com/tobiasraabe/software_patents&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt; as well as the &lt;a href=&#34;https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;paper&lt;/a&gt;. There is also a
+script to download different kinds of data sets. The raw data uses approximately 90GB of
+disk space whereas the data for replicating the previous results based on a simple
+algorithm is currently less than 1GB.&lt;/p&gt;
+&lt;p&gt;Now, let us see what has been done so far.&lt;/p&gt;
+&lt;p&gt;The idea of the project is based on an algorithmic approach of Bessen &amp;amp; Hunt (2007). The
+authors wanted to estimate the number of software patents and find out where software
+patents are used and what economic indicators are correlated with having more software
+patents.&lt;/p&gt;
+&lt;p&gt;To classify patents into categories of software and non-software, the authors developed
+a simple algorithm based on the evaluation of a random sample of patents. The algorithm
+is as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;((&amp;quot;software&amp;quot; in specification)
+ OR (&amp;quot;computer&amp;quot; AND &amp;quot;program&amp;quot; in specification))
+
+AND (utility patent excluding reissues)
+
+ANDNOT (&amp;quot;chip&amp;quot;
+        OR &amp;quot;semiconductor&amp;quot;
+        OR &amp;quot;bus&amp;quot;
+        OR &amp;quot;circuit&amp;quot;
+        OR &amp;quot;circuitry&amp;quot;
+        in title)
+
+ANDNOT (&amp;quot;antigen&amp;quot; OR &amp;quot;antigenic&amp;quot; OR &amp;quot;chromatography&amp;quot; in specification)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;According to Bessen &amp;amp; Hunt (2007), the specification is the abstract and the description
+of the patent. Note that, &lt;a href=&#34;https://www.patentsview.org/web/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatentsView&lt;/a&gt; separates description into two parts, summary
+and description.&lt;/p&gt;
+&lt;p&gt;To replicate the algorithm, the project relies on two strategies. The first data source
+is &lt;a href=&#34;https://patents.google.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Patents&lt;/a&gt; where the texts can be crawled. As this procedure is not feasible
+for the whole corpus of patents, the second data source is &lt;a href=&#34;https://www.patentsview.org/web/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatentsView&lt;/a&gt; which provides
+large data files for all patents from 1976 on.&lt;/p&gt;
+&lt;p&gt;The replication of the original algorithm succeeds in 398 of 400 cases as one patent was
+retracted and in one case an indicator was overlooked which lead to an error in the
+classification.&lt;/p&gt;
+&lt;p&gt;Compared to the manual classification of the authors, the algorithm performed in the
+following way:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Relevant&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Not Relevant&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Retrieved&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;42&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Not Retrieved&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;337&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Relevant refers to software patents according to the manual classification whereas
+retrieved indicates software patents detected by the algorithm. The upper left corner
+can also be called true-positives whereas the lower right corner shows the number of
+true-negatives.&lt;/p&gt;
+&lt;p&gt;Applying the algorithm to the whole patent corpus, we get the following distributions of
+patents and software versus non-software patents.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-absolute-number-of-utility-patents&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Absolute Number of Utility Patents&#34; srcset=&#34;
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp 400w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_60ac97ca8b16570ee020fd2d422905cf.webp 760w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;507&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Absolute Number of Utility Patents
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-absolute-number-of-software-vs-non-software-patents&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Absolute Number of Software vs. Non-Software Patents&#34; srcset=&#34;
+               /post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_959c55a8756aa774a7a06be5d42bfcd5.webp 400w,
+               /post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_150a0133cc4994cabeea8f0aad85e628.webp 760w,
+               /post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_959c55a8756aa774a7a06be5d42bfcd5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;507&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Absolute Number of Software vs. Non-Software Patents
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-relative-number-of-software-vs-non-software-patents&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Relative Number of Software vs. Non-Software Patents&#34; srcset=&#34;
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp 400w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_60ac97ca8b16570ee020fd2d422905cf.webp 760w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;507&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Relative Number of Software vs. Non-Software Patents
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

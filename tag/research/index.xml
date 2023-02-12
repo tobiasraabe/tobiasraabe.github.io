@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/research/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/research/index.xml" rel="self" type="application/rss+xml" />
+    <description>Research</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>Research</title>
+      <link>https://tobiasraabe.github.io/tag/research/</link>
+    </image>
+    
+    <item>
+      <title>A time series course with Julia</title>
+      <link>https://tobiasraabe.github.io/post/time-series/</link>
+      <pubDate>Wed, 17 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/time-series/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;If you are here for some examples of time series analysis in Julia, you are right where you belong. If you are looking for opinions on Julia and how it fits into the scientific computational landscape, you should read these posts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.stochasticlifestyle.com/why-numba-and-cython-are-not-substitutes-for-julia/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why Numba and Cython are not substitutes for Julia&lt;/a&gt; by  Christopher Rackauckas&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kidger.site/thoughts/jax-vs-julia/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;JAX vs Julia (vs PyTorch)&lt;/a&gt; by Patrick Kidger&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;As I had not used Julia before and only heard about how fast it is, that it is
+statically typed, and so on, I was very interested in the beginning, but that
+changed quickly.&lt;/p&gt;
+&lt;p&gt;The main cause of frustration was that the Julia developers released three
+versions during the time of the course. Version 0.6.4 was released on 9 July
+2018, version 0.7.0 and 1.0.0 followed on 8 and 9 August respectively. All
+versions changed the main parts of the API and probably the last change made
+most standard modules importable. As much as I appreciate the effort of making
+a language more modular and optimizing the structure, the changes probably
+broke all code examples on the web which totally clashes with my way of
+learning a new language by copying and pasting parts together. At least, one
+can assume that the changes will be minor in the future after the release of
+1.0.0.&lt;/p&gt;
+&lt;p&gt;Another disadvantage is that Julia cannot be shipped with conda on Windows
+which is still my platform of choice, but maybe I am the one to blame here 😄.&lt;/p&gt;
+&lt;p&gt;Apart from that, I do not know much about Julia and my current critique is more
+about convenience which comes with a more mature language. Comparing a
+27-year-old to a 6-year-old is unfair.&lt;/p&gt;
+&lt;p&gt;The main selling points of Julia are speed and its mixture of dynamic and
+static typing. Regarding the first item, Python can be brought to comparable
+speed by using CPython or Numba, but all the benchmarks always depend on
+whether you hold the implementation over all languages constant or whether you
+optimized the problem for each language and whether there is a huge difference
+between a simple program and large implementation. So, I am not very sure what
+the final answer is here. Furthermore, all projects are heavily under
+development and benchmarks are quickly outdated. Regarding static typing, I
+think it would make some data analyses more consistent and currently, there is
+no real match in Python.&lt;/p&gt;
+&lt;p&gt;Maybe I will use Julia in the future, but currently, I am too comfortable with
+Python and do not have a real use case where I am forced to switch to something
+else. Path dependency is a bitch.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Identifying Software Patents</title>
+      <link>https://tobiasraabe.github.io/post/software-patents/</link>
+      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/software-patents/</guid>
+      <description>&lt;p&gt;In 2015, I wrote my Bachelor&amp;rsquo;s thesis on identifying software patents. This is useful
+and necessary in two ways. First, there is no official system to sort patents this way.
+The main system used by the USPTO focuses on the technological and functional form. A
+subclass dealing with dispensing solids contains manure spreaders and toothpaste tubes.
+In contrast, researchers are more interested in topics like automation or software.
+Second, I learned Python and made my first steps into the world of machine learning.&lt;/p&gt;
+&lt;p&gt;You can find the whole project on &lt;a href=&#34;https://github.com/tobiasraabe/software_patents&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt; as well as the &lt;a href=&#34;https://github.com/tobiasraabe/software_patents/blob/master/paper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;paper&lt;/a&gt;. There is also a
+script to download different kinds of data sets. The raw data uses approximately 90GB of
+disk space whereas the data for replicating the previous results based on a simple
+algorithm is currently less than 1GB.&lt;/p&gt;
+&lt;p&gt;Now, let us see what has been done so far.&lt;/p&gt;
+&lt;p&gt;The idea of the project is based on an algorithmic approach of Bessen &amp;amp; Hunt (2007). The
+authors wanted to estimate the number of software patents and find out where software
+patents are used and what economic indicators are correlated with having more software
+patents.&lt;/p&gt;
+&lt;p&gt;To classify patents into categories of software and non-software, the authors developed
+a simple algorithm based on the evaluation of a random sample of patents. The algorithm
+is as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;((&amp;quot;software&amp;quot; in specification)
+ OR (&amp;quot;computer&amp;quot; AND &amp;quot;program&amp;quot; in specification))
+
+AND (utility patent excluding reissues)
+
+ANDNOT (&amp;quot;chip&amp;quot;
+        OR &amp;quot;semiconductor&amp;quot;
+        OR &amp;quot;bus&amp;quot;
+        OR &amp;quot;circuit&amp;quot;
+        OR &amp;quot;circuitry&amp;quot;
+        in title)
+
+ANDNOT (&amp;quot;antigen&amp;quot; OR &amp;quot;antigenic&amp;quot; OR &amp;quot;chromatography&amp;quot; in specification)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;According to Bessen &amp;amp; Hunt (2007), the specification is the abstract and the description
+of the patent. Note that, &lt;a href=&#34;https://www.patentsview.org/web/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatentsView&lt;/a&gt; separates description into two parts, summary
+and description.&lt;/p&gt;
+&lt;p&gt;To replicate the algorithm, the project relies on two strategies. The first data source
+is &lt;a href=&#34;https://patents.google.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Patents&lt;/a&gt; where the texts can be crawled. As this procedure is not feasible
+for the whole corpus of patents, the second data source is &lt;a href=&#34;https://www.patentsview.org/web/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatentsView&lt;/a&gt; which provides
+large data files for all patents from 1976 on.&lt;/p&gt;
+&lt;p&gt;The replication of the original algorithm succeeds in 398 of 400 cases as one patent was
+retracted and in one case an indicator was overlooked which lead to an error in the
+classification.&lt;/p&gt;
+&lt;p&gt;Compared to the manual classification of the authors, the algorithm performed in the
+following way:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Relevant&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Not Relevant&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Retrieved&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;42&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Not Retrieved&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;337&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Relevant refers to software patents according to the manual classification whereas
+retrieved indicates software patents detected by the algorithm. The upper left corner
+can also be called true-positives whereas the lower right corner shows the number of
+true-negatives.&lt;/p&gt;
+&lt;p&gt;Applying the algorithm to the whole patent corpus, we get the following distributions of
+patents and software versus non-software patents.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-absolute-number-of-utility-patents&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Absolute Number of Utility Patents&#34; srcset=&#34;
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp 400w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_60ac97ca8b16570ee020fd2d422905cf.webp 760w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;507&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Absolute Number of Utility Patents
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-absolute-number-of-software-vs-non-software-patents&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Absolute Number of Software vs. Non-Software Patents&#34; srcset=&#34;
+               /post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_959c55a8756aa774a7a06be5d42bfcd5.webp 400w,
+               /post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_150a0133cc4994cabeea8f0aad85e628.webp 760w,
+               /post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/software-patents/fig-patents-distribution-vs_huf551d049826120a6ca7d2de2db864388_49241_959c55a8756aa774a7a06be5d42bfcd5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;507&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Absolute Number of Software vs. Non-Software Patents
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-relative-number-of-software-vs-non-software-patents&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Relative Number of Software vs. Non-Software Patents&#34; srcset=&#34;
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp 400w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_60ac97ca8b16570ee020fd2d422905cf.webp 760w,
+               /post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/software-patents/fig-patents-distribution_hud5d876403ac11d84871fe0fb13befddd_46598_01951c41dc09b2235bf2e61587e9be2e.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;507&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Relative Number of Software vs. Non-Software Patents
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Facilitate reproducible research with cookiecutter-research-template</title>
+      <link>https://tobiasraabe.github.io/post/cookiecutter-research-template/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/cookiecutter-research-template/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;A lot of time has passed since this post. Meanwhile I wrote a tool called
+&lt;a href=&#34;https://github.com/pytask-dev/pytask&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pytask&lt;/a&gt; &amp;ndash; a replacement for Waf &amp;ndash; which allows
+you to execute the workflows in research project. It also comes with two recommended
+templates.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pytask-dev/cookiecutter-pytask-project&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cookiecutter-pytask-project&lt;/a&gt; is a lean template.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenSourceEconomics/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;econ-project-templates&lt;/a&gt;
+is richer and specifically designed for economists.&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In one of the university courses I was introduced to a &lt;a href=&#34;https://github.com/hmgaudecker/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Waf framework for reproducible
+research by Hans-Martin von
+Gaudecker&lt;/a&gt; which is amazingly
+useful to manage your research project.&lt;/p&gt;
+&lt;p&gt;The basic idea is that a project is structured as a DAG, a directed-acyclic graph. A DAG
+is a graph with a finite amount of node and edges where the edges have a specific
+direction leading from input to output files. Furthermore, starting at node $\nu$ and
+following the directed edges, it is not possible to find a way back to $\nu$.&lt;/p&gt;
+&lt;p&gt;Take a look at the picture at the top. &lt;code&gt;get_simulation_draws.py&lt;/code&gt; is the starting point
+and the source of &lt;code&gt;initial_locations.csv&lt;/code&gt; which is the input of &amp;hellip; You get it.&lt;/p&gt;
+&lt;p&gt;You get the sample project by installing &lt;code&gt;cookiecutter&lt;/code&gt; first with&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ pip install -U cookiecutter
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, go to the directory which should contain the folder with the project and type&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cookiecutter https://github.com/tobiasraabe/cookiecutter-research-template.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Answer the following prompts so the project will be customized to your needs.&lt;/p&gt;
+&lt;p&gt;In the end, go into the project folder and set up the &lt;code&gt;conda&lt;/code&gt; environment.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda env create -n &amp;lt;project-name&amp;gt; -f environment.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At last, run the following command to make sure that the sample project works.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ python waf.py distclean configure build
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on Waf read &lt;a href=&#34;http://hmgaudecker.github.io/econ-project-templates/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gaudecker&amp;rsquo;s
+documentation&lt;/a&gt; and my
+&lt;a href=&#34;https://cookiecutter-research-template.readthedocs.io/en/latest/waf-tips-and-tricks.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Waf Tips &amp;amp; Tricks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To use all features of the template check out the
+&lt;a href=&#34;https://cookiecutter-research-template.readthedocs.io/en/latest/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

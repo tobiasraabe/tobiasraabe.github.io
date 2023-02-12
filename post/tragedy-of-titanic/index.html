@@ -1,0 +1,2705 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: February 12, 2023 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.16f785cdb553c8c4431db6775122af35.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.128caa6038d1007fd28154b8942c47aa.css" />
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178274443-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-178274443-1', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Tobias Raabe" />
+
+
+
+
+
+  
+
+<meta name="description" content="This is an analysis of survival rates on the Titanic with a placebo test for whether traveling in couples increased the likelihood of survival." />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://tobiasraabe.github.io/post/tragedy-of-titanic/" />
+<link rel="canonical" href="https://tobiasraabe.github.io/post/tragedy-of-titanic/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary" />
+
+  <meta property="twitter:site" content="@tobraab" />
+  <meta property="twitter:creator" content="@tobraab" />
+<meta property="twitter:image" content="https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png" />
+<meta property="og:site_name" content="Tobias Raabe" />
+<meta property="og:url" content="https://tobiasraabe.github.io/post/tragedy-of-titanic/" />
+<meta property="og:title" content="The tragedy of Titanic | Tobias Raabe" />
+<meta property="og:description" content="This is an analysis of survival rates on the Titanic with a placebo test for whether traveling in couples increased the likelihood of survival." /><meta property="og:image" content="https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2017-10-22T00:00:00&#43;00:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2017-10-22T00:00:00&#43;00:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tobiasraabe.github.io/post/tragedy-of-titanic/"
+  },
+  "headline": "The tragedy of Titanic",
+  
+  "datePublished": "2017-10-22T00:00:00Z",
+  "dateModified": "2017-10-22T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Tobias Raabe"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tobias Raabe",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "This is an analysis of survival rates on the Titanic with a placebo test for whether traveling in couples increased the likelihood of survival."
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>The tragedy of Titanic | Tobias Raabe</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c23020df1424e7a6aea4738135c4de8e" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.ec9d49ca50e4b80bdb08f0417a28ed84.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Tobias Raabe</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Tobias Raabe</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#publications"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>The tragedy of Titanic</h1>
+
+  
+  <p class="page-subtitle">This is an analysis of survival rates on the Titanic with a placebo test for whether traveling in couples increased the likelihood of survival.</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      Tobias Raabe</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Oct 22, 2017
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    17 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">python</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="introduction">Introduction</h2>
+<p>This Jupyter notebook uses the <a href="https://www.kaggle.com/c/titanic" target="_blank" rel="noopener">Titanic dataset from Kaggle</a> for the prediction of survival rates among passengers on the Titanic.</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/RMS_Titanic" target="_blank" rel="noopener">RMS Titanic</a> was a British passenger liner that sank in the North Atlantic Ocean in the early morning of 15 April 1912, after colliding with an iceberg during her maiden voyage from Southampton to New York City. Of the 2,224 passengers and crew aboard, more than 1,500 died in the sinking, making it one of the deadliest commercial peacetime maritime disasters in modern history. The largest ship afloat at the time it entered service, the RMS Titanic was the second of three Olympic class ocean liners operated by the White Star Line, and was built by the Harland and Wolff shipyard in Belfast. Thomas Andrews, her architect, died in the disaster.</p>
+</blockquote>
+<p>The main goals of this analysis are a descriptive analysis of the data, a sophisticated feature engineering approach, and a comparison of established prediction models. In addition to that, the whole analysis should be presented in the best possible way, so that the notebook serves as a best practice example.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">warnings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">randint</span> <span class="k">as</span> <span class="n">sp_randint</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;train.csv&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;test.csv&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Embarked</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;Queenstown&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">Sex</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Sex</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="s1">&#39;Male&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Embarked</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;Queenstown&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">Sex</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Sex</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="s1">&#39;Male&#39;</span><span class="p">})</span>
+</span></span></code></pre></div><h2 id="descriptive-analysis">Descriptive Analysis</h2>
+<p>For exploration the whole dataset is used. It consists of 1309 observations and 12 variables. The variables are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><em>Variable</em></th>
+<th style="text-align:left"><em>Description</em></th>
+<th style="text-align:left"><em>dtype</em></th>
+<th style="text-align:left"><em>non-missing train</em></th>
+<th style="text-align:left"><em>non-missing test</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Age</td>
+<td style="text-align:left">Age of passenger</td>
+<td style="text-align:left">float64</td>
+<td style="text-align:left">714</td>
+<td style="text-align:left">332</td>
+</tr>
+<tr>
+<td style="text-align:left">Cabin</td>
+<td style="text-align:left">Cabin of passenger</td>
+<td style="text-align:left">object</td>
+<td style="text-align:left">204</td>
+<td style="text-align:left">91</td>
+</tr>
+<tr>
+<td style="text-align:left">Embarked</td>
+<td style="text-align:left">Capital letter indicating the port of embarkation</td>
+<td style="text-align:left">object</td>
+<td style="text-align:left">889</td>
+<td style="text-align:left">417</td>
+</tr>
+<tr>
+<td style="text-align:left">Fare</td>
+<td style="text-align:left">Price of ticket</td>
+<td style="text-align:left">float64</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">Name</td>
+<td style="text-align:left">Name of passenger</td>
+<td style="text-align:left">object</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">Parch</td>
+<td style="text-align:left">Number of parents &amp; children aboard</td>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">PassengerId</td>
+<td style="text-align:left">ID of passenger</td>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">Pclass</td>
+<td style="text-align:left">Class of passenger</td>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">Sex</td>
+<td style="text-align:left">Sex of passenger</td>
+<td style="text-align:left">object</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">SibSp</td>
+<td style="text-align:left">Number of siblings &amp; spouses aboard</td>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">Survived</td>
+<td style="text-align:left">Survived (1) or deceased (0)</td>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+<tr>
+<td style="text-align:left">Ticket</td>
+<td style="text-align:left">Ticket number</td>
+<td style="text-align:left">object</td>
+<td style="text-align:left">891</td>
+<td style="text-align:left">418</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passengerid-ticket-cabin">PassengerId, Ticket, Cabin</h3>
+<p>These variables are not important for the analysis.</p>
+<h3 id="passenger-class">Passenger Class</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_8_0_hu4ef6587eb2b802a7762fbfa4530e4473_8287_4103b445c7900a89b27bf05ffcd9f278.webp 400w,
+               /post/tragedy-of-titanic/titanic_8_0_hu4ef6587eb2b802a7762fbfa4530e4473_8287_08943b2254d2557882f1b2b5c8622e6f.webp 760w,
+               /post/tragedy-of-titanic/titanic_8_0_hu4ef6587eb2b802a7762fbfa4530e4473_8287_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_8_0_hu4ef6587eb2b802a7762fbfa4530e4473_8287_4103b445c7900a89b27bf05ffcd9f278.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h3 id="sex">Sex</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_10_0_huf8ec3bde982533fac98ddd3b38195855_8985_24a40e874bfe7d5087b30c2019b10dfc.webp 400w,
+               /post/tragedy-of-titanic/titanic_10_0_huf8ec3bde982533fac98ddd3b38195855_8985_ae468d19bdc97c3c0133ab98686173a3.webp 760w,
+               /post/tragedy-of-titanic/titanic_10_0_huf8ec3bde982533fac98ddd3b38195855_8985_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_10_0_huf8ec3bde982533fac98ddd3b38195855_8985_24a40e874bfe7d5087b30c2019b10dfc.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h3 id="age">Age</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Create a dummy for missing age values for later computation</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;missing_age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">[</span><span class="s1">&#39;missing_age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Missing computation (could be more sophisticated, since it is only</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># uniformly distributed)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_age_mean</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_age_std</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_age_nan_count</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test_age_mean</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_age_std</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_age_nan_count</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">train_age_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_age_mean</span> <span class="o">-</span> <span class="n">train_age_std</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_age_mean</span> <span class="o">+</span> <span class="n">train_age_std</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span><span class="o">=</span><span class="n">train_age_nan_count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_age_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_age_mean</span> <span class="o">-</span> <span class="n">test_age_std</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_age_mean</span> <span class="o">+</span> <span class="n">test_age_std</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span><span class="o">=</span><span class="n">test_age_nan_count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Original distribution</span>
+</span></span><span class="line"><span class="cl"><span class="n">orig_train_age_int</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">orig_test_age_int</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Computed age distribution</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_age_rand</span>
+</span></span><span class="line"><span class="cl"><span class="n">comp_train_age_int</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_age_rand</span>
+</span></span><span class="line"><span class="cl"><span class="n">comp_test_age_int</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">axis1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original Age Distribution&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">orig_train_age_int</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis1</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">axis2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Computed Age Distribution&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">comp_train_age_int</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis2</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Convert Age from float to int, because of simplicity</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">Age</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">Age</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_12_0_hu8926c39646cc27ee9370f2c3b986dbf9_19535_f648fea86e6fe8aca97345cd6ae2f281.webp 400w,
+               /post/tragedy-of-titanic/titanic_12_0_hu8926c39646cc27ee9370f2c3b986dbf9_19535_0f1088c5bf8f92f471704425e806d78b.webp 760w,
+               /post/tragedy-of-titanic/titanic_12_0_hu8926c39646cc27ee9370f2c3b986dbf9_19535_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_12_0_hu8926c39646cc27ee9370f2c3b986dbf9_19535_f648fea86e6fe8aca97345cd6ae2f281.webp"
+               width="760"
+               height="335"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_13_0_hu133be4e5d58dccc3feb17ad4aee6d7b9_11716_6dab41139f490970d0c10ee6e3d2eaaa.webp 400w,
+               /post/tragedy-of-titanic/titanic_13_0_hu133be4e5d58dccc3feb17ad4aee6d7b9_11716_f4e1652eebbc1c0bdbd9a246dfc59dca.webp 760w,
+               /post/tragedy-of-titanic/titanic_13_0_hu133be4e5d58dccc3feb17ad4aee6d7b9_11716_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_13_0_hu133be4e5d58dccc3feb17ad4aee6d7b9_11716_6dab41139f490970d0c10ee6e3d2eaaa.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h3 id="fare">Fare</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Could be better, think about a more appropriate solution</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">Fare</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Survived</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Survived</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="s1">&#39;Deceased&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_15_0_hu88ece218be217e3c980472a5091b0b9a_18533_80e75572cda0c1abee3865623f3fce41.webp 400w,
+               /post/tragedy-of-titanic/titanic_15_0_hu88ece218be217e3c980472a5091b0b9a_18533_99aaacd6f826625b20d87f849dde38c5.webp 760w,
+               /post/tragedy-of-titanic/titanic_15_0_hu88ece218be217e3c980472a5091b0b9a_18533_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_15_0_hu88ece218be217e3c980472a5091b0b9a_18533_80e75572cda0c1abee3865623f3fce41.webp"
+               width="760"
+               height="271"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h2 id="missing-computation-and-feature-engineering">Missing Computation and Feature Engineering</h2>
+<h3 id="fare-1">Fare</h3>
+<p>We forgot to fix one missing value in fare in the test dataset. We will replace it by the median fare value for the specific passenger class.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">Fare</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Fare</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">Pclass</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+</span></span></code></pre></div><h3 id="cabin">Cabin</h3>
+<p>Previously discarded, we will take a look at the cabin variable. The variable consists of a letter indicating the deck and a room number. The number is less important, but an indicator variable for the deck could reveal further information despite the fact that the cabin number is missing in 75% of the data. For further information look at <a href="https://en.wikipedia.org/wiki/RMS_Titanic#Dimensions_and_layout" target="_blank" rel="noopener">Wikipedia</a>.</p>
+<p>It seems impossible to predict deck membership.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;Deck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Cabin</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;(?P&lt;letter&gt;[A-Z])&#34;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Deck</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;Deck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Missing&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">[</span><span class="s1">&#39;Deck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Cabin</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;(?P&lt;letter&gt;[A-Z])&#34;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">Deck</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;Deck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Missing&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Deck&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Deck&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;Missing&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_23_0_huab367185f8d2d4b4225ea6bc786ec9ae_9658_1ea8d62e05a3027f2fb74830f378647b.webp 400w,
+               /post/tragedy-of-titanic/titanic_23_0_huab367185f8d2d4b4225ea6bc786ec9ae_9658_114e56f5c39e3ab188cfb424144c34f3.webp 760w,
+               /post/tragedy-of-titanic/titanic_23_0_huab367185f8d2d4b4225ea6bc786ec9ae_9658_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_23_0_huab367185f8d2d4b4225ea6bc786ec9ae_9658_1ea8d62e05a3027f2fb74830f378647b.webp"
+               width="760"
+               height="269"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Deck&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;Missing&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_24_0_hu0c06c1e73e4846b1a4105f171443bc1b_11826_7a85225284556f5b9cb331d9d93f61c3.webp 400w,
+               /post/tragedy-of-titanic/titanic_24_0_hu0c06c1e73e4846b1a4105f171443bc1b_11826_11b62b66097576049758daa2a9012c8f.webp 760w,
+               /post/tragedy-of-titanic/titanic_24_0_hu0c06c1e73e4846b1a4105f171443bc1b_11826_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_24_0_hu0c06c1e73e4846b1a4105f171443bc1b_11826_7a85225284556f5b9cb331d9d93f61c3.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h3 id="embarked">Embarked</h3>
+<p>There are two missing values in the training dataset. Let us have a look at the port of embarkation and the fare. The dotted horizontal line in the second graph shows the fare value of observations with missing port values. The fare values seem to overlap with Cherbourg.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># limit yaxis, because of outlier</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_26_0_hu1b4f0afe65550a3c7f074eda24e80e35_13615_685b15227abc0e078673955bccb003e3.webp 400w,
+               /post/tragedy-of-titanic/titanic_26_0_hu1b4f0afe65550a3c7f074eda24e80e35_13615_75da03dcbd8dfe925e6af5be3c4f15ff.webp 760w,
+               /post/tragedy-of-titanic/titanic_26_0_hu1b4f0afe65550a3c7f074eda24e80e35_13615_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_26_0_hu1b4f0afe65550a3c7f074eda24e80e35_13615_685b15227abc0e078673955bccb003e3.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>The boxplot does not show very clear whether the two passengers embarked in Southampton or Cherbourg. A fare of 80 seems to be on the edge of the box and therefore on the upper quartile. What you can also see is a concentration of passengers embarked in Southampton between a fare of 70 and 90.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">==</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">==</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Density of Fare by Embarked&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">==</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">==</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Absolute frequency of Fare values by Embarked with steps of five&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">==</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span> <span class="o">==</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">][</span><span class="s1">&#39;Fare&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Absolute frequency of Fare values by Embarked with steps of ten&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">south_patch</span> <span class="o">=</span> <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Southampton&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cher_patch</span> <span class="o">=</span> <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cherbourg&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">south_patch</span><span class="p">,</span> <span class="n">cher_patch</span><span class="p">],</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_28_0_hu4864100b55a9694a7e9c2d005f08e2c3_19766_fb978887ec4438a14986c7981df62134.webp 400w,
+               /post/tragedy-of-titanic/titanic_28_0_hu4864100b55a9694a7e9c2d005f08e2c3_19766_caf5e341ffad6a14e2713a2e4f4879e8.webp 760w,
+               /post/tragedy-of-titanic/titanic_28_0_hu4864100b55a9694a7e9c2d005f08e2c3_19766_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_28_0_hu4864100b55a9694a7e9c2d005f08e2c3_19766_fb978887ec4438a14986c7981df62134.webp"
+               width="760"
+               height="272"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>As you can see in graphic one, the density of for Cherbourg is slightly higher than for Southampton. But this is only in relation to all passengers from this port. Since passengers are not equally distributed among ports, we have to look at the absolute distribution. The histograms in graphic two and three show that the thresholds for similar observations is the critical assumption. Consider that passengers with fares from 75 to 85 are the correct comparison, you will favor Cherbourg over Southampton. But, you would have the opposite view if you choose fare values between 70 and 90.</p>
+<p>Since normal data analysis seems to be ambiguous, I guide you to <a href="https://www.encyclopedia-titanica.org/" target="_blank" rel="noopener">Encyclopedia Titanica</a>, a site which offers more information about the passengers and their destiny, <a href="https://www.encyclopedia-titanica.org/titanic-deckplans/" target="_blank" rel="noopener">deckplans</a> and a lot more. The passenger list also includes biographies of passenger and among them the two. Mrs. Stone embarked with her maid Miss. Icard in Southampton <a href="https://www.encyclopedia-titanica.org/titanic-survivor/martha-evelyn-stone.html" target="_blank" rel="noopener">(Link)</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Set the embarked value of the couple to Southampton</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">Embarked</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;Embarked&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Southampton&#39;</span>
+</span></span></code></pre></div><h3 id="construct-title-and-surname">Construct Title and Surname</h3>
+<p>Here we are going to construct a variable which includes the title and the surname of passengers. The title should also reveal insights into the socio-economic status of passengers if doctors or aristocrats are among these. This is probably already covered by face and passenger class, but nevermind. The second variable is especially important to find families among the passengers and see whether they have higher survival probabilities because of mutual assistance.</p>
+<p>The titles are surprisingly not wildly different. There are only 18 different titles. There are Spanish and English aristocrates and also a Belgian or Dutch Jonkheer which is a title for a young aristocrat without a royal or noble rank. Some of titles are the same in different translations. In the dictionary below you can find the mapping to English expressions.</p>
+<p>In a sample of 1309 observations there are 875 distinct surnames.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">train</span><span class="o">.</span><span class="n">Title</span> <span class="o">==</span> <span class="s1">&#39;the&#39;</span><span class="p">),</span> <span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Countess&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">test</span><span class="o">.</span><span class="n">Title</span> <span class="o">==</span> <span class="s1">&#39;the&#39;</span><span class="p">),</span> <span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Countess&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">social_rank</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Capt&#39;</span><span class="p">:</span> <span class="s1">&#39;Military&#39;</span><span class="p">,</span> <span class="s1">&#39;Col&#39;</span><span class="p">:</span> <span class="s1">&#39;Military&#39;</span><span class="p">,</span> <span class="s1">&#39;Major&#39;</span><span class="p">:</span> <span class="s1">&#39;Military&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Countess&#39;</span><span class="p">:</span> <span class="s1">&#39;Nobility&#39;</span><span class="p">,</span> <span class="s1">&#39;Jonkheer&#39;</span><span class="p">:</span> <span class="s1">&#39;Nobility&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Sir&#39;</span><span class="p">:</span> <span class="s1">&#39;Nobility&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Lady&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle_Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Don&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle_Class&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Dr&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle_Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Master&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle_Class&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Mlle&#39;</span><span class="p">:</span> <span class="s1">&#39;Unmarried_Woman&#39;</span><span class="p">,</span> <span class="s1">&#39;Ms&#39;</span><span class="p">:</span> <span class="s1">&#39;Unmarried_Woman&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Miss&#39;</span><span class="p">:</span> <span class="s1">&#39;Unmarried_Woman&#39;</span><span class="p">,</span> <span class="s1">&#39;Dona&#39;</span><span class="p">:</span> <span class="s1">&#39;Unmarried_Woman&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Mme&#39;</span><span class="p">:</span> <span class="s1">&#39;Married_Woman&#39;</span><span class="p">,</span> <span class="s1">&#39;Mrs&#39;</span><span class="p">:</span> <span class="s1">&#39;Married_Woman&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">Title</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">social_rank</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">Title</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">social_rank</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;Surname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">[</span><span class="s1">&#39;Surname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="age-1">Age</h3>
+<p>Yes, again age. Before, we made very simple calculation to fill empty spaces. Now, we will try to compute age values by using a random forest regression.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Prepare data for training</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_train</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age_train</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_test</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_test</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age_test</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;Parch&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">age_train</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_x_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">age_test</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_y</span> <span class="o">=</span> <span class="n">age_train</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prepare data for test set</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_x</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="n">features</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_x</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_x</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+</span></span></code></pre></div><p>Let us have a look at feature importance.</p>
+<p>Note that, in a previous version I also used <code>Survived</code> as a feature and it is the fith most important feature. But, obviously it is not included in the test set, so I will drop it for now and maybe revisit <code>Age</code> after we predicted the survival rates of passengers in the test set.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Evaluate feature importance</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">feat_imp</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">age_x</span><span class="p">,</span> <span class="n">age_y</span><span class="p">)</span><span class="o">.</span><span class="n">feature_importances_</span>
+</span></span><span class="line"><span class="cl"><span class="n">age_feat_imp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;Variables&#39;</span><span class="p">:</span> <span class="n">age_x</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;Feature Importance&#39;</span><span class="p">:</span> <span class="n">feat_imp</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axis1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Variables&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">age_feat_imp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ax</span><span class="o">=</span><span class="n">axis1</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axis1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axis1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_38_0_hu5f986c50694d2ae86e14698fac06cc9f_13904_5dce4325ee129fe9309874f44d3df099.webp 400w,
+               /post/tragedy-of-titanic/titanic_38_0_hu5f986c50694d2ae86e14698fac06cc9f_13904_36a8d921a87115443195e97024cd1f35.webp 760w,
+               /post/tragedy-of-titanic/titanic_38_0_hu5f986c50694d2ae86e14698fac06cc9f_13904_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_38_0_hu5f986c50694d2ae86e14698fac06cc9f_13904_5dce4325ee129fe9309874f44d3df099.webp"
+               width="760"
+               height="244"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>This is a small plot to show the convergence speed of the <code>RandomForestRegressor</code> by the number of trees. It seems that basically 20 trees are sufficient. But since it is not computationally expensive, we will stick with 1000 trees to be on the safe side.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Plot error convergence by number of estimators</span>
+</span></span><span class="line"><span class="cl"><span class="n">trees</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">score</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">clf</span><span class="p">,</span> <span class="n">age_x</span><span class="p">,</span> <span class="n">age_y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">trees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">trees</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Convergence Speed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Trees in Forest&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_40_0_hu4fe1d64b64e5853c743020543f9d4ae9_10733_956e302c75f7fb61310ebfb584ec3c18.webp 400w,
+               /post/tragedy-of-titanic/titanic_40_0_hu4fe1d64b64e5853c743020543f9d4ae9_10733_7feccf280d68d3fba6698d0e23cc3a16.webp 760w,
+               /post/tragedy-of-titanic/titanic_40_0_hu4fe1d64b64e5853c743020543f9d4ae9_10733_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_40_0_hu4fe1d64b64e5853c743020543f9d4ae9_10733_956e302c75f7fb61310ebfb584ec3c18.webp"
+               width="760"
+               height="275"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Predict the missing age values</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">age_x</span><span class="p">,</span> <span class="n">age_y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">age_x_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+</span></span></code></pre></div><p>Let us look at the new distributions. The first comparison is to evaluate whether the overall distribution of age has significantly changed.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">comp_train_age_int</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">axis1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original vs. Original + Computed Age Distribution&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">orig_train_age_int</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">comp_train_age_int</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="s1">&#39;Original + Computed&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_43_0_hu467966ce0502af967125261bfed5069d_39035_ea5cb962ecb555c51a6aa8ad9f154119.webp 400w,
+               /post/tragedy-of-titanic/titanic_43_0_hu467966ce0502af967125261bfed5069d_39035_72691b3cea2342b3119f76975cd53b17.webp 760w,
+               /post/tragedy-of-titanic/titanic_43_0_hu467966ce0502af967125261bfed5069d_39035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_43_0_hu467966ce0502af967125261bfed5069d_39035_ea5cb962ecb555c51a6aa8ad9f154119.webp"
+               width="760"
+               height="250"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>In the second comparison we can see the computed distribution tends to be more centered around 30. Of course, we cannot say whether this is false, since the groups could potentially differ. But more observations around the mean of the distribution will not make the data corrupt and the behaviour towards the tails is similar.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">             <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">missing_age</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">             <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original vs. Computed Age Distribution&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Only Original&#39;</span><span class="p">,</span> <span class="s1">&#39;Only Computed&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_45_0_hub9b0106143484f7330c1fc8ee9e4b2b9_28983_a1812bcc752bed928acbaf7b9572b099.webp 400w,
+               /post/tragedy-of-titanic/titanic_45_0_hub9b0106143484f7330c1fc8ee9e4b2b9_28983_970a9841abad1b97819d0fc337dbc71d.webp 760w,
+               /post/tragedy-of-titanic/titanic_45_0_hub9b0106143484f7330c1fc8ee9e4b2b9_28983_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_45_0_hub9b0106143484f7330c1fc8ee9e4b2b9_28983_a1812bcc752bed928acbaf7b9572b099.webp"
+               width="760"
+               height="278"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h2 id="women-and-children-first">Women and Children First!</h2>
+<p>In the next analysis we focus on a special code of conduct which states that women and children must be saved first in case of an emergency on the high sea. Here is an excerpt from Wikipedia:</p>
+<blockquote>
+<p>While the phrase first appeared in the 1860 novel Harrington: A Story of True Love, by William Douglas O&rsquo;Connor, the first documented application of &ldquo;women and children first&rdquo; occurred during the 1852 evacuation of the Royal Navy troopship HMS Birkenhead. It is, however, most famously associated with the sinking of RMS Titanic in 1912. As a code of conduct, &ldquo;women and children first&rdquo; has no basis in maritime law. According to disaster evacuation expert Ed Galea, in modern-day evacuations people will usually &ldquo;help the most vulnerable to leave the scene first. It&rsquo;s not necessarily women, but is likely to be the injured, elderly and young children.&rdquo; Furthermore, the results of a 2012 Uppsala University study said that the application of &ldquo;women and children first&rdquo; did not necessarily produce a survival advantage for women and children in practice.</p>
+</blockquote>
+<p>At first, we have to find a definition for minors around that time. Since the captain and most of the crew were from English origin (<a href="https://en.wikipedia.org/wiki/Crew_of_the_RMS_Titanic" target="_blank" rel="noopener">Wikipedia</a>), we will follow the English definition of children. At the beginning of the new century childhood as nowadays did not exist, since children were treated as little adults. Instead of spending most of their time in school or playing with friends, children were allowed to work full time from the age of 12 and were minors until 14 (<a href="http://www.20thcenturylondon.org.uk/children" target="_blank" rel="noopener">20thcenturylondon</a>). For that reason, we will choose 14 as our cutoff.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;Minor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Age</span> <span class="o">&lt;=</span> <span class="mi">14</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">Minor</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Minor</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Minor&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Adult&#39;</span><span class="p">})</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Minor&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Minor&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_48_0_hu4f9d0a71dc5898a15cd591aaab766fc2_9007_5b0d73530e9581cf69501c37d6df67d9.webp 400w,
+               /post/tragedy-of-titanic/titanic_48_0_hu4f9d0a71dc5898a15cd591aaab766fc2_9007_8ca7d0550a8b7d2e08f9e2160f0591f5.webp 760w,
+               /post/tragedy-of-titanic/titanic_48_0_hu4f9d0a71dc5898a15cd591aaab766fc2_9007_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_48_0_hu4f9d0a71dc5898a15cd591aaab766fc2_9007_5b0d73530e9581cf69501c37d6df67d9.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_49_0_hueb5bc91708796dcddcef98f18b36351e_8966_2d82afda4e3eef7231f15de190657930.webp 400w,
+               /post/tragedy-of-titanic/titanic_49_0_hueb5bc91708796dcddcef98f18b36351e_8966_918cfae344dc99ea4c9eb38a61e5a593.webp 760w,
+               /post/tragedy-of-titanic/titanic_49_0_hueb5bc91708796dcddcef98f18b36351e_8966_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_49_0_hueb5bc91708796dcddcef98f18b36351e_8966_2d82afda4e3eef7231f15de190657930.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Minor&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Minor&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">],</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_50_0_hu3246e0183544b25a6404074317a6b02f_11102_9bf8cd1f4b61a57458261a1e9ebd5249.webp 400w,
+               /post/tragedy-of-titanic/titanic_50_0_hu3246e0183544b25a6404074317a6b02f_11102_e31736c0bc4c7bf6e91725709601b2bf.webp 760w,
+               /post/tragedy-of-titanic/titanic_50_0_hu3246e0183544b25a6404074317a6b02f_11102_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_50_0_hu3246e0183544b25a6404074317a6b02f_11102_9bf8cd1f4b61a57458261a1e9ebd5249.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h2 id="a-shared-destiny-families-on-board-of-the-titanic">A shared destiny? Families on board of the Titanic</h2>
+<p>After we extracted a surname, we can look for further details about families. First, we are creating a variable for the size of the family and we will look at a simple comparison of survival rates for passengers in company and on their own. After that, we take a more detailed look at different family sizes. Note, the third graph which shows the frequencies of family sizes counts each observation independently and does not represent the actual number of families given a certain size.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;Familysize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s1">&#39;Parch&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">[</span><span class="s1">&#39;Familysize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="p">[[</span><span class="s1">&#39;Parch&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="p">[</span><span class="s1">&#39;Company&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">Familysize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Alone&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">[</span><span class="s1">&#39;Company&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">Familysize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Alone&#39;</span><span class="p">})</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axis2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_53_0_hu5d4e162987fd4deb71cc8a5ecf39559f_8663_12eec0bf4dfc44d9fca3b9aaf3a03f99.webp 400w,
+               /post/tragedy-of-titanic/titanic_53_0_hu5d4e162987fd4deb71cc8a5ecf39559f_8663_a03dff2623f022bc0f4d38d59a6576c3.webp 760w,
+               /post/tragedy-of-titanic/titanic_53_0_hu5d4e162987fd4deb71cc8a5ecf39559f_8663_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_53_0_hu5d4e162987fd4deb71cc8a5ecf39559f_8663_12eec0bf4dfc44d9fca3b9aaf3a03f99.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Familysize&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Familysize&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_54_0_hu5713d60ff1fda8e61c30da3ad9bdd48e_9741_bb19ba06ea2e06f4160a676b985110fb.webp 400w,
+               /post/tragedy-of-titanic/titanic_54_0_hu5713d60ff1fda8e61c30da3ad9bdd48e_9741_6b01a5c78bab957a41bc21220af350a9.webp 760w,
+               /post/tragedy-of-titanic/titanic_54_0_hu5713d60ff1fda8e61c30da3ad9bdd48e_9741_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_54_0_hu5713d60ff1fda8e61c30da3ad9bdd48e_9741_bb19ba06ea2e06f4160a676b985110fb.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>Up to this point, we have seen that survival rates are favorable for passenger in company. This effect could be due to two reasons: first, families helped each other during the tragedy or, second, kids drive up survival rates for families.</p>
+<p>There are two possible solutions:</p>
+<ul>
+<li>Compare passengers without company only to families with two without minors. Caveat: loners could be different in many aspects to couples.</li>
+<li>Make a placebo test for couples! If passengers with family size equal to two are radomly matched, characteristics are hold constant, but their bond is not.</li>
+</ul>
+<p>The construction of families could be done in two ways. The first approach establishes family groups by surname and size of family. But then, there are ca. 20% families with only one member due to different values of family size. This could be due to divorce, different ways of counting, etc..</p>
+<p>Another way would be to group the data by surname and fare, since families buy the same ticket. A quick look in the data reveals, that children probably did not get a discount (e.g. the Carter Family) and families did not split among different passenger classes.</p>
+<p>The second solution is chosen but it is not flawless. Look, for example, at the example given below. Since variables like <code>SibSp</code> can differ for partners, family sizes are also different.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Surname&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_group</span><span class="p">((</span><span class="s1">&#39;Frauenthal&#39;</span><span class="p">,</span> <span class="mf">133.6500</span><span class="p">))</span>
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>missing_age</th>
+      <th>Deck</th>
+      <th>Title</th>
+      <th>Surname</th>
+      <th>Minor</th>
+      <th>Familysize</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>334</th>
+      <td>335</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Frauenthal, Mrs. Henry William (Clara Heinshei...</td>
+      <td>Female</td>
+      <td>35.226733</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17611</td>
+      <td>133.65</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>True</td>
+      <td>Missing</td>
+      <td>Married_Woman</td>
+      <td>Frauenthal</td>
+      <td>Minor</td>
+      <td>2</td>
+      <td>Company</td>
+    </tr>
+    <tr>
+      <th>660</th>
+      <td>661</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Frauenthal, Dr. Henry William</td>
+      <td>Male</td>
+      <td>50.000000</td>
+      <td>2</td>
+      <td>0</td>
+      <td>PC 17611</td>
+      <td>133.65</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>False</td>
+      <td>Missing</td>
+      <td>Middle_Class</td>
+      <td>Frauenthal</td>
+      <td>Minor</td>
+      <td>3</td>
+      <td>Company</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Construct families by grouping surname and fare</span>
+</span></span><span class="line"><span class="cl"><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">sur</span><span class="p">,</span> <span class="n">fare</span> <span class="ow">in</span> <span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Surname&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="s1">&#39;Surname&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_group</span><span class="p">((</span><span class="n">sur</span><span class="p">,</span> <span class="n">fare</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">Surname</span> <span class="o">==</span> <span class="n">sur</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">Fare</span> <span class="o">==</span> <span class="n">fare</span><span class="p">),</span> <span class="s1">&#39;Familynum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">familynum_size</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Familynum&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">familynum_size</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">axlabel</span><span class="o">=</span><span class="s1">&#39;Size&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Size of Families&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">familynum_perc</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Familynum&#39;</span><span class="p">)[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">familynum_perc</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Survival Rates of Families&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_58_0_hu0f25eb7d9374e7e223769f860a552b57_10782_25a2093343dd4730a5480515437ccc1f.webp 400w,
+               /post/tragedy-of-titanic/titanic_58_0_hu0f25eb7d9374e7e223769f860a552b57_10782_71fc5c369671faaccc350b8a28017699.webp 760w,
+               /post/tragedy-of-titanic/titanic_58_0_hu0f25eb7d9374e7e223769f860a552b57_10782_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_58_0_hu0f25eb7d9374e7e223769f860a552b57_10782_25a2093343dd4730a5480515437ccc1f.webp"
+               width="760"
+               height="280"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>The graphic above shows that the size of the constructed families and the frequency of average survival rates for families. Since only complete families have been selected and bigger families have a higher probability of being split among test and train dataset, the distribution of complete families is probably right-skewed (positive skew). To correct for this bias, we will only consider families with two members.</p>
+<h3 id="first-compare-loners-with-couples">First: compare loners with couples</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sample</span> <span class="o">=</span> <span class="n">train</span><span class="p">[(</span><span class="n">train</span><span class="o">.</span><span class="n">Company</span> <span class="o">==</span> <span class="s1">&#39;Alone&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="n">train</span><span class="o">.</span><span class="n">Familynum</span><span class="o">.</span><span class="n">notnull</span><span class="p">())</span> <span class="o">&amp;</span>
+</span></span><span class="line"><span class="cl">                                             <span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">Familysize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="s1">&#39;Alone&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_61_0_hu609764439437f23de5fc1b976818d589_8631_fa233461254e8038469fa57bcc16b1da.webp 400w,
+               /post/tragedy-of-titanic/titanic_61_0_hu609764439437f23de5fc1b976818d589_8631_d0abf0327915af602a80fbed8f8197d3.webp 760w,
+               /post/tragedy-of-titanic/titanic_61_0_hu609764439437f23de5fc1b976818d589_8631_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_61_0_hu609764439437f23de5fc1b976818d589_8631_fa233461254e8038469fa57bcc16b1da.webp"
+               width="760"
+               height="268"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<h3 id="second-placebo-test-for-couples">Second: placebo test for couples</h3>
+<p>The approach for the placebo test is to match all passengers who traveled in couples randomly with another. The idea is that if there is a special bond between couples which increases or decreases survival rates, then randomizing will change the distribution to a binomial distribution.</p>
+<p>What is needed? First, the actual distribution of survival outcomes for couples. Second, a distribution of survival outcomes for randomly matched couples. Third, a binomial distribution with a probability equal to the expected individual survival rate.</p>
+<p>Since the second and third step rely on randomness, the distributions are bootstrapped to match the expected ones rather than a special case of randomness.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">bootstrap</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">struc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Familynum</span><span class="o">.</span><span class="n">values</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">struc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;rand&#39;</span><span class="p">)[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">bs</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">bootstrap_binom</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">1</span><span class="p">,</span> <span class="mf">0.571</span><span class="p">,</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">bs</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sample</span> <span class="o">=</span> <span class="n">train</span><span class="p">[(</span><span class="n">train</span><span class="o">.</span><span class="n">Familynum</span><span class="o">.</span><span class="n">notnull</span><span class="p">())</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">Familysize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># This correction is explained in #5</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">iden</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">Familynum</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">sample</span><span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">Familynum</span> <span class="o">==</span> <span class="n">iden</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">Familynum</span> <span class="o">!=</span> <span class="n">iden</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bs</span> <span class="o">=</span> <span class="n">bootstrap</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">bs_binom</span> <span class="o">=</span> <span class="n">bootstrap_binom</span><span class="p">()</span>
+</span></span></code></pre></div><p>We need to other factors, the sample size and the individual survival rate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Individual survival rate: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample size: </span><span class="si">{:.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</span></span></code></pre></div><pre><code>Individual survival rate: 0.571
+Sample size: 84
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">familynum_perc</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Familynum&#39;</span><span class="p">)[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">familynum_perc</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Survival Rates of Families</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bootstrapped Survival Rates of Families (randomized)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">bs_binom</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Bootstrapped Binomial distribution (n=1, p=0.571, size=(42000, 2))</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_67_0_hu975e90b0bb6df38e1c7901b3a9d0b0ff_12052_99f4da01eac3d3d1c7bfe0fce41d68f5.webp 400w,
+               /post/tragedy-of-titanic/titanic_67_0_hu975e90b0bb6df38e1c7901b3a9d0b0ff_12052_ff5fd726e2ff9397e875bfa9ba4c0837.webp 760w,
+               /post/tragedy-of-titanic/titanic_67_0_hu975e90b0bb6df38e1c7901b3a9d0b0ff_12052_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_67_0_hu975e90b0bb6df38e1c7901b3a9d0b0ff_12052_99f4da01eac3d3d1c7bfe0fce41d68f5.webp"
+               width="760"
+               height="272"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>I&rsquo;m not very sure what to make out these graphs. Certainly, the last two graphs look almost identical which would strengthen my belief, that there is some kind of structure in survival rates for families. But still, I have a lot of doubts concerning the methodology and the credibility of the results.</p>
+<h3 id="predicting-survival">Predicting Survival</h3>
+<p>Finally, here is the section about predicting survival rates.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">,</span> <span class="s1">&#39;Parch&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck&#39;</span><span class="p">,</span> <span class="s1">&#39;Familysize&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">Y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">[[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">,</span> <span class="s1">&#39;Parch&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck&#39;</span><span class="p">,</span> <span class="s1">&#39;Familysize&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Company&#39;</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Hotfix for missing columns</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;Deck_T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;Title_Nobility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Utility function to report best scores</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">n_top</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_top</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">candidates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model with rank: </span><span class="si">{0}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Mean validation score: </span><span class="si">{0:.3f}</span><span class="s2"> (std: </span><span class="si">{1:.3f}</span><span class="s2">)&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">][</span><span class="n">candidate</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">results</span><span class="p">[</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">][</span><span class="n">candidate</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Parameters: </span><span class="si">{0}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="n">candidate</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># specify classifier</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># specify parameters and distributions to sample from</span>
+</span></span><span class="line"><span class="cl"><span class="n">param_dist</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#               &#34;max_depth&#34;: [3, None],</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;max_features&#34;</span><span class="p">:</span> <span class="n">sp_randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;min_samples_split&#34;</span><span class="p">:</span> <span class="n">sp_randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#               &#34;min_samples_leaf&#34;: sp_randint(1, 11),</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;bootstrap&#34;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;criterion&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;gini&#34;</span><span class="p">,</span> <span class="s2">&#34;entropy&#34;</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># run randomized search</span>
+</span></span><span class="line"><span class="cl"><span class="n">n_iter_search</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">param_distributions</span><span class="o">=</span><span class="n">param_dist</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">n_iter</span><span class="o">=</span><span class="n">n_iter_search</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">cv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">error_score</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">random_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;RandomizedSearchCV took </span><span class="si">%.2f</span><span class="s2"> seconds for </span><span class="si">%d</span><span class="s2"> candidates&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34; parameter settings.&#34;</span> <span class="o">%</span> <span class="p">((</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">),</span> <span class="n">n_iter_search</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">report</span><span class="p">(</span><span class="n">random_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>RandomizedSearchCV took 44.72 seconds for 10 candidates parameter settings.
+Model with rank: 1
+Mean validation score: 0.822 (std: 0.010)
+Parameters: {'bootstrap': True, 'criterion': 'gini', 'max_features': 7, 'min_samples_split': 10}
+
+Model with rank: 2
+Mean validation score: 0.819 (std: 0.012)
+Parameters: {'bootstrap': True, 'criterion': 'entropy', 'max_features': 8, 'min_samples_split': 8}
+
+Model with rank: 3
+Mean validation score: 0.818 (std: 0.012)
+Parameters: {'bootstrap': True, 'criterion': 'entropy', 'max_features': 3, 'min_samples_split': 10}
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">feat_imp</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span><span class="o">.</span><span class="n">feature_importances_</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sur_feat_imp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;Variables&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;Feature Importance&#39;</span><span class="p">:</span> <span class="n">feat_imp</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Variables&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sur_feat_imp</span><span class="p">[:</span><span class="mi">20</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/tragedy-of-titanic/titanic_72_0_huf8edae5a3e295399903e6302733dd6c8_23460_2607edef0d3d7eb086490d9ab4ec6b0f.webp 400w,
+               /post/tragedy-of-titanic/titanic_72_0_huf8edae5a3e295399903e6302733dd6c8_23460_cbfaf7a9af602fc2dd33bc0e7c27fb6b.webp 760w,
+               /post/tragedy-of-titanic/titanic_72_0_huf8edae5a3e295399903e6302733dd6c8_23460_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/tragedy-of-titanic/titanic_72_0_huf8edae5a3e295399903e6302733dd6c8_23460_2607edef0d3d7eb086490d9ab4ec6b0f.webp"
+               width="760"
+               height="458"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">results</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">submission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl"><span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;results.csv&#39;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span></code></pre></div>
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/python/">python</a>
+  
+  <a class="badge badge-light" href="/tag/titanic/">titanic</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftobiasraabe.github.io%2Fpost%2Ftragedy-of-titanic%2F&amp;text=The&#43;tragedy&#43;of&#43;Titanic" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=The%20tragedy%20of%20Titanic&amp;body=https%3A%2F%2Ftobiasraabe.github.io%2Fpost%2Ftragedy-of-titanic%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Ftobiasraabe.github.io%2Fpost%2Ftragedy-of-titanic%2F&amp;title=The&#43;tragedy&#43;of&#43;Titanic" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tobiasraabe.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu9ea40b98d8bada88b48e2b21182c3fe7_199657_270x270_fill_q75_lanczos_center.jpeg" alt="Tobias Raabe"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tobiasraabe.github.io/">Tobias Raabe</a></h5>
+      
+      <p class="card-text">I am a data scientist and programmer living in Hamburg.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tobraab" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&amp;hl" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/tobiasraabe" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/tobiasraabe/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Tobias Raabe. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.0c1be879804fa6ae06a8f4c131cdbf54.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

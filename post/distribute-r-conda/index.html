@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: February 12, 2023 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.16f785cdb553c8c4431db6775122af35.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.128caa6038d1007fd28154b8942c47aa.css" />
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178274443-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-178274443-1', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Tobias Raabe" />
+
+
+
+
+
+  
+
+<meta name="description" content="This article shows how to compile and distribute R packages on anaconda.org." />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://tobiasraabe.github.io/post/distribute-r-conda/" />
+<link rel="canonical" href="https://tobiasraabe.github.io/post/distribute-r-conda/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="twitter:site" content="@tobraab" />
+  <meta property="twitter:creator" content="@tobraab" />
+<meta property="twitter:image" content="https://tobiasraabe.github.io/post/distribute-r-conda/featured.png" />
+<meta property="og:site_name" content="Tobias Raabe" />
+<meta property="og:url" content="https://tobiasraabe.github.io/post/distribute-r-conda/" />
+<meta property="og:title" content="How to compile and distribute R packages with conda | Tobias Raabe" />
+<meta property="og:description" content="This article shows how to compile and distribute R packages on anaconda.org." /><meta property="og:image" content="https://tobiasraabe.github.io/post/distribute-r-conda/featured.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2018-03-21T00:00:00&#43;00:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2018-03-21T00:00:00&#43;00:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tobiasraabe.github.io/post/distribute-r-conda/"
+  },
+  "headline": "How to compile and distribute R packages with conda",
+  
+  "image": [
+    "https://tobiasraabe.github.io/post/distribute-r-conda/featured.png"
+  ],
+  
+  "datePublished": "2018-03-21T00:00:00Z",
+  "dateModified": "2018-03-21T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Tobias Raabe"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tobias Raabe",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "This article shows how to compile and distribute R packages on anaconda.org."
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>How to compile and distribute R packages with conda | Tobias Raabe</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d0ab2a9b35581b7875e64ae1e9766130" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.ec9d49ca50e4b80bdb08f0417a28ed84.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Tobias Raabe</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Tobias Raabe</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#publications"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>How to compile and distribute R packages with conda</h1>
+
+  
+  <p class="page-subtitle">This article shows how to compile and distribute R packages on anaconda.org.</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      Tobias Raabe</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 21, 2018
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/packaging/">packaging</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 761px; max-height: 317px;">
+  <div style="position: relative">
+    <img src="/post/distribute-r-conda/featured_hu72c80cec3c5f1182ce6c65b7b6c14aeb_63664_1200x2500_fit_q75_h2_lanczos_3.webp" width="761" height="317" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <div class="alert alert-note">
+  <div>
+    This guide is outdated. Today, I would recommend to publish a package on
+<a href="https://conda-forge.org/" target="_blank" rel="noopener">conda-forge</a> so that it will be available for the whole
+community. Here is the guide to do that:
+<a href="https://conda-forge.org/docs/maintainer/adding_pkgs.html" target="_blank" rel="noopener">https://conda-forge.org/docs/maintainer/adding_pkgs.html</a>.
+  </div>
+</div>
+<p>This article shows how to compile and distribute R packages on anaconda.org to
+be used in your data science projects. This is useful as R has not really a
+neat dependency pinning tool like Python with <code>requirements.txt</code> or
+<code>environment.yml</code> with <code>conda</code> and R is shipped with <code>conda</code> anyway. But,
+if you want to use the MKL accelerated Microsoft R Open instead of plain R,
+there are some packages which are currently not provided in <code>conda</code>&rsquo;s default
+channels or <code>conda-forge</code>. Here is how to lift this obstacle.</p>
+<h3 id="introduction-to-anaconda-and-r">Introduction to Anaconda and R</h3>
+<p>I like to manage my research projects with <a href="https://conda.io/docs/" target="_blank" rel="noopener">conda</a> which is the package
+manager for <a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda</a>, a popular Python distribution for data science. For
+one of my recent projects, I also needed to install R and I was lucky to find
+out that R is also available with <code>conda</code>.</p>
+<p>First, you create your normal Python environment for your new project</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda create --name project <span class="nv">python</span><span class="o">=</span>3.6 anaconda
+</span></span></code></pre></div><p>This installs a complete Anaconda distribution with Python 3.6 under the name
+<code>project</code>. If you only want the bare Python interpreter, call</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda create -n project <span class="nv">python</span><span class="o">=</span>3.6
+</span></span></code></pre></div><p>Activate the environment with</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ activate project
+</span></span></code></pre></div><blockquote>
+<p>Hint: Since my OS is Windows, I prefer to use Powershell. Unfortunately,
+activating and deactivating your environment usually fails. Try out
+<a href="https://github.com/BCSharp/PSCondaEnvs" target="_blank" rel="noopener">pscondaenvs</a> which installs corrected Powershell scripts.</p>
+</blockquote>
+<p>If we also need an R distribution for our project, we have to make the decision
+between to <a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a> from R-Project and
+<a href="https://mran.microsoft.com/open" target="_blank" rel="noopener">MRO</a> from Microsoft. The latter is the
+default with Anaconda, but the former is still provided if you are running a
+32-bit operating system or an older macOS version. The advantage of MRO is that
+it is using the Intel Math Kernel Library (MKL) and enables multithreading by
+default (<a href="https://mran.microsoft.com/documents/rro/multithread" target="_blank" rel="noopener">here</a> are some
+benchmark reports and information on how to set the number of threads used).</p>
+<p>Installing a basic R interpreter from MRO is as simple as typing</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda install --channel r mro-base
+</span></span></code></pre></div><p>If you want to install R from R-Project, type <code>conda install -c r r-base</code>.</p>
+<p>It is important to note that it is impossible to have both R interpreters in
+one environment and that packages for either one of them do not work with the
+other. You can find more information <a href="https://github.com/conda-forge/r-base-feedstock/issues/34" target="_blank" rel="noopener">here</a>.</p>
+<p>There is also the option to install a whole R distribution which is called
+<code>r-essentials</code>. It bundles many useful packages along with <a href="https://github.com/IRkernel/IRkernel" target="_blank" rel="noopener"><code>IRkernel</code></a>
+which enables you to use R in Jupyter notebooks. Again, there are two commands
+depending on which R interpreter you are using.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda install -c r r-essentials
+</span></span><span class="line"><span class="cl">$ conda install -c r r-essentials r-base
+</span></span></code></pre></div><p>To update all of your R packages run</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda update r-essentials
+</span></span></code></pre></div><p>If your desired package is not available in <code>r-essentials</code>, you can use the
+search on <a href="https://anaconda.org" target="_blank" rel="noopener">https://anaconda.org</a> to find a channel which offers your package. But
+what if your package is not available?</p>
+<h3 id="building-and-distributing-an-r-package">Building and Distributing an R package</h3>
+<p>I had the same issue when I wanted to use <a href="https://github.com/stefvanbuuren/mice" target="_blank" rel="noopener"><code>mice</code></a> which is a known
+framework for multiple imputations by chained equations.</p>
+<p>To build the package for your conda distribution, invoke the following command</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda skeleton cran r-mice
+</span></span></code></pre></div><p>This will create a folder called <code>r-mice</code> which contains three files,
+<code>bld.bat</code>, <code>build.sh</code> and <code>meta.yml</code>. <code>meta.yml</code> is the important file
+which controls the compilation. An example can be found <a href="https://github.com/tobiasraabe/r-mice/blob/master/conda-recipe/meta.yaml" target="_blank" rel="noopener">here</a>. Note the key
+called <code>requirements</code>. inside <code>host</code> and <code>run</code> the R interpreter is
+defined. By default, it is <code>r-base</code>. If you are using MRO, you have to change
+this to <code>mro-base</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">requirements</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- {{<span class="w"> </span><span class="l">compiler(&#39;c&#39;) }}         </span><span class="w"> </span><span class="c"># [not win]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- {{<span class="w"> </span><span class="l">compiler(&#39;cxx&#39;) }}       </span><span class="w"> </span><span class="c"># [not win]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- {{<span class="l">native}}toolchain         </span><span class="w"> </span><span class="c"># [win]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- {{<span class="l">posix}}filesystem         </span><span class="w"> </span><span class="c"># [win]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- {{<span class="l">posix}}make</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-base</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-mass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-rcpp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-lattice</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-nnet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-rpart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-survival</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-base</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- {{<span class="l">native}}gcc-libs          </span><span class="w"> </span><span class="c"># [win]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-mass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-rcpp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-lattice</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-nnet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-rpart</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">r-survival</span><span class="w">
+</span></span></span></code></pre></div><p>In the next step, we want to compile the package. If you are on Windows, make
+sure to install <a href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank" rel="noopener">RTools</a> in advance and add binaries to your system&rsquo;s path
+during the installation. To compile the package, type</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda build r-mice
+</span></span></code></pre></div><p>After the compilation ended successfully, you can install the package with</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda install --use-local r-mice
+</span></span></code></pre></div><p>You can also <a href="https://www.anaconda.com/blog/developer-blog/conda-data-science/" target="_blank" rel="noopener">upload the package to Anaconda.org</a> to your private
+repository and make it accessible to all people.</p>
+<p>That&rsquo;s what I did. I have created a <a href="https://github.com/tobiasraabe/r-mice" target="_blank" rel="noopener">repository</a> which builds the package
+for Linux and macOS with <a href="https://www.travis-ci.org/" target="_blank" rel="noopener">Travis-CI</a> and Windows with <a href="https://www.appveyor.com/" target="_blank" rel="noopener">Appveyor</a>. The
+compiled packages are uploaded to my account and can be installed via</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda install -c brimborium r-mice
+</span></span></code></pre></div><h3 id="compile-your-own-package">Compile your own package</h3>
+<p>If you want to use my solution for yourself, fork my repository. Then, replace
+the recipe in conda-recipe with your recipe create with</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ conda skeleton cran &lt;package name&gt;
+</span></span></code></pre></div><p>Push the repository to your Github account and create accounts on <a href="https://www.travis-ci.org/" target="_blank" rel="noopener">Travis-
+CI</a>, <a href="https://www.appveyor.com/" target="_blank" rel="noopener">Appveyor</a> and <a href="https://anaconda.org/" target="_blank" rel="noopener">Anaconda.org</a>.</p>
+<p>Next, go to Anaconda.org, settings, access and create a token. Make sure to
+check allow read and write API access. The rest is optional.</p>
+<p>Set the resulting token as a secret environment variable to your projects on
+Travis-CI and Appveyor. Make sure to name it <code>CONDA_UPLOAD_TOKEN</code> as the
+scripts look for a variable called like this.</p>
+<p>I know this was a fair amount of information and if you are not familiar with
+automation tools like Travis-CI and Appveyor, this looks even more deterrent.
+But that is why I created my repository which is reduced to the minimal amount
+of code to do the task.</p>
+<p>I will also extend this post and the repository description in the future.
+Since I do only have a rudimentary knowledge of the background of what I did,
+there is a lot of room to grow :).</p>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda: Download and more</a></li>
+<li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language" target="_blank" rel="noopener">Using R language with Anaconda</a></li>
+<li><a href="https://github.com/BCSharp/PSCondaEnvs" target="_blank" rel="noopener">PSCondaEnvs: Fix activate/deactivate on Windows with Powershell</a></li>
+<li><a href="https://github.com/stefvanbuuren/mice" target="_blank" rel="noopener">mice by Stef van Buuren</a></li>
+<li><a href="https://conda.io/docs/" target="_blank" rel="noopener">conda: documentation</a></li>
+<li><a href="https://github.com/IRkernel/IRkernel" target="_blank" rel="noopener">IRkernel: Use R with Jupyter notebooks</a></li>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank" rel="noopener">RTools: Download</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/conda/">conda</a>
+  
+  <a class="badge badge-light" href="/tag/r/">r</a>
+  
+  <a class="badge badge-light" href="/tag/packaging/">packaging</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftobiasraabe.github.io%2Fpost%2Fdistribute-r-conda%2F&amp;text=How&#43;to&#43;compile&#43;and&#43;distribute&#43;R&#43;packages&#43;with&#43;conda" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=How%20to%20compile%20and%20distribute%20R%20packages%20with%20conda&amp;body=https%3A%2F%2Ftobiasraabe.github.io%2Fpost%2Fdistribute-r-conda%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Ftobiasraabe.github.io%2Fpost%2Fdistribute-r-conda%2F&amp;title=How&#43;to&#43;compile&#43;and&#43;distribute&#43;R&#43;packages&#43;with&#43;conda" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tobiasraabe.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu9ea40b98d8bada88b48e2b21182c3fe7_199657_270x270_fill_q75_lanczos_center.jpeg" alt="Tobias Raabe"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tobiasraabe.github.io/">Tobias Raabe</a></h5>
+      
+      <p class="card-text">I am a data scientist and programmer living in Hamburg.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tobraab" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.de/citations?user=4MurkHQAAAAJ&amp;hl" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/tobiasraabe" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/tobiasraabe/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Tobias Raabe. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.0c1be879804fa6ae06a8f4c131cdbf54.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

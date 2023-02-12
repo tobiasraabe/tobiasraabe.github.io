@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reproducibility | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/reproducibility/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/reproducibility/index.xml" rel="self" type="application/rss+xml" />
+    <description>Reproducibility</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>Reproducibility</title>
+      <link>https://tobiasraabe.github.io/tag/reproducibility/</link>
+    </image>
+    
+    <item>
+      <title>pytask</title>
+      <link>https://tobiasraabe.github.io/project/pytask/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/project/pytask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Facilitate reproducible research with cookiecutter-research-template</title>
+      <link>https://tobiasraabe.github.io/post/cookiecutter-research-template/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/cookiecutter-research-template/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;A lot of time has passed since this post. Meanwhile I wrote a tool called
+&lt;a href=&#34;https://github.com/pytask-dev/pytask&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pytask&lt;/a&gt; &amp;ndash; a replacement for Waf &amp;ndash; which allows
+you to execute the workflows in research project. It also comes with two recommended
+templates.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pytask-dev/cookiecutter-pytask-project&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cookiecutter-pytask-project&lt;/a&gt; is a lean template.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenSourceEconomics/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;econ-project-templates&lt;/a&gt;
+is richer and specifically designed for economists.&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In one of the university courses I was introduced to a &lt;a href=&#34;https://github.com/hmgaudecker/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Waf framework for reproducible
+research by Hans-Martin von
+Gaudecker&lt;/a&gt; which is amazingly
+useful to manage your research project.&lt;/p&gt;
+&lt;p&gt;The basic idea is that a project is structured as a DAG, a directed-acyclic graph. A DAG
+is a graph with a finite amount of node and edges where the edges have a specific
+direction leading from input to output files. Furthermore, starting at node $\nu$ and
+following the directed edges, it is not possible to find a way back to $\nu$.&lt;/p&gt;
+&lt;p&gt;Take a look at the picture at the top. &lt;code&gt;get_simulation_draws.py&lt;/code&gt; is the starting point
+and the source of &lt;code&gt;initial_locations.csv&lt;/code&gt; which is the input of &amp;hellip; You get it.&lt;/p&gt;
+&lt;p&gt;You get the sample project by installing &lt;code&gt;cookiecutter&lt;/code&gt; first with&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ pip install -U cookiecutter
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, go to the directory which should contain the folder with the project and type&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cookiecutter https://github.com/tobiasraabe/cookiecutter-research-template.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Answer the following prompts so the project will be customized to your needs.&lt;/p&gt;
+&lt;p&gt;In the end, go into the project folder and set up the &lt;code&gt;conda&lt;/code&gt; environment.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda env create -n &amp;lt;project-name&amp;gt; -f environment.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At last, run the following command to make sure that the sample project works.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ python waf.py distclean configure build
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on Waf read &lt;a href=&#34;http://hmgaudecker.github.io/econ-project-templates/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gaudecker&amp;rsquo;s
+documentation&lt;/a&gt; and my
+&lt;a href=&#34;https://cookiecutter-research-template.readthedocs.io/en/latest/waf-tips-and-tricks.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Waf Tips &amp;amp; Tricks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To use all features of the template check out the
+&lt;a href=&#34;https://cookiecutter-research-template.readthedocs.io/en/latest/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Structural Econometrics | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/structural-econometrics/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/structural-econometrics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Structural Econometrics</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>Structural Econometrics</title>
+      <link>https://tobiasraabe.github.io/tag/structural-econometrics/</link>
+    </image>
+    
+    <item>
+      <title>gettsim</title>
+      <link>https://tobiasraabe.github.io/project/gettsim/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/project/gettsim/</guid>
+      <description>&lt;p&gt;GETTSIM provides a depiction of the German Taxes and Transfers System that is usable in
+a wide array of research applications, ranging from complex dynamic programming models
+to detailed microsimulation studies.&lt;/p&gt;
+&lt;p&gt;I spent a short time on this project and created the DAG-based backend which allows
+users to define functions to compute quantities of a tax and transfer system and the
+backend will figure out the execution order itself.&lt;/p&gt;
+&lt;p&gt;This allows users to flexibly define their tax and transfer system or modify an existing
+system by replacing some functions.&lt;/p&gt;
+&lt;p&gt;The DAG-based backend was finally extracted and transferred into its own package so that
+everyone can use it and embed into their application. You can find it here:
+&lt;a href=&#34;https://github.com/OpenSourceEconomics/dags&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/OpenSourceEconomics/dags&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>respy</title>
+      <link>https://tobiasraabe.github.io/project/respy/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/project/respy/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

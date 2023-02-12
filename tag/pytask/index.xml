@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pytask | Tobias Raabe</title>
+    <link>https://tobiasraabe.github.io/tag/pytask/</link>
+      <atom:link href="https://tobiasraabe.github.io/tag/pytask/index.xml" rel="self" type="application/rss+xml" />
+    <description>pytask</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://tobiasraabe.github.io/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_512x512_fill_lanczos_center_3.png</url>
+      <title>pytask</title>
+      <link>https://tobiasraabe.github.io/tag/pytask/</link>
+    </image>
+    
+    <item>
+      <title>pytask</title>
+      <link>https://tobiasraabe.github.io/slides/pytask/</link>
+      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/slides/pytask/</guid>
+      <description>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_6713905054386d3777d250888f80694b.webp 400w,
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_668fd313a364b8aba6054ca86bc985ac.webp 760w,
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_6713905054386d3777d250888f80694b.webp&#34;
+               width=&#34;650&#34;
+               height=&#34;252&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;p&gt;A workflow management system for reproducible data analyses&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;why-do-you-need-pytask&#34;&gt;Why do you need pytask?&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ve probably organized your project using a similar folder structure where each
+folder contains scripts carrying out specific tasks.&lt;/p&gt;
+&lt;p&gt;But, how do you execute all tasks or keep your project in sync?&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_b1eff23266637135116c98e2cd9116db.webp 400w,
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_c9650e332161839b5b515931ba8bb645.webp 760w,
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_b1eff23266637135116c98e2cd9116db.webp&#34;
+               width=&#34;50%&#34;
+               height=&#34;50%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;how-does-pytask-help-you&#34;&gt;How does pytask help you?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;By defining dependencies and products of tasks, you implicitly define an execution
+order.&lt;/li&gt;
+&lt;li&gt;pytask validates this definition&lt;/li&gt;
+&lt;li&gt;and executes only tasks which need to be updated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-do-you-define-tasks-dependencies-and-products&#34;&gt;How do you define tasks, dependencies, and products?&lt;/h2&gt;
+&lt;p&gt;Tasks are functions starting with &lt;code&gt;task_&lt;/code&gt;. Use decorators to specify the dependencies
+and products of a task. Using &lt;code&gt;depends_on&lt;/code&gt; and &lt;code&gt;produces&lt;/code&gt; as function args, you access
+the paths to the files in the function body.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_c45300d44c89c981cd6cea53d701728f.webp 400w,
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_d00940f96ed2e16fb9bfad85d106d918.webp 760w,
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_c45300d44c89c981cd6cea53d701728f.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;execute-a-task&#34;&gt;Execute a task&lt;/h2&gt;
+&lt;p&gt;Type &lt;code&gt;pytask&lt;/code&gt; in your terminal, and it will automatically collect and execute all tasks.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_6e9d542121037bdd8b75cf6e5ecdc5d2.webp 400w,
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_0ae5bee1a07736f41a6b1e73b787e655.webp 760w,
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_6e9d542121037bdd8b75cf6e5ecdc5d2.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;what-are-the-benefits&#34;&gt;What are the benefits?&lt;/h2&gt;
+&lt;p&gt;👉 Automation reduces errors and increases reproducibility.&lt;/p&gt;
+&lt;p&gt;👉 The build process is documented in code.&lt;/p&gt;
+&lt;p&gt;👉 You can iterate faster and be more productive.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;research&#34;&gt;Research&lt;/h2&gt;
+&lt;p&gt;Is pytask used for actual research? Yes!&lt;/p&gt;
+&lt;p&gt;Here is a Covid-19 forecast project with an agent-based model, 10+ datasets, many different policy scenarios and 1,000+ simulations.&lt;/p&gt;
+&lt;p&gt;👉 &lt;a href=&#34;https://arxiv.org/abs/2106.11129&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://arxiv.org/abs/2106.11129&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;teaching&#34;&gt;Teaching&lt;/h2&gt;
+&lt;p&gt;pytask is also part of a graduate course, teaching economists programming and best practices for research projects.&lt;/p&gt;
+&lt;p&gt;👉 &lt;a href=&#34;https://github.com/OpenSourceEconomics/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/OpenSourceEconomics/econ-project-templates&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;what-else-has-pytask-to-offer&#34;&gt;What else has pytask to offer?&lt;/h2&gt;
+&lt;p&gt;Scale your project by repeating tasks! 🚀&lt;/p&gt;
+&lt;p&gt;For example, create ten different datasets with randomly generated data.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_dc3afaefc80d44e7d270a96621fc531a.webp 400w,
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_c154bcbcab4bf809e87caf157cf8dc6a.webp 760w,
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_dc3afaefc80d44e7d270a96621fc531a.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;customize-pytask-with-plugins&#34;&gt;Customize pytask with plugins!&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatically parallelize the execution with &lt;a href=&#34;https://github.com/pytask-dev/pytask-parallel&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/pytask-dev/pytask-parallel&lt;/a&gt; ⚡️&lt;/li&gt;
+&lt;li&gt;Support for executing R, Julia, and Stata scripts.&lt;/li&gt;
+&lt;li&gt;All plugins are here: &lt;a href=&#34;https://pytask-dev.readthedocs.io/en/stable/plugin_list.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pytask-dev.readthedocs.io/en/stable/plugin_list.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;templating&#34;&gt;Templating&lt;/h2&gt;
+&lt;p&gt;Start a new project from a template!&lt;/p&gt;
+&lt;p&gt;A minimal template: &lt;a href=&#34;https://github.com/pytask-dev/cookiecutter-pytask-project&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/pytask-dev/cookiecutter-pytask-project&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A template for reproducible economics projects: &lt;a href=&#34;https://github.com/OpenSourceEconomics/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/OpenSourceEconomics/econ-project-templates&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;debugging&#34;&gt;Debugging&lt;/h2&gt;
+&lt;p&gt;Enter the debugger if one of your tasks fails, and you want to find out why! 🏗️&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_902fdde7c463d2fe50ea34b000a83672.webp 400w,
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_f6c550f5f722609531459e9d6d8657ee.webp 760w,
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_902fdde7c463d2fe50ea34b000a83672.webp&#34;
+               width=&#34;70%&#34;
+               height=&#34;70%&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+&lt;p&gt;You can find out more about pytask in the documentation: &lt;a href=&#34;https://pytask-dev.readthedocs.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pytask-dev.readthedocs.io/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Follow the tutorials for a step-by-step introduction: &lt;a href=&#34;https://pytask-dev.readthedocs.io/en/stable/tutorials/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pytask-dev.readthedocs.io/en/stable/tutorials/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ecosystem&#34;&gt;Ecosystem&lt;/h2&gt;
+&lt;p&gt;pytask is also part of a more extensive ecosystem of research tools developed at &lt;a href=&#34;https://twitter.com/open_econ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@open_econ&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We will soon write about tools like &lt;a href=&#34;https://github.com/OpenSourceEconomics/estimagic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;estimagic&lt;/a&gt;, a package for complex numerical optimization, and estimation/calibration of scientific models.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;acknowledgements&#34;&gt;Acknowledgements&lt;/h2&gt;
+&lt;p&gt;Thanks for staying with me until the end! At last, some shout-outs to amazing people and projects.&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/kroehrl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@kroehrl&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/JanosGabler&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@JanosGabler&lt;/a&gt;, and &lt;a href=&#34;https://twitter.com/econ_hmg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@econ_hmg&lt;/a&gt;, who helped me build this tool in endless and fruitful discussions! 🙇&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;acknowledgements-1&#34;&gt;Acknowledgements&lt;/h2&gt;
+&lt;p&gt;pytask stands on the shoulders of these projects. Thank you!🙏&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/pytestdotorg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@pytestdotorg&lt;/a&gt; for pytest and pluggy.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/textualizeio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@textualizeio&lt;/a&gt; for cli interface created with
+&lt;a href=&#34;https://github.com/Textualize/rich&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rich&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/_darrenburns&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@_darrenburns&lt;/a&gt; for parametrizations burrowed from
+&lt;a href=&#34;https://github.com/darrenburns/ward&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ward&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What I have been doing lately</title>
+      <link>https://tobiasraabe.github.io/post/what-i-have-been-doing-lately/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://tobiasraabe.github.io/post/what-i-have-been-doing-lately/</guid>
+      <description>&lt;p&gt;Hi everybody,&lt;/p&gt;
+&lt;p&gt;I have not written a post in a long time, so I am resuming this blog by keeping you
+posted on some of my more recent projects.&lt;/p&gt;
+&lt;p&gt;I have been developing or contributing to several research applications last year. I
+learned a lot about software engineering and designing applications. Maybe I will find
+the time to make a post on some of the things I learned along the way.&lt;/p&gt;
+&lt;h2 id=&#34;pytaskhahahugoshortcode-s0-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/pytask/&#34;&gt;pytask&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The project I am most excited about is &lt;a href=&#34;https://github.com/pytask-dev/pytask&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pytask&lt;/a&gt;, a
+build system designed for researchers to run their project pipeline from data
+preparation over analyses to compiling the reports.&lt;/p&gt;
+&lt;p&gt;I was highly frustrated with existing solutions and programmed my build system. The
+interface is one of the highlights. It is similar to pytest to lower the entry barrier
+but more beautiful because it uses &lt;a href=&#34;https://textualize/rich&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rich&lt;/a&gt;. pytask uses
+&lt;a href=&#34;https://github.com/pytest-dev/pluggy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pluggy&lt;/a&gt; under the hood to offer a plugin system.&lt;/p&gt;
+&lt;p&gt;If you already know my &lt;a href=&#34;https://github.com/tobiasraabe/cookiecutter-research-template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cookiecutter for reproducible
+research&lt;/a&gt;, you know Waf.
+pytask replaces Waf. I will probably not update the cookiecutter for the foreseeable
+future and, instead, I recommend &lt;a href=&#34;https://github.com/hmgaudecker/econ-project-templates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hans-Martin&amp;rsquo;s cookiecutter&lt;/a&gt;, which will support pytask.&lt;/p&gt;
+&lt;p&gt;Please take a look at pytask and try it out in your next project. I appreciate any
+feedback, comments, feature requests, and harsh criticism :).&lt;/p&gt;
+&lt;p&gt;I already held a presentation about pytask&amp;rsquo;s design which I will probably post here in
+some weeks. Half the time is about plugin architectures in general and pluggy, and the
+other half is about pytask.&lt;/p&gt;
+&lt;h2 id=&#34;respyhahahugoshortcode-s1-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/respy/&#34;&gt;respy&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Together with &lt;a href=&#34;https://github.com/janosg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Janos&lt;/a&gt;, I created a framework for a certain
+class of econometric models called
+&lt;a href=&#34;https://github.com/OpenSourceEconomics/respy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;respy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For the insiders, it is a framework for finite-horizon discrete choice dynamic
+programming models, also called Eckstein-Keane-Wolpin models. Researchers use them to
+study the human capital accumulation process in the labor market.&lt;/p&gt;
+&lt;p&gt;The documentation is quite extensive for such a young project—contributors taking over
+the project plan to extend it with even more examples and applications.&lt;/p&gt;
+&lt;p&gt;If you are an economist interested in structural modeling, it might be an excellent
+place to start. Even if you do not want to use this model, you might be able to get some
+inspiration for your model.&lt;/p&gt;
+&lt;p&gt;I learned a lot about building interfaces people can use and how to write performant
+code by choosing the right design and Numba where necessary.&lt;/p&gt;
+&lt;h2 id=&#34;gettsimhahahugoshortcode-s2-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/gettsim/&#34;&gt;gettsim&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I redesigned the computational backend of
+&lt;a href=&#34;https://github.com/iza-institute-of-labor-economics/gettsim&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gettsim&lt;/a&gt; with
+&lt;a href=&#34;https://github.com/janosg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Janos&lt;/a&gt; and &lt;a href=&#34;https://github.com/hmgaudecker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hans-Martin&lt;/a&gt;.
+gettsim offers a representation of the German tax and transfer system and allows
+researchers to study the impact of reforms on the amount of taxes and benefits people
+face.&lt;/p&gt;
+&lt;p&gt;The task was to design an interface that allows users to modify or extend the
+pre-implemented tax and transfer system.&lt;/p&gt;
+&lt;p&gt;Our solution is a mixture inspired by pytest&amp;rsquo;s fixtures and a DAG (directed acyclic
+graph).&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-a-subset-of-the-german-tax-and-transfer-system&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;A subset of the German tax and transfer system.&#34; srcset=&#34;
+               /post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_1a832a87a02c02082e864f9e06ee961c.webp 400w,
+               /post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_39fc8dbc1761862e1d7a094a243ac647.webp 760w,
+               /post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://tobiasraabe.github.io/post/what-i-have-been-doing-lately/gettsim_hu7a411bc6bbb514c1a204eaad6e6f2294_27638_1a832a87a02c02082e864f9e06ee961c.webp&#34;
+               width=&#34;601&#34;
+               height=&#34;604&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      A subset of the German tax and transfer system.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can view the whole tax and transfer system as an extensive network. In this network,
+nodes are quantities like child benefits, capital gains, or taxes on capital gains.
+Edges represent how quantities relate to each other. For example, taxes paid on capital
+gains is derived from capital gains subject to income tax. Quantities are part of the
+data, or a function exists that computes it.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The network is a directed graph because edges point in one direction. And it is acyclic
+since there are no cycles in this graph, meaning you will never return to the same node
+following the edges. These properties make the network a directed acyclic graph or a
+DAG.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This network view has a couple of benefits.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A quantity can be computed once and then passed to the following nodes saving runtime
+and reducing code duplication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you want to model a policy change, you can single out the relevant nodes in the
+network and modify the underlying functions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you are interested only in a subset of tax and transfer system, subset the network
+and remove unnecessary nodes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This flexibility is highly desirable, but what does the interface look like for a user.&lt;/p&gt;
+&lt;p&gt;Here, we use the idea of pytest&amp;rsquo;s fixtures where using a fixture&amp;rsquo;s name as an argument
+in a test function gives you access to the return of the fixture inside the test
+function. Similarly, a function in gettsim looks like this.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;child_benefits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n_children&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n_children&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;child_benefits&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here, &lt;code&gt;n_children&lt;/code&gt; is either a variable in the input data or a function with the same
+name which computes the quantity.&lt;/p&gt;
+&lt;p&gt;We can build a DAG that allows us to determine an execution order for the functions from
+a function&amp;rsquo;s name and its argument names.&lt;/p&gt;
+&lt;p&gt;Users can modify the collection of functions by overwriting existing functions or adding
+their own.&lt;/p&gt;
+&lt;p&gt;You can find out more about the package in the
+&lt;a href=&#34;https://gettsim.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;documentation&lt;/a&gt; or check out the code to
+build a DAG in the standalone package
+&lt;a href=&#34;https://github.com/OpenSourceEconomics/dags&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;dags&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;sidhahahugoshortcode-s5-hbhb&#34;&gt;&lt;a href=&#34;https://tobiasraabe.github.io/project/sid/&#34;&gt;sid&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Last but not least, I have been working on an epidemiological model to predict the
+spread of infectious diseases. It is my COVID-19 project with
+&lt;a href=&#34;https://github.com/roecla&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Klara&lt;/a&gt; and &lt;a href=&#34;https://github.com/janosg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Janos&lt;/a&gt;. It is called
+&lt;a href=&#34;https://github.com/covid-19-impact-lab/sid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sid&lt;/a&gt;, and we hope to publish something
+soon.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  
+  
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Wowchemy 5.7.0 for Hugo">
+
+  
+    <link rel="manifest" href="/manifest.webmanifest">
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hud96e8d92d6067df3d56ed86675d346c3_18348_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="https://tobiasraabe.github.io/slides/pytask/">
+
+  <title>pytask | Tobias Raabe</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.min.css">
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css">
+  
+
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/reveal_custom.min.css">
+  
+</head>
+<body>
+
+  
+<div class="reveal">
+  <div class="slides">
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_6713905054386d3777d250888f80694b.webp 400w,
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_668fd313a364b8aba6054ca86bc985ac.webp 760w,
+               /slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/pytask/logo_hu54cd4ce3cc6ec9b4ff06832acd0c1acc_11108_6713905054386d3777d250888f80694b.webp"
+               width="650"
+               height="252"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<p>A workflow management system for reproducible data analyses</p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="why-do-you-need-pytask">Why do you need pytask?</h2>
+<p>You&rsquo;ve probably organized your project using a similar folder structure where each
+folder contains scripts carrying out specific tasks.</p>
+<p>But, how do you execute all tasks or keep your project in sync?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_b1eff23266637135116c98e2cd9116db.webp 400w,
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_c9650e332161839b5b515931ba8bb645.webp 760w,
+               /slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/pytask/structure_hud006443189d4e93bacc3dca5e41bafdf_93049_b1eff23266637135116c98e2cd9116db.webp"
+               width="50%"
+               height="50%"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="how-does-pytask-help-you">How does pytask help you?</h2>
+<ul>
+<li>By defining dependencies and products of tasks, you implicitly define an execution
+order.</li>
+<li>pytask validates this definition</li>
+<li>and executes only tasks which need to be updated.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="how-do-you-define-tasks-dependencies-and-products">How do you define tasks, dependencies, and products?</h2>
+<p>Tasks are functions starting with <code>task_</code>. Use decorators to specify the dependencies
+and products of a task. Using <code>depends_on</code> and <code>produces</code> as function args, you access
+the paths to the files in the function body.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_c45300d44c89c981cd6cea53d701728f.webp 400w,
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_d00940f96ed2e16fb9bfad85d106d918.webp 760w,
+               /slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/pytask/task_hua2bf14151676cf7927f6f127b73b7943_160385_c45300d44c89c981cd6cea53d701728f.webp"
+               width="70%"
+               height="70%"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="execute-a-task">Execute a task</h2>
+<p>Type <code>pytask</code> in your terminal, and it will automatically collect and execute all tasks.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_6e9d542121037bdd8b75cf6e5ecdc5d2.webp 400w,
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_0ae5bee1a07736f41a6b1e73b787e655.webp 760w,
+               /slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/pytask/execute_hufd282194fd395852446f3a6f0d6458e7_63164_6e9d542121037bdd8b75cf6e5ecdc5d2.webp"
+               width="70%"
+               height="70%"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="what-are-the-benefits">What are the benefits?</h2>
+<p>👉 Automation reduces errors and increases reproducibility.</p>
+<p>👉 The build process is documented in code.</p>
+<p>👉 You can iterate faster and be more productive.</p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="research">Research</h2>
+<p>Is pytask used for actual research? Yes!</p>
+<p>Here is a Covid-19 forecast project with an agent-based model, 10+ datasets, many different policy scenarios and 1,000+ simulations.</p>
+<p>👉 <a href="https://arxiv.org/abs/2106.11129" target="_blank" rel="noopener">https://arxiv.org/abs/2106.11129</a></p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="teaching">Teaching</h2>
+<p>pytask is also part of a graduate course, teaching economists programming and best practices for research projects.</p>
+<p>👉 <a href="https://github.com/OpenSourceEconomics/econ-project-templates" target="_blank" rel="noopener">https://github.com/OpenSourceEconomics/econ-project-templates</a></p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="what-else-has-pytask-to-offer">What else has pytask to offer?</h2>
+<p>Scale your project by repeating tasks! 🚀</p>
+<p>For example, create ten different datasets with randomly generated data.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_dc3afaefc80d44e7d270a96621fc531a.webp 400w,
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_c154bcbcab4bf809e87caf157cf8dc6a.webp 760w,
+               /slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/pytask/repeat_huf3e0e76d8cc33474fa39ec2bee5ffebc_148080_dc3afaefc80d44e7d270a96621fc531a.webp"
+               width="70%"
+               height="70%"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="customize-pytask-with-plugins">Customize pytask with plugins!</h2>
+<ul>
+<li>Automatically parallelize the execution with <a href="https://github.com/pytask-dev/pytask-parallel" target="_blank" rel="noopener">https://github.com/pytask-dev/pytask-parallel</a> ⚡️</li>
+<li>Support for executing R, Julia, and Stata scripts.</li>
+<li>All plugins are here: <a href="https://pytask-dev.readthedocs.io/en/stable/plugin_list.html" target="_blank" rel="noopener">https://pytask-dev.readthedocs.io/en/stable/plugin_list.html</a></li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="templating">Templating</h2>
+<p>Start a new project from a template!</p>
+<p>A minimal template: <a href="https://github.com/pytask-dev/cookiecutter-pytask-project" target="_blank" rel="noopener">https://github.com/pytask-dev/cookiecutter-pytask-project</a></p>
+<p>A template for reproducible economics projects: <a href="https://github.com/OpenSourceEconomics/econ-project-templates" target="_blank" rel="noopener">https://github.com/OpenSourceEconomics/econ-project-templates</a></p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="debugging">Debugging</h2>
+<p>Enter the debugger if one of your tasks fails, and you want to find out why! 🏗️</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_902fdde7c463d2fe50ea34b000a83672.webp 400w,
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_f6c550f5f722609531459e9d6d8657ee.webp 760w,
+               /slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/pytask/debugging_hu311174a0ea4f8d8d0d105c321b42522f_49944_902fdde7c463d2fe50ea34b000a83672.webp"
+               width="70%"
+               height="70%"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="documentation">Documentation</h2>
+<p>You can find out more about pytask in the documentation: <a href="https://pytask-dev.readthedocs.io/" target="_blank" rel="noopener">https://pytask-dev.readthedocs.io/</a>.</p>
+<p>Follow the tutorials for a step-by-step introduction: <a href="https://pytask-dev.readthedocs.io/en/stable/tutorials/index.html" target="_blank" rel="noopener">https://pytask-dev.readthedocs.io/en/stable/tutorials/index.html</a></p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="ecosystem">Ecosystem</h2>
+<p>pytask is also part of a more extensive ecosystem of research tools developed at <a href="https://twitter.com/open_econ" target="_blank" rel="noopener">@open_econ</a>.</p>
+<p>We will soon write about tools like <a href="https://github.com/OpenSourceEconomics/estimagic" target="_blank" rel="noopener">estimagic</a>, a package for complex numerical optimization, and estimation/calibration of scientific models.</p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks for staying with me until the end! At last, some shout-outs to amazing people and projects.</p>
+<p>Thanks to <a href="https://twitter.com/kroehrl" target="_blank" rel="noopener">@kroehrl</a>, <a href="https://twitter.com/JanosGabler" target="_blank" rel="noopener">@JanosGabler</a>, and <a href="https://twitter.com/econ_hmg" target="_blank" rel="noopener">@econ_hmg</a>, who helped me build this tool in endless and fruitful discussions! 🙇</p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="acknowledgements-1">Acknowledgements</h2>
+<p>pytask stands on the shoulders of these projects. Thank you!🙏</p>
+<ul>
+<li><a href="https://twitter.com/pytestdotorg" target="_blank" rel="noopener">@pytestdotorg</a> for pytest and pluggy.</li>
+<li><a href="https://twitter.com/textualizeio" target="_blank" rel="noopener">@textualizeio</a> for cli interface created with
+<a href="https://github.com/Textualize/rich" target="_blank" rel="noopener">rich</a>.</li>
+<li><a href="https://twitter.com/_darrenburns" target="_blank" rel="noopener">@_darrenburns</a> for parametrizations burrowed from
+<a href="https://github.com/darrenburns/ward" target="_blank" rel="noopener">ward</a>.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+  </div>
+</div>
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/search/search.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.min.js" crossorigin="anonymous"></script>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/plugin.js" integrity="sha256-M6JwAjnRAWmi+sbXURR/yAhWZKYhAw7YXnnLvIxrdGs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.js" integrity="sha256-l14dklFcW5mWar6w/9KaW0fWVerf3mYr7Wt0+rXzFAA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.css" integrity="sha256-0fU8HKLaTjgzfaV9CgSqbsN8ilA3zo6zK1M6rlgULd8=" crossorigin="anonymous">
+  
+
+  
+  
+
+  
+  
+  <script src="/js/wowchemy-slides.js"></script>
+
+</body>
+</html>
